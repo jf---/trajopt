@@ -125,7 +125,7 @@ void SingleTimestepCollisionEvaluator::calcCollisions(trajopt_common::CollisionC
     std::sort(collision_data.gradient_results_sets.begin(),
               collision_data.gradient_results_sets.end(),
               [](const trajopt_common::GradientResultsSet& a, const trajopt_common::GradientResultsSet& b) {
-                return a.max_error[0].error > b.max_error[0].error;
+                return a.getMaxErrorT0() > b.getMaxErrorT0();
               });
   }
 }
