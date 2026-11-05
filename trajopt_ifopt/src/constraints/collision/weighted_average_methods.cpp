@@ -41,6 +41,9 @@ Eigen::VectorXd getWeightedAvgGradientT0(const trajopt_common::GradientResultsSe
   long cnt{ 0 };
   for (const auto& grad : grad_results_set.results)
   {
+    bool contributes = false;
+    const double w = (std::max(grad.error_with_buffer, 0.0) / max_error_with_buffer);
+    assert(!(w < 0));
     for (std::size_t i = 0; i < 2; ++i)
     {
       if (grad.gradients[i].has_gradient &&
@@ -49,13 +52,17 @@ Eigen::VectorXd getWeightedAvgGradientT0(const trajopt_common::GradientResultsSe
         if (grad_results_set.max_error[i].error_with_buffer[0] > 0)
         {
           assert(grad_results_set.max_error[i].has_error[0]);
-          const double w = (std::max(grad.error_with_buffer, 0.0) / max_error_with_buffer);
-          assert(!(w < 0));
-          total_weight += w;
           grad_vec.noalias() += w * (grad.gradients[i].scale * grad.gradients[i].gradient);
-          ++cnt;
+          contributes = true;
         }
       }
+    }
+    // A contact's derivative is the sum of its active-link contributions.
+    // Normalize across contacts, not across the links within each contact.
+    if (contributes)
+    {
+      total_weight += w;
+      ++cnt;
     }
   }
 
@@ -80,6 +87,9 @@ Eigen::VectorXd getWeightedAvgGradientT1(const trajopt_common::GradientResultsSe
   long cnt{ 0 };
   for (const auto& grad : grad_results_set.results)
   {
+    bool contributes = false;
+    const double w = (std::max(grad.error_with_buffer, 0.0) / max_error_with_buffer);
+    assert(!(w < 0));
     for (std::size_t i = 0; i < 2; ++i)
     {
       if (grad.cc_gradients[i].has_gradient &&
@@ -88,13 +98,17 @@ Eigen::VectorXd getWeightedAvgGradientT1(const trajopt_common::GradientResultsSe
         if (grad_results_set.max_error[i].error_with_buffer[1] > 0)
         {
           assert(grad_results_set.max_error[i].has_error[1]);
-          const double w = (std::max(grad.error_with_buffer, 0.0) / max_error_with_buffer);
-          assert(!(w < 0));
-          total_weight += w;
           grad_vec.noalias() += w * (grad.cc_gradients[i].scale * grad.cc_gradients[i].gradient);
-          ++cnt;
+          contributes = true;
         }
       }
+    }
+    // A contact's derivative is the sum of its active-link contributions.
+    // Normalize across contacts, not across the links within each contact.
+    if (contributes)
+    {
+      total_weight += w;
+      ++cnt;
     }
   }
 
