@@ -103,3 +103,37 @@ The other transits and their 3.31 s previously measured solve/check baseline
 were reused, and fresh-route preparation was not included in this timing. The
 untracked `overlap-horizon-whole-tour/summary.json` records all six selections,
 per-window reports and the loaded library paths.
+
+## Three-probe rail and clock exploration
+
+A separate bounded Tour 09 exploration regenerated OPW branches for probes 3,
+4 and 5 at a common 2.6 m track position. It connected their generated probe
+macros between the existing fixture exit and weld entry using four native
+transit optimizations. Each affected transit used the same speed-derived rule:
+measure the solved spline's per-axis numerical velocity extrema, multiply its
+duration by the maximum sourced-speed ratio if necessary, and reoptimize with
+the original shared q/qd/qdd. Numerical polynomial roots are not an interval
+proof. The solver's actual spline and the independent polynomial representation
+are compared at the reported extrema. This is a candidate-specific exploration,
+not a universal rail-selection policy or a continuous global optimum.
+
+The 16-stage horizon passed its finite actual-curve checks, and splicing it into
+the existing 67-stage assembly yielded no sampled contacts in 28,547 samples.
+The unchanged fixture and weld boundaries retained their modeled q/qd/qdd; the
+original probe geometry, hypothetical SearchL hits and 27 modeled corner stops
+remain. The maximum sampled process departure remained 0.918 mm and 7.98e-5 rad
+from the earlier weld blend, with no sampled backward progress. No physical,
+controller or manufacturing acceptance is claimed.
+
+The whole-tour sampled speed-normalized jerk-squared integral fell from 2,302.24
+to 2,049.67 (10.97%), while modeled duration rose from 115.50478 to 115.58811 s.
+The sampled track jerk-squared integral fell from 3,516.18 to 2,847.11 m²/s⁵,
+but **peak** track jerk rose from 48.01 to 53.09 m/s³. Peak track acceleration
+rose from 4.62 to 5.32 m/s² and peak track speed from 1.5 to 1.8 m/s; peak arm
+jerk remained 125.84 rad/s³. The four changed transits have numerical polynomial
+speed-extrema checks; other stage speeds are sampled only. The source fixtures
+and generated probe artifacts in the local untracked
+`three-probe-speed-policy-horizon/` and `three-probe-whole-tour/` directories
+preserve the full candidate and results. Scene/build contention was not fully
+characterized, and the graph retained one generated process path per sampled
+endpoint pair, so these measurements do not characterize production performance.

@@ -21,6 +21,27 @@ PROCESS_SAMPLES = 257
 LOCAL_WINDOW_SAMPLES = 65
 
 
+class TransitDurationError(RuntimeError):
+    """A transit-clock override is unknown, nonfinite or nonpositive."""
+
+
+def apply_transit_durations(clock, overrides):
+    """Return a copied modeled clock with only selected transit durations changed."""
+    names = {item["stage"] for item in clock["stages"] if item["stage"].startswith("transit:")}
+    if set(overrides) - names:
+        raise TransitDurationError("duration overrides must name existing transits")
+    result = []
+    for stage in clock["stages"]:
+        item = dict(stage)
+        if item["stage"] in overrides:
+            value = float(overrides[item["stage"]])
+            if not np.isfinite(value) or value <= 0:
+                raise TransitDurationError("transit duration must be finite and positive")
+            item["duration_s"] = value
+        result.append(item)
+    return {**clock, "stages": result}
+
+
 class ProcessRateError(RuntimeError):
     """The process rate override would alter a probe corner or is invalid."""
 
@@ -52,6 +73,7 @@ def verify_duration_policy(
     fixture_policy,
     *,
     process_rates=None,
+    transit_durations=None,
 ):
     """Check all actual curves for one explicit transit-duration policy.
 
@@ -80,6 +102,8 @@ def verify_duration_policy(
     policy_clock_data = scale_transit_clock(
         stages=segments, clock=clock, factor=factor, fixture_times=policy["stage_times_s"]
     )
+    if transit_durations is not None:
+        policy_clock_data = apply_transit_durations(policy_clock_data, transit_durations)
     transits = validate_transit_results(segments, policy_clock_data, transit_summary["transits"])
     if len(segments) != 67 or len(transits) != 14:
         raise RuntimeError("expected exactly 67 stages and 14 unique Tour09 transits")
