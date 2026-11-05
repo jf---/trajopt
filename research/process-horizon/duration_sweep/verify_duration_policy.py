@@ -5,6 +5,13 @@ from time import perf_counter
 
 import _quintic_spline as native
 import numpy as np
+from actual_stage_adapters import (
+    check_stage_samples,
+    fixture_stage,
+    process_stage,
+    transit_stage,
+    weld_stage,
+)
 from duration_policy import scale_transit_clock, validate_fixture_policy, validate_transit_results
 from free_space_transit import _restore_scene
 from fresh_scene import snapshot
@@ -74,6 +81,7 @@ def verify_duration_policy(
     *,
     process_rates=None,
     transit_durations=None,
+    stage_sink=None,
 ):
     """Check all actual curves for one explicit transit-duration policy.
 
@@ -229,6 +237,8 @@ def verify_duration_policy(
                 q = np.column_stack((position, np.tile(fixture, (len(position), 1))))
                 v = np.column_stack((velocity, np.zeros((len(velocity), 2))))
                 a = np.column_stack((acceleration, np.zeros((len(acceleration), 2))))
+                if stage_sink is not None:
+                    actual_stage = transit_stage(label, duration, model, item["nodes"], fixture)
             elif phase in ("approach", "search", "retract", "withdraw"):
                 n = int(number)
                 leg = ["approach", "search", "retract", "withdraw"].index(phase)
@@ -256,6 +266,8 @@ def verify_duration_policy(
                 q = np.column_stack((position, np.tile(fixture, (len(position), 1))))
                 v = np.column_stack((velocity, np.zeros((len(velocity), 2))))
                 a = np.column_stack((acceleration, np.zeros((len(acceleration), 2))))
+                if stage_sink is not None:
+                    actual_stage = process_stage(label, duration, curve, fixture, v0, v1)
             elif phase == "fixture":
                 k = fixture_indices.index(idx)
                 ts = np.linspace(fixture_times[k], fixture_times[k + 1], PROCESS_SAMPLES)
@@ -271,6 +283,10 @@ def verify_duration_policy(
                 v = delta[None, :] * sd[:, None]
                 a = delta[None, :] * sdd[:, None]
                 jerk = delta[None, :] * sddd[:, None]
+                if stage_sink is not None:
+                    actual_stage = fixture_stage(
+                        label, policy, fixture_times[k], fixture_times[k + 1]
+                    )
             elif phase == "weld" and label in local_map:
                 k, local, local_curve, local_edges = local_map[label]
                 ts = np.linspace(local_edges[k], local_edges[k + 1], PROCESS_SAMPLES).tolist()
@@ -306,10 +322,15 @@ def verify_duration_policy(
                 q = np.column_stack((position, np.tile(fixture, (len(position), 1))))
                 v = np.column_stack((velocity, np.zeros((len(velocity), 2))))
                 a = np.column_stack((acceleration, np.zeros((len(acceleration), 2))))
+                if stage_sink is not None:
+                    actual_stage = weld_stage(label, duration, local_curve, local_edges[k], fixture)
             elif phase == "weld":
                 raise RuntimeError(f"{label}: missing explicit local weld blend")
             else:
                 raise RuntimeError(f"unsupported stage {label}")
+            if stage_sink is not None:
+                check_stage_samples(actual_stage, sample_times, q, v, a)
+                stage_sink(actual_stage)
             if jerk.shape[1] == 7:
                 jerk = np.column_stack((jerk, np.zeros((len(jerk), 2))))
             if q.shape[1] != 9 or not np.isfinite(q).all() or not np.isfinite(jerk).all():

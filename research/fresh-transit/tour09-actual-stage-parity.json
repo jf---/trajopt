@@ -1,0 +1,33 @@
+{
+  "scope": "Generated Tour09 modeled curves; sampled collision and process checks, actual-curve adapter endpoint parity and nine-axis join diagnostics. Outer derivatives unspecified; no controller or manufacturing acceptance.",
+  "stage_count": 67,
+  "sampled_state_count": 28547,
+  "negative_contacts": 0,
+  "raw_limit_excess": [
+    7.346391208641021e-20,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "modeled_duration_s": 129.64338382375283,
+  "endpoint_parity_max_by_derivative": {
+    "position": 0.0,
+    "velocity": 2.6645352591003757e-15,
+    "acceleration": 7.105427357601002e-15
+  },
+  "join_count": 66,
+  "max_join_position_gap": 1.4432899320127035e-15,
+  "max_join_velocity_gap": 2.012973121523487e-14,
+  "max_join_acceleration_gap": 7.992751425989209e-13,
+  "unknown_internal_derivatives": 0,
+  "outer_derivatives": "unknown; no controller or endpoint velocity supplied",
+  "elapsed_s_including_scene_setup": 11.361906750011258,
+  "overall_accepted": false,
+  "adapter_parity_samples_per_stage": 3,
+  "timing_note": "A separate correctness verifier may have overlapped; wall time is not a benchmark."
+}

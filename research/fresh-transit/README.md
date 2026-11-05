@@ -163,3 +163,40 @@ established. The isolated trial took **3.51 s** including its checks after a
 separately prepared scene and previously generated candidate. Its local
 untracked evidence is `.superpowers/fresh-fixture-study/tour09-eased-tracked.json`
 and the PIQP log is next to it; this is not an all-tour or cold-planning result.
+
+## Actual-stage and event contract
+
+`actual_stage_contract.py` is an additive interface for nine-axis modeled curves.
+Each positive-duration stage supplies its actual position and known or unknown
+velocity and acceleration. Stationary zero-time events retain their names and
+order; they do not imply that the robot stops. A continuity gate requires
+caller-supplied axis-specific bands and rejects unknown derivatives. It does not
+choose physical tolerances or infer controller boundary conditions.
+
+`actual_stage_adapters.py` exposes the native quintic transit, generated probe
+progress, existing fixture easing and generated weld curves through this
+contract. The opt-in Tour09 sampled verifier also checks each adapter against
+its existing evaluation at both endpoints and an interior sample. The adapters
+must not change default verifier behavior. Process rates that would reverse the
+modeled progress are rejected rather than clipped into a misleading derivative.
+
+The generated Tour09 2× assembly was rechecked using the β=0.1 transit curves:
+67 stages, 28,547 sampled states, no detected penetrating contacts and the
+configured joint-position and sourced arm/track speed checks passed. All 66
+internal joins had modeled position, velocity and acceleration derivatives;
+endpoint adapter parity and sampled checks passed. Outer physical derivatives
+remain unknown. These are modeled finite-sample checks on one tour; they do not
+establish continuous collision clearance, controller timing, all-tour coverage
+or manufacturing acceptance. The reusable inputs and detailed local report are
+under the ignored `.superpowers/process-horizon09/adapter-stage-parity-checked/`.
+
+The compact [stage-parity report](tour09-actual-stage-parity.json) records the
+result. The experiment driver is
+`research/process-horizon/duration_sweep/check_actual_stage_adapters.py`. It
+requires explicit station, original worktree, fresh-route, verified-route,
+process artifacts, fixture policy, generated transit summary, native Ifopt and
+corrected SQP library paths. Run it in the documented experimental Pixi runtime
+with the `fresh-transit`, `process-horizon/experiments`,
+`process-horizon/duration_sweep` and native binding modules on `PYTHONPATH`;
+pass `--help` for its complete CLI. Those local development libraries and
+artifact paths are research dependencies, not installed product components.
