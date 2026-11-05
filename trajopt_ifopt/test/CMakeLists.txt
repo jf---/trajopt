@@ -41,6 +41,7 @@ add_gtest(${PROJECT_NAME}_joint_terms_unit joint_terms_unit.cpp)
 add_gtest(${PROJECT_NAME}_quintic_spline_model_unit quintic_spline_model_unit.cpp)
 add_gtest(${PROJECT_NAME}_quintic_spline_jerk_cost_unit quintic_spline_jerk_cost_unit.cpp)
 add_gtest(${PROJECT_NAME}_quintic_spline_jerk_fourth_cost_unit quintic_spline_jerk_fourth_cost_unit.cpp)
+add_gtest(${PROJECT_NAME}_quintic_spline_jerk_peak_constraint_unit quintic_spline_jerk_peak_constraint_unit.cpp)
 add_gtest(${PROJECT_NAME}_quintic_spline_position_limits_unit quintic_spline_position_limits_unit.cpp)
 
 add_gtest(${PROJECT_NAME}_utils_unit utils_unit.cpp)

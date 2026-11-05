@@ -6,6 +6,7 @@
 #include <nanobind/stl/vector.h>
 #include <trajopt_ifopt/spline/quintic_spline_jerk_cost.h>
 #include "../include/trajopt_ifopt/spline/quintic_spline_jerk_fourth_cost.h"
+#include "../include/trajopt_ifopt/spline/quintic_spline_jerk_peak_constraint.h"
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
 #include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
 #include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
@@ -98,6 +99,20 @@ NB_MODULE(_quintic_spline, m)
            "knots"_a,
            "axis_weights"_a,
            "name"_a = "ContinuousSplineJerkFourth");
+  nb::class_<ti::QuinticSplineJerkPeakConstraint, ti::ConstraintSet>(m, "QuinticSplineJerkPeakConstraint")
+      .def("__init__",
+           [](ti::QuinticSplineJerkPeakConstraint* self,
+              const ti::QuinticSplineModel& model,
+              std::vector<std::shared_ptr<const ti::Var>> knots,
+              std::shared_ptr<const ti::Var> peak,
+              const std::vector<double>& witnesses,
+              Eigen::VectorXd normalization,
+              std::string name) {
+             new (self) ti::QuinticSplineJerkPeakConstraint(model, std::move(knots), std::move(peak),
+                                                            seconds(witnesses), std::move(normalization),
+                                                            std::move(name));
+           },
+           "model"_a, "knots"_a, "peak"_a, "witnesses_s"_a, "normalization"_a, "name"_a = "SplineJerkPeak");
   nb::class_<ti::QuinticSplinePositionLimits, ti::ConstraintSet>(m, "QuinticSplinePositionLimits")
       .def(
           "__init__",

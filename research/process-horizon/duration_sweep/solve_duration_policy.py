@@ -39,6 +39,7 @@ def solve_duration_policy(
     baseline_path=None,
     fourth_risk_weight=0.0,
     risk_reference_time_s=None,
+    transit_solver=refine_transits,
 ):
     """Replan every transit once and independently check the actual spline."""
     env, _, _, _, names, _, _, _, _, _, info, _ = scene["inputs"]
@@ -105,7 +106,7 @@ def solve_duration_policy(
         curve = None
         try:
             with native_log(folder / f"{stage['stage'].replace(':', '-')}.log"):
-                outcomes = refine_transits(
+                outcomes = transit_solver(
                     env,
                     info,
                     names,

@@ -209,3 +209,23 @@ library explicitly with `-DQUINTIC_NATIVE_IFOPT_LIBRARY=/absolute/path/to/libtra
 Use the same explicit runtime setup as the duration sweep and the tracked
 `run_fourth_grid.py` command; its `--help` lists the required baseline, candidate,
 artifact and scene paths. The runner verifies the actual loaded native libraries.
+
+## Soft peak epigraph prototype
+
+For each modeled transit and axis, let `r_i(t) = T_ref² j_i(t) / v_i` and let
+`z_i >= 0` be a free, dimensionless optimization variable. The prototype adds
+both inequalities `r_i(t) <= z_i` and `-r_i(t) <= z_i` at the current witness
+times, and a soft squared cost `β z_i² / T_ref³` alongside the existing
+normalized squared-jerk integral. `T_ref` is in seconds and `v_i` is the sourced
+axis speed. The inequalities define the epigraph; they do not set a physical
+jerk ceiling. A zero weight uses the prior quadratic-only solver path.
+
+For each solved quintic transit, numerical piecewise-polynomial jerk extrema are
+checked and violating times are added to the witness set. Solves warm-start from
+the prior generated solution, retain all earlier witnesses and stop at a shared
+five-round budget. The existing dimensionless SQP feasibility band is recorded;
+it is not a physical tolerance. This is a numerical witness check, not interval
+proof. The initial pilot uses a separate peak variable per axis **per transit**,
+with one common weight across all transits; it does not jointly optimize a
+single whole-tour maximum. Process and weld stages are unchanged, so an
+unchanged process stage can still determine the whole-tour peak.
