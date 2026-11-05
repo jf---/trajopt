@@ -46,6 +46,11 @@ public:
   /** Return q^(order)(t) = basis * knot_positions + offset. */
   SplineAffineMap map(const std::vector<Seconds>& times, unsigned order) const;
 
+  /** Evaluate positions and all derivatives through max_order from one batched clock. */
+  std::vector<Eigen::MatrixXd> evaluate(const std::vector<Seconds>& times,
+                                        const Eigen::MatrixXd& positions,
+                                        unsigned max_order) const;
+
   /** Three-point Gauss-Legendre rule on every knot interval integrates squared jerk exactly. */
   JerkQuadrature jerkQuadrature() const;
 

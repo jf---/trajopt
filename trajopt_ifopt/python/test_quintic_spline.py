@@ -111,3 +111,48 @@ def test_native_map_releases_gil_while_evaluating():
         thread.join(timeout=5)
     assert result.basis.shape == (200_000, 7)
     assert progressed_during_call
+
+
+def test_batch_evaluation_matches_scipy_for_all_orders_and_rejects_bad_positions():
+    native = QuinticSplineModel.build(TIMES, V0, A0, V1, A1)
+    reference = make_interp_spline(
+        TIMES, POSITIONS, k=5, bc_type=([(1, V0), (2, A0)], [(1, V1), (2, A1)])
+    )
+    times = np.linspace(0, 3, 71)
+    result = native.evaluate(times, POSITIONS, 3)
+    assert len(result) == 4
+    for order, values in enumerate(result):
+        np.testing.assert_allclose(values, reference(times, nu=order), rtol=2e-9, atol=2e-9)
+    with pytest.raises(QuinticSplineError):
+        native.evaluate(times, POSITIONS[:-1], 3)
+    invalid_positions = POSITIONS.copy()
+    invalid_positions[0, 0] = np.nan
+    with pytest.raises(QuinticSplineError):
+        native.evaluate(times, invalid_positions, 3)
+    with pytest.raises(QuinticSplineError):
+        native.evaluate(np.array([np.nan]), POSITIONS, 3)
+
+
+def test_batch_evaluation_releases_gil():
+    model = QuinticSplineModel.build(TIMES, V0, A0, V1, A1)
+    start = threading.Event()
+    progressed = threading.Event()
+
+    def worker():
+        start.wait()
+        progressed.set()
+
+    thread = threading.Thread(target=worker)
+    thread.start()
+    old = sys.getswitchinterval()
+    sys.setswitchinterval(1.0)
+    try:
+        times = np.full(200_000, 1.1)
+        start.set()
+        result = model.evaluate(times, POSITIONS, 3)
+        progressed_during_call = progressed.is_set()
+    finally:
+        sys.setswitchinterval(old)
+        thread.join(timeout=5)
+    assert result[0].shape == (200_000, 2)
+    assert progressed_during_call

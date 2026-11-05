@@ -115,6 +115,42 @@ SplineAffineMap QuinticSplineModel::map(const std::vector<Seconds>& times, unsig
   return { std::move(basis), std::move(offset) };
 }
 
+std::vector<Eigen::MatrixXd> QuinticSplineModel::evaluate(const std::vector<Seconds>& times,
+                                                          const Eigen::MatrixXd& positions,
+                                                          unsigned max_order) const
+{
+  if (max_order > DEGREE || times.empty() || positions.rows() != knotCount() || positions.cols() != axisCount() ||
+      !positions.allFinite())
+    throw QuinticSplineError("invalid batched spline times, positions or derivative order");
+  const double first = times_.front().count();
+  const double last = times_.back().count();
+  const double duration = last - first;
+  const Eigen::MatrixXd controls = position_coefficients_ * positions + boundary_coefficients_;
+  std::vector<Eigen::MatrixXd> result;
+  result.reserve(max_order + 1);
+  for (unsigned order = 0; order <= max_order; ++order)
+    result.emplace_back(static_cast<Eigen::Index>(times.size()), axisCount());
+  for (std::size_t i = 0; i < times.size(); ++i)
+  {
+    const double time = times[i].count();
+    if (!std::isfinite(time) || time < first || time > last)
+      throw QuinticSplineError("spline evaluation time is outside the modeled clock");
+    const double parameter = (time - first) / duration;
+    const Eigen::Index span = BasisSpline::Span(parameter, DEGREE, knots_);
+    const auto derivatives =
+        BasisSpline::BasisFunctionDerivatives(parameter, static_cast<Eigen::Index>(max_order), DEGREE, knots_);
+    const auto local_controls = controls.middleRows(span - DEGREE, DEGREE + 1);
+    double time_scale = 1.0;
+    for (unsigned order = 0; order <= max_order; ++order)
+    {
+      result[order].row(static_cast<Eigen::Index>(i)).noalias() =
+          time_scale * derivatives.row(static_cast<Eigen::Index>(order)).matrix() * local_controls;
+      time_scale /= duration;
+    }
+  }
+  return result;
+}
+
 JerkQuadrature QuinticSplineModel::jerkQuadrature() const
 {
   const double node = std::sqrt(3.0 / 5.0);

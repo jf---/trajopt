@@ -161,3 +161,21 @@ TEST(QuinticSplineModel, RejectsInvalidInputs)
                                          Eigen::VectorXd::Zero(1)),
                QuinticSplineError);
 }
+
+TEST(QuinticSplineModel, BatchEvaluationMatchesMapsAndValidatesPositionShape)
+{
+  const auto spline = model();
+  const auto knots = positions();
+  const std::vector<Seconds> times = { Seconds(0), Seconds(.03), Seconds(.47), Seconds(1.6), Seconds(3) };
+  const auto evaluated = spline.evaluate(times, knots, 3);
+  ASSERT_EQ(evaluated.size(), 4);
+  for (unsigned order = 0; order < evaluated.size(); ++order)
+  {
+    const auto mapping = spline.map(times, order);
+    const Eigen::MatrixXd expected = mapping.basis * knots + mapping.offset;
+    EXPECT_TRUE(evaluated[order].isApprox(expected, 1e-12));
+  }
+  EXPECT_THROW(spline.evaluate(times, Eigen::MatrixXd::Zero(6, 1), 3), QuinticSplineError);
+  EXPECT_THROW(spline.evaluate(times, knots, 6), QuinticSplineError);
+  EXPECT_THROW(spline.evaluate({ Seconds(4) }, knots, 0), QuinticSplineError);
+}

@@ -56,6 +56,22 @@ NB_MODULE(_quintic_spline, m)
           "times_s"_a,
           "order"_a,
           nb::call_guard<nb::gil_scoped_release>())
+      .def(
+          "evaluate",
+          [](const ti::QuinticSplineModel& self,
+             const Eigen::Ref<const Eigen::VectorXd>& times,
+             const Eigen::MatrixXd& positions,
+             unsigned max_order) {
+            std::vector<ti::Seconds> clock;
+            clock.reserve(static_cast<std::size_t>(times.size()));
+            for (Eigen::Index i = 0; i < times.size(); ++i)
+              clock.emplace_back(times[i]);
+            return self.evaluate(clock, positions, max_order);
+          },
+          "times_s"_a,
+          "positions"_a,
+          "max_order"_a,
+          nb::call_guard<nb::gil_scoped_release>())
       .def("jerk_quadrature", &ti::QuinticSplineModel::jerkQuadrature, nb::call_guard<nb::gil_scoped_release>())
       .def_prop_ro("knot_count", &ti::QuinticSplineModel::knotCount)
       .def_prop_ro("axis_count", &ti::QuinticSplineModel::axisCount);
