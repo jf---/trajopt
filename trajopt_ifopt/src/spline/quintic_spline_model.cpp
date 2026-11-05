@@ -172,4 +172,28 @@ JerkQuadrature QuinticSplineModel::jerkQuadrature() const
   }
   return { map(samples, 3), std::move(quadrature_weights) };
 }
+JerkQuadrature QuinticSplineModel::jerkFourthQuadrature() const
+{
+  const double inner = std::sqrt(5.0 - 2.0 * std::sqrt(10.0 / 7.0)) / 3.0;
+  const double outer = std::sqrt(5.0 + 2.0 * std::sqrt(10.0 / 7.0)) / 3.0;
+  const double outer_weight = (322.0 - 13.0 * std::sqrt(70.0)) / 900.0;
+  const double inner_weight = (322.0 + 13.0 * std::sqrt(70.0)) / 900.0;
+  const std::array<double, 5> nodes = { -outer, -inner, 0.0, inner, outer };
+  const std::array<double, 5> weights = { outer_weight, inner_weight, 128.0 / 225.0, inner_weight, outer_weight };
+  const std::size_t count = nodes.size() * (times_.size() - 1);
+  std::vector<Seconds> samples;
+  samples.reserve(count);
+  Eigen::VectorXd quadrature_weights(static_cast<Eigen::Index>(count));
+  for (std::size_t interval = 0; interval + 1 < times_.size(); ++interval)
+  {
+    const double start = times_[interval].count();
+    const double span = times_[interval + 1].count() - start;
+    for (std::size_t j = 0; j < nodes.size(); ++j)
+    {
+      samples.emplace_back(start + span * (nodes[j] + 1.0) / 2.0);
+      quadrature_weights[static_cast<Eigen::Index>(nodes.size() * interval + j)] = span * weights[j] / 2.0;
+    }
+  }
+  return { map(samples, 3), std::move(quadrature_weights) };
+}
 }  // namespace trajopt_ifopt

@@ -159,3 +159,53 @@ improved the integrated measure while worsening this peak. The 2× comparison is
 recorded in the untracked `three-probe-whole-tour-2x/summary.json`; it reused
 previously computed baseline and generated process artifacts, and concurrent
 host activity was not characterized.
+
+## Soft fourth-power jerk experiment
+
+The native opt-in cost adds a squared-jerk residual to the existing squared-cost
+penalty, producing an integrated fourth-power term. With joint speed `v_i`,
+modeled reference time `T_ref` and one dimensionless global weight `λ`, the
+transit objective uses the following components, multiplied by the existing
+common objective multiplier:
+
+```text
+sum_i integral [(j_i / v_i)^2 + λ T_ref^4 (j_i / v_i)^4] dt
+```
+
+Both terms have units of inverse seconds cubed. `T_ref = 1 s` is a modeled
+normalization, not a sourced physical limit. The fourth-power integrand is a
+polynomial of degree eight on each quintic-spline span; five-point
+Gauss–Legendre quadrature integrates it exactly in exact arithmetic. The native
+cost provides its analytical Jacobian. A zero risk weight retains the existing
+quadratic-only path; no hard jerk ceiling is introduced.
+
+A single grid `λ = 0, 0.001, 0.01, 0.1` was applied to **all 14** transits of
+the bounded 2.6 m Tour 09 candidate with a uniform 2× transit clock. Every
+profile completed 67-stage independent checking at 28,547 samples with no
+sampled contacts, unchanged modeled duration of 129.643 s and the same process
+geometry. The comparison is sampled whole-tour evidence, not physical or
+manufacturing acceptance:
+
+| λ | Whole-tour normalized jerk² integral | Peak track jerk (m/s³) | Peak arm jerk (rad/s³) |
+|---:|---:|---:|---:|
+| 0 | 128.99 | 7.87 | 40.45 |
+| 0.001 | 128.37 | 10.85 | 40.45 |
+| 0.01 | 117.63 | 8.54 | 45.11 |
+| 0.1 | 117.32 | 8.28 | 40.45 |
+
+The exact native transit-only normalized jerk⁴ integral was 516.46, 696.52,
+515.31 and 380.00 for those weights. Thus the strongest tested weight lowered
+both integrated measures but did not improve peak track jerk. A weighted sum
+can change the solution and trade peak risk against collision and other costs;
+these results do not establish a better peak policy or global optimum. The
+untracked `fourth-jerk-grid/manifest.json` records each profile, numerical spline
+peak witnesses, actual library paths, solver and check timings, and full-tour
+reports. The zero-weight run reproduced the earlier 2× candidate within
+9.8e-7 in the maximum knot position difference, rather than exactly. Other host
+activity was uncharacterized.
+
+The experimental nanobind build can be pointed at the matching native research
+library explicitly with `-DQUINTIC_NATIVE_IFOPT_LIBRARY=/absolute/path/to/libtrajopt_ifopt.dylib`.
+Use the same explicit runtime setup as the duration sweep and the tracked
+`run_fourth_grid.py` command; its `--help` lists the required baseline, candidate,
+artifact and scene paths. The runner verifies the actual loaded native libraries.

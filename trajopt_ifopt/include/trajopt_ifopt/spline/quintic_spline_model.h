@@ -54,6 +54,9 @@ public:
   /** Three-point Gauss-Legendre rule on every knot interval integrates squared jerk exactly. */
   JerkQuadrature jerkQuadrature() const;
 
+  /** Five-point Gauss-Legendre per knot interval integrates jerk to the fourth power. */
+  JerkQuadrature jerkFourthQuadrature() const;
+
 private:
   QuinticSplineModel(std::vector<Seconds> times,
                      Eigen::RowVectorXd knots,

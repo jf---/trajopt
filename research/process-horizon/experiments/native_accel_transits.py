@@ -25,6 +25,24 @@ class TransitContractError(RuntimeError):
     """The generated stages cannot supply a modeled fixed-fixture spline."""
 
 
+def fourth_jerk_weights(speeds, risk_weight, reference_time_s):
+    """Return per-axis weights for a dimensionless soft fourth-power jerk risk.
+
+    Reference time is in seconds; speeds use native axis units per second.
+    A zero weight keeps the original squared-jerk-only problem.
+    """
+    speed = np.asarray(speeds, dtype=float)
+    if speed.ndim != 1 or not np.all(np.isfinite(speed) & (speed > 0)):
+        raise TransitContractError("finite positive sourced speeds required")
+    if not np.isfinite(risk_weight) or risk_weight < 0:
+        raise TransitContractError("jerk risk weight must be finite and nonnegative")
+    if risk_weight == 0:
+        return None
+    if reference_time_s is None or not np.isfinite(reference_time_s) or reference_time_s <= 0:
+        raise TransitContractError("positive finite risk reference time in seconds required")
+    return JERK_MULTIPLIER * risk_weight * reference_time_s**4 / speed**4
+
+
 def refine_transits(
     env,
     info,
@@ -37,6 +55,8 @@ def refine_transits(
     end_velocity,
     boundary_resolver=modeled_boundaries,
     acceleration_resolver=None,
+    fourth_risk_weight=0.0,
+    risk_reference_time_s=None,
 ):
     """Return independent transit spline outcomes, without changing process stages.
 
@@ -57,6 +77,7 @@ def refine_transits(
     speed = np.asarray(speeds, dtype=float)
     if speed.shape != (7,) or not np.all(np.isfinite(speed) & (speed > 0)):
         raise TransitContractError("seven finite positive sourced speeds required")
+    fourth_weights = fourth_jerk_weights(speed, fourth_risk_weight, risk_reference_time_s)
     if any(not np.isfinite(t) or t < 0 for t in durations):
         raise TransitContractError("nonnegative modeled durations required")
     if any(
@@ -140,6 +161,11 @@ def refine_transits(
                 native.QuinticSplineJerkCost(model, positions, JERK_MULTIPLIER / speed**2),
                 sqp.CostPenaltyType.SQUARED,
             )
+            if fourth_weights is not None:
+                problem.addCostSet(
+                    native.QuinticSplineJerkFourthCost(model, positions, fourth_weights),
+                    sqp.CostPenaltyType.SQUARED,
+                )
             samples = np.linspace(0, duration, COLLOCATION_POINTS + 2)[1:-1].tolist()
             problem.addConstraintSet(
                 native.QuinticSplinePositionLimits(

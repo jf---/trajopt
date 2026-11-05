@@ -49,3 +49,34 @@ def speed_extrema(curve):
             }
         )
     return extrema
+
+
+def jerk_extrema(curve):
+    """Find axiswise absolute jerk maxima at piece boundaries and snap roots.
+
+    Polynomial roots are numerical, not an interval proof. Jerk units follow
+    the spline position units per second cubed.
+    """
+    speed_extrema(curve)  # Apply the same finite, vector-valued quintic contract.
+    knots = np.asarray(curve.t, dtype=float)
+    coefficients = np.asarray(curve.c, dtype=float)
+    first, last = knots[curve.k], knots[-curve.k - 1]
+    breaks = knots[(knots >= first) & (knots <= last)]
+    extrema = []
+    for axis in range(coefficients.shape[1]):
+        poly = PPoly.from_spline((knots, coefficients[:, axis], curve.k))
+        roots = np.asarray(poly.derivative(4).roots(extrapolate=False), dtype=float)
+        roots = roots[np.isfinite(roots) & (roots >= first) & (roots <= last)]
+        candidates = np.unique(np.r_[first, last, breaks, roots])
+        values = np.asarray(poly.derivative(3)(candidates), dtype=float)
+        if not np.isfinite(values).all():
+            raise SplineSpeedError("nonfinite jerk at polynomial extrema")
+        index = int(np.argmax(np.abs(values)))
+        extrema.append(
+            {
+                "absolute_jerk": float(abs(values[index])),
+                "signed_jerk": float(values[index]),
+                "time_s": float(candidates[index]),
+            }
+        )
+    return extrema

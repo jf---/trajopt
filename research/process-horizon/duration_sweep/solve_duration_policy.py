@@ -26,14 +26,29 @@ class TransitSweepError(RuntimeError):
     """A stage, boundary or solver result invalidates this duration policy."""
 
 
-def solve_duration_policy(factor, scene, segments, clock, speed, output, artifacts, fixture_policy):
+def solve_duration_policy(
+    factor,
+    scene,
+    segments,
+    clock,
+    speed,
+    output,
+    artifacts,
+    fixture_policy,
+    *,
+    baseline_path=None,
+    fourth_risk_weight=0.0,
+    risk_reference_time_s=None,
+):
     """Replan every transit once and independently check the actual spline."""
     env, _, _, _, names, _, _, _, _, _, info, _ = scene["inputs"]
     before = snapshot(scene)
     fixture = json.loads(fixture_policy.read_text())["fixture"]
     validate_fixture_policy(segments, fixture)
     policy_clock = scale_transit_clock(segments, clock, factor, fixture["stage_times_s"])
-    baseline = json.loads((artifacts / "tour09-all-weld-blends-assembled.json").read_text())
+    if baseline_path is None:
+        baseline_path = artifacts / "tour09-all-weld-blends-assembled.json"
+    baseline = json.loads(baseline_path.read_text())
     if [x["stage"] for x in baseline["stages"]] != [x["stage"] for x in segments]:
         raise TransitSweepError("generated stage sequence differs from the baseline assembly")
     if baseline["negative_contacts"] != 0:
@@ -101,6 +116,8 @@ def solve_duration_policy(factor, scene, segments, clock, speed, output, artifac
                     end_velocity=right,
                     boundary_resolver=resolver,
                     acceleration_resolver=accelerations,
+                    fourth_risk_weight=fourth_risk_weight,
+                    risk_reference_time_s=risk_reference_time_s,
                 )
             if len(outcomes) != 1:
                 raise TransitSweepError(f"{stage['stage']}: expected one solved transit")

@@ -5,6 +5,7 @@
 #include <nanobind/stl/string.h>
 #include <nanobind/stl/vector.h>
 #include <trajopt_ifopt/spline/quintic_spline_jerk_cost.h>
+#include "../include/trajopt_ifopt/spline/quintic_spline_jerk_fourth_cost.h"
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
 #include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
 #include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
@@ -76,6 +77,7 @@ NB_MODULE(_quintic_spline, m)
           "max_order"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("jerk_quadrature", &ti::QuinticSplineModel::jerkQuadrature, nb::call_guard<nb::gil_scoped_release>())
+      .def("jerk_fourth_quadrature", &ti::QuinticSplineModel::jerkFourthQuadrature, nb::call_guard<nb::gil_scoped_release>())
       .def_prop_ro("knot_count", &ti::QuinticSplineModel::knotCount)
       .def_prop_ro("axis_count", &ti::QuinticSplineModel::axisCount);
   nb::class_<ti::QuinticSplineJerkCost, ti::ConstraintSet>(m, "QuinticSplineJerkCost")
@@ -87,6 +89,15 @@ NB_MODULE(_quintic_spline, m)
            "knots"_a,
            "axis_weights"_a,
            "name"_a = "ContinuousSplineJerk");
+  nb::class_<ti::QuinticSplineJerkFourthCost, ti::ConstraintSet>(m, "QuinticSplineJerkFourthCost")
+      .def(nb::init<const ti::QuinticSplineModel&,
+                    std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::VectorXd,
+                    std::string>(),
+           "model"_a,
+           "knots"_a,
+           "axis_weights"_a,
+           "name"_a = "ContinuousSplineJerkFourth");
   nb::class_<ti::QuinticSplinePositionLimits, ti::ConstraintSet>(m, "QuinticSplinePositionLimits")
       .def(
           "__init__",
