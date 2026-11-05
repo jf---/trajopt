@@ -44,6 +44,7 @@ set(TRAJOPT_IFOPT_SOURCE_FILES
     src/constraints/collision/continuous_collision_evaluators.cpp
     src/constraints/collision/weighted_average_methods.cpp
     src/constraints/collision/discrete_collision_constraint.cpp
+    src/constraints/collision/dynamic_spline_collision_constraint.cpp
     src/constraints/collision/discrete_collision_numerical_constraint.cpp
     src/constraints/collision/continuous_collision_constraint.cpp
     src/constraints/collision/continuous_collision_numerical_constraint.cpp
