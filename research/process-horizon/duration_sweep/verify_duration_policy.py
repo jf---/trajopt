@@ -21,8 +21,37 @@ PROCESS_SAMPLES = 257
 LOCAL_WINDOW_SAMPLES = 65
 
 
+class ProcessRateError(RuntimeError):
+    """The process rate override would alter a probe corner or is invalid."""
+
+
+def process_rates_for_stage(label, overrides):
+    """Return normalized endpoint progress rates, preserving probe corners."""
+    phase = label.partition(":")[0]
+    if phase not in ("approach", "search", "retract", "withdraw"):
+        raise ProcessRateError("process phase required")
+    default = (1.0 if phase == "approach" else 0.0, 1.0 if phase == "withdraw" else 0.0)
+    if label not in overrides:
+        return default
+    values = np.asarray(overrides[label], dtype=float)
+    if values.shape != (2,) or not np.isfinite(values).all() or np.any(values < 0):
+        raise ProcessRateError("finite nonnegative endpoint rates required")
+    if (phase != "approach" and values[0] != 0) or (phase != "withdraw" and values[1] != 0):
+        raise ProcessRateError("probe process corners must retain their zero-rate boundary")
+    return float(values[0]), float(values[1])
+
+
 def verify_duration_policy(
-    duration_factor, scene, segments, clock, speed, output, artifacts, fixture_policy
+    duration_factor,
+    scene,
+    segments,
+    clock,
+    speed,
+    output,
+    artifacts,
+    fixture_policy,
+    *,
+    process_rates=None,
 ):
     """Check all actual curves for one explicit transit-duration policy.
 
@@ -31,6 +60,14 @@ def verify_duration_policy(
     or manufacturing acceptance.
     """
     env, _, _, _, names, _, _, _, _, _, _, _ = scene["inputs"]
+    process_rates = {} if process_rates is None else process_rates
+    valid_process_labels = {
+        s["stage"]
+        for s in segments
+        if s["stage"].split(":")[0] in ("approach", "search", "retract", "withdraw")
+    }
+    if set(process_rates) - valid_process_labels:
+        raise ProcessRateError("unknown process rate override stage")
     before = snapshot(scene)
     factor = float(duration_factor)
     policy_dir = output / f"global-duration-{factor:g}"
@@ -174,8 +211,7 @@ def verify_duration_policy(
                 curve = probe_curves[n][leg]
                 duration = float(clock["stages"][idx]["duration_s"])
                 tau = np.linspace(0, 1, PROCESS_SAMPLES)
-                v0 = 1.0 if leg == 0 else 0.0
-                v1 = 1.0 if leg == 3 else 0.0
+                v0, v1 = process_rates_for_stage(label, process_rates)
                 A = 10 - 6 * v0 - 4 * v1
                 B = -15 + 8 * v0 + 7 * v1
                 C = 6 - 3 * v0 - 3 * v1
