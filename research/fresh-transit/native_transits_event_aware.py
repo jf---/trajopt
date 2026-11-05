@@ -25,13 +25,24 @@ class TransitContractError(RuntimeError):
     """The generated stages cannot supply a modeled fixed-fixture spline."""
 
 
-def refine_transits(env, info, names, segments, clock, speeds, *, start_velocity, end_velocity):
+def refine_transits(
+    env,
+    info,
+    names,
+    segments,
+    clock,
+    speeds,
+    *,
+    start_velocity,
+    end_velocity,
+    boundary_resolver=modeled_boundaries,
+):
     """Return independent transit spline outcomes, without changing process stages.
 
     Axis order is track in metres, six robot axes in radians, positioner in
     radians and tailstock in metres. Speeds and clock are per second. The first
-    and last boundary velocities are explicitly modeled from the respective
-    supplied explicitly by the caller. Actual physical endpoint velocities remain unspecified.
+    and last boundary velocities are supplied explicitly by the caller. Actual
+    physical endpoint velocities remain unspecified.
     """
     if len(names) != 9 or len(set(names)) != 9 or len(segments) != len(clock["stages"]):
         raise TransitContractError("nine axes and matching stage clock required")
@@ -64,7 +75,7 @@ def refine_transits(env, info, names, segments, clock, speeds, *, start_velocity
             fixture = current[0, 7:]
             if not np.all(current[:, 7:] == fixture):
                 raise TransitContractError("transit changes fixture")
-            left, right, events = modeled_boundaries(
+            left, right, events = boundary_resolver(
                 segments,
                 clock["stages"],
                 index,

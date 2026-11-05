@@ -130,3 +130,36 @@ PYTEST_XDIST_AUTO_NUM_WORKERS=2 pixi run --as-is --manifest-path "$MANIFEST" env
   research/fresh-transit/test_fresh_joins.py \
   research/fresh-transit/test_fresh_tour_pipeline.py
 ```
+
+## Opt-in fixture-chain clock experiment
+
+`fixture_chain_clock` constructs a quintic progress clock along one unchanged,
+monotone, straight nine-axis fixture chain. It retains the ordered fixture
+waypoints and stops at the chain endpoints, without adding stops at intermediate
+waypoints. It rejects non-collinear paths, reversals and stationary fixture
+stages, since their event or dwell semantics need a separate clock. The caller
+must explicitly opt in and supply the modeled total duration. `fixture_chain_trial`
+uses this clock to give adjacent native transit splines consistent modeled
+fixture endpoint velocities, and independently samples both kinds of curve.
+The fixed process stages and original process verification remain separate.
+
+The fresh Tour 09 candidate has five ordered fixture stages, all a single
+positioner sweep from the same source transit segment, with no recorded
+`discontinuity_indices`. The same modeled fixture duration of **0.61181 s** was
+retained while intermediate waypoint times moved; the modeled positioner peak
+speed is **4.811 rad/s**, compared with a largest source-clock segment secant
+of **5.186 rad/s**. Positioner speed and acceleration limits are unsourced, so
+these are not machine-limit checks or physical timing claims. The source
+segment does not establish controller interpolation or prove that eliminating
+intermediate stops is appropriate for execution.
+
+On this fresh candidate, the opt-in trial returned 14 converged native transit
+splines. The 14,350 actual transit samples and 1,025 actual fixture samples had
+no sampled collisions or configured-band nine-axis limit violations; numerical
+transit position extrema were also checked. Transit/fixture and internal fixture
+modeled velocities match at the joins. The unchanged process stages still have
+modeled velocity jumps up to 0.0818 rad/s, so whole-tour smoothness is not
+established. The isolated trial took **3.51 s** including its checks after a
+separately prepared scene and previously generated candidate. Its local
+untracked evidence is `.superpowers/fresh-fixture-study/tour09-eased-tracked.json`
+and the PIQP log is next to it; this is not an all-tour or cold-planning result.
