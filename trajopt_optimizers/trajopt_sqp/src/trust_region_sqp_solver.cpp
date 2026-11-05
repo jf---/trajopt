@@ -130,12 +130,13 @@ void TrustRegionSQPSolver::solve(const QPProblem::Ptr& qp_problem)
         break;
       }
 
-      if (stepSQPSolver())
+      if (stepSQPSolverUntil(start_time))
         break;
     }
 
-    // A spent QP failure budget and a callback stop end the solve with their own status
-    if (status_ == SQPStatus::kQPSolveFailed || status_ == SQPStatus::kStoppedByCallback)
+    // Terminal failures, callback stops and time limits must not become feasibility success.
+    if (status_ == SQPStatus::kQPSolveFailed || status_ == SQPStatus::kStoppedByCallback ||
+        status_ == SQPStatus::kInvalidPredictedImprovement || status_ == SQPStatus::kTimeLimit)
       break;
 
     // Check if constraints are satisfied
@@ -144,10 +145,6 @@ void TrustRegionSQPSolver::solve(const QPProblem::Ptr& qp_problem)
       status_ = SQPStatus::kConverged;
       break;
     }
-
-    // A time limit ends the penalty iteration loop
-    if (status_ == SQPStatus::kTimeLimit)
-      break;
 
     // Set status to running
     status_ = SQPStatus::kRunning;
@@ -216,6 +213,11 @@ void TrustRegionSQPSolver::adjustPenalty()
 
 bool TrustRegionSQPSolver::stepSQPSolver()
 {
+  return stepSQPSolverUntil(std::chrono::steady_clock::now());
+}
+
+bool TrustRegionSQPSolver::stepSQPSolverUntil(std::chrono::steady_clock::time_point start_time)
+{
   results_.convexify_iteration++;
 
   const auto prev_nv = qp_problem->getNumQPVars();
@@ -259,11 +261,12 @@ bool TrustRegionSQPSolver::stepSQPSolver()
   }
 
   // Trust region loop
-  runTrustRegionLoop();
+  runTrustRegionLoopUntil(start_time);
 
-  // A converged inner loop, a spent QP failure budget and a callback stop each end this convexification
+  // Convergence, failures, a callback stop or a time limit end this convexification.
   if (status_ == SQPStatus::kConverged || status_ == SQPStatus::kQPSolveFailed ||
-      status_ == SQPStatus::kStoppedByCallback)
+      status_ == SQPStatus::kStoppedByCallback || status_ == SQPStatus::kInvalidPredictedImprovement ||
+      status_ == SQPStatus::kTimeLimit)
     return true;
 
   if (results_.box_size.maxCoeff() < params.min_trust_box_size)
@@ -277,10 +280,21 @@ bool TrustRegionSQPSolver::stepSQPSolver()
 
 void TrustRegionSQPSolver::runTrustRegionLoop()
 {
+  runTrustRegionLoopUntil(std::chrono::steady_clock::now());
+}
+
+void TrustRegionSQPSolver::runTrustRegionLoopUntil(std::chrono::steady_clock::time_point start_time)
+{
   results_.trust_region_iteration = 0;
   int qp_solver_failures = 0;
   while (results_.box_size.maxCoeff() >= params.min_trust_box_size)
   {
+    if (std::chrono::duration<double>(std::chrono::steady_clock::now() - start_time).count() > params.max_time)
+    {
+      status_ = SQPStatus::kTimeLimit;
+      return;
+    }
+
     if (SUPER_DEBUG_MODE)
       qp_problem->print();
 
@@ -292,6 +306,15 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
 
     if (status_ == SQPStatus::kStoppedByCallback)
       return;  // Respect callbacks and exit gracefully
+
+    // QP solves cannot be interrupted, but another retry must not start after
+    // the whole solve has exhausted its configured wall-clock budget.
+    const double elapsed_time = std::chrono::duration<double>(std::chrono::steady_clock::now() - start_time).count();
+    if (elapsed_time > params.max_time)
+    {
+      status_ = SQPStatus::kTimeLimit;
+      return;
+    }
 
     if (status_ != SQPStatus::kRunning)
     {
@@ -329,6 +352,22 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
       TESSERACT_LOG_WARN("Approximate merit function got worse ({:.3e}). (convexification is probably wrong to "
                          "zeroth order)",
                          results_.approx_merit_improve);
+    }
+
+    // A model that predicts a material worsening cannot establish stationarity.
+    // Treat predictions within the configured absolute improvement tolerance
+    // as small, and retry material negative predictions with a smaller region.
+    if (results_.approx_merit_improve < -params.min_approx_improve)
+    {
+      qp_problem->scaleBoxSize(params.trust_shrink_ratio);
+      qp_solver->updateBounds(qp_problem->getBoundsLower(), qp_problem->getBoundsUpper());
+      results_.box_size = qp_problem->getBoxSize();
+      if (results_.box_size.maxCoeff() < params.min_trust_box_size)
+      {
+        status_ = SQPStatus::kInvalidPredictedImprovement;
+        return;
+      }
+      continue;
     }
 
     if (results_.approx_merit_improve < params.min_approx_improve)

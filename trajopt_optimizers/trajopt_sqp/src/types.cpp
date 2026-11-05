@@ -144,6 +144,8 @@ std::string toString(SQPStatus status)
       return "SQP_FAILED";
     case SQPStatus::kStoppedByCallback:
       return "SQP_STOPPED_BY_CALLBACK";
+    case SQPStatus::kInvalidPredictedImprovement:
+      return "SQP_INVALID_PREDICTED_IMPROVEMENT";
     default:
       return "SQP_STATUS_UNKNOWN";
   }

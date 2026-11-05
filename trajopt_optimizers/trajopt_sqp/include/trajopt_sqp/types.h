@@ -226,7 +226,8 @@ enum class SQPStatus : std::uint8_t
   kPenaltyIterationLimit, /**< Reached penalty-outer-loop iteration limit */
   kTimeLimit,             /**< Reached optimization time limit */
   kQPSolveFailed,         /**< QP solve failed (solver error / no solution returned) */
-  kStoppedByCallback      /**< Stopped because callback returned false */
+  kStoppedByCallback,     /**< Stopped because callback returned false */
+  kInvalidPredictedImprovement /**< QP model predicted a material worsening down to the minimum trust region */
 };
 
 /**

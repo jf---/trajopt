@@ -29,6 +29,7 @@
 #ifndef TRAJOPT_SQP_INCLUDE_SIMPLE_SQP_SOLVER_H_
 #define TRAJOPT_SQP_INCLUDE_SIMPLE_SQP_SOLVER_H_
 
+#include <chrono>
 #include <memory>
 #include <vector>
 
@@ -128,6 +129,10 @@ protected:
   std::vector<std::shared_ptr<SQPCallback>> callbacks_;
 
   void constraintMeritCoeffChanged();
+
+private:
+  bool stepSQPSolverUntil(std::chrono::steady_clock::time_point start_time);
+  void runTrustRegionLoopUntil(std::chrono::steady_clock::time_point start_time);
 };
 
 }  // namespace trajopt_sqp
