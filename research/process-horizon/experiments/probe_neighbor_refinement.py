@@ -9,8 +9,8 @@ from all24_spline_scene import native_log
 from free_space_transit import _restore_scene
 from fresh_scene import snapshot
 from native_accel_transits import refine_transits
+from rotation_targets import interpolate_rotations, rotation_errors
 from scipy.interpolate import CubicSpline
-from scipy.spatial.transform import Rotation, Slerp
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
@@ -170,9 +170,9 @@ def run_probe_neighbors(scene, segments, clock, speed, output):
             a = pose(np.asarray(stage["states"][0])[:7])
             b = pose(np.asarray(stage["states"][-1])[:7])
             target = a[:3, 3] + s[:, None] * (b[:3, 3] - a[:3, 3])
-            desired = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack((a[:3, :3], b[:3, :3]))))(s)
+            desired = interpolate_rotations(a[:3, :3], b[:3, :3], s)
             pe = np.linalg.norm(actual[:, :3, 3] - target, axis=1)
-            oe = (desired.inv() * Rotation.from_matrix(actual[:, :3, :3])).magnitude()
+            oe = rotation_errors(desired, actual[:, :3, :3])
             axis = b[:3, 3] - a[:3, 3]
             progress = (actual[:, :3, 3] - a[:3, 3]) @ axis / (axis @ axis)
             geometric.append(

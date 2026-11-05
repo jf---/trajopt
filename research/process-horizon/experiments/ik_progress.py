@@ -7,7 +7,7 @@ import numpy as np
 from free_space_transit import _restore_scene
 from fresh_scene import snapshot
 from master_analytic_ik import arm_ik
-from scipy.spatial.transform import Rotation, Slerp
+from rotation_targets import interpolate_rotations, rotation_errors
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
@@ -49,12 +49,13 @@ def run_ik_progress(scene, segments, clock, speed, output):
         for i, stage in enumerate(stages):
             a = pose(np.asarray(stage["states"][0])[:7])
             b = pose(np.asarray(stage["states"][-1])[:7])
-            slerp = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack((a[:3, :3], b[:3, :3]))))
+            sample_progress = np.linspace(0, 1, samples)
+            rotations = interpolate_rotations(a[:3, :3], b[:3, :3], sample_progress)
             matrices = []
-            for u in np.linspace(0, 1, samples):
+            for u, rotation in zip(sample_progress, rotations, strict=True):
                 target = np.eye(4)
                 target[:3, 3] = (1 - u) * a[:3, 3] + u * b[:3, 3]
-                target[:3, :3] = slerp(u).as_matrix()
+                target[:3, :3] = rotation
                 matrices.append(target)
             targets.append(matrices)
         previous = np.asarray(stages[0]["states"][0], dtype=float)[:7]
@@ -98,13 +99,11 @@ def run_ik_progress(scene, segments, clock, speed, output):
             progress = np.linspace(0, 1, len(queries))
             a = wanted[0]
             b = wanted[-1]
-            rots = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack((a[:3, :3], b[:3, :3]))))(
-                progress
-            )
+            rots = interpolate_rotations(a[:3, :3], b[:3, :3], progress)
             got = np.asarray([pose(x) for x in queries])
             desired = a[:3, 3] + progress[:, None] * (b[:3, 3] - a[:3, 3])
             perr = np.linalg.norm(got[:, :3, 3] - desired, axis=1)
-            angle = (rots.inv() * Rotation.from_matrix(got[:, :3, :3])).magnitude()
+            angle = rotation_errors(rots, got[:, :3, :3])
             axis = b[:3, 3] - a[:3, 3]
             actual_progress = (got[:, :3, 3] - a[:3, 3]) @ axis / (axis @ axis)
             full = np.column_stack((queries, np.tile(fixture, (len(queries), 1))))

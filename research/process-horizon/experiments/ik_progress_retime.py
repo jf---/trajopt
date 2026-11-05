@@ -6,8 +6,8 @@ from time import perf_counter
 import numpy as np
 from free_space_transit import _restore_scene
 from fresh_scene import snapshot
+from rotation_targets import interpolate_rotations, rotation_errors
 from scipy.interpolate import CubicSpline
-from scipy.spatial.transform import Rotation, Slerp
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
@@ -114,9 +114,9 @@ def run_ik_progress_retime(scene, segments, clock, speed, output):
             actual = np.asarray([pose(x) for x in q])
             p = actual[:, :3, 3]
             target = a[:3, 3] + s[:, None] * (b[:3, 3] - a[:3, 3])
-            desired = Slerp([0.0, 1.0], Rotation.from_matrix(np.stack((a[:3, :3], b[:3, :3]))))(s)
+            desired = interpolate_rotations(a[:3, :3], b[:3, :3], s)
             perr = np.linalg.norm(p - target, axis=1)
-            angle = (desired.inv() * Rotation.from_matrix(actual[:, :3, :3])).magnitude()
+            angle = rotation_errors(desired, actual[:, :3, :3])
             full = np.column_stack((q, np.tile(fixture, (len(q), 1))))
             excess = np.maximum(
                 excess,
