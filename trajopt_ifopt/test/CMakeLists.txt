@@ -45,3 +45,5 @@ add_gtest(${PROJECT_NAME}_quintic_spline_position_limits_unit quintic_spline_pos
 add_gtest(${PROJECT_NAME}_utils_unit utils_unit.cpp)
 add_gtest(${PROJECT_NAME}_variable_sets_unit variable_sets_unit.cpp)
 # add_gtest(${PROJECT_NAME}_simple_collision_unit simple_collision_unit.cpp)
+add_gtest(${PROJECT_NAME}_spline_cartesian_line_constraint_unit spline_cartesian_line_constraint_unit.cpp)
+add_gtest(${PROJECT_NAME}_spline_cartesian_progress_constraint_unit spline_cartesian_progress_constraint_unit.cpp)

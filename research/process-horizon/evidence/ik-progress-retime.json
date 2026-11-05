@@ -1,0 +1,199 @@
+{
+  "scope": "Fresh generated Tour09 probe only. Per-leg cubic joint splines interpolate OPW states; modeled quintic scalar timing stops only at three detected incompatible process-twist joins. Original modeled durations retained; outer process velocities nonzero. No jerk bound, actual controller dynamics or whole-tour claim. Cubic geometry is C2 per leg; jerk can jump at its internal knots.",
+  "time_s_excluding_scene": 0.23180737503571436,
+  "joins": [
+    {
+      "left": "approach:0",
+      "right": "search:0",
+      "tcp_twist_rank": 2,
+      "tcp_twist_singular_values": [
+        0.19715854126225135,
+        0.018369347410333237
+      ],
+      "twist_cosine": 0.2557352554368947,
+      "reason": "noncollinear or opposing modeled process tangents; zero TCP velocity required"
+    },
+    {
+      "left": "search:0",
+      "right": "retract:0",
+      "tcp_twist_rank": 2,
+      "tcp_twist_singular_values": [
+        0.026879992502867926,
+        6.864385864374065e-16
+      ],
+      "twist_cosine": -1.0,
+      "reason": "noncollinear or opposing modeled process tangents; zero TCP velocity required"
+    },
+    {
+      "left": "retract:0",
+      "right": "withdraw:0",
+      "tcp_twist_rank": 2,
+      "tcp_twist_singular_values": [
+        0.19715854126225046,
+        0.018369347410326222
+      ],
+      "twist_cosine": 0.2557352554376419,
+      "reason": "noncollinear or opposing modeled process tangents; zero TCP velocity required"
+    }
+  ],
+  "legs": [
+    {
+      "stage": "approach:0",
+      "samples": 257,
+      "duration_s": 1.83166,
+      "max_tcp_position_error_m": 2.465717608198097e-10,
+      "max_tcp_orientation_error_rad": 2.868213675590337e-10,
+      "progress_min": 0.0,
+      "progress_max": 1.0,
+      "min_progress_rate": 0.0,
+      "max_speed_ratio": 0.02059643332141587,
+      "max_abs_jerk_by_axis": [
+        0.0,
+        0.2608804557282072,
+        0.08722040655149055,
+        0.20785480679059531,
+        0.6422234627996729,
+        0.6093702724874096,
+        0.2125190205679536
+      ],
+      "negative_contacts": 0
+    },
+    {
+      "stage": "search:0",
+      "samples": 257,
+      "duration_s": 1.9000000000000001,
+      "max_tcp_position_error_m": 5.2656028988764003e-14,
+      "max_tcp_orientation_error_rad": 1.1167098651729917e-14,
+      "progress_min": 0.0,
+      "progress_max": 1.0,
+      "min_progress_rate": 0.0,
+      "max_speed_ratio": 0.003732684415464847,
+      "max_abs_jerk_by_axis": [
+        0.0,
+        0.061108158029583644,
+        0.048696483704466914,
+        0.10340593361809418,
+        0.06260751350811618,
+        0.026271546289785154,
+        0.052383614124565256
+      ],
+      "negative_contacts": 0
+    },
+    {
+      "stage": "retract:0",
+      "samples": 257,
+      "duration_s": 0.37999999999999945,
+      "max_tcp_position_error_m": 5.284821264073236e-14,
+      "max_tcp_orientation_error_rad": 1.1146073900258412e-14,
+      "progress_min": 0.0,
+      "progress_max": 1.0,
+      "min_progress_rate": 0.0,
+      "max_speed_ratio": 0.018663422077319722,
+      "max_abs_jerk_by_axis": [
+        0.0,
+        7.638519753697996,
+        6.087060463058387,
+        12.925741702261838,
+        7.825939188514562,
+        3.2839432862482467,
+        6.547951765570753
+      ],
+      "negative_contacts": 0
+    },
+    {
+      "stage": "withdraw:0",
+      "samples": 257,
+      "duration_s": 1.8316600000000003,
+      "max_tcp_position_error_m": 2.4657166367266937e-10,
+      "max_tcp_orientation_error_rad": 2.8682124143057086e-10,
+      "progress_min": 0.0,
+      "progress_max": 1.0,
+      "min_progress_rate": 0.0,
+      "max_speed_ratio": 0.020596433321410892,
+      "max_abs_jerk_by_axis": [
+        0.0,
+        0.2608804557282073,
+        0.08722040655149049,
+        0.20785480679059531,
+        0.642223462799673,
+        0.6093702724873963,
+        0.21251902056788183
+      ],
+      "negative_contacts": 0
+    }
+  ],
+  "continuity": [
+    {
+      "left": "approach:0",
+      "right": "search:0",
+      "position_gap_max": 0.0,
+      "velocity_gap_max": 0.0,
+      "acceleration_gap_max": 0.0
+    },
+    {
+      "left": "search:0",
+      "right": "retract:0",
+      "position_gap_max": 0.0,
+      "velocity_gap_max": 0.0,
+      "acceleration_gap_max": 0.0
+    },
+    {
+      "left": "retract:0",
+      "right": "withdraw:0",
+      "position_gap_max": 0.0,
+      "velocity_gap_max": 0.0,
+      "acceleration_gap_max": 0.0
+    }
+  ],
+  "negative_contacts": 0,
+  "worst_contact": null,
+  "raw_limit_excess": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "first_process_velocity": [
+    0.0,
+    0.021213590528916585,
+    -0.006857405917805002,
+    0.017641346992660817,
+    -0.05961796817884778,
+    0.05879213492199433,
+    -0.009838676741956414
+  ],
+  "last_process_velocity": [
+    0.0,
+    -0.02121359052891657,
+    0.006857405917798506,
+    -0.017641346992655918,
+    0.059617968178847736,
+    -0.058792134921997696,
+    0.009838676741962966
+  ],
+  "outer_accelerations": [
+    [
+      0.0,
+      0.0017785744163011192,
+      -0.0004532853836495412,
+      0.0007995032799984813,
+      0.0005303954629942424,
+      -0.0006428491697876745,
+      -0.005431736849814557
+    ],
+    [
+      0.0,
+      0.001778574416301251,
+      -0.00045328538375194363,
+      0.0007995032800589729,
+      0.000530395462993448,
+      -0.000642849169867624,
+      -0.005431736849642808
+    ]
+  ]
+}

@@ -1,3 +1,4 @@
+#include "../include/trajopt_ifopt/spline/spline_fixed_join_progress_velocity.h"
 #include <nanobind/nanobind.h>
 #include <nanobind/eigen/dense.h>
 #include <nanobind/stl/shared_ptr.h>
@@ -5,6 +6,8 @@
 #include <nanobind/stl/vector.h>
 #include <trajopt_ifopt/spline/quintic_spline_jerk_cost.h>
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
+#include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
+#include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
 #include <trajopt_ifopt/spline/quintic_spline_position_limits.h>
 #include <trajopt_ifopt/variable_sets/var.h>
 
@@ -101,4 +104,43 @@ NB_MODULE(_quintic_spline, m)
           "times_s"_a,
           "limits"_a,
           "name"_a = "SplineInterpolatedJointLimits");
+  nb::class_<ti::SplineCartesianLineConstraint, ti::ConstraintSet>(m, "SplineCartesianLineConstraint")
+      .def(nb::init<ti::CartLineInfo,
+                    std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::VectorXd,
+                    Eigen::VectorXd,
+                    Eigen::VectorXd,
+                    std::string>(),
+           "info"_a,
+           "knots"_a,
+           "basis"_a,
+           "offset"_a,
+           "coefficients"_a,
+           "name"_a = "SplineCartesianLine");
+  nb::class_<ti::SplineFixedJoinProgressVelocity, ti::ConstraintSet>(m, "SplineFixedJoinProgressVelocity")
+      .def(nb::init<std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::VectorXd,
+                    Eigen::VectorXd,
+                    Eigen::VectorXd,
+                    std::string>(),
+           nb::arg("knots"),
+           nb::arg("velocity_basis"),
+           nb::arg("velocity_offset"),
+           nb::arg("progress_gradient"),
+           nb::arg("name") = "FixedJoinProgressVelocity");
+  nb::class_<ti::SplineCartesianProgressConstraint, ti::ConstraintSet>(m, "SplineCartesianProgressConstraint")
+      .def(nb::init<ti::CartLineInfo,
+                    std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    bool,
+                    bool,
+                    std::string>(),
+           "info"_a,
+           "knots"_a,
+           "basis"_a,
+           "offset"_a,
+           "include_start"_a,
+           "include_end"_a,
+           "name"_a = "SplineCartesianProgress");
 }
