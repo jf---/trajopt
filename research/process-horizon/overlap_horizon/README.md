@@ -137,3 +137,25 @@ and generated probe artifacts in the local untracked
 preserve the full candidate and results. Scene/build contention was not fully
 characterized, and the graph retained one generated process path per sampled
 endpoint pair, so these measurements do not characterize production performance.
+
+### Same-policy 2× comparison
+
+The same bounded 2.6 m generated candidate was compared under the existing
+uniform 2× transit-duration policy. All four changed transit splines were
+reoptimized against their actual process, fixture and weld q/qd/qdd boundaries;
+the other verified 2× baseline transits were reused. The independent whole-tour
+check again covered 67 stages and 28,547 samples with no contacts or configured
+position-bound excess. Modeled duration was 129.64338 s for both paths, and the
+fixture and process clocks were unchanged. The four changed transits also had
+numerical polynomial speed-extrema checks.
+
+The sampled speed-normalized jerk-squared integral fell from 132.62 to 128.99
+(2.73%), and the track jerk-squared integral fell from 117.39 to 104.80 m²/s⁵
+(10.72%). However, sampled **peak track jerk rose** from 6.03 to 7.87 m/s³ and
+peak acceleration from 1.155 to 1.443 m/s²; peak track speed remained 0.96 m/s
+and peak arm jerk remained 40.45 rad/s³. Process departure and all other
+physical-acceptance limitations above are unchanged. Thus the tested objective
+improved the integrated measure while worsening this peak. The 2× comparison is
+recorded in the untracked `three-probe-whole-tour-2x/summary.json`; it reused
+previously computed baseline and generated process artifacts, and concurrent
+host activity was not characterized.
