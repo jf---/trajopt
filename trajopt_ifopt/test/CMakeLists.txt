@@ -38,6 +38,9 @@ add_gtest(${PROJECT_NAME}_dynamic_spline_collision_constraint_unit dynamic_splin
 add_gtest(${PROJECT_NAME}_collision_pair_weight_unit collision_pair_weight_unit.cpp)
 add_gtest(${PROJECT_NAME}_inverse_kinematics_constraint_unit inverse_kinematics_constraint_unit.cpp)
 add_gtest(${PROJECT_NAME}_joint_terms_unit joint_terms_unit.cpp)
+add_gtest(${PROJECT_NAME}_quintic_spline_model_unit quintic_spline_model_unit.cpp)
+add_gtest(${PROJECT_NAME}_quintic_spline_jerk_cost_unit quintic_spline_jerk_cost_unit.cpp)
+add_gtest(${PROJECT_NAME}_quintic_spline_position_limits_unit quintic_spline_position_limits_unit.cpp)
 
 add_gtest(${PROJECT_NAME}_utils_unit utils_unit.cpp)
 add_gtest(${PROJECT_NAME}_variable_sets_unit variable_sets_unit.cpp)

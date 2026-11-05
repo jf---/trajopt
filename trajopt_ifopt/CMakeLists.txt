@@ -37,6 +37,9 @@ set(TRAJOPT_IFOPT_SOURCE_FILES
     src/constraints/inverse_kinematics_constraint.cpp
     src/constraints/joint_acceleration_constraint.cpp
     src/constraints/joint_jerk_constraint.cpp
+    src/spline/quintic_spline_model.cpp
+    src/spline/quintic_spline_jerk_cost.cpp
+    src/spline/quintic_spline_position_limits.cpp
     src/constraints/joint_position_constraint.cpp
     src/constraints/joint_velocity_constraint.cpp
     src/constraints/cartesian_line_constraint.cpp
