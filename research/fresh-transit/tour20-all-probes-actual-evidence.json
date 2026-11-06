@@ -1,0 +1,2088 @@
+{
+  "status": "sampled_tour_physical_and_process_acceptance_unresolved",
+  "scene_setup_s_contended": 2.5547106660087593,
+  "stages": [
+    {
+      "stage": "transit:0",
+      "duration_s": 1.299963602811082,
+      "sampled_speed_ratio": [
+        0.30695304552231323,
+        0.827806380937672,
+        0.1193937476464681,
+        0.2949265071400963,
+        0.17821774705646748,
+        0.005087872858288851,
+        0.43178355138403446
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "approach:0",
+      "duration_s": 2.4011625000000003,
+      "sampled_speed_ratio": [
+        0.0,
+        0.005860887532630032,
+        0.0021203633843633438,
+        0.006447509048858652,
+        0.001909108257836323,
+        0.004744004543294624,
+        0.000753158508393083
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.6181106826569885e-12,
+        "max_orientation_departure_rad": 9.723481641493578e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.523801842721348e-07,
+        0.040317475196576524
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "search:0",
+      "duration_s": 3.5625187499999997,
+      "sampled_speed_ratio": [
+        0.0,
+        5.066091489854859e-05,
+        0.0012384446267280946,
+        0.0009376219522257194,
+        4.20296257678652e-05,
+        0.0012378061742688313,
+        0.0006478118729879988
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.050135945278633e-14,
+        "max_orientation_departure_rad": 4.140206340654236e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        5.0790743889405945e-08,
+        0.010000471149123238
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "retract:0",
+      "duration_s": 0.7125000000000006,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0002533059076747138,
+        0.006192255724288539,
+        0.004688134435390493,
+        0.00021014923488210915,
+        0.006189063445190844,
+        0.0032390764126208594
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.068262347813025e-14,
+        "max_orientation_departure_rad": 4.1442355482654665e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        2.539550762849508e-07,
+        0.05000261891623135
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "withdraw:0",
+      "duration_s": 2.401162499999999,
+      "sampled_speed_ratio": [
+        0.0,
+        0.005860887532630035,
+        0.002120363384363346,
+        0.0064475090488586555,
+        0.0019091082578363242,
+        0.004744004543294628,
+        0.0007531585083930834
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.617917285490551e-12,
+        "max_orientation_departure_rad": 9.72339639945762e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.5238018427212392e-07,
+        0.040317475196856384
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:1",
+      "duration_s": 1.0,
+      "sampled_speed_ratio": [
+        8.4252525943561e-09,
+        0.01578444056745993,
+        0.03500862434435959,
+        0.01956913189754827,
+        0.024886831777387933,
+        0.015165656980156986,
+        0.008635905090745001
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "approach:1",
+      "duration_s": 2.62295625,
+      "sampled_speed_ratio": [
+        0.0,
+        0.00012287162050622915,
+        0.005229039652142152,
+        0.0034155716213558414,
+        9.151641830750675e-05,
+        0.004714069054951061,
+        0.002735683399785506
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 9.462280888962152e-12,
+        "max_orientation_departure_rad": 4.637958395018606e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.5238779197919583e-07,
+        0.04031945651341459
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "search:1",
+      "duration_s": 3.5624999999999996,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0012293056551692329,
+        0.002641300101296804,
+        0.002146029537385615,
+        0.0004578029366316839,
+        0.0002301597209111912,
+        0.0005618670240563823
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 7.798116671503108e-14,
+        "max_orientation_departure_rad": 8.032974273356227e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        5.077629421292847e-08,
+        0.00999765442339664
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "retract:1",
+      "duration_s": 0.7125000000000006,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0061465282758461585,
+        0.013206500506484004,
+        0.010730147686928062,
+        0.0022890146831584172,
+        0.0011507986045559547,
+        0.002809335120281908
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 7.798116671503108e-14,
+        "max_orientation_departure_rad": 8.019089203631478e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        2.5388147106464215e-07,
+        0.049988272116670576
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "withdraw:1",
+      "duration_s": 2.6229562499999997,
+      "sampled_speed_ratio": [
+        0.0,
+        0.00012287162050622917,
+        0.005229039652142152,
+        0.0034155716213558414,
+        9.151641830750673e-05,
+        0.004714069054951062,
+        0.0027356833997855064
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 9.462468264544198e-12,
+        "max_orientation_departure_rad": 4.637443951466114e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.5238779197918354e-07,
+        0.04031945651324129
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:2",
+      "duration_s": 1.0,
+      "sampled_speed_ratio": [
+        3.532860423957926e-09,
+        0.051932321174315094,
+        0.053291729435133064,
+        0.06079580030861921,
+        0.13785577472155272,
+        0.0330295974158477,
+        0.07872105506349839
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "approach:2",
+      "duration_s": 2.5767375,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0007366611828835807,
+        0.004022689579028004,
+        0.004092188242777737,
+        0.0005227396099433616,
+        0.005167984909010767,
+        0.001815721163149189
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.940994819023561e-12,
+        "max_orientation_departure_rad": 1.95393558475885e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.5239168796868332e-07,
+        0.040320500940614706
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "search:2",
+      "duration_s": 3.5625,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0014744351261592268,
+        0.0019693818005387673,
+        0.001768881815344983,
+        0.0005942213888350434,
+        0.0004758273832309955,
+        0.0005594248755468709
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 9.179311550933553e-14,
+        "max_orientation_departure_rad": 4.266616921518736e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        5.079665160004339e-08,
+        0.010001668312423042
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "retract:2",
+      "duration_s": 0.7124999999999998,
+      "sampled_speed_ratio": [
+        0.0,
+        0.007372175630796136,
+        0.009846909002693839,
+        0.008844409076724917,
+        0.0029711069441752166,
+        0.0023791369161549796,
+        0.0027971243777343553
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 9.197044519610226e-14,
+        "max_orientation_departure_rad": 4.260564837694672e-14,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        2.5398325800851995e-07,
+        0.05000834156215114
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "withdraw:2",
+      "duration_s": 2.576737500000001,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0007366611828835806,
+        0.004022689579028004,
+        0.004092188242777735,
+        0.0005227396099433615,
+        0.005167984909010767,
+        0.0018157211631491883
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.940509341881971e-12,
+        "max_orientation_departure_rad": 1.9539088979520416e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        1.5239170991623094e-07,
+        0.04032050094052787
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:3",
+      "duration_s": 1.0,
+      "sampled_speed_ratio": [
+        1.2243046083110837e-10,
+        0.012877113351982345,
+        0.03390504741102751,
+        0.0586533417472242,
+        0.13115480744642602,
+        0.08815767149277032,
+        0.078288731702529
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "weld:4",
+      "duration_s": 1.999995450339269,
+      "sampled_speed_ratio": [
+        8.013812425186125e-15,
+        0.013506265550098826,
+        0.015745842582352284,
+        0.012664494455170188,
+        0.004456052048334471,
+        0.007007482429571051,
+        0.0037092541034613913
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.626184323716893e-06,
+        "max_orientation_departure_rad": 8.176490656997643e-07,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.00503495836260944,
+        0.0790964670212843
+      ]
+    },
+    {
+      "stage": "weld:5",
+      "duration_s": 8.984029999999999,
+      "sampled_speed_ratio": [
+        0.0,
+        0.0008876380600438194,
+        0.0009945525290920066,
+        0.0007984460465678937,
+        0.0002960884925128541,
+        0.0004619613238628771,
+        0.000246212340205408
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.300404215281264e-12,
+        "max_orientation_departure_rad": 2.4487164088749073e-12,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.004999964027773798,
+        0.0049999640854613645
+      ],
+      "original_endpoint_raw_residual_by_axis": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "weld:6",
+      "duration_s": 1.9999315652030292,
+      "sampled_speed_ratio": [
+        1.2071113088098336e-14,
+        0.014081043516155333,
+        0.015500175228639081,
+        0.012149321288796134,
+        0.0047009276458629895,
+        0.007329076142084038,
+        0.003907546243049638
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.61489802768423e-06,
+        "max_orientation_departure_rad": 9.342601193871065e-07,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.005035013933161234,
+        0.07903995344310465
+      ]
+    },
+    {
+      "stage": "transit:7",
+      "duration_s": 1.2751227360154032,
+      "sampled_speed_ratio": [
+        0.29772568205758254,
+        0.8221375198045374,
+        0.1539253636108284,
+        0.3391567776937479,
+        0.17427268949026128,
+        0.008931336899994856,
+        0.4505189599359096
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "scope": "Fresh generated Tour with coordinated probes and one regenerated tangent-lead weld; finite sampling, modeled clocks; no whole-tour physical or manufacturing acceptance.",
+  "unresolved_joint_linear_corners": [],
+  "ordered_stationary_events": [],
+  "modeled_joins": [
+    {
+      "left": "transit:0",
+      "right": "approach:0",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        6.486131076677282e-15,
+        3.616898447411643e-16,
+        -2.3956531203239706e-15,
+        -9.80118763926896e-17,
+        1.734723475976807e-17,
+        1.0347625534201654e-15,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        2.2737367544323206e-13,
+        3.7525657494569264e-13,
+        2.3791298792152915e-14,
+        -1.0036952822686795e-13,
+        6.330380013588877e-14,
+        -4.946943462508235e-16,
+        4.666966886188693e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "approach:0",
+      "right": "search:0",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "search:0",
+      "right": "retract:0",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "retract:0",
+      "right": "withdraw:0",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "withdraw:0",
+      "right": "transit:1",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.5612511283791264e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.5612511283791264e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        6.493069970581189e-15,
+        -5.282232984349378e-16,
+        1.1622647289044608e-15,
+        -1.87436871579294e-15,
+        -4.336808689942018e-17,
+        8.139322549283179e-15,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        3.0686428875367766e-13,
+        4.563352733882864e-15,
+        -6.992990171303393e-14,
+        -1.2022435998126912e-13,
+        2.634882329682897e-16,
+        -1.1930127025161497e-14,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "transit:1",
+      "right": "approach:1",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.3877787807814457e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.3877787807814457e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        3.0880246276732137e-15,
+        2.983724378680108e-16,
+        -3.7045019829484716e-15,
+        1.3132398814230672e-15,
+        7.28583859910259e-17,
+        -4.371503159461554e-16,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        -1.1846689454416127e-13,
+        5.132613084546378e-15,
+        1.3120700272789554e-13,
+        -1.1579341543770105e-13,
+        9.784246980323874e-15,
+        -7.056340104241721e-14,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "approach:1",
+      "right": "search:1",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "search:1",
+      "right": "retract:1",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        -0.0,
+        -0.0,
+        0.0,
+        -0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "retract:1",
+      "right": "withdraw:1",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "withdraw:1",
+      "right": "transit:2",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.3877787807814457e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.3877787807814457e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        3.0878077872387166e-15,
+        2.96637714392034e-16,
+        -1.5005358067199381e-16,
+        1.3133483016403158e-15,
+        6.765421556309548e-17,
+        -4.371503159461554e-16,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        5.73209202487625e-13,
+        -5.1325046643291294e-15,
+        -1.745576339723387e-14,
+        -1.1157830844162053e-13,
+        4.32973427076655e-15,
+        -3.841839769491012e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "transit:2",
+      "right": "approach:2",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.3877787807814457e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.3877787807814457e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        -1.0992508986396032e-14,
+        3.920475055707584e-16,
+        -7.806255641895632e-16,
+        4.850720519700147e-16,
+        2.203098814490545e-16,
+        -2.654126918244515e-16,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        -2.1492408513437613e-13,
+        -9.316224007516194e-15,
+        4.054580022422316e-14,
+        -6.745679590001302e-14,
+        3.932916275636855e-14,
+        -6.128508133577417e-14,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "approach:2",
+      "right": "search:2",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "search:2",
+      "right": "retract:2",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "retract:2",
+      "right": "withdraw:2",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "withdraw:2",
+      "right": "transit:3",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.3877787807814457e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.3877787807814457e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        0.0,
+        3.219429930978457e-15,
+        3.9811903773667723e-16,
+        -7.754213937616328e-16,
+        4.855057328390089e-16,
+        2.0816681711721685e-16,
+        -2.714842239903703e-16,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        0.0,
+        6.696797945419638e-13,
+        9.399544944471705e-15,
+        7.317470197484854e-14,
+        6.745683655759449e-14,
+        -1.1074610195907497e-14,
+        -3.935458765730234e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "transit:3",
+      "right": "weld:4",
+      "events": [],
+      "position_delta": [
+        0.0,
+        -8.881784197001252e-16,
+        -2.7755575615628914e-17,
+        0.0,
+        -1.1102230246251565e-16,
+        0.0,
+        -8.881784197001252e-16,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          -8.881784197001252e-16,
+          -2.7755575615628914e-17,
+          0.0,
+          -1.1102230246251565e-16,
+          0.0,
+          -8.881784197001252e-16,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        -7.105411193922319e-15,
+        -6.723788192886104e-15,
+        7.008282842946301e-16,
+        1.8006429680639258e-15,
+        1.8093165854438098e-15,
+        -3.8163916471489756e-16,
+        6.441028266301885e-15,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        -2.387405488813221e-13,
+        -4.5867823428302756e-14,
+        -3.338914431397222e-14,
+        3.471702092472384e-14,
+        4.365648467730132e-15,
+        -8.632742957981332e-15,
+        -1.3118521026422858e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "weld:4",
+      "right": "weld:5",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        4.263240250881922e-15,
+        -5.100520700240807e-15,
+        -8.270294171719428e-16,
+        -8.456776945386935e-16,
+        1.5679731818485365e-15,
+        -3.0054084221298183e-16,
+        5.959425661283824e-15,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        -4.5475769565258493e-14,
+        3.709792550737022e-15,
+        1.0147195516024658e-14,
+        -5.089039168640775e-14,
+        1.2213119631696327e-13,
+        2.3143904734302875e-15,
+        1.1482680007301928e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "weld:5",
+      "right": "weld:6",
+      "events": [],
+      "position_delta": [
+        4.440892098500626e-16,
+        4.440892098500626e-16,
+        -5.551115123125783e-17,
+        0.0,
+        1.1102230246251565e-16,
+        0.0,
+        -4.440892098500626e-16,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          4.440892098500626e-16,
+          4.440892098500626e-16,
+          -5.551115123125783e-17,
+          0.0,
+          1.1102230246251565e-16,
+          0.0,
+          -4.440892098500626e-16,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        1.4212313540555036e-14,
+        -9.540979117872439e-17,
+        3.4781205693334982e-15,
+        1.6562272386888566e-15,
+        2.6300576300153367e-15,
+        5.377642775528102e-17,
+        1.854549500079905e-14,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        -6.820743431196965e-13,
+        7.350146695710852e-14,
+        -7.020537715627176e-15,
+        -2.985878383464976e-14,
+        -6.423217704519969e-14,
+        1.116719767330597e-15,
+        -1.1161702123544184e-13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "left": "weld:6",
+      "right": "transit:7",
+      "events": [],
+      "position_delta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0408340855860843e-17,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_residuals": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0408340855860843e-17,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "velocity_delta": [
+        -7.105670495159847e-15,
+        -1.8214596497756474e-15,
+        -8.604228440844963e-16,
+        9.992007221626409e-16,
+        3.9898639947466563e-16,
+        -2.42861286636753e-17,
+        -2.949029909160572e-15,
+        0.0,
+        0.0
+      ],
+      "acceleration_delta": [
+        -2.2738923651323236e-13,
+        5.793239152285246e-14,
+        3.238707045605249e-14,
+        -9.661759239887324e-15,
+        -5.044250607488809e-15,
+        7.766140161513668e-16,
+        1.1852498149611534e-13,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "probe_stop_assumption": "Three modeled internal stops per probe; not proven physically necessary. SearchL hit is hypothetical at the commanded limit.",
+  "outer_physical_derivatives": "unknown",
+  "modeled_duration_s": 46.58577460436878,
+  "runtime_contention": "Correctness-only run overlapped other work; timings are not a benchmark.",
+  "source": "Previously fresh independently verified Tour20; all probes and their shared transits coordinated; regenerated tangent leads and original generated bead."
+}
