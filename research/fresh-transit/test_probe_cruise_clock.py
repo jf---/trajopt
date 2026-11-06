@@ -28,3 +28,9 @@ def test_rejects_nonpositive_duration_and_outside_clock():
     _, evaluate = search_cruise_clock(1.0)
     with pytest.raises(ProbeClockError):
         evaluate(np.array([-1.0]))
+
+
+def test_constructed_clock_endpoint_is_exact_for_source_duration():
+    duration, evaluate = search_cruise_clock(1.8999999999999997)
+    progress, _, _, _ = evaluate(np.linspace(0.0, duration, 17))
+    assert progress[-1] == 1.0

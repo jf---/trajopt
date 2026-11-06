@@ -66,6 +66,10 @@ def search_cruise_clock(
         rate[last] = (1 - v) / source_duration_s
         acceleration[last] = -dv / (source_duration_s * ramp)
         jerk[last] = -ddv / (source_duration_s * ramp**2)
+        # These are exact boundary conditions of the constructed clock.
+        endpoint = t == duration
+        progress[endpoint] = 1.0
+        rate[endpoint] = acceleration[endpoint] = jerk[endpoint] = 0.0
         return progress, rate, acceleration, jerk
 
     return duration, evaluate

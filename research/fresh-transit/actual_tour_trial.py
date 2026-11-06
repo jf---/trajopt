@@ -42,7 +42,6 @@ def main():
         "station",
         "tour-index",
         "input",
-        "probe-batch",
         "lead-evidence",
         "weld-evidence",
         "output",
@@ -50,6 +49,9 @@ def main():
         "sqp-library",
     ):
         parser.add_argument(f"--{name}", type=Path, required=True)
+    probe_group = parser.add_mutually_exclusive_group(required=True)
+    probe_group.add_argument("--probe-batch", type=Path)
+    probe_group.add_argument("--probe-cruise-batch", type=Path)
     parser.add_argument("--weld-stage", required=True)
     args = parser.parse_args()
     require_loaded_libraries(
@@ -57,7 +59,8 @@ def main():
     )
     saved = json.loads(args.input.read_text())["result"]
     candidate = saved["jerk"]
-    probe = json.loads(args.probe_batch.read_text())
+    is_cruise = args.probe_cruise_batch is not None
+    probe = json.loads((args.probe_cruise_batch if is_cruise else args.probe_batch).read_text())
     lead = json.loads(args.lead_evidence.read_text())
     weld = json.loads(args.weld_evidence.read_text())
     if (
@@ -129,13 +132,31 @@ def main():
             pi = next(
                 i for i, row in enumerate(rows) if row["stage"] == f"approach:{group['probe']}"
             )
-            stages, probe_curves = build_probe_group(
-                rows[pi : pi + 4], [float(t["duration_s"]) for t in timings[pi : pi + 4]]
-            )
+            if is_cruise:
+                stages, probe_curves = [], []
+                for entry, source in zip(group["process"], rows[pi : pi + 4], strict=True):
+                    if entry["stage"] != source["stage"]:
+                        raise TourTrialError("cruise stage label mismatch")
+                    duration = float(entry["duration_s"])
+                    nodes = np.asarray(entry["ik_states"], dtype=float)
+                    times = np.linspace(0.0, duration, len(nodes))
+                    curve = fit_lead(
+                        times,
+                        nodes,
+                        (np.asarray(entry["v0"]), np.asarray(entry["a0"])),
+                        (np.asarray(entry["v1"]), np.asarray(entry["a1"])),
+                    )
+                    fixture = tuple(np.asarray(source["states"], dtype=float)[0, 7:])
+                    stages.append(weld_stage(entry["stage"], duration, curve, 0.0, fixture))
+                    probe_curves.append(curve)
+            else:
+                stages, probe_curves = build_probe_group(
+                    rows[pi : pi + 4], [float(t["duration_s"]) for t in timings[pi : pi + 4]]
+                )
             replacements.update({stage.label: stage for stage in stages})
             extent_curves.update(
                 {
-                    stage.label: (curve, cubic_position_extrema)
+                    stage.label: (curve, position_extrema if is_cruise else cubic_position_extrema)
                     for stage, curve in zip(stages, probe_curves, strict=True)
                 }
             )
@@ -204,7 +225,9 @@ def main():
         ]
         report["modeled_joins"] = [join._asdict() for join in diagnostic_joins(path)]
         report["probe_stop_assumption"] = (
-            "Three modeled internal stops per probe; not proven physically necessary. SearchL hit is hypothetical at the commanded limit."
+            "Zero TCP velocity at exact process corners, with modeled arm/track nullspace motion. SearchL hit is hypothetical at the commanded limit."
+            if is_cruise
+            else "Three modeled internal stops per probe; not proven physically necessary. SearchL hit is hypothetical at the commanded limit."
         )
         report["outer_physical_derivatives"] = "unknown"
         report["modeled_duration_s"] = sum(
@@ -252,6 +275,12 @@ def main():
                 "collision_and_position": checked,
                 "raw_position_extrema_excess": excess,
             }
+            if is_cruise and stage.label in extent_curves:
+                jerk = np.asarray(extent_curves[stage.label][0](ts, 3))
+                entry["sampled_peak_jerk_by_axis"] = np.max(np.abs(jerk), axis=0).tolist()
+                entry["sampled_integrated_squared_jerk_by_axis"] = np.trapezoid(
+                    jerk**2, ts, axis=0
+                ).tolist()
             if stage.label.startswith(("approach:", "search:", "retract:", "withdraw:", "weld:")):
                 poses = np.asarray([pose(state) for state in q])
                 entry["geometry"] = assess_process_geometry(poses[0], poses[-1], poses)
