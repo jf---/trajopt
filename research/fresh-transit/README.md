@@ -269,3 +269,47 @@ clock and its dynamic limits remain unsourced, the physical outer derivatives ar
 unknown, and unchanged joint-linear process corners leave whole-tour smoothness
 unresolved. The modeled 115.46 s cycle and the recorded planning time are not
 controller timing or a clean performance benchmark.
+
+## Process-curve representation ablation
+
+`process_curve_trial.py` fits a C2 cubic to the existing generated joint states
+of an individual process stage on its modeled clock, while retaining the fixed
+fixture. It does not use recorded intermediate robot states and does not impose
+a stop. The fit is checked between its knots: 1,025 actual-curve collision and
+Cartesian FK samples, sampled sourced speed ratios, numerical position extrema,
+and modeled position, velocity and acceleration at neighboring joins. The
+source line endpoints are those of the independently verified generated stage;
+the check compares both geometric departure and deviation from uniform modeled
+process progress. This is a research ablation, not the native production solver.
+
+The [Tour20 evidence](tour20-process-cubic-evidence.json) covers one probe
+search and one interior weld segment. Their largest sampled Cartesian position
+departures from the endpoint lines were approximately 5e−14 m and 4.3e−12 m;
+both progressed in order, had no detected sampled contacts, stayed within
+the configured position checks and their sampled sourced axis speeds. Their
+modeled feeds were approximately 10 mm/s and 5 mm/s. Those samples do not
+prove continuous clearance or process acceptance; no manufacturing tolerance
+has been supplied. The independently verified input retains SearchL semantics,
+but this fitting experiment by itself does not coordinate the adjacent stages.
+At the two probe joins the modeled arm velocity gaps are up to 0.023 and
+0.033 rad/s; at the two weld joins they are up to 0.031 and 0.027 rad/s.
+Thus matching stage knots is insufficient to establish whole-tour smoothness.
+The next experiment should fit or co-optimize shared boundary derivatives and
+repeat the actual Cartesian, collision, order, and speed checks for both sides.
+
+To reproduce with the same research runtime and a previously verified fresh
+candidate, supply the explicit station, tour-index, candidate, native library
+and output paths; `PY_PATH` and `LIB_PATH` use the runtime described above:
+
+```bash
+pixi run --as-is --manifest-path "$MANIFEST" env \
+  PYTHONPATH="$PY_PATH" DYLD_LIBRARY_PATH="$LIB_PATH" \
+  python research/fresh-transit/process_curve_trial.py \
+  --station "$STATION" --tour-index "$TOUR_INDEX" --input "$CANDIDATE" \
+  --ifopt-library "$IFOPT_LIBRARY" --sqp-library "$SQP_LIBRARY" \
+  --stage search:0 --stage weld:5 --output "$OUTPUT_DIRECTORY"
+```
+
+The saved candidate and local research dependencies are not packaged product
+inputs. The output is a correctness-only observation made with potential
+concurrent work, so its elapsed times are not a performance benchmark.
