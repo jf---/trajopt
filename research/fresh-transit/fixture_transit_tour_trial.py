@@ -2,14 +2,17 @@
 
 import argparse
 import json
+import resource
+import sys
 import traceback
 from copy import deepcopy
+from os import getpid
 from pathlib import Path
-from time import perf_counter
+from time import perf_counter, process_time
 
 import _quintic_spline as native
 import numpy as np
-from actual_stage_adapters import transit_stage
+from actual_stage_adapters import transit_stage, weld_stage
 from actual_stage_contract import Seconds, diagnostic_joins
 from actual_tour_assembly import assemble_actual_tour
 from continuous_spline_jerk import build_jerk_model
@@ -21,11 +24,13 @@ from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import inspect_sampled_curve
 from native_accel_transits import refine_transits
+from probe_search_group_parallel import split_ranges
 from quintic_position_extrema import position_extrema
 from runtime_libraries import require_loaded_libraries
 from spline_velocity_extrema import velocity_extrema
 from transit_neighbor_map import transit_neighbor_map
 from verified_linear_stages import actual_linear_stage
+from weld_tangent_leads import fit_lead
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
@@ -64,11 +69,27 @@ def main():
         type=Path,
         help="include a separately checked generated lead and transit",
     )
+    parser.add_argument(
+        "--probe-batch", type=Path, help="include independently checked generated probe groups"
+    )
+    parser.add_argument(
+        "--probe-partitions", type=int, help="number of independent transit workers"
+    )
+    parser.add_argument("--probe-partition", type=int, help="zero-based worker partition")
+    parser.add_argument(
+        "--probe-transit-results", type=Path, help="reuse disjoint checked probe transit results"
+    )
     args = parser.parse_args()
     if args.adaptive_position_witness and not args.retry_stage:
         raise FixtureTransitTourError("adaptive position witnesses require a failed-stage retry")
     if args.checked_neighborhood and not args.resume_from:
         raise FixtureTransitTourError("checked neighborhood requires a transit checkpoint")
+    if args.probe_batch and not args.resume_from:
+        raise FixtureTransitTourError("checked probe groups require a transit checkpoint")
+    if (args.probe_partitions is None) != (args.probe_partition is None):
+        raise FixtureTransitTourError("both worker partition arguments are required")
+    if (args.probe_partitions is not None or args.probe_transit_results) and not args.probe_batch:
+        raise FixtureTransitTourError("probe transit partitions require a checked probe batch")
     if not np.isfinite(args.fixture_duration_factor) or args.fixture_duration_factor <= 0:
         raise FixtureTransitTourError("positive common fixture duration factor required")
     require_loaded_libraries(
@@ -118,7 +139,7 @@ def main():
         "fixture_modeled_s_after": sum(
             float(clock["stages"][i]["duration_s"]) for i in fixture_indices
         ),
-        "scope": "Fresh generated tour: ordered modeled fixture axes and adjacent optimized transits; unmodified process and remaining transit joint-linear interpolation. Physical boundary derivatives and fixture dynamics unknown.",
+        "scope": "Fresh generated tour: ordered modeled fixture axes, checked supplied probe groups and lead, and adjacent optimized transits; remaining process and transit stages use generated joint-linear interpolation. Physical boundary derivatives and fixture dynamics unknown.",
         "transits": [],
         "fixture_chains": [],
     }
@@ -172,6 +193,7 @@ def main():
             {"first_stage": labels[i], "stage_count": end - i, "modeled_duration_s": sum(durations)}
         )
         i = end
+    fixture_indices_to_refine = set(indices_to_refine)
     limits = np.asarray(
         env.getJointGroup("fixture_transit_tour_nine", list(names)).getLimits().joint_limits
     )
@@ -265,7 +287,86 @@ def main():
             "rechecked_curves": checked_data,
             "process_acceptance": "unresolved",
         }
+    probe_indices_to_refine = set()
+    checked_probe_labels = set()
+    if args.probe_batch:
+        batch = json.loads(args.probe_batch.read_text())
+        if batch["tour"] != tour or any(
+            g["status"] != "sampled_group_physical_and_process_acceptance_unresolved"
+            for g in batch["groups"]
+        ):
+            raise FixtureTransitTourError("probe batch contains a failed or different-tour group")
+        if not batch["groups"]:
+            raise FixtureTransitTourError("probe batch is empty")
+        for group in batch["groups"]:
+            phases = group["process"]
+            if len(phases) != 4:
+                raise FixtureTransitTourError("each probe requires four ordered phases")
+            start = labels.index(phases[0]["stage"])
+            if [x["stage"] for x in phases] != labels[start : start + 4]:
+                raise FixtureTransitTourError("probe phase ordering differs")
+            if (
+                start == 0
+                or start + 4 >= len(rows)
+                or not labels[start - 1].startswith("transit:")
+                or not labels[start + 4].startswith("transit:")
+            ):
+                raise FixtureTransitTourError("probe group lacks both adjacent generated transits")
+            for offset, phase in enumerate(phases):
+                index = start + offset
+                source = np.asarray(rows[index]["states"], dtype=float)
+                nodes = np.asarray(phase["ik_states"], dtype=float)
+                band = (
+                    PARITY_ULPS
+                    * np.finfo(float).eps
+                    * max(1.0, float(np.max(np.abs(source[[0, -1]]))))
+                )
+                if (
+                    nodes.ndim != 2
+                    or nodes.shape[1] != 7
+                    or np.max(np.abs(nodes[[0, -1]] - source[[0, -1], :7])) > band
+                ):
+                    raise FixtureTransitTourError(
+                        f"{phase['stage']}: generated probe endpoints differ"
+                    )
+                fixture = tuple(source[0, 7:])
+                duration = float(phase["duration_s"])
+                times = np.linspace(0.0, duration, len(nodes))
+                v0, a0, v1, a1 = (
+                    np.asarray(phase[key], dtype=float) for key in ("v0", "a0", "v1", "a1")
+                )
+                if offset == 1:
+                    model = native.QuinticSplineModel.build(times.tolist(), v0, a0, v1, a1)
+                    stage = transit_stage(phase["stage"], duration, model, nodes, fixture)
+                else:
+                    curve = fit_lead(times, nodes, (v0, a0), (v1, a1))
+                    stage = weld_stage(phase["stage"], duration, curve, 0.0, fixture)
+                actual[index] = stage
+                replacements[phase["stage"]] = stage
+                checked_probe_labels.add(phase["stage"])
+                rows[index] = {
+                    "stage": phase["stage"],
+                    "states": np.column_stack((nodes, np.tile(fixture, (len(nodes), 1)))).tolist(),
+                }
+                clock["stages"][index]["duration_s"] = duration
+            probe_indices_to_refine.update((start - 1, start + 4))
+        indices_to_refine.update(probe_indices_to_refine)
+        report["checked_probe_batch"] = {
+            "probe_start": batch["probe_start"],
+            "probe_count": batch["probe_count"],
+            "group_count": len(batch["groups"]),
+            "scope": "actual group curves were independently sampled in the explicit input batch; process acceptance unresolved",
+        }
     neighbors = transit_neighbor_map(rows, clock["stages"], actual)
+    worker_indices = None
+    if args.probe_partitions is not None:
+        ranges = split_ranges(0, len(probe_indices_to_refine), args.probe_partitions)
+        if args.probe_partition < 0 or args.probe_partition >= len(ranges):
+            raise FixtureTransitTourError("worker partition is outside the configured range")
+        start, count = ranges[args.probe_partition]
+        worker_indices = sorted(probe_indices_to_refine)[start : start + count]
+        report["worker_partition"] = args.probe_partition
+        report["worker_partitions"] = args.probe_partitions
     fixture_join_diagnostics = []
     prior = {}
     if args.resume_from:
@@ -277,7 +378,7 @@ def main():
             raise FixtureTransitTourError("resumed tour or modeled fixture clock differs")
         prior = {item["stage"]: item for item in saved["transits"]}
         if len(prior) != len(saved["transits"]) or set(prior) != {
-            labels[index] for index in indices_to_refine
+            labels[index] for index in fixture_indices_to_refine
         }:
             raise FixtureTransitTourError("resume requires every selected transit exactly once")
         if any(
@@ -295,16 +396,35 @@ def main():
                 "status": old["status"],
             }
             prior[neighborhood_transit["stage"]] = neighborhood_transit
+        if args.probe_transit_results:
+            checked = json.loads(args.probe_transit_results.read_text())
+            new_results = {item["stage"]: item for item in checked["transits"]}
+            if (
+                checked["tour"] != tour
+                or len(new_results) != len(checked["transits"])
+                or set(new_results) != {labels[index] for index in probe_indices_to_refine}
+            ):
+                raise FixtureTransitTourError(
+                    "probe transit results do not cover each selected transit once"
+                )
+            prior.update(new_results)
     elif args.retry_stage:
         raise FixtureTransitTourError("retry requires a checkpoint")
-    for index in sorted(indices_to_refine):
+    refinement_started = perf_counter()
+    for index in worker_indices if worker_indices is not None else sorted(indices_to_refine):
         label = labels[index]
         row = rows[index]
         timing = clock["stages"][index]
         result = {"stage": label, "status": "in_progress"}
+        transit_wall = perf_counter()
+        transit_cpu = process_time()
         try:
             left, right, events = neighbors[index]
-            if label in prior and label not in args.retry_stage:
+            if (
+                label in prior
+                and label not in args.retry_stage
+                and (index not in probe_indices_to_refine or args.probe_transit_results)
+            ):
                 result = prior[label]
                 if result["status"] == "sampled_transit_fixture_join_checked":
                     transit = result["optimized_curve"]
@@ -334,6 +454,10 @@ def main():
                         resume_checks.extend(j._asdict() for j in diagnostic_joins([left, stage]))
                     if right is not None and right.label.startswith("fixture:"):
                         resume_checks.extend(j._asdict() for j in diagnostic_joins([stage, right]))
+                    if left is not None and left.label in checked_probe_labels:
+                        resume_checks.extend(j._asdict() for j in diagnostic_joins([left, stage]))
+                    if right is not None and right.label in checked_probe_labels:
+                        resume_checks.extend(j._asdict() for j in diagnostic_joins([stage, right]))
                     if neighborhood_transit is not None and label == neighborhood_transit["stage"]:
                         if left is None:
                             raise FixtureTransitTourError("checked lead boundary missing")
@@ -360,18 +484,22 @@ def main():
             require_fixed_fixture_boundary_velocities(v0, v1)
             left_fixture = left.label.startswith("fixture:")
             right_fixture = right.label.startswith("fixture:")
+            left_probe = left.label in checked_probe_labels
+            right_probe = right.label in checked_probe_labels
             a0 = (
                 np.asarray(begin.acceleration)
-                if left_fixture and begin.acceleration is not None
+                if (left_fixture or left_probe) and begin.acceleration is not None
                 else None
             )
             a1 = (
                 np.asarray(finish.acceleration)
-                if right_fixture and finish.acceleration is not None
+                if (right_fixture or right_probe) and finish.acceleration is not None
                 else None
             )
-            if (left_fixture and a0 is None) or (right_fixture and a1 is None):
-                raise FixtureTransitTourError("actual fixture boundary acceleration unavailable")
+            if ((left_fixture or left_probe) and a0 is None) or (
+                (right_fixture or right_probe) and a1 is None
+            ):
+                raise FixtureTransitTourError("actual checked boundary acceleration unavailable")
 
             def boundaries(_rows, _timing, _index, *, start_velocity, end_velocity):
                 return np.asarray(start_velocity), np.asarray(end_velocity), events
@@ -498,6 +626,10 @@ def main():
                 checks += [j._asdict() for j in diagnostic_joins([left, stage])]
             if right_fixture:
                 checks += [j._asdict() for j in diagnostic_joins([stage, right])]
+            if left_probe:
+                checks += [j._asdict() for j in diagnostic_joins([left, stage])]
+            if right_probe:
+                checks += [j._asdict() for j in diagnostic_joins([stage, right])]
             band = PARITY_ULPS * np.finfo(float).eps
             if any(
                 j[k] is None or max(map(abs, j[k])) > band
@@ -515,7 +647,7 @@ def main():
                     "collision_and_position": collision,
                     "raw_position_extrema_excess": excess,
                     "sampled_speed_excess_native_units_s": speed_excess.tolist(),
-                    "process_boundary": "modeled joint-linear velocity; physical velocity and acceleration unknown",
+                    "process_boundary": "Checked modeled probe and fixture derivatives where supplied; otherwise generated joint-linear velocity and free acceleration. Physical derivatives unknown.",
                     "optimized_curve": transit,
                 }
             )
@@ -528,12 +660,49 @@ def main():
                     "traceback": traceback.format_exc(),
                 }
             )
+        result["wall_s_contended"] = perf_counter() - transit_wall
+        result["cpu_s"] = process_time() - transit_cpu
         report["transits"].append(result)
         save()
+    if worker_indices is not None:
+        usage = resource.getrusage(resource.RUSAGE_SELF)
+        report["process_cpu_s"] = float(usage.ru_utime + usage.ru_stime)
+        report["refinement_wall_s_contended"] = perf_counter() - refinement_started
+        report["peak_rss_bytes"] = int(
+            usage.ru_maxrss if sys.platform == "darwin" else usage.ru_maxrss * 1024
+        )
+        report["worker_pid"] = getpid()
+        report["scene_restored"] = snapshot(scene) == original
+        report["status"] = (
+            "completed_with_failures"
+            if any(t["status"] == "failed" for t in report["transits"])
+            else "sampled_transit_partition"
+        )
+        save()
+        if not report["scene_restored"]:
+            raise FixtureTransitTourError("scene state changed")
+        print(
+            json.dumps(
+                {
+                    "status": report["status"],
+                    "partition": args.probe_partition,
+                    "transits": len(report["transits"]),
+                    "failed": sum(t["status"] == "failed" for t in report["transits"]),
+                }
+            ),
+            flush=True,
+        )
+        return
     path, corners = assemble_actual_tour(rows, clock, replacements)
     joins = [item._asdict() for item in diagnostic_joins(path)]
     band = PARITY_ULPS * np.finfo(float).eps
     report["assembled_stage_count"] = len(path)
+    report["source_generated_modeled_tour_s"] = sum(
+        float(stage["duration_s"]) for stage in original_clock["stages"]
+    )
+    report["assembled_modeled_tour_s"] = sum(
+        float(stage["duration_s"]) for stage in clock["stages"]
+    )
     report["joint_linear_corners"] = len(corners)
     report["modeled_join_count"] = len(joins)
     report["modeled_join_velocity_unresolved"] = int(
@@ -548,7 +717,29 @@ def main():
             for j in joins
         )
     )
+    report["largest_modeled_join_gaps"] = {}
+    for field in ("velocity_delta", "acceleration_delta"):
+        for component, axes in (
+            ("track", (0,)),
+            ("arm", tuple(range(1, 7))),
+            ("positioner", (7,)),
+            ("tailstock", (8,)),
+        ):
+            known = [j for j in joins if j[field] is not None]
+            ordered = sorted(
+                known, key=lambda j: max(abs(j[field][axis]) for axis in axes), reverse=True
+            )
+            report["largest_modeled_join_gaps"][f"{field}_{component}"] = [
+                {
+                    "left": j["left"],
+                    "right": j["right"],
+                    "maximum_abs_native_units": max(abs(j[field][axis]) for axis in axes),
+                    "raw_delta": j[field],
+                }
+                for j in ordered[:5]
+            ]
     report["fixture_join_diagnostics"] = fixture_join_diagnostics
+    report["checked_neighbor_join_count"] = len(fixture_join_diagnostics)
     report["unchanged_generated_stages"] = (
         "original independently sampled path; not rechecked at 1025 samples in this experiment"
     )
