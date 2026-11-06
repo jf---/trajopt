@@ -4,9 +4,10 @@ import numpy as np
 from actual_stage_adapters import weld_stage
 from actual_stage_contract import Seconds, diagnostic_joins
 from master_analytic_ik import arm_ik
+from probe_clock_variants import search_cruise_clock_with_ramp
 from probe_cruise_clock import search_cruise_clock
 from probe_cruise_trial import one_sided_progress
-from probe_group_coordination import build_probe_group
+from probe_group_coordination import STOP_TO_STOP_DURATION_FACTOR, build_probe_group
 from probe_shared_velocity import (
     solve_constrained_shared_acceleration,
     solve_constrained_shared_velocity,
@@ -22,10 +23,24 @@ class ProbeCruiseGroupError(RuntimeError):
     """The generated probe cannot satisfy this explicitly modeled policy."""
 
 
-def generate_cruise_group(env, opw, info, names, limits7, speeds, phases, timing):
+def generate_cruise_group(
+    env,
+    opw,
+    info,
+    names,
+    limits7,
+    speeds,
+    phases,
+    timing,
+    *,
+    one_sided_duration_factor=STOP_TO_STOP_DURATION_FACTOR,
+    search_ramp_fraction=None,
+):
     """Generate a probe; consumers must independently verify its actual curve."""
     speeds = np.asarray(speeds, dtype=float)
-    previous, _ = build_probe_group(phases, [float(t["duration_s"]) for t in timing])
+    previous, _ = build_probe_group(
+        phases, [float(t["duration_s"]) for t in timing], duration_factor=one_sided_duration_factor
+    )
     fixture = np.asarray(phases[0]["states"][0][7:], dtype=float)
     qvalues = [np.asarray(row["states"], dtype=float) for row in phases]
     if any(not np.all(q[:, 7:] == fixture) for q in qvalues):
@@ -117,7 +132,13 @@ def generate_cruise_group(env, opw, info, names, limits7, speeds, phases, timing
     for j, (row, source, entry) in enumerate(zip(phases, qvalues, timing, strict=True)):
         source_duration = float(entry["duration_s"])
         if j in (1, 2):
-            duration, clock = search_cruise_clock(source_duration)
+            duration, clock = (
+                search_cruise_clock(source_duration)
+                if search_ramp_fraction is None
+                else search_cruise_clock_with_ramp(
+                    source_duration, ramp_fraction=search_ramp_fraction
+                )
+            )
 
             def progress(t, clock=clock):
                 return clock(t)[0]

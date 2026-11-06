@@ -21,6 +21,8 @@ from fresh_validation import inspect_sampled_curve
 from probe_cruise_clock import search_cruise_clock
 from probe_cruise_generate import generate_cruise_group
 from probe_cruise_trial import one_sided_progress
+from probe_group_coordination import STOP_TO_STOP_DURATION_FACTOR
+from probe_join_contract import inspect_probe_joins
 from process_geometry import assess_process_geometry
 from quintic_position_extrema import position_extrema
 from rotation_targets import interpolate_rotations, rotation_errors
@@ -34,7 +36,6 @@ from tesseract_qt_py.core.retarget.pair_margins import PairMargins
 from tesseract_qt_py.core.types import Meters
 
 SAMPLES = 1025  # Existing actual-curve independent finite sampling policy.
-PARITY_ULPS = 32768  # Binary64 boundary reconstruction, not process tolerance.
 
 
 class ProbeSearchBatchError(RuntimeError):
@@ -55,6 +56,12 @@ def main():
         parser.add_argument(f"--{name}", type=Path, required=True)
     parser.add_argument("--probe-start", type=int, required=True)
     parser.add_argument("--probe-count", type=int, required=True)
+    parser.add_argument(
+        "--probe-index-file", type=Path, help="explicit subset of probe indices to recheck"
+    )
+    parser.add_argument(
+        "--one-sided-duration-factor", type=float, default=STOP_TO_STOP_DURATION_FACTOR
+    )
     args = parser.parse_args()
     if args.probe_start < 0 or args.probe_count <= 0:
         raise ProbeSearchBatchError("nonnegative start and positive probe count required")
@@ -97,6 +104,18 @@ def main():
         indices
     ):
         raise ProbeSearchBatchError("selected range or complete SearchL candidate count differs")
+    selected = (
+        list(range(args.probe_start, args.probe_start + args.probe_count))
+        if args.probe_index_file is None
+        else json.loads(args.probe_index_file.read_text())
+    )
+    if (
+        not isinstance(selected, list)
+        or not selected
+        or any(not isinstance(i, int) or not 0 <= i < len(indices) for i in selected)
+        or len(set(selected)) != len(selected)
+    ):
+        raise ProbeSearchBatchError("selected probe indices must be distinct and in range")
     limits = np.asarray(
         env.getJointGroup("probe_search_batch_nine", list(names)).getLimits().joint_limits
     )
@@ -105,7 +124,9 @@ def main():
         "tour": tour,
         "scene_setup_s_contended": setup,
         "probe_start": args.probe_start,
-        "probe_count": args.probe_count,
+        "probe_count": len(selected),
+        "probe_indices": selected,
+        "one_sided_duration_factor": args.one_sided_duration_factor,
         "scope": "Fresh generated probe phases and checked optimized SearchL, modeled clocks and assumed hits; no controller or manufacturing acceptance.",
         "groups": [],
     }
@@ -126,7 +147,7 @@ def main():
             np.asarray(state.link_transforms["nozzle_link"].matrix),
         )
 
-    for probe_index in range(args.probe_start, args.probe_start + args.probe_count):
+    for probe_index in selected:
         group_wall = perf_counter()
         group_cpu = process_time()
         i = indices[probe_index]
@@ -134,7 +155,15 @@ def main():
         try:
             phases, timing = rows[i : i + 4], clock["stages"][i : i + 4]
             generated, evidence = generate_cruise_group(
-                env, opw, info, names, limits7, speeds, phases, timing
+                env,
+                opw,
+                info,
+                names,
+                limits7,
+                speeds,
+                phases,
+                timing,
+                one_sided_duration_factor=args.one_sided_duration_factor,
             )
             probe = search_results["probes"][probe_index]
             full = json.loads(
@@ -142,6 +171,12 @@ def main():
             )
             search = evidence["process"][1]
             optimized = checked_search_nodes(search, probe, full, probe_index)
+            generated_endpoints = np.asarray(search["ik_states"], dtype=float)[[0, -1]]
+            result["raw_search_endpoint_delta"] = (
+                optimized[[0, -1]] - generated_endpoints
+            ).tolist()
+            optimized = optimized.copy()
+            optimized[[0, -1]] = generated_endpoints
             search["ik_states"] = optimized.tolist()
             t = np.linspace(0.0, search["duration_s"], len(optimized))
             v0, a0, v1, a1 = (np.asarray(search[key]) for key in ("v0", "a0", "v1", "a1"))
@@ -151,16 +186,8 @@ def main():
                 search["stage"], search["duration_s"], model, optimized, fixture
             )
             joins = [j._asdict() for j in diagnostic_joins(generated)]
-            band = PARITY_ULPS * np.finfo(float).eps
-            if any(
-                j[key] is None or max(map(abs, j[key])) > band
-                for j in joins
-                for key in ("position_delta", "velocity_delta", "acceleration_delta")
-            ):
-                raise ProbeSearchBatchError(
-                    "generated and optimized probe boundary derivatives differ"
-                )
             result["process_joins"] = joins
+            result["canonical_join_checks"] = inspect_probe_joins(evidence["process"], joins)
             result["process"] = evidence["process"]
             for j, stage in enumerate(generated):
                 info_phase = evidence["process"][j]

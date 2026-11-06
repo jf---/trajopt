@@ -18,7 +18,10 @@ class ProbeGroupError(RuntimeError):
 
 
 def build_probe_group(
-    rows: Sequence[dict[str, Any]], durations: Sequence[float]
+    rows: Sequence[dict[str, Any]],
+    durations: Sequence[float],
+    *,
+    duration_factor: float = STOP_TO_STOP_DURATION_FACTOR,
 ) -> tuple[list[ActualStage], list[Any]]:
     """Use explicit modeled stops inside the probe and moving outer endpoints.
 
@@ -53,11 +56,13 @@ def build_probe_group(
         raise ProbeGroupError("probe phase endpoints must match")
     if any(not np.isfinite(t) or t <= 0 for t in durations):
         raise ProbeGroupError("positive modeled process durations required")
+    if not np.isfinite(duration_factor) or duration_factor <= 0:
+        raise ProbeGroupError("positive shared modeled duration factor required")
     curves = [CubicSpline(np.linspace(0, 1, len(q)), q[:, :7], axis=0) for q in positions]
     stages = [
         process_stage(
             str(row["stage"]),
-            float(duration) * STOP_TO_STOP_DURATION_FACTOR,
+            float(duration) * duration_factor,
             curve,
             tuple(map(float, q[0, 7:])),
             1.0 if i == 0 else 0.0,

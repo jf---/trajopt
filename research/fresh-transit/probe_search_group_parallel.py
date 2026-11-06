@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 from time import perf_counter
 
+from probe_group_coordination import STOP_TO_STOP_DURATION_FACTOR
+
 
 class ProbeParallelError(RuntimeError):
     """Worker ranges or independently produced probe results are incomplete."""
@@ -41,6 +43,9 @@ def main() -> None:
     parser.add_argument("--probe-start", type=int, required=True)
     parser.add_argument("--probe-count", type=int, required=True)
     parser.add_argument("--workers", type=int, required=True)
+    parser.add_argument(
+        "--one-sided-duration-factor", type=float, default=STOP_TO_STOP_DURATION_FACTOR
+    )
     args = parser.parse_args()
     ranges = split_ranges(args.probe_start, args.probe_count, args.workers)
     if args.output.exists():
@@ -50,6 +55,7 @@ def main() -> None:
     common: list[str] = []
     for name in ("station", "tour_index", "recovery", "searches", "ifopt_library", "sqp_library"):
         common.extend(("--" + name.replace("_", "-"), str(getattr(args, name))))
+    common.extend(("--one-sided-duration-factor", str(args.one_sided_duration_factor)))
     began = perf_counter()
     children = []
     for worker, (start, count) in enumerate(ranges):
@@ -121,6 +127,7 @@ def main() -> None:
         "tour": tours.pop(),
         "probe_start": args.probe_start,
         "probe_count": args.probe_count,
+        "one_sided_duration_factor": args.one_sided_duration_factor,
         "status": "completed_with_failures"
         if any(group["status"] == "failed" for group in groups)
         else "sampled_groups_process_acceptance_unresolved",
