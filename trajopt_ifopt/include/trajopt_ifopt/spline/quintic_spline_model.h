@@ -48,6 +48,16 @@ public:
                                                       const Eigen::VectorXd& velocity_end,
                                                       std::optional<Eigen::VectorXd> acceleration_end);
 
+  /** Missing derivatives are variables after the position knots, ordered v0, a0, v1, a1.
+   * Axis positions use their native units; derivatives use those units per second and per second squared.
+   */
+  static QuinticSplineModel buildVariableBoundary(std::vector<Seconds> times,
+                                                  Eigen::Index axis_count,
+                                                  std::optional<Eigen::VectorXd> velocity_start,
+                                                  std::optional<Eigen::VectorXd> acceleration_start,
+                                                  std::optional<Eigen::VectorXd> velocity_end,
+                                                  std::optional<Eigen::VectorXd> acceleration_end);
+
   Eigen::Index knotCount() const { return static_cast<Eigen::Index>(times_.size()); }
   Eigen::Index variableCount() const { return position_coefficients_.cols(); }
   Eigen::Index axisCount() const { return boundary_coefficients_.cols(); }

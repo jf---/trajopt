@@ -24,6 +24,7 @@ from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import inspect_sampled_curve
 from native_accel_transits import refine_transits
+from native_free_boundary_transits import refine_transits as refine_free_boundary_transits
 from probe_search_group_parallel import split_ranges
 from quintic_position_extrema import position_extrema
 from runtime_libraries import require_loaded_libraries
@@ -78,6 +79,20 @@ def main():
     parser.add_argument("--probe-partition", type=int, help="zero-based worker partition")
     parser.add_argument(
         "--probe-transit-results", type=Path, help="reuse disjoint checked probe transit results"
+    )
+    parser.add_argument(
+        "--free-outer-boundary",
+        action="store_true",
+        help="optimize unknown modeled outer transit derivatives",
+    )
+    parser.add_argument(
+        "--outer-trust-box", type=float, help="initial modeled outer solver trust box"
+    )
+    parser.add_argument(
+        "--outer-speed-preference-per-s3",
+        type=float,
+        default=0.0,
+        help="soft normalized modeled outer speed weight in inverse seconds cubed",
     )
     args = parser.parse_args()
     if args.adaptive_position_witness and not args.retry_stage:
@@ -358,6 +373,10 @@ def main():
             "scope": "actual group curves were independently sampled in the explicit input batch; process acceptance unresolved",
         }
     neighbors = transit_neighbor_map(rows, clock["stages"], actual)
+    if args.free_outer_boundary:
+        outer = [i for i, (left, right, _) in neighbors.items() if left is None or right is None]
+        indices_to_refine.update(outer)
+        report["free_outer_boundary_stages"] = [labels[i] for i in outer]
     worker_indices = None
     if args.probe_partitions is not None:
         ranges = split_ranges(0, len(probe_indices_to_refine), args.probe_partitions)
@@ -381,10 +400,6 @@ def main():
             labels[index] for index in fixture_indices_to_refine
         }:
             raise FixtureTransitTourError("resume requires every selected transit exactly once")
-        if any(
-            stage not in prior or prior[stage]["status"] != "failed" for stage in args.retry_stage
-        ):
-            raise FixtureTransitTourError("only previously failed transits may be retried")
         if neighborhood_transit is not None:
             old = prior.get(neighborhood_transit["stage"])
             if old is None or old["status"] != "failed":
@@ -408,6 +423,10 @@ def main():
                     "probe transit results do not cover each selected transit once"
                 )
             prior.update(new_results)
+        if any(
+            stage not in prior or prior[stage]["status"] != "failed" for stage in args.retry_stage
+        ):
+            raise FixtureTransitTourError("only previously failed transits may be retried")
     elif args.retry_stage:
         raise FixtureTransitTourError("retry requires a checkpoint")
     refinement_started = perf_counter()
@@ -474,35 +493,53 @@ def main():
                     replacements[label] = stage
                 report["transits"].append(result)
                 continue
-            if left is None or right is None:
+            outer = left is None or right is None
+            if outer and not args.free_outer_boundary:
                 raise FixtureTransitTourError("unknown outer physical boundary velocity")
-            begin = left.evaluate(left.duration)
-            finish = right.evaluate(Seconds(0.0))
-            if begin.velocity is None or finish.velocity is None:
+            begin = left.evaluate(left.duration) if left is not None else None
+            finish = right.evaluate(Seconds(0.0)) if right is not None else None
+            if (begin is not None and begin.velocity is None) or (
+                finish is not None and finish.velocity is None
+            ):
                 raise FixtureTransitTourError("neighboring modeled velocity unavailable")
-            v0, v1 = np.asarray(begin.velocity), np.asarray(finish.velocity)
-            require_fixed_fixture_boundary_velocities(v0, v1)
-            left_fixture = left.label.startswith("fixture:")
-            right_fixture = right.label.startswith("fixture:")
-            left_probe = left.label in checked_probe_labels
-            right_probe = right.label in checked_probe_labels
+            v0 = None if begin is None else np.asarray(begin.velocity)
+            v1 = None if finish is None else np.asarray(finish.velocity)
+            if v0 is not None and v1 is not None:
+                require_fixed_fixture_boundary_velocities(v0, v1)
+            else:
+                fixed = v1 if v0 is None else v0
+                require_fixed_fixture_boundary_velocities(fixed, fixed)
+            left_fixture = left is not None and left.label.startswith("fixture:")
+            right_fixture = right is not None and right.label.startswith("fixture:")
+            left_probe = left is not None and left.label in checked_probe_labels
+            right_probe = right is not None and right.label in checked_probe_labels
             a0 = (
                 np.asarray(begin.acceleration)
-                if (left_fixture or left_probe) and begin.acceleration is not None
+                if begin is not None
+                and (outer or left_fixture or left_probe)
+                and begin.acceleration is not None
                 else None
             )
             a1 = (
                 np.asarray(finish.acceleration)
-                if (right_fixture or right_probe) and finish.acceleration is not None
+                if finish is not None
+                and (outer or right_fixture or right_probe)
+                and finish.acceleration is not None
                 else None
             )
+            if outer and (
+                (begin is not None and a0 is None) or (finish is not None and a1 is None)
+            ):
+                raise FixtureTransitTourError(
+                    "outer transit neighboring modeled acceleration unavailable"
+                )
             if ((left_fixture or left_probe) and a0 is None) or (
                 (right_fixture or right_probe) and a1 is None
             ):
                 raise FixtureTransitTourError("actual checked boundary acceleration unavailable")
 
             def boundaries(_rows, _timing, _index, *, start_velocity, end_velocity):
-                return np.asarray(start_velocity), np.asarray(end_velocity), events
+                return start_velocity, end_velocity, events
 
             def accelerations(_index):
                 return a0, a1
@@ -534,7 +571,16 @@ def main():
             for attempt in range(
                 MAX_POSITION_WITNESS_ROUNDS if args.adaptive_position_witness else 1
             ):
-                solved = refine_transits(
+                solver = refine_free_boundary_transits if outer else refine_transits
+                options = (
+                    {
+                        "initial_trust_box_size": args.outer_trust_box,
+                        "outer_speed_preference_per_s3": args.outer_speed_preference_per_s3,
+                    }
+                    if outer
+                    else {}
+                )
+                solved = solver(
                     env,
                     info,
                     names,
@@ -548,6 +594,7 @@ def main():
                     position_witness_times_s=witnesses,
                     seed_positions=seed,
                     seed_accelerations=seed_accelerations,
+                    **options,
                 )
                 if len(solved) != 1 or solved[0]["status"] != "SQPStatus.NLP_CONVERGED":
                     raise FixtureTransitTourError("native transit solver did not converge")
@@ -612,6 +659,20 @@ def main():
             result["raw_position_extrema_excess"] = excess
             collision = inspect_sampled_curve(checker, full, limits, SQP_FEASIBILITY_BAND)
             speed_excess = np.maximum(np.max(np.abs(velocity), axis=0) - np.asarray(speeds), 0.0)
+            if outer:
+                velocity_limits = velocity_extrema(
+                    curve, Seconds(0.0), Seconds(transit["duration_s"])
+                )
+                continuous_speed_excess = [
+                    max(abs(extreme["minimum"]), abs(extreme["maximum"])) - speeds[k]
+                    for k, extreme in enumerate(velocity_limits)
+                ]
+                result["actual_velocity_extrema"] = velocity_limits
+                result["raw_velocity_extrema_excess"] = [
+                    max(0.0, float(value)) for value in continuous_speed_excess
+                ]
+                if any(value > SQP_FEASIBILITY_BAND for value in continuous_speed_excess):
+                    raise FixtureTransitTourError("actual velocity extrema exceed sourced speeds")
             if any(x > SQP_FEASIBILITY_BAND for x in excess) or np.any(
                 speed_excess > SQP_FEASIBILITY_BAND
             ):
@@ -629,6 +690,10 @@ def main():
             if left_probe:
                 checks += [j._asdict() for j in diagnostic_joins([left, stage])]
             if right_probe:
+                checks += [j._asdict() for j in diagnostic_joins([stage, right])]
+            if outer and left is not None and not left_fixture and not left_probe:
+                checks += [j._asdict() for j in diagnostic_joins([left, stage])]
+            if outer and right is not None and not right_fixture and not right_probe:
                 checks += [j._asdict() for j in diagnostic_joins([stage, right])]
             band = PARITY_ULPS * np.finfo(float).eps
             if any(

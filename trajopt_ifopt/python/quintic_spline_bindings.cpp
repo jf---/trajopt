@@ -37,21 +37,29 @@ NB_MODULE(_quintic_spline, m)
   nb::module_::import_("tesseract_robotics.trajopt_ifopt");
   nb::exception<ti::MonotoneFixtureAxisError>(m, "MonotoneFixtureAxisError");
   nb::class_<ti::MonotoneFixtureAxis>(m, "MonotoneFixtureAxis")
-      .def_static("build", [](const std::vector<double>& times, const std::vector<double>& targets) {
-        return ti::MonotoneFixtureAxis::build(seconds(times), targets);
-      }, "times_s"_a, "targets"_a)
-      .def("evaluate_many", [](const ti::MonotoneFixtureAxis& self, const std::vector<double>& times) {
-        Eigen::MatrixXd result(static_cast<Eigen::Index>(times.size()), 4);
-        {
-          nb::gil_scoped_release release;
-          for (std::size_t i = 0; i < times.size(); ++i)
-          {
-            const auto sample = self.evaluate(ti::Seconds(times[i]));
-            result.row(static_cast<Eigen::Index>(i)) << sample.position, sample.velocity, sample.acceleration, sample.jerk;
-          }
-        }
-        return result;
-      }, "times_s"_a);
+      .def_static(
+          "build",
+          [](const std::vector<double>& times, const std::vector<double>& targets) {
+            return ti::MonotoneFixtureAxis::build(seconds(times), targets);
+          },
+          "times_s"_a,
+          "targets"_a)
+      .def(
+          "evaluate_many",
+          [](const ti::MonotoneFixtureAxis& self, const std::vector<double>& times) {
+            Eigen::MatrixXd result(static_cast<Eigen::Index>(times.size()), 4);
+            {
+              nb::gil_scoped_release release;
+              for (std::size_t i = 0; i < times.size(); ++i)
+              {
+                const auto sample = self.evaluate(ti::Seconds(times[i]));
+                result.row(static_cast<Eigen::Index>(i)) << sample.position, sample.velocity, sample.acceleration,
+                    sample.jerk;
+              }
+            }
+            return result;
+          },
+          "times_s"_a);
   nb::exception<ti::QuinticSplineError>(m, "QuinticSplineError");
   nb::class_<ti::SplineAffineMap>(m, "SplineAffineMap")
       .def_ro("basis", &ti::SplineAffineMap::basis)
@@ -68,6 +76,24 @@ NB_MODULE(_quintic_spline, m)
              const Eigen::VectorXd& v1,
              const Eigen::VectorXd& a1) { return ti::QuinticSplineModel::build(seconds(times), v0, a0, v1, a1); },
           "times_s"_a,
+          "velocity_start"_a,
+          "acceleration_start"_a,
+          "velocity_end"_a,
+          "acceleration_end"_a,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def_static(
+          "build_variable_boundary",
+          [](const std::vector<double>& times,
+             Eigen::Index axis_count,
+             std::optional<Eigen::VectorXd> v0,
+             std::optional<Eigen::VectorXd> a0,
+             std::optional<Eigen::VectorXd> v1,
+             std::optional<Eigen::VectorXd> a1) {
+            return ti::QuinticSplineModel::buildVariableBoundary(
+                seconds(times), axis_count, std::move(v0), std::move(a0), std::move(v1), std::move(a1));
+          },
+          "times_s"_a,
+          "axis_count"_a,
           "velocity_start"_a,
           "acceleration_start"_a,
           "velocity_end"_a,
