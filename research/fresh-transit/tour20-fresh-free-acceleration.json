@@ -1,0 +1,324 @@
+{
+  "scope": "Fresh Tour20 product candidate, unchanged verified process stages, native actual-time transit peak and integral jerk; modeled derivatives, not physical acceptance.",
+  "policy": {
+    "peak_weight": 0.1,
+    "reference_time_s": 1.0,
+    "absolute_merit_improvement": 1e-09,
+    "max_witness_rounds": 12
+  },
+  "scene_setup_s": 3.222023666021414,
+  "elapsed_after_setup_s": 6.039883624995127,
+  "timing_note": "Correctness run; docs work may have overlapped.",
+  "planning_s": 1.5193603330408223,
+  "initial_verification_s": 0.3383553340099752,
+  "refinement_s": 3.7794574170256965,
+  "actual_spline_checks_s": 0.378530458023306,
+  "stage_count": 20,
+  "transit_count": 5,
+  "original_process_verification": {
+    "status": "independently_sampled_tour",
+    "samples_checked": 10260,
+    "probe_count": 3,
+    "weld_count": 1,
+    "probe_checks": [
+      {
+        "sample_count": 68,
+        "max_position_error_m": 2.025966904339278e-15,
+        "max_orientation_error_rad": 4.2146848510894035e-08
+      },
+      {
+        "sample_count": 68,
+        "max_position_error_m": 1.889215015009786e-15,
+        "max_orientation_error_rad": 4.2146848510894035e-08
+      },
+      {
+        "sample_count": 68,
+        "max_position_error_m": 1.9565220053615725e-15,
+        "max_orientation_error_rad": 3.6500241499888574e-08
+      }
+    ],
+    "weld_max_position_error_m": 3.561620077816629e-15,
+    "weld_max_orientation_error_rad": 4.2146848510894035e-08
+  },
+  "transits": [
+    {
+      "stage": "transit:0",
+      "acceleration_sources": [
+        "optimized_modeled",
+        "supplied_modeled"
+      ],
+      "a0": [
+        0.8122029825524009,
+        3.7827402932515275,
+        0.5293520432747889,
+        -1.3014277599842312,
+        1.125109278418102,
+        -0.07745331317857801,
+        3.999244755943227
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spline_sample_check": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_speed_ratio_by_axis": [
+        0.31495844467417144,
+        0.8476100473437916,
+        0.12180407035009125,
+        0.30058667178417414,
+        0.18228908856117726,
+        0.0066005215161134695,
+        0.4433322162344469
+      ],
+      "peak_witness_rounds": 7,
+      "peak_witness_max_normalized_excess": 2.115577864499063e-05
+    },
+    {
+      "stage": "transit:1",
+      "acceleration_sources": [
+        "supplied_modeled",
+        "supplied_modeled"
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spline_sample_check": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_speed_ratio_by_axis": [
+        2.5331702908144077e-08,
+        0.018230717879032705,
+        0.0343418704334407,
+        0.020202266422816854,
+        0.02645534410383756,
+        0.016410592686649846,
+        0.010013388253973786
+      ],
+      "peak_witness_rounds": 9,
+      "peak_witness_max_normalized_excess": 6.588059379264433e-05
+    },
+    {
+      "stage": "transit:2",
+      "acceleration_sources": [
+        "supplied_modeled",
+        "supplied_modeled"
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spline_sample_check": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_speed_ratio_by_axis": [
+        1.354856473925439e-09,
+        0.054230645170291795,
+        0.05590120711331322,
+        0.06350722971741139,
+        0.14316994806849487,
+        0.03481187797259473,
+        0.08159857848485659
+      ],
+      "peak_witness_rounds": 9,
+      "peak_witness_max_normalized_excess": 8.013159900377431e-05
+    },
+    {
+      "stage": "transit:3",
+      "acceleration_sources": [
+        "supplied_modeled",
+        "supplied_modeled"
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spline_sample_check": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_speed_ratio_by_axis": [
+        7.929048183462504e-08,
+        0.034743936997522526,
+        0.05852671103178903,
+        0.05116267964204033,
+        0.1286443889307469,
+        0.06464425445539725,
+        0.07811090403469641
+      ],
+      "peak_witness_rounds": 8,
+      "peak_witness_max_normalized_excess": 2.2614518897512426e-06
+    },
+    {
+      "stage": "transit:7",
+      "acceleration_sources": [
+        "supplied_modeled",
+        "optimized_modeled"
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.8042458239535355,
+        3.858439018925179,
+        0.49928107543913786,
+        -1.333488151341003,
+        1.1335618609625535,
+        -0.09801040368243637,
+        4.238316173981375
+      ],
+      "spline_sample_check": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_speed_ratio_by_axis": [
+        0.30559374239853726,
+        0.8476682593412407,
+        0.11462317038710111,
+        0.3021084940070371,
+        0.1802425648706329,
+        0.010264106928473477,
+        0.4597363594733111
+      ],
+      "peak_witness_rounds": 7,
+      "peak_witness_max_normalized_excess": 1.982154431701133e-07
+    }
+  ],
+  "smoothness": {
+    "gate": "unresolved",
+    "outer_boundary_derivatives": "unknown",
+    "unknown_join_derivatives": 2,
+    "unresolved_joint_linear_corner_count": 225,
+    "unresolved_corners_by_kind": {
+      "approach": 45,
+      "search": 45,
+      "retract": 45,
+      "withdraw": 45,
+      "weld": 45
+    }
+  },
+  "limits": [
+    "Finite sampled checks are not continuous collision clearance.",
+    "Physical controller endpoint derivatives are unknown; optimized endpoint accelerations are modeled variables.",
+    "Joint-linear interpolation corners have undefined mathematical derivatives; they are not a count of physical robot defects.",
+    "No controller timing, physical execution or whole-tour jerk acceptance is established."
+  ]
+}

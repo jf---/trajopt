@@ -83,6 +83,8 @@ def refine_transits(
     peak_reference_time_s=None,
     peak_witness_times_s=None,
     seed_positions=None,
+    seed_accelerations=None,
+    absolute_merit_improvement=None,
 ):
     """Return independent transit spline outcomes, without changing process stages.
 
@@ -105,6 +107,10 @@ def refine_transits(
         raise TransitContractError("seven finite positive sourced speeds required")
     fourth_weights = fourth_jerk_weights(speed, fourth_risk_weight, risk_reference_time_s)
     peak_config = peak_jerk_configuration(speed, peak_risk_weight, peak_reference_time_s)
+    if absolute_merit_improvement is not None and (
+        not np.isfinite(absolute_merit_improvement) or absolute_merit_improvement <= 0
+    ):
+        raise TransitContractError("positive finite absolute merit improvement required")
     if seed_positions is not None and sum(s["stage"].startswith("transit:") for s in segments) != 1:
         raise TransitContractError("explicit seed requires exactly one transit")
     if any(not np.isfinite(t) or t < 0 for t in durations):
@@ -157,19 +163,31 @@ def refine_transits(
             if acceleration_resolver is None:
                 raise TransitContractError("explicit nine-axis acceleration boundaries required")
             a0, a1 = acceleration_resolver(index)
-            a0, a1 = np.asarray(a0, dtype=float), np.asarray(a1, dtype=float)
-            if (
-                a0.shape != (9,)
-                or a1.shape != (9,)
-                or not np.isfinite(a0).all()
-                or not np.isfinite(a1).all()
-                or np.any(a0[7:] != 0)
-                or np.any(a1[7:] != 0)
-            ):
-                raise TransitContractError("transit fixture accelerations must be zero")
+            fixed_accelerations = []
+            for boundary in (a0, a1):
+                if boundary is None:
+                    fixed_accelerations.append(None)
+                    continue
+                value = np.asarray(boundary, dtype=float)
+                if value.shape != (9,) or not np.isfinite(value).all() or np.any(value[7:] != 0):
+                    raise TransitContractError("transit fixture accelerations must be zero")
+                fixed_accelerations.append(value[:7])
+            if seed_accelerations is None:
+                acceleration_seed = [np.zeros(7), np.zeros(7)]
+            else:
+                if len(seed_accelerations) != 2:
+                    raise TransitContractError("two acceleration seed vectors required")
+                acceleration_seed = [np.asarray(value, dtype=float) for value in seed_accelerations]
+                if any(
+                    value.shape != (7,) or not np.isfinite(value).all()
+                    for value in acceleration_seed
+                ):
+                    raise TransitContractError("finite seven-axis acceleration seeds required")
             duration = durations[index]
             knots_s = np.linspace(0, duration, KNOTS)
-            model = native.QuinticSplineModel.build(knots_s.tolist(), v0, a0[:7], v1, a1[:7])
+            model = native.QuinticSplineModel.build_variable_acceleration(
+                knots_s.tolist(), v0, fixed_accelerations[0], v1, fixed_accelerations[1]
+            )
             env.setState(dict(zip(names[-2:], map(float, fixture), strict=True)))
             limits = np.asarray(env.getJointGroup(info.manipulator).getLimits().joint_limits)
             nodes = []
@@ -182,6 +200,17 @@ def refine_transits(
                 )
                 node.addVar("position", list(names[:7]), q, bounds)
                 nodes.append(node)
+            free_sides = [side for side, value in enumerate(fixed_accelerations) if value is None]
+            for side in free_sides:
+                node = ti.Node(f"native-transit-acceleration-{side}")
+                node.addVar(
+                    "acceleration",
+                    list(names[:7]),
+                    acceleration_seed[side],
+                    [ti.Bounds(-float("inf"), float("inf"))] * 7,
+                )
+                nodes.append(node)
+            initial_values = np.vstack([seed, *[acceleration_seed[side] for side in free_sides]])
             if peak_config is not None:
                 normalization, peak_cost = peak_config
                 witnesses = (
@@ -198,7 +227,7 @@ def refine_transits(
                     or witnesses[-1] > duration
                 ):
                     raise TransitContractError("ordered in-domain peak witnesses required")
-                initial_jerk = model.evaluate(np.asarray(witnesses), seed, 3)[3]
+                initial_jerk = model.evaluate(np.asarray(witnesses), initial_values, 3)[3]
                 initial_peak = np.max(np.abs(initial_jerk) * normalization, axis=0)
                 peak_node = ti.Node("native-transit-peak")
                 peak_node.addVar(
@@ -208,6 +237,11 @@ def refine_transits(
             variables = ti.NodesVariables("native-transit", nodes)
             knots = list(variables.getNodes())[:KNOTS]
             positions = [node.getVar("position") for node in knots]
+            acceleration_vars = [
+                variables.getNodes()[KNOTS + j].getVar("acceleration")
+                for j in range(len(free_sides))
+            ]
+            independent = positions + acceleration_vars
             peak_var = variables.getNodes()[-1].getVar("peak") if peak_config is not None else None
             profile = _ifopt_profile(True)
             cfg = profile.collision_cost_config
@@ -228,18 +262,18 @@ def refine_transits(
                 for c in collection:
                     problem.addCostSet(c, penalty)
             problem.addCostSet(
-                native.QuinticSplineJerkCost(model, positions, JERK_MULTIPLIER / speed**2),
+                native.QuinticSplineJerkCost(model, independent, JERK_MULTIPLIER / speed**2),
                 sqp.CostPenaltyType.SQUARED,
             )
             if fourth_weights is not None:
                 problem.addCostSet(
-                    native.QuinticSplineJerkFourthCost(model, positions, fourth_weights),
+                    native.QuinticSplineJerkFourthCost(model, independent, fourth_weights),
                     sqp.CostPenaltyType.SQUARED,
                 )
             if peak_config is not None:
                 problem.addConstraintSet(
                     native.QuinticSplineJerkPeakConstraint(
-                        model, positions, peak_var, witnesses.tolist(), normalization
+                        model, independent, peak_var, witnesses.tolist(), normalization
                     )
                 )
                 problem.addCostSet(
@@ -249,7 +283,7 @@ def refine_transits(
             samples = np.linspace(0, duration, COLLOCATION_POINTS + 2)[1:-1].tolist()
             problem.addConstraintSet(
                 native.QuinticSplinePositionLimits(
-                    model, positions, samples, [ti.Bounds(float(a), float(b)) for a, b in limits]
+                    model, independent, samples, [ti.Bounds(float(a), float(b)) for a, b in limits]
                 )
             )
             mapping = model.map(samples, 0)
@@ -263,7 +297,7 @@ def refine_transits(
                 problem.addConstraintSet(
                     DynamicSplineCollisionConstraint(
                         evaluator,
-                        positions,
+                        independent,
                         mapping.basis[j],
                         mapping.offset[j],
                         f"ActualSplineCollision_{j}",
@@ -283,6 +317,8 @@ def refine_transits(
                 params.max_merit_coeff_increases,
                 params.cnt_tolerance,
             ) = 200, 10.0, 10, 1e-4
+            if absolute_merit_improvement is not None:
+                params.min_approx_improve = absolute_merit_improvement
             solver.params = params
             started = perf_counter()
             solver.solve(problem)
@@ -290,11 +326,11 @@ def refine_transits(
             status = str(solver.getStatus())
             if status != "SQPStatus.NLP_CONVERGED":
                 raise TransitContractError(f"{stage['stage']}: {status}")
-            q = (
-                np.asarray(variables.getValues()).reshape(KNOTS, 7)
-                if peak_var is None
-                else np.vstack([position.value() for position in positions])
-            )
+            q = np.vstack([position.value() for position in positions])
+            solved_values = np.vstack([value.value() for value in independent])
+            solved_accelerations = list(fixed_accelerations)
+            for side, variable in zip(free_sides, acceleration_vars, strict=True):
+                solved_accelerations[side] = np.asarray(variable.value(), dtype=float)
             quad = model.jerk_quadrature()
 
             def jerk(x):
@@ -312,11 +348,15 @@ def refine_transits(
                     "nodes": q.tolist(),
                     "v0": v0.tolist(),
                     "v1": v1.tolist(),
-                    "a0": a0[:7].tolist(),
-                    "a1": a1[:7].tolist(),
+                    "a0": solved_accelerations[0].tolist(),
+                    "a1": solved_accelerations[1].tolist(),
+                    "acceleration_sources": [
+                        "optimized_modeled" if value is None else "supplied_modeled"
+                        for value in fixed_accelerations
+                    ],
                     "fixture": fixture.tolist(),
-                    "input_jerk": jerk(seed),
-                    "result_jerk": jerk(q),
+                    "input_jerk": jerk(initial_values),
+                    "result_jerk": jerk(solved_values),
                     **(
                         {
                             "peak_epigraph": np.asarray(peak_var.value()).tolist(),

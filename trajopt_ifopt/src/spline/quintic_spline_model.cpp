@@ -43,10 +43,21 @@ QuinticSplineModel QuinticSplineModel::build(std::vector<Seconds> times,
                                              const Eigen::VectorXd& velocity_end,
                                              const Eigen::VectorXd& acceleration_end)
 {
-  if (times.size() < MINIMUM_TIMES || velocity_start.size() == 0 ||
-      acceleration_start.size() != velocity_start.size() || velocity_end.size() != velocity_start.size() ||
-      acceleration_end.size() != velocity_start.size() || !velocity_start.allFinite() ||
-      !acceleration_start.allFinite() || !velocity_end.allFinite() || !acceleration_end.allFinite())
+  return buildVariableAcceleration(
+      std::move(times), velocity_start, acceleration_start, velocity_end, acceleration_end);
+}
+
+QuinticSplineModel QuinticSplineModel::buildVariableAcceleration(std::vector<Seconds> times,
+                                                                 const Eigen::VectorXd& velocity_start,
+                                                                 std::optional<Eigen::VectorXd> acceleration_start,
+                                                                 const Eigen::VectorXd& velocity_end,
+                                                                 std::optional<Eigen::VectorXd> acceleration_end)
+{
+  if (times.size() < MINIMUM_TIMES || velocity_start.size() == 0 || velocity_end.size() != velocity_start.size() ||
+      !velocity_start.allFinite() || !velocity_end.allFinite() ||
+      (acceleration_start &&
+       (acceleration_start->size() != velocity_start.size() || !acceleration_start->allFinite())) ||
+      (acceleration_end && (acceleration_end->size() != velocity_start.size() || !acceleration_end->allFinite())))
     throw QuinticSplineError("invalid spline knot count or boundary derivatives");
   for (std::size_t i = 0; i < times.size(); ++i)
     if (!std::isfinite(times[i].count()) || (i > 0 && times[i] <= times[i - 1]))
@@ -78,13 +89,22 @@ QuinticSplineModel QuinticSplineModel::build(std::vector<Seconds> times,
   Eigen::FullPivLU<Eigen::MatrixXd> factor(system);
   if (!factor.isInvertible())
     throw QuinticSplineError("spline interpolation system is singular");
-  Eigen::MatrixXd position_rhs = Eigen::MatrixXd::Zero(controls, n);
+  const Eigen::Index free_count =
+      static_cast<Eigen::Index>(!acceleration_start) + static_cast<Eigen::Index>(!acceleration_end);
+  Eigen::MatrixXd position_rhs = Eigen::MatrixXd::Zero(controls, n + free_count);
   position_rhs.block(2, 0, n, n).setIdentity();
+  Eigen::Index variable = n;
+  if (!acceleration_start)
+    position_rhs(1, variable++) = duration * duration;
+  if (!acceleration_end)
+    position_rhs(n + 3, variable++) = duration * duration;
   Eigen::MatrixXd boundary_rhs = Eigen::MatrixXd::Zero(controls, velocity_start.size());
   boundary_rhs.row(0) = duration * velocity_start.transpose();
-  boundary_rhs.row(1) = duration * duration * acceleration_start.transpose();
+  if (acceleration_start)
+    boundary_rhs.row(1) = duration * duration * acceleration_start->transpose();
   boundary_rhs.row(n + 2) = duration * velocity_end.transpose();
-  boundary_rhs.row(n + 3) = duration * duration * acceleration_end.transpose();
+  if (acceleration_end)
+    boundary_rhs.row(n + 3) = duration * duration * acceleration_end->transpose();
   return QuinticSplineModel(std::move(times), std::move(knots), factor.solve(position_rhs), factor.solve(boundary_rhs));
 }
 
@@ -119,7 +139,7 @@ std::vector<Eigen::MatrixXd> QuinticSplineModel::evaluate(const std::vector<Seco
                                                           const Eigen::MatrixXd& positions,
                                                           unsigned max_order) const
 {
-  if (max_order > DEGREE || times.empty() || positions.rows() != knotCount() || positions.cols() != axisCount() ||
+  if (max_order > DEGREE || times.empty() || positions.rows() != variableCount() || positions.cols() != axisCount() ||
       !positions.allFinite())
     throw QuinticSplineError("invalid batched spline times, positions or derivative order");
   const double first = times_.front().count();

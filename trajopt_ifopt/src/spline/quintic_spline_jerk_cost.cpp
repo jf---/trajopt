@@ -14,7 +14,7 @@ QuinticSplineJerkCost::QuinticSplineJerkCost(const QuinticSplineModel& model,
   : ConstraintSet(std::move(name), static_cast<int>(3 * (model.knotCount() - 1) * model.axisCount()))
   , knots_(std::move(knots))
 {
-  if (static_cast<Eigen::Index>(knots_.size()) != model.knotCount() || axis_weights.size() != model.axisCount() ||
+  if (static_cast<Eigen::Index>(knots_.size()) != model.variableCount() || axis_weights.size() != model.axisCount() ||
       !axis_weights.allFinite() || !(axis_weights.array() > 0).all() || knots_.empty() || !knots_.front())
     throw QuinticSplineError("jerk cost knot layout or axis weights invalid");
   const auto& names = knots_.front()->name();
@@ -34,7 +34,7 @@ QuinticSplineJerkCost::QuinticSplineJerkCost(const QuinticSplineModel& model,
   for (Eigen::Index sample = 0; sample < quadrature.weights.size(); ++sample)
     for (Eigen::Index axis = 0; axis < model.axisCount(); ++axis)
       coefficients_[sample * model.axisCount() + axis] = quadrature.weights[sample] * axis_weights[axis];
-  non_zeros_ = static_cast<Eigen::Index>(rows_) * model.knotCount();
+  non_zeros_ = static_cast<Eigen::Index>(rows_) * model.variableCount();
 }
 
 void QuinticSplineJerkCost::initVariableDependedQuantities(const Variables::Ptr& variables)

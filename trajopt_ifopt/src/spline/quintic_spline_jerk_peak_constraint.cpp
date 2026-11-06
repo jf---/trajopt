@@ -21,7 +21,7 @@ QuinticSplineJerkPeakConstraint::QuinticSplineJerkPeakConstraint(const QuinticSp
   , map_(model.map(witnesses, 3))
   , normalization_(std::move(normalization))
 {
-  if (witnesses.empty() || static_cast<Eigen::Index>(knots_.size()) != model.knotCount() ||
+  if (witnesses.empty() || static_cast<Eigen::Index>(knots_.size()) != model.variableCount() ||
       normalization_.size() != model.axisCount() || !normalization_.allFinite() ||
       !(normalization_.array() > 0).all() || !peak_ || peak_->size() != model.axisCount() || !peak_->getParent() ||
       !peak_->getParent()->getParent() || peak_->getIndex() < 0)

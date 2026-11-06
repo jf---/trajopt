@@ -17,7 +17,7 @@ QuinticSplinePositionLimits::QuinticSplinePositionLimits(const QuinticSplineMode
   : ConstraintSet(std::move(name), static_cast<int>(2 * static_cast<Eigen::Index>(samples.size()) * model.axisCount()))
   , knots_(std::move(knots))
 {
-  if (static_cast<Eigen::Index>(knots_.size()) != model.knotCount() ||
+  if (static_cast<Eigen::Index>(knots_.size()) != model.variableCount() ||
       static_cast<Eigen::Index>(limits.size()) != model.axisCount() || samples.empty() || knots_.empty() ||
       !knots_.front())
     throw QuinticSplineError("position constraint knot, sample or limit layout invalid");
@@ -47,7 +47,7 @@ QuinticSplinePositionLimits::QuinticSplinePositionLimits(const QuinticSplineMode
   for (std::size_t i = 0; i < samples.size(); ++i)
     for (const auto& bound : limits)
       bounds_.emplace_back(-infinity, bound.getUpper());
-  non_zeros_ = static_cast<Eigen::Index>(rows_) * model.knotCount();
+  non_zeros_ = static_cast<Eigen::Index>(rows_) * model.variableCount();
 }
 
 void QuinticSplinePositionLimits::initVariableDependedQuantities(const Variables::Ptr& variables)

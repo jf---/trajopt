@@ -3,6 +3,7 @@
 #include <Eigen/Core>
 #include <trajopt_common/macros.h>
 #include <chrono>
+#include <optional>
 #include <stdexcept>
 #include <vector>
 
@@ -40,7 +41,15 @@ public:
                                   const Eigen::VectorXd& velocity_end,
                                   const Eigen::VectorXd& acceleration_end);
 
-  Eigen::Index knotCount() const { return position_coefficients_.cols(); }
+  /** Missing acceleration is an optimized variable, ordered after all position knots. */
+  static QuinticSplineModel buildVariableAcceleration(std::vector<Seconds> times,
+                                                      const Eigen::VectorXd& velocity_start,
+                                                      std::optional<Eigen::VectorXd> acceleration_start,
+                                                      const Eigen::VectorXd& velocity_end,
+                                                      std::optional<Eigen::VectorXd> acceleration_end);
+
+  Eigen::Index knotCount() const { return static_cast<Eigen::Index>(times_.size()); }
+  Eigen::Index variableCount() const { return position_coefficients_.cols(); }
   Eigen::Index axisCount() const { return boundary_coefficients_.cols(); }
 
   /** Return q^(order)(t) = basis * knot_positions + offset. */

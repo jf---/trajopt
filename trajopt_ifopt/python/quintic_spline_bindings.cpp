@@ -1,6 +1,7 @@
 #include "../include/trajopt_ifopt/spline/spline_fixed_join_progress_velocity.h"
 #include <nanobind/nanobind.h>
 #include <nanobind/eigen/dense.h>
+#include <nanobind/stl/optional.h>
 #include <nanobind/stl/shared_ptr.h>
 #include <nanobind/stl/string.h>
 #include <nanobind/stl/vector.h>
@@ -53,6 +54,22 @@ NB_MODULE(_quintic_spline, m)
           "velocity_end"_a,
           "acceleration_end"_a,
           nb::call_guard<nb::gil_scoped_release>())
+      .def_static(
+          "build_variable_acceleration",
+          [](const std::vector<double>& times,
+             const Eigen::VectorXd& v0,
+             std::optional<Eigen::VectorXd> a0,
+             const Eigen::VectorXd& v1,
+             std::optional<Eigen::VectorXd> a1) {
+            return ti::QuinticSplineModel::buildVariableAcceleration(
+                seconds(times), v0, std::move(a0), v1, std::move(a1));
+          },
+          "times_s"_a,
+          "velocity_start"_a,
+          "acceleration_start"_a,
+          "velocity_end"_a,
+          "acceleration_end"_a,
+          nb::call_guard<nb::gil_scoped_release>())
       .def(
           "map",
           [](const ti::QuinticSplineModel& self, const std::vector<double>& times, unsigned order) {
@@ -78,8 +95,11 @@ NB_MODULE(_quintic_spline, m)
           "max_order"_a,
           nb::call_guard<nb::gil_scoped_release>())
       .def("jerk_quadrature", &ti::QuinticSplineModel::jerkQuadrature, nb::call_guard<nb::gil_scoped_release>())
-      .def("jerk_fourth_quadrature", &ti::QuinticSplineModel::jerkFourthQuadrature, nb::call_guard<nb::gil_scoped_release>())
+      .def("jerk_fourth_quadrature",
+           &ti::QuinticSplineModel::jerkFourthQuadrature,
+           nb::call_guard<nb::gil_scoped_release>())
       .def_prop_ro("knot_count", &ti::QuinticSplineModel::knotCount)
+      .def_prop_ro("variable_count", &ti::QuinticSplineModel::variableCount)
       .def_prop_ro("axis_count", &ti::QuinticSplineModel::axisCount);
   nb::class_<ti::QuinticSplineJerkCost, ti::ConstraintSet>(m, "QuinticSplineJerkCost")
       .def(nb::init<const ti::QuinticSplineModel&,
@@ -100,19 +120,28 @@ NB_MODULE(_quintic_spline, m)
            "axis_weights"_a,
            "name"_a = "ContinuousSplineJerkFourth");
   nb::class_<ti::QuinticSplineJerkPeakConstraint, ti::ConstraintSet>(m, "QuinticSplineJerkPeakConstraint")
-      .def("__init__",
-           [](ti::QuinticSplineJerkPeakConstraint* self,
-              const ti::QuinticSplineModel& model,
-              std::vector<std::shared_ptr<const ti::Var>> knots,
-              std::shared_ptr<const ti::Var> peak,
-              const std::vector<double>& witnesses,
-              Eigen::VectorXd normalization,
-              std::string name) {
-             new (self) ti::QuinticSplineJerkPeakConstraint(model, std::move(knots), std::move(peak),
-                                                            seconds(witnesses), std::move(normalization),
-                                                            std::move(name));
-           },
-           "model"_a, "knots"_a, "peak"_a, "witnesses_s"_a, "normalization"_a, "name"_a = "SplineJerkPeak");
+      .def(
+          "__init__",
+          [](ti::QuinticSplineJerkPeakConstraint* self,
+             const ti::QuinticSplineModel& model,
+             std::vector<std::shared_ptr<const ti::Var>> knots,
+             std::shared_ptr<const ti::Var> peak,
+             const std::vector<double>& witnesses,
+             Eigen::VectorXd normalization,
+             std::string name) {
+            new (self) ti::QuinticSplineJerkPeakConstraint(model,
+                                                           std::move(knots),
+                                                           std::move(peak),
+                                                           seconds(witnesses),
+                                                           std::move(normalization),
+                                                           std::move(name));
+          },
+          "model"_a,
+          "knots"_a,
+          "peak"_a,
+          "witnesses_s"_a,
+          "normalization"_a,
+          "name"_a = "SplineJerkPeak");
   nb::class_<ti::QuinticSplinePositionLimits, ti::ConstraintSet>(m, "QuinticSplinePositionLimits")
       .def(
           "__init__",

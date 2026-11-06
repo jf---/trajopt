@@ -2,7 +2,7 @@
 
 import numpy as np
 from native_accel_transits import TransitContractError, refine_transits
-from peak_witnesses import PeakWitnessError, refine_peak_witnesses
+from peak_witnesses import DEFAULT_MAX_WITNESS_ROUNDS, PeakWitnessError, refine_peak_witnesses
 from scipy.interpolate import make_interp_spline
 
 # Existing SQP constraint feasibility setting, in normalized jerk units.
@@ -11,10 +11,24 @@ SQP_FEASIBILITY_BAND = 1e-4
 INITIAL_WITNESS_COUNT = 7
 
 
-def make_peak_transit_solver(weight, reference_time_s):
-    """Construct an opt-in solver; zero weight is the original native path."""
+def make_peak_transit_solver(
+    weight,
+    reference_time_s,
+    *,
+    absolute_merit_improvement=None,
+    max_witness_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
+):
+    """Construct an opt-in solver with an explicit shared SQP and witness policy."""
+    if (
+        isinstance(max_witness_rounds, bool)
+        or not isinstance(max_witness_rounds, int)
+        or max_witness_rounds <= 0
+    ):
+        raise TransitContractError("positive integer witness budget required")
 
     def solve(env, info, names, segments, clock, speeds, **kwargs):
+        if absolute_merit_improvement is not None:
+            kwargs["absolute_merit_improvement"] = absolute_merit_improvement
         if weight == 0:
             return refine_transits(env, info, names, segments, clock, speeds, **kwargs)
         selected = [
@@ -27,6 +41,11 @@ def make_peak_transit_solver(weight, reference_time_s):
 
         def round_solve(witnesses, previous):
             seed = None if previous is None else previous["solution"]["nodes"]
+            accelerations = (
+                None
+                if previous is None
+                else (previous["solution"]["a0"], previous["solution"]["a1"])
+            )
             result = refine_transits(
                 env,
                 info,
@@ -39,6 +58,7 @@ def make_peak_transit_solver(weight, reference_time_s):
                 peak_reference_time_s=reference_time_s,
                 peak_witness_times_s=witnesses,
                 seed_positions=seed,
+                seed_accelerations=accelerations,
             )
             if len(result) != 1:
                 raise TransitContractError("peak refinement expected one result")
@@ -65,6 +85,7 @@ def make_peak_transit_solver(weight, reference_time_s):
                 round_solve,
                 normalization,
                 SQP_FEASIBILITY_BAND,
+                max_rounds=max_witness_rounds,
             )
         except PeakWitnessError as exc:
             raise TransitContractError(f"peak witness verification failed: {exc}") from exc

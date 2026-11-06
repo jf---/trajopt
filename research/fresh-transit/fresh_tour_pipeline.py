@@ -47,7 +47,9 @@ def modeled_tour_end_secants(segments, clock):
     return tuple(result)
 
 
-def refine_checked_tour(scene, tour, record, checked, raw, metadata, *, boundary_policy):
+def refine_checked_tour(
+    scene, tour, record, checked, raw, metadata, *, boundary_policy, transit_solver=None
+):
     """Return checked native transit curves with unchanged process and explicit joins.
 
     The caller supplies a boundary policy returning nine-axis velocities in
@@ -62,7 +64,8 @@ def refine_checked_tour(scene, tour, record, checked, raw, metadata, *, boundary
     start_velocity, end_velocity = boundary_policy(segments, clock)
     preparation_s = perf_counter() - start
     start = perf_counter()
-    outcomes = refine_transits(
+    solver = refine_transits if transit_solver is None else transit_solver
+    outcomes = solver(
         env,
         info,
         names,
@@ -82,8 +85,12 @@ def refine_checked_tour(scene, tour, record, checked, raw, metadata, *, boundary
     endpoint_states = {}
     for row in outcomes:
         v0, v1 = np.asarray(row["v0"]), np.asarray(row["v1"])
-        zero = np.zeros(7)
-        model = native.QuinticSplineModel.build(row["knots_s"], v0, zero, v1, zero)
+        if transit_solver is None:
+            # The original refiner explicitly constructs zero endpoint accelerations.
+            a0, a1 = np.zeros(7), np.zeros(7)
+        else:
+            a0, a1 = np.asarray(row["a0"]), np.asarray(row["a1"])
+        model = native.QuinticSplineModel.build(row["knots_s"], v0, a0, v1, a1)
         nodes = np.asarray(row["nodes"])
         times = np.linspace(0, row["duration_s"], SPLINE_SAMPLES)
         pos, vel = model.evaluate(times, nodes, 1)
@@ -107,7 +114,7 @@ def refine_checked_tour(scene, tour, record, checked, raw, metadata, *, boundary
             raise FreshSpeedError(
                 f"{row['stage']} sampled speed ratio exceeds one: {peak.tolist()}"
             )
-        curve = build_jerk_model(row["knots_s"], v0, zero, v1, zero).curve(nodes)
+        curve = build_jerk_model(row["knots_s"], v0, a0, v1, a1).curve(nodes)
         extrema = position_extrema(curve)
         raw_excursions = [
             max(limits[i, 0] - item["minimum"], item["maximum"] - limits[i, 1], 0.0)

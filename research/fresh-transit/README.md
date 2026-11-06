@@ -200,3 +200,44 @@ with the `fresh-transit`, `process-horizon/experiments`,
 `process-horizon/duration_sweep` and native binding modules on `PYTHONPATH`;
 pass `--help` for its complete CLI. Those local development libraries and
 artifact paths are research dependencies, not installed product components.
+
+## Fresh product and free outer acceleration
+
+The opt-in `fresh_product_jerk_trial.py` consumes an independently verified
+fresh product candidate in its retained worker scene. It uses one explicit
+β=0.1 peak weight, 1 s reference time, 1e−9 SQP absolute improvement and at
+most 12 adaptive witness rounds. Unknown outer acceleration is a free native
+optimization variable, not a controller measurement. Neighboring process
+acceleration comes from the explicit joint-linear interpolation model; a fixed
+fixture transit rejects an incompatible moving fixture boundary. Every transit
+is checked on its actual quintic; the independently verified original process
+and fixture geometry remains unchanged. The acceptance gate stays unresolved
+at unknown physical boundaries and sharp joint-linear interpolation corners.
+
+The [fresh Tour20 evidence](tour20-fresh-free-acceleration.json) records five
+actual spline checks and the modeled optimized endpoint accelerations. The
+225 reported process corners are undefined derivatives of the chosen
+piecewise-linear representation, not a count of physical robot defects.
+A separate fresh Tour09 attempt failed at a fixture/transit velocity mismatch;
+it was not accepted. The driver requires the installed research wheel plus the
+native Ifopt/SQP libraries explicitly and verifies their loaded paths. Its
+`--help` describes the station, tour-index, output and runtime inputs.
+
+For a reproducible local run, set the station, tour-index, installed wheel
+module, native Ifopt and corrected SQP library paths explicitly. The runtime
+needs the existing research modules and the dynamic spline collision binding in
+`PY_PATH`, and the corresponding native library directories in `LIB_PATH`:
+
+```bash
+pixi run --as-is --manifest-path "$MANIFEST" env \
+  PYTHONPATH="$PY_PATH" DYLD_LIBRARY_PATH="$LIB_PATH" \
+  OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 \
+  python research/fresh-transit/fresh_product_jerk_trial.py \
+  --station "$STATION" --tour-index "$TOUR_INDEX" \
+  --expected-wheel-module "$WHEEL_MODULE" --expected-ifopt-library "$IFOPT_LIBRARY" \
+  --expected-sqp-library "$SQP_LIBRARY" --tour 20 --tour 9 \
+  --output "$OUTPUT_DIRECTORY"
+```
+
+The inputs are development artifacts, not a packaged product; the driver rejects
+an already existing output directory and verifies the loaded libraries.
