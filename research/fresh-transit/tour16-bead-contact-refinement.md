@@ -1,5 +1,8 @@
 # Tour 16: generated bead block and collision-witness retry
 
+!!! warning "Earlier solve provisional"
+    The original experiment did not record the fixture state used when its kinematic group was constructed. A later test confirmed that constructing a group before changing the fixture can leave its workpiece transform stale. A rerun that sets the fixture first reached its 20-second SQP time limit, rather than the convergence reported below. Its modeled weld:278 target error was 2.781 mm, and it still failed the zero-penetration sampled check. The earlier figures remain historical evidence, not verified solver reproducibility or acceptance.
+
 **On the same modeled clock, the three-stage generated block's time-aware jerk fell substantially after one collision-witness refinement, but the retry still fails the zero-penetration sampled check.** The block covers `weld:277–279`; its outer joint position, velocity and acceleration are anchored to the generated cubic. The preceding generated lead is unchanged. The [machine-readable comparison](tour16-bead-contact-refinement.json) records all seven axes, process checks and source locations.
 
 | Measure | Generated block | Collision-witness retry | Evidence |
