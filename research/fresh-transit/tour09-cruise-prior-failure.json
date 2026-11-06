@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "scene_setup_s_contended": 3.3594961250200868,
+  "scope": "Rejected prior unconstrained nullspace run; track limit excursion, no relaxed checks.",
+  "ordered_stationary_events": [],
+  "outer_physical_derivatives": "unknown",
+  "modeled_duration_s": 153.2667370737528,
+  "error_type": "CurveLimitError",
+  "error": "actual spline exceeds configured band: [0.0006672210933706332, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows-main/.superpowers/native-trajopt-quintic/research/fresh-transit/probe_cruise_multi_verify.py\", line 125, in main\n    checked=inspect_sampled_curve(checker,q,limits,SQP_FEASIBILITY_BAND)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows-main/.superpowers/native-trajopt-quintic/research/fresh-transit/fresh_validation.py\", line 41, in inspect_sampled_curve\n    raise CurveLimitError(f\"actual spline exceeds configured band: {maximum.tolist()}\")\nfresh_validation.CurveLimitError: actual spline exceeds configured band: [0.0006672210933706332, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n",
+  "stages_checked": 54,
+  "failed_stage": "search:7"
+}
