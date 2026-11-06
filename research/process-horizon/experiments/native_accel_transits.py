@@ -12,6 +12,7 @@ import numpy as np
 from _spline_dynamic import DynamicSplineCollisionConstraint
 from free_space_transit import _ifopt_profile, _restore_scene
 from fresh_boundaries import modeled_boundaries
+from position_witness_times import merge_position_witness_times
 from tesseract_robotics import trajopt_ifopt as ti
 from tesseract_robotics import trajopt_sqp as sqp
 
@@ -82,6 +83,7 @@ def refine_transits(
     peak_risk_weight=0.0,
     peak_reference_time_s=None,
     peak_witness_times_s=None,
+    position_witness_times_s=None,
     seed_positions=None,
     seed_accelerations=None,
     absolute_merit_improvement=None,
@@ -281,9 +283,17 @@ def refine_transits(
                     sqp.CostPenaltyType.SQUARED,
                 )
             samples = np.linspace(0, duration, COLLOCATION_POINTS + 2)[1:-1].tolist()
+            position_samples = merge_position_witness_times(
+                samples,
+                [] if position_witness_times_s is None else position_witness_times_s,
+                duration,
+            )
             problem.addConstraintSet(
                 native.QuinticSplinePositionLimits(
-                    model, independent, samples, [ti.Bounds(float(a), float(b)) for a, b in limits]
+                    model,
+                    independent,
+                    position_samples,
+                    [ti.Bounds(float(a), float(b)) for a, b in limits],
                 )
             )
             mapping = model.map(samples, 0)

@@ -1,0 +1,4875 @@
+{
+  "assembly": {
+    "status": "partial_tour_with_failed_transits_and_unresolved_process",
+    "fixture_duration_factor": 1.5,
+    "fixture_modeled_s_before": 37.77464244023671,
+    "fixture_modeled_s_after": 56.66196366035507,
+    "assembled_stage_count": 1548,
+    "joint_linear_corners": 20514,
+    "modeled_join_count": 1547,
+    "modeled_join_velocity_unresolved": 1372,
+    "modeled_join_acceleration_unresolved": 71
+  },
+  "transit_results": [
+    {
+      "stage": "transit:16",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.04131812503328547,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:22",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.015745958022307605,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:39",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.016435541969258338,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:43",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.03060324996476993,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:57",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.017421624972485006,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:61",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.009929874970111996,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          4.195615123322339e-17,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        4.195615123322339e-17,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:86",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.011770625016652048,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          8.239641065533218e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        8.239645131555978e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:89",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.016920291003771126,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.5455795477473235e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.5455795477473238e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:103",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.020804291998501867,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.385059795364454e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.385059795364454e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:105",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.012160125013906509,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.454108997140504e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.454108997140506e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:117",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.05876187502872199,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.868105635412783e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.868105635412783e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:119",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.018046915996819735,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.7805406199925116e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.780540619992513e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:128",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.023735833005048335,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.633168281266385e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.633168281266385e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:132",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.06928887497633696,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.40634806075462e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.406348060754622e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:148",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.03184916696045548,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:150",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.049869292008224875,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:166",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.03992691601160914,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:168",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.08232529199449345,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:186",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.09054179198574275,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:188",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.029416374978609383,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:209",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.0855697919614613,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.2528819742734836e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.2528819742734836e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:213",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.010538832983002067,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.432377491858047e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.4323774918580485e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:226",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.010965124994982034,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.2739042707111493e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.2739042707111493e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:228",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.019593041972257197,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.633752768251401e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.633752768251402e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:236",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.02916270901914686,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.917944067981406e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.917944067981406e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:240",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.04283591697458178,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.337349393702384e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.337349393702384e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:251",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.08858274994418025,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.379155394711536e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.379155394711536e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:253",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.016266959020867944,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          9.690517094359439e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        9.690517094359439e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:268",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.023281582980416715,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.6714994853320002e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.6714994853320002e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:270",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.03456379199633375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.46094015424545e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.460940154245454e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:280",
+      "status": "failed",
+      "error": "actual spline exceeds configured band: [0.004817447912641892, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]"
+    },
+    {
+      "stage": "transit:283",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.028980707982555032,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.418480114423538e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.418480114423541e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:290",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.029901750036515296,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.39214187565217e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.39214187565217e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:293",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.01715487497858703,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.930943958267909e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.9309439582679096e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:327",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.016669958014972508,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.899742893913299e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.899749123282818e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:330",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.011916832998394966,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.2668965853534687e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.2668965853534688e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:339",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.010685292014386505,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.387795172753455e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.387795172753455e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:341",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.015187625016551465,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.601923780704602e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.601923780704605e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:351",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.010453374998178333,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:353",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.011826874979306012,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          3.21975528978323e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        3.21975528978323e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:363",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.007777124992571771,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          4.596193630255387e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        4.5962032126762274e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:367",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.018096207990311086,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.003825200622331e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.0038252006223316e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:377",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.019495833956170827,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.3823881663776416e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.3823881663776416e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:380",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.09957095899153501,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.066898030513972e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.0668980305139725e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:386",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.03631204197881743,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.0505962213620586e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.0505962213620586e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:391",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.040242332965135574,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.5465223377859645e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.5465223377859645e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:398",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.016535958042368293,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.814580776517255e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.814580776517255e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:400",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.04879954201169312,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.10946412213028e-18,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.10946412213028e-18,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:430",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.043407582968939096,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.849013060699216e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.849013060699216e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:432",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.02442462503677234,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.1151279752397451e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.1151279752397451e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:462",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.18142849998548627,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.4916129334021435e-08,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.494666014771728e-08,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:465",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.026003749982919544,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.1898115051819954e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.1898115051819958e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:472",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.026873166032601148,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.1032886732301799e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.1032886732301799e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:474",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.028162000002339482,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.886982888660684e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.8869828886606846e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:481",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.06339333299547434,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          8.415336611893275e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        8.415336611893275e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:483",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.00763287500012666,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.486530946200876e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.486530946200877e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:493",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.014105500013101846,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.445537443039377e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.445537443039377e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:495",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.01893274998292327,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.4660126199569367e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.4660126199569367e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:505",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.018183749984018505,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:507",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.017154417000710964,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.6187114660447075e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.6187114660447075e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:535",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.015411500004120171,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.427474317875415e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.427474317875415e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:537",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.012344999995548278,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.412081908639228e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.41208190863923e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:562",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.04324154200730845,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.8959986072091272e-19,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        3.8650648043806265e-19,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:567",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.04283958300948143,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.348119413925452e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.348119413925451e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:591",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.01967083296040073,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.9872933951520476e-14,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.9872933951520476e-14,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:593",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.1585924579994753,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          4.5929589290567935e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        4.5929589290567935e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:604",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.11390925000887364,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          4.3037849716041975e-09,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        4.315582330408378e-09,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:607",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.017171749961562455,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          5.978090126322072e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        5.9780901263220726e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:619",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.011235290963668376,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          9.632790296114234e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        9.632792407157122e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:625",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.010935291997157037,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.772647896107027e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.772647896107029e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:646",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.01509166695177555,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.015934826890538e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.015934826890538e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stage": "transit:648",
+      "status": "sampled_transit_fixture_join_checked",
+      "solver_status": "SQPStatus.NLP_CONVERGED",
+      "solver_s_contended": 0.01083500002278015,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          7.957985136483252e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        7.957985136483253e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "rejected_initial": {
+    "stage": "transit:280",
+    "status": "failed",
+    "optimized_curve": {
+      "stage": "transit:280",
+      "preserved_event_indices": [],
+      "status": "SQPStatus.NLP_CONVERGED",
+      "solver_s": 0.5658919159905054,
+      "duration_s": 1.1283335970090296,
+      "knots_s": [
+        0.0,
+        0.18805559950150494,
+        0.3761111990030099,
+        0.5641667985045148,
+        0.7522223980060198,
+        0.9402779975075247,
+        1.1283335970090296
+      ],
+      "nodes": [
+        [
+          3.190904530897174e-14,
+          1.2166566533334295,
+          -0.8582659970275146,
+          0.4611998542434002,
+          -1.3513648361058748,
+          0.2977735663168997,
+          -1.9896052884863789
+        ],
+        [
+          0.7622493451328012,
+          1.4679018536126622,
+          -0.822964423323457,
+          0.4388884168133096,
+          -1.264538472729855,
+          0.30302480731538567,
+          -1.892029506050604
+        ],
+        [
+          1.190731560416632,
+          1.6788263086626027,
+          -0.6577041993556861,
+          0.3303792872329649,
+          -0.9752056945098951,
+          0.25558827933690326,
+          -1.5261117665646888
+        ],
+        [
+          0.8641265676178035,
+          1.3284631441815884,
+          -0.4063716408431759,
+          0.191191793781638,
+          -0.5834704947466903,
+          0.16434667522995072,
+          -0.9541566342986646
+        ],
+        [
+          0.36731378217245,
+          0.6452419810943557,
+          -0.16724988846175762,
+          0.07414488390656777,
+          -0.23386876973520992,
+          0.06963390517739085,
+          -0.3969372214054094
+        ],
+        [
+          0.060315096658874974,
+          0.12059038796878131,
+          -0.027842932025282194,
+          0.011722974959103996,
+          -0.03810832288945591,
+          0.011845538839684212,
+          -0.06667955167181007
+        ],
+        [
+          1.6688803302994235e-16,
+          -7.445300432798969e-19,
+          3.619449622444291e-18,
+          3.817802204223932e-18,
+          8.250479596167445e-19,
+          3.29484148405888e-18,
+          1.159822445811426e-18
+        ]
+      ],
+      "v0": [
+        -0.39996264136095944,
+        -0.13560269643187936,
+        -0.08253203157629918,
+        0.13445054638924772,
+        -0.029477888813560754,
+        0.1104436943820256,
+        0.08148161004544432
+      ],
+      "v1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a0": [
+        1.3956079012128375,
+        1.3956077273444125,
+        1.3956046541318543,
+        -0.6830283029886551,
+        1.3956060715281664,
+        -0.2806963153982124,
+        1.3955989035982965
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_sources": [
+        "optimized_modeled",
+        "supplied_modeled"
+      ],
+      "fixture": [
+        1.22465e-16,
+        1.1
+      ],
+      "input_jerk": 9145.245603361509,
+      "result_jerk": 72660.49712723507
+    },
+    "actual_position_extrema": [
+      {
+        "minimum": -0.004817530392760559,
+        "minimum_time_s": 0.018666909429237974,
+        "maximum": 1.2138353690345647,
+        "maximum_time_s": 0.33329663081471583
+      },
+      {
+        "minimum": -1.9081958235744878e-17,
+        "minimum_time_s": 1.1283335963097234,
+        "maximum": 1.684315703079038,
+        "maximum_time_s": 0.3507649585413237
+      },
+      {
+        "minimum": -0.860091745643093,
+        "minimum_time_s": 0.040233676903631756,
+        "maximum": 1.0408340855860843e-17,
+        "maximum_time_s": 1.1283335962040788
+      },
+      {
+        "minimum": 3.817802204223932e-18,
+        "minimum_time_s": 1.1283335970090296,
+        "maximum": 0.4660661903020371,
+        "maximum_time_s": 0.06081754165962556
+      },
+      {
+        "minimum": -1.351589295219975,
+        "minimum_time_s": 0.013670591375151777,
+        "maximum": 8.250479596167445e-19,
+        "maximum_time_s": 1.1283335970090296
+      },
+      {
+        "minimum": 3.29484148405888e-18,
+        "minimum_time_s": 1.1283335970090296,
+        "maximum": 0.3060425442311568,
+        "maximum_time_s": 0.12421442455807091
+      },
+      {
+        "minimum": -1.9896052884863786,
+        "minimum_time_s": 0.0,
+        "maximum": 1.159822445811426e-18,
+        "maximum_time_s": 1.1283335970090296
+      }
+    ],
+    "raw_position_extrema_excess": [
+      0.004817530392760559,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "error_type": "CurveLimitError",
+    "error": "actual spline exceeds configured band: [0.004817447912641892, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows-main/.superpowers/native-trajopt-quintic/research/fresh-transit/fixture_transit_tour_trial.py\", line 186, in main\n    collision = inspect_sampled_curve(checker, full, limits, SQP_FEASIBILITY_BAND)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows-main/.superpowers/native-trajopt-quintic/research/fresh-transit/fresh_validation.py\", line 41, in inspect_sampled_curve\n    raise CurveLimitError(f\"actual spline exceeds configured band: {maximum.tolist()}\")\nfresh_validation.CurveLimitError: actual spline exceeds configured band: [0.004817447912641892, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n"
+  },
+  "rejected_adaptive": {
+    "stage": "transit:280",
+    "status": "failed",
+    "position_witness_attempts": [
+      {
+        "round": 0,
+        "witnesses_s": [
+          0.018666909429237974
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -0.002032258064722469,
+            "minimum_time_s": 0.009683869364594212,
+            "maximum": 2.066815711454905,
+            "maximum_time_s": 0.45588887613115364
+          },
+          {
+            "minimum": 3.521232119709715e-17,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 1.765524991956906,
+            "maximum_time_s": 0.37215141653140105
+          },
+          {
+            "minimum": -0.8585519302412394,
+            "minimum_time_s": 0.0069526539257678665,
+            "maximum": 0.0015807608842029316,
+            "maximum_time_s": 0.9414690332065182
+          },
+          {
+            "minimum": -3.140579603114095e-18,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.5280292564503555,
+            "maximum_time_s": 0.2848032804331214
+          },
+          {
+            "minimum": -1.3514400093030952,
+            "minimum_time_s": 0.005092122373128668,
+            "maximum": 6.551796650819982e-19,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -1.903551400112177e-17,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.5712823381223129,
+            "maximum_time_s": 0.4078982237008931
+          },
+          {
+            "minimum": -1.9896052884863786,
+            "minimum_time_s": 0.0,
+            "maximum": -6.318612219560812e-19,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 5.485492999956477
+      },
+      {
+        "round": 1,
+        "witnesses_s": [
+          0.009683869364594212,
+          0.018666909429237974
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -0.0009567904933337084,
+            "minimum_time_s": 0.00481281640957465,
+            "maximum": 1.807555337844582,
+            "maximum_time_s": 0.4539773698682296
+          },
+          {
+            "minimum": 7.168278264693957e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 1.6772852340762223,
+            "maximum_time_s": 0.3484875251521309
+          },
+          {
+            "minimum": -0.8586075299254363,
+            "minimum_time_s": 0.008333415907551016,
+            "maximum": -7.485117733334143e-20,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -2.293087594806842e-17,
+            "minimum_time_s": 1.1283335965538979,
+            "maximum": 0.4717774577202278,
+            "maximum_time_s": 0.13292637739710267
+          },
+          {
+            "minimum": -1.3514269474168878,
+            "minimum_time_s": 0.004214168519309032,
+            "maximum": 4.228388472693467e-18,
+            "maximum_time_s": 1.1283335938677335
+          },
+          {
+            "minimum": -3.686287386450715e-18,
+            "minimum_time_s": 1.1283335950550888,
+            "maximum": 0.37007482003788056,
+            "maximum_time_s": 0.3102671339771419
+          },
+          {
+            "minimum": -1.9896052884863786,
+            "minimum_time_s": 0.0,
+            "maximum": 4.180887646854452e-21,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 3.0246846660156734
+      },
+      {
+        "round": 2,
+        "witnesses_s": [
+          0.00481281640957465,
+          0.009683869364594212,
+          0.018666909429237974
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -0.00047822405273814905,
+            "minimum_time_s": 0.0023988311243389386,
+            "maximum": 3.6141738948529722,
+            "maximum_time_s": 0.4523107519528604
+          },
+          {
+            "minimum": 4.644135591669148e-21,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 2.255836733243911,
+            "maximum_time_s": 0.3956140894613149
+          },
+          {
+            "minimum": -0.8584433279689005,
+            "minimum_time_s": 0.00429777333386557,
+            "maximum": 0.11884950840733695,
+            "maximum_time_s": 0.6573340070761358
+          },
+          {
+            "minimum": -2.894819800536297e-17,
+            "minimum_time_s": 1.1283335960098815,
+            "maximum": 0.5056152106931576,
+            "maximum_time_s": 0.2462291113778619
+          },
+          {
+            "minimum": -1.3514202018477377,
+            "minimum_time_s": 0.0037565187464879556,
+            "maximum": 1.3620713761905688e-21,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -2.0780538943071732e-20,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.5469032322743508,
+            "maximum_time_s": 0.38792391353946065
+          },
+          {
+            "minimum": -1.9896052884863786,
+            "minimum_time_s": 0.0,
+            "maximum": -7.462911747707271e-22,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 1.466885415953584
+      },
+      {
+        "round": 3,
+        "witnesses_s": [
+          0.0023988311243389386,
+          0.00481281640957465,
+          0.009683869364594212,
+          0.018666909429237974
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -0.0002446761012793649,
+            "minimum_time_s": 0.0012257329088804624,
+            "maximum": 6.775591170731501,
+            "maximum_time_s": 0.45105496996982486
+          },
+          {
+            "minimum": -2.0995048350302633e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 3.1423044130176434,
+            "maximum_time_s": 0.3923831788954244
+          },
+          {
+            "minimum": -0.8583611865722505,
+            "minimum_time_s": 0.002306818871226218,
+            "maximum": 0.6050962591857647,
+            "maximum_time_s": 0.5452094078129053
+          },
+          {
+            "minimum": 2.0235151432194968e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.4643329817184852,
+            "maximum_time_s": 0.04671670596884631
+          },
+          {
+            "minimum": -1.351425342097141,
+            "minimum_time_s": 0.0041052589507940915,
+            "maximum": 1.0656945092737978e-19,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -2.9002408113987244e-18,
+            "minimum_time_s": 1.1283335944318758,
+            "maximum": 0.3009108095607117,
+            "maximum_time_s": 0.05700852067732591
+          },
+          {
+            "minimum": -1.9896052884863789,
+            "minimum_time_s": 0.0,
+            "maximum": 1.9272731722537427e-19,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 2.252182582975365
+      },
+      {
+        "round": 4,
+        "witnesses_s": [
+          0.0012257329088804624,
+          0.0023988311243389386,
+          0.00481281640957465,
+          0.009683869364594212,
+          0.018666909429237974,
+          0.3923831788954244
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -0.0001428712737541169,
+            "minimum_time_s": 0.0007159181825570138,
+            "maximum": 6.730745052194925,
+            "maximum_time_s": 0.4395817865401087
+          },
+          {
+            "minimum": -0.5953059741254781,
+            "minimum_time_s": 0.7204786091108768,
+            "maximum": 3.1544346211364362,
+            "maximum_time_s": 0.21143118935384175
+          },
+          {
+            "minimum": -0.8583314317078111,
+            "minimum_time_s": 0.001585843743657142,
+            "maximum": 1.1053962536458402,
+            "maximum_time_s": 0.5159808701395461
+          },
+          {
+            "minimum": -5.149960319306146e-19,
+            "minimum_time_s": 1.1283335932030596,
+            "maximum": 0.46433298031416775,
+            "maximum_time_s": 0.04671668628919516
+          },
+          {
+            "minimum": -1.3514253422105622,
+            "minimum_time_s": 0.004105266604820213,
+            "maximum": 1.0137290312739466e-17,
+            "maximum_time_s": 1.1283335954663782
+          },
+          {
+            "minimum": 4.489381740320317e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.30091079148537375,
+            "maximum_time_s": 0.057008215883139236
+          },
+          {
+            "minimum": -1.9896052884863789,
+            "minimum_time_s": 0.0,
+            "maximum": 1.871499955572569e-18,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 2.680563208006788
+      },
+      {
+        "round": 5,
+        "witnesses_s": [
+          0.0007159181825570138,
+          0.0012257329088804624,
+          0.0023988311243389386,
+          0.00481281640957465,
+          0.009683869364594212,
+          0.018666909429237974,
+          0.21143118935384175,
+          0.3923831788954244
+        ],
+        "actual_extrema": [
+          {
+            "minimum": -8.288158254185043e-05,
+            "minimum_time_s": 0.00041475904116634275,
+            "maximum": 16.000289771680826,
+            "maximum_time_s": 0.4299247519316616
+          },
+          {
+            "minimum": -0.7747109765410843,
+            "minimum_time_s": 0.7138195418065483,
+            "maximum": 3.1471231513510927,
+            "maximum_time_s": 0.2242308799558138
+          },
+          {
+            "minimum": -0.8583019242906347,
+            "minimum_time_s": 0.0008707467659989947,
+            "maximum": 2.176295352272051,
+            "maximum_time_s": 0.4795141064208258
+          },
+          {
+            "minimum": 2.42861286636753e-17,
+            "minimum_time_s": 1.1283335960319714,
+            "maximum": 0.9033654909404923,
+            "maximum_time_s": 0.36214751402387335
+          },
+          {
+            "minimum": -1.6165364197265875,
+            "minimum_time_s": 0.2984646741034257,
+            "maximum": 1.734723475976807e-17,
+            "maximum_time_s": 1.128333594081763
+          },
+          {
+            "minimum": 1.9081958235744878e-17,
+            "minimum_time_s": 1.128333594598393,
+            "maximum": 3.7538577710439163,
+            "maximum_time_s": 0.42471455638437483
+          },
+          {
+            "minimum": -1.9896052884863789,
+            "minimum_time_s": 0.0,
+            "maximum": 2.7896461748599086,
+            "maximum_time_s": 0.5065817482659626
+          }
+        ],
+        "solver_status": "SQPStatus.NLP_CONVERGED",
+        "solver_s_contended": 2.83576158399228
+      }
+    ],
+    "error_type": "FixtureTransitTourError",
+    "error": "actual position witness budget exhausted",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows-main/.superpowers/native-trajopt-quintic/research/fresh-transit/fixture_transit_tour_trial.py\", line 217, in main\n    raise FixtureTransitTourError(\"actual position witness budget exhausted\")\nFixtureTransitTourError: actual position witness budget exhausted\n"
+  },
+  "joint_fit_lead": {
+    "status": "sampled_neighborhood_physical_and_process_acceptance_unresolved",
+    "tour": 16,
+    "scene_setup_s_contended": 2.7938544579665177,
+    "lead": "weld:279",
+    "transit": "transit:280",
+    "scope": "Generated lead and transit with shared active-limit derivatives; modeled fixture timing and physical boundaries remain unknown.",
+    "lead_model": {
+      "times_s": [
+        0.0,
+        0.12501167566516758,
+        0.25002335133033515,
+        0.37503502699550273,
+        0.5000467026606703,
+        0.6250583783258379,
+        0.7500700539910055,
+        0.875081729656173,
+        1.0000934053213406,
+        1.1251050809865082,
+        1.2501167566516758,
+        1.3751284323168433,
+        1.500140107982011,
+        1.6251517836471785,
+        1.750163459312346,
+        1.8751751349775136,
+        2.0001868106426812
+      ],
+      "nodes": [
+        [
+          0.8,
+          1.498513906164284,
+          -0.7942947656573123,
+          0.34422574481598556,
+          -1.2566044080167005,
+          0.06361417871797936,
+          -2.1097698824912072
+        ],
+        [
+          0.75,
+          1.4806035584565693,
+          -0.7922699111168621,
+          0.342591563567646,
+          -1.2640147744211618,
+          0.0788519494033666,
+          -2.1044569360967866
+        ],
+        [
+          0.7000000000000001,
+          1.462680212350401,
+          -0.7910295217581869,
+          0.3421190897529405,
+          -1.2713184461011504,
+          0.09403117104616432,
+          -2.0988840310834753
+        ],
+        [
+          0.65,
+          1.4447553744490893,
+          -0.7905741664420625,
+          0.3428074802858676,
+          -1.2784967830039464,
+          0.10914901296954094,
+          -2.0930498657731658
+        ],
+        [
+          0.6000000000000001,
+          1.426840557101043,
+          -0.790905300859341,
+          0.34465792919309823,
+          -1.285531029875251,
+          0.12420201205715853,
+          -2.0869515220606827
+        ],
+        [
+          0.55,
+          1.4089472340916975,
+          -0.7920252791467894,
+          0.34767369171323814,
+          -1.2924022463455762,
+          0.13918611222302202,
+          -2.0805844297922587
+        ],
+        [
+          0.5,
+          1.391086796705741,
+          -0.793937393445854,
+          0.3518601497626248,
+          -1.299091233589938,
+          0.15409669844350793,
+          -2.073942316745671
+        ],
+        [
+          0.45,
+          1.3732705105785454,
+          -0.796645942585321,
+          0.35722492075070367,
+          -1.305578455963885,
+          0.16892862460516356,
+          -2.0670171432935396
+        ],
+        [
+          0.4,
+          1.3555094737416544,
+          -0.8001563318652503,
+          0.36377801311758784,
+          -1.3118439558870298,
+          0.18367623420386558,
+          -2.0597990201585645
+        ],
+        [
+          0.35000000000000003,
+          1.3378145762461529,
+          -0.8044752068510239,
+          0.3715320335744927,
+          -1.3178672600262376,
+          0.1983333726961649,
+          -2.0522761069041486
+        ],
+        [
+          0.30000000000000004,
+          1.3201964617202098,
+          -0.809610625223613,
+          0.38050245296861895,
+          -1.3236272745071427,
+          0.21289339003531316,
+          -2.0444344878985135
+        ],
+        [
+          0.25,
+          1.3026654911839763,
+          -0.8155722721665253,
+          0.3907079401161848,
+          -1.3291021664286962,
+          0.22734913160083559,
+          -2.0362580213834125
+        ],
+        [
+          0.2,
+          1.2852317094070855,
+          -0.822371726623951,
+          0.40217077605076934,
+          -1.3342692283328759,
+          0.24169291532252934,
+          -2.027728155885775
+        ],
+        [
+          0.15000000000000002,
+          1.2679048140523248,
+          -0.8300227882089688,
+          0.41491736519807576,
+          -1.3391047214351361,
+          0.2559164922674555,
+          -2.018823706414558
+        ],
+        [
+          0.1,
+          1.2506941278046924,
+          -0.8385418778173785,
+          0.42897886540965047,
+          -1.3435836922698703,
+          0.27001098724560024,
+          -2.009520580518001
+        ],
+        [
+          0.05,
+          1.2336085736390938,
+          -0.8479485294641109,
+          0.44439196614518295,
+          -1.34767975583022,
+          0.283966815015551,
+          -1.9997914410940556
+        ],
+        [
+          0.0,
+          1.2166566533334295,
+          -0.8582659970275146,
+          0.46119985424340015,
+          -1.3513648361058748,
+          0.29777356631689966,
+          -1.9896052884863789
+        ]
+      ],
+      "v0": [
+        0.0,
+        0.00010730857720132127,
+        -0.004270699546634528,
+        0.006507941348338153,
+        0.0006560846432549043,
+        -0.00015945845233112285,
+        0.0018606710993636266
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "v1": [
+        0.0,
+        -0.13560269643187936,
+        -0.08253203157629918,
+        0.13445054638924772,
+        -0.029477888813560754,
+        0.1104436943820256,
+        0.08148161004544432
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fixture": [
+        1.22465e-16,
+        1.1
+      ]
+    },
+    "original_generated_lead_end_velocity": [
+      -0.39996264136095944,
+      -0.13560269643187936,
+      -0.08253203157629918,
+      0.13445054638924772,
+      -0.029477888813560754,
+      0.1104436943820256,
+      0.08148161004544432
+    ],
+    "shared_limit_velocity": [
+      0.0,
+      -0.13560269643187936,
+      -0.08253203157629918,
+      0.13445054638924772,
+      -0.029477888813560754,
+      0.1104436943820256,
+      0.08148161004544432
+    ],
+    "fixture_duration_factor": 1.5,
+    "transit_curve": {
+      "stage": "transit:280",
+      "preserved_event_indices": [],
+      "status": "SQPStatus.NLP_CONVERGED",
+      "solver_s": 0.08129483298398554,
+      "duration_s": 1.1283335970090296,
+      "knots_s": [
+        0.0,
+        0.18805559950150494,
+        0.3761111990030099,
+        0.5641667985045148,
+        0.7522223980060198,
+        0.9402779975075247,
+        1.1283335970090296
+      ],
+      "nodes": [
+        [
+          -8.594539746568585e-15,
+          1.2166566533334295,
+          -0.8582659970275146,
+          0.46119985424340015,
+          -1.3513648361058748,
+          0.29777356631689966,
+          -1.9896052884863789
+        ],
+        [
+          4.077310687835935e-05,
+          1.1960782720866205,
+          -0.7692150124054682,
+          0.5104405210834225,
+          -1.3228188746311684,
+          0.3000334963891734,
+          -1.9056853132199418
+        ],
+        [
+          0.00014325221274130614,
+          1.0535777139916147,
+          -0.5033237363953599,
+          0.5140404110166515,
+          -1.1161917000337693,
+          0.241689647885035,
+          -1.5538731691951273
+        ],
+        [
+          0.0001954053195914494,
+          0.7107995591052275,
+          -0.24746804206432296,
+          0.37792322525601957,
+          -0.7257155419416644,
+          0.14671995631115767,
+          -0.9804373201458026
+        ],
+        [
+          0.00014245486420543256,
+          0.31296526612680775,
+          -0.08108922333181943,
+          0.17554790732027717,
+          -0.3111805975107337,
+          0.058950067923921094,
+          -0.410761264445269
+        ],
+        [
+          4.03194114548991e-05,
+          0.05484346575572192,
+          -0.01078205486366044,
+          0.03186819772812012,
+          -0.05349815915937235,
+          0.009580458920275193,
+          -0.06937726260002719
+        ],
+        [
+          -8.424408050533824e-15,
+          2.217114007406143e-19,
+          5.848708419127767e-20,
+          2.4268018997282684e-19,
+          8.240178734761495e-20,
+          -1.3590022131092313e-19,
+          3.97558853751305e-19
+        ]
+      ],
+      "v0": [
+        0.0,
+        -0.13560269643187936,
+        -0.08253203157629918,
+        0.13445054638924772,
+        -0.029477888813560754,
+        0.1104436943820256,
+        0.08148161004544432
+      ],
+      "v1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_sources": [
+        "supplied_modeled",
+        "supplied_modeled"
+      ],
+      "fixture": [
+        1.22465e-16,
+        1.1
+      ],
+      "input_jerk": 8602.36954378889,
+      "result_jerk": 377.9685515670417
+    },
+    "joins": [
+      {
+        "left": "weld:279",
+        "right": "transit:280",
+        "events": [],
+        "position_delta": [
+          -8.594539746568585e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_residuals": [
+          [
+            -8.594539746568585e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "velocity_delta": [
+          0.0,
+          0.0,
+          7.105427357601002e-15,
+          -1.7763568394002505e-15,
+          7.105427357601002e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_delta": [
+          1.6155871338926322e-27,
+          -6.821210263296962e-13,
+          3.410605131648481e-13,
+          -2.8421709430404007e-13,
+          1.1368683772161603e-12,
+          -1.7053025658242404e-13,
+          1.3642420526593924e-12,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "left": "transit:280",
+        "right": "fixture:281",
+        "events": [],
+        "position_delta": [
+          8.424408050533824e-15,
+          -2.217114007406143e-19,
+          -5.848708419127767e-20,
+          -2.4268018997282684e-19,
+          -8.240178734761495e-20,
+          1.3590022131092313e-19,
+          -3.97558853751305e-19,
+          0.0,
+          0.0
+        ],
+        "position_residuals": [
+          [
+            8.424408050533824e-15,
+            -2.217114007406143e-19,
+            -5.848708419127767e-20,
+            -2.4268018997282684e-19,
+            -8.240178734761495e-20,
+            1.3590022131092313e-19,
+            -3.97558853751305e-19,
+            0.0,
+            0.0
+          ]
+        ],
+        "velocity_delta": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_delta": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -4.930380657631324e-32,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "evaluations": [
+      {
+        "stage": "weld:279",
+        "collision_and_position": {
+          "sample_count": 1025,
+          "feasibility_band_native_units": 0.0001,
+          "max_raw_limit_excursion_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "penetrating_samples": 0
+        },
+        "position_extrema": [
+          {
+            "minimum": 0.0,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": 0.8000000000000002,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": 1.2166566533334295,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": 1.498513985033095,
+            "maximum_time_s": 0.0011039979341262009
+          },
+          {
+            "minimum": -0.8582659970275146,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": -0.790526820612035,
+            "maximum_time_s": 0.4058758858010296
+          },
+          {
+            "minimum": 0.341857749787521,
+            "minimum_time_s": 0.19324075674804225,
+            "maximum": 0.46119985424340015,
+            "maximum_time_s": 2.0001868106426812
+          },
+          {
+            "minimum": -1.3513648361058748,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": -1.2566025435794401,
+            "maximum_time_s": 0.004286320403541064
+          },
+          {
+            "minimum": 0.06361402372147898,
+            "minimum_time_s": 0.0014607293849702332,
+            "maximum": 0.29777356631689966,
+            "maximum_time_s": 2.0001868106426812
+          },
+          {
+            "minimum": -2.1097698824912077,
+            "minimum_time_s": 0.0,
+            "maximum": -1.9896052884863789,
+            "maximum_time_s": 2.0001868106426812
+          }
+        ],
+        "velocity_extrema": [
+          {
+            "minimum": -0.6584442942796849,
+            "minimum_time_s": 0.10710471892423831,
+            "maximum": 0.0,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.23594365925947047,
+            "minimum_time_s": 0.10711963491001937,
+            "maximum": 0.0001073085772053404,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.083187697567193,
+            "minimum_time_s": 1.9434058358708595,
+            "maximum": 0.028795546511208324,
+            "maximum_time_s": 0.10227579630616747
+          },
+          {
+            "minimum": -0.024883105762873392,
+            "minimum_time_s": 0.10004762406748875,
+            "maximum": 0.1354558697487969,
+            "maximum_time_s": 1.943409447544663
+          },
+          {
+            "minimum": -0.0979119540755729,
+            "minimum_time_s": 0.10686191821172554,
+            "maximum": 0.0006560846432539919,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.0001594584523312899,
+            "minimum_time_s": 0.0,
+            "maximum": 0.20071137069645434,
+            "maximum_time_s": 0.10703716417506745
+          },
+          {
+            "minimum": 0.001860671099369229,
+            "minimum_time_s": 0.0,
+            "maximum": 0.08181378533103222,
+            "maximum_time_s": 1.9434333491450013
+          }
+        ],
+        "raw_position_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "raw_velocity_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generated_lead_geometry": {
+          "max_position_departure_m": 0.012491774139435412,
+          "max_orientation_departure_rad": 3.523493151726998e-05,
+          "progress_min": -0.00033279538847147915,
+          "progress_max": 1.0260263253123305,
+          "max_backward_progress": 0.02602632531233051,
+          "max_backward_distance_m": 0.002602632531233052
+        },
+        "modeled_tool_feed_range_m_s": [
+          0.002567409122250005,
+          0.3839000776342269
+        ]
+      },
+      {
+        "stage": "transit:280",
+        "collision_and_position": {
+          "sample_count": 1025,
+          "feasibility_band_native_units": 0.0001,
+          "max_raw_limit_excursion_by_axis": [
+            8.594539746568585e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "penetrating_samples": 0
+        },
+        "position_extrema": [
+          {
+            "minimum": -8.594539746568587e-15,
+            "minimum_time_s": 0.0,
+            "maximum": 0.00019540655624305476,
+            "maximum_time_s": 0.5633011238132373
+          },
+          {
+            "minimum": 2.217114007406143e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 1.2166566533334295,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.8599453402269939,
+            "minimum_time_s": 0.031140898217944125,
+            "maximum": 5.848708419127767e-20,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": 2.4268018997282684e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.5288642939576855,
+            "maximum_time_s": 0.29241412847455506
+          },
+          {
+            "minimum": -1.35226418381792,
+            "minimum_time_s": 0.045351528495631226,
+            "maximum": 8.240178734761495e-20,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -1.3590022131092313e-19,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.3055490617820882,
+            "maximum_time_s": 0.11018317754652047
+          },
+          {
+            "minimum": -1.9896052884863786,
+            "minimum_time_s": 0.0,
+            "maximum": 3.97558853751305e-19,
+            "maximum_time_s": 1.1283335970090296
+          }
+        ],
+        "velocity_extrema": [
+          {
+            "minimum": -0.0005713678214404255,
+            "minimum_time_s": 0.8396933099519972,
+            "maximum": 0.0005732409587037037,
+            "maximum_time_s": 0.2867636624784777
+          },
+          {
+            "minimum": -2.194974207003092,
+            "minimum_time_s": 0.6144168371027146,
+            "maximum": 0.0,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -0.08253203157630147,
+            "minimum_time_s": 0.0,
+            "maximum": 1.5118942538629403,
+            "maximum_time_s": 0.34716076204620094
+          },
+          {
+            "minimum": -1.1068571928217692,
+            "minimum_time_s": 0.6598478063718372,
+            "maximum": 0.3408117825841337,
+            "maximum_time_s": 0.14878447746906098
+          },
+          {
+            "minimum": -0.029477888813562753,
+            "minimum_time_s": 0.0,
+            "maximum": 2.3271659429624036,
+            "maximum_time_s": 0.5873121648453554
+          },
+          {
+            "minimum": -0.5265925890320851,
+            "minimum_time_s": 0.5279711480317935,
+            "maximum": 0.1104436943820264,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": 0.0,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 3.270708188246085,
+            "maximum_time_s": 0.5614981877511577
+          }
+        ],
+        "raw_position_excess": [
+          8.594539746568587e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "raw_velocity_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "physical_boundaries": "unknown; predecessor secant and zero boundary accelerations are modeled hypotheses"
+  },
+  "cartesian_track_lead": {
+    "status": "sampled_neighborhood_physical_and_process_acceptance_unresolved",
+    "tour": 16,
+    "scene_setup_s_contended": 3.1207147499662824,
+    "lead": "weld:279",
+    "transit": "transit:280",
+    "scope": "Generated lead and transit with shared active-limit derivatives; modeled fixture timing and physical boundaries remain unknown.",
+    "minimum_clear_ik_branches": 4,
+    "lead_model": {
+      "times_s": [
+        0.0,
+        0.12501167566516758,
+        0.25002335133033515,
+        0.37503502699550273,
+        0.5000467026606703,
+        0.6250583783258379,
+        0.7500700539910055,
+        0.875081729656173,
+        1.0000934053213406,
+        1.1251050809865082,
+        1.2501167566516758,
+        1.3751284323168433,
+        1.500140107982011,
+        1.6251517836471785,
+        1.750163459312346,
+        1.8751751349775136,
+        2.0001868106426812
+      ],
+      "nodes": [
+        [
+          0.8,
+          1.498513906164284,
+          -0.7942947656573123,
+          0.34422574481598556,
+          -1.2566044080167005,
+          0.06361417871797936,
+          -2.1097698824912072
+        ],
+        [
+          0.7982254028320312,
+          1.4986077515780103,
+          -0.7887077481131257,
+          0.337324335058828,
+          -1.2566450275179202,
+          0.06394002528619369,
+          -2.111048643197491
+        ],
+        [
+          0.7871582031250001,
+          1.4952217635822809,
+          -0.7837598401350523,
+          0.3313802399376007,
+          -1.2581241100727008,
+          0.06714489667837054,
+          -2.111057181629655
+        ],
+        [
+          0.7609848022460938,
+          1.4861623406898348,
+          -0.7799687756038329,
+          0.3271524408620863,
+          -1.261938049706024,
+          0.07503545228765263,
+          -2.108976414035263
+        ],
+        [
+          0.7171875000000001,
+          1.4704802994880009,
+          -0.777924334802687,
+          0.3255036037901302,
+          -1.268417909852935,
+          0.08836584612407616,
+          -2.1043403955143036
+        ],
+        [
+          0.6559951782226563,
+          1.4482888986318487,
+          -0.7783453795046325,
+          0.3274869773239706,
+          -1.2773828475480629,
+          0.10699425699031018,
+          -2.096951544281108
+        ],
+        [
+          0.579833984375,
+          1.4205706853111044,
+          -0.7819547534249991,
+          0.3341675907235526,
+          -1.2882278679588435,
+          0.1300607832793217,
+          -2.086845075086603
+        ],
+        [
+          0.49277801513671876,
+          1.3889620581104527,
+          -0.789233396736436,
+          0.346267242278516,
+          -1.3000545779257435,
+          0.1561847287942577,
+          -2.0742884822022942
+        ],
+        [
+          0.4,
+          1.3555094737416544,
+          -0.8001563318652503,
+          0.36377801311758784,
+          -1.3118439558870298,
+          0.18367623420386558,
+          -2.0597990201585645
+        ],
+        [
+          0.30722198486328123,
+          1.3224072522215424,
+          -0.8140110835806571,
+          0.3856847072068983,
+          -1.32265123984176,
+          0.21075238068616953,
+          -2.04416337854261
+        ],
+        [
+          0.22016601562500004,
+          1.2917434093909232,
+          -0.8293715294940789,
+          0.4099034054257089,
+          -1.3317825036612274,
+          0.23574140269526467,
+          -2.0284365846088264
+        ],
+        [
+          0.14400482177734375,
+          1.2652829093192457,
+          -0.8442644430712969,
+          0.4335031825789235,
+          -1.3389028483380836,
+          0.25725584694685444,
+          -2.0138822678800956
+        ],
+        [
+          0.08281250000000001,
+          1.244302481272861,
+          -0.8565304314668927,
+          0.4532327762528965,
+          -1.3440380385026045,
+          0.27432143250023855,
+          -2.0018109643440267
+        ],
+        [
+          0.03901519775390625,
+          1.229466229019354,
+          -0.8643365663226146,
+          0.46630120079756887,
+          -1.3474696322950968,
+          0.28646402646398794,
+          -1.993300687010132
+        ],
+        [
+          0.012841796875,
+          1.2207109735780612,
+          -0.8667328498810583,
+          0.47124432855874243,
+          -1.349579886817615,
+          0.2937790675663865,
+          -1.9888504157074989
+        ],
+        [
+          0.00177459716796875,
+          1.2171049553273434,
+          -0.8640873036168184,
+          0.4686047425234978,
+          -1.3507457481515384,
+          0.29702476540692313,
+          -1.9880831117853361
+        ],
+        [
+          0.0,
+          1.2166566533334295,
+          -0.8582659970275146,
+          0.46119985424340015,
+          -1.3513648361058748,
+          0.29777356631689966,
+          -1.9896052884863789
+        ]
+      ],
+      "v0": [
+        0.0,
+        0.00010730857720132127,
+        -0.004270699546634528,
+        0.006507941348338153,
+        0.0006560846432549043,
+        -0.00015945845233112285,
+        0.0018606710993636266
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "v1": [
+        0.0,
+        -0.0035860809922636035,
+        0.0465661031925981,
+        -0.05923357350981349,
+        -0.004952241069022838,
+        0.005989847796154079,
+        -0.012176276279343076
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fixture": [
+        1.22465e-16,
+        1.1
+      ]
+    },
+    "original_generated_lead_end_velocity": [
+      -0.39996264136095944,
+      -0.13560269643187936,
+      -0.08253203157629918,
+      0.13445054638924772,
+      -0.029477888813560754,
+      0.1104436943820256,
+      0.08148161004544432
+    ],
+    "candidate_generated_lead_end_velocity": [
+      -0.014195451413049188,
+      -0.0035860809922636035,
+      0.0465661031925981,
+      -0.05923357350981349,
+      -0.004952241069022838,
+      0.005989847796154079,
+      -0.012176276279343076
+    ],
+    "shared_limit_velocity": [
+      0.0,
+      -0.0035860809922636035,
+      0.0465661031925981,
+      -0.05923357350981349,
+      -0.004952241069022838,
+      0.005989847796154079,
+      -0.012176276279343076
+    ],
+    "cartesian_track_coordination": true,
+    "fixture_duration_factor": 1.5,
+    "transit_curve": {
+      "stage": "transit:280",
+      "preserved_event_indices": [],
+      "status": "SQPStatus.NLP_CONVERGED",
+      "solver_s": 0.12758704199222848,
+      "duration_s": 1.1283335970090296,
+      "knots_s": [
+        0.0,
+        0.18805559950150494,
+        0.3761111990030099,
+        0.5641667985045148,
+        0.7522223980060198,
+        0.9402779975075247,
+        1.1283335970090296
+      ],
+      "nodes": [
+        [
+          -5.788869471839762e-15,
+          1.2166566533334295,
+          -0.8582659970275146,
+          0.46119985424340015,
+          -1.3513648361058748,
+          0.29777356631689966,
+          -1.9896052884863789
+        ],
+        [
+          5.0146596472205196e-05,
+          1.217570402553438,
+          -0.8143295557381297,
+          0.4351606574063519,
+          -1.2966470572480253,
+          0.28818224199278736,
+          -1.8576558520958366
+        ],
+        [
+          0.00018041458752545694,
+          1.1719371011230062,
+          -0.6419841992646701,
+          0.35120280221527206,
+          -1.041969727197935,
+          0.23661290192070625,
+          -1.4217085451285216
+        ],
+        [
+          0.00024769193862600697,
+          0.959276749113497,
+          -0.38304291130171525,
+          0.22015692235587436,
+          -0.6470060498054824,
+          0.14994280724992676,
+          -0.9925702461383432
+        ],
+        [
+          0.00018041458752545754,
+          0.5404009190944662,
+          -0.15046468232604893,
+          0.0918442733444375,
+          -0.2691128261694761,
+          0.0629963206813062,
+          -0.5654337256110595
+        ],
+        [
+          5.014659647220585e-05,
+          0.11865972247398508,
+          -0.02388194491164487,
+          0.015467266028001306,
+          -0.04546939664897806,
+          0.010660384940321333,
+          -0.13262108657299954
+        ],
+        [
+          -5.788869471837615e-15,
+          7.493756263381567e-20,
+          -4.0393248880442686e-20,
+          5.988142509800128e-22,
+          8.641426999249958e-20,
+          -4.6070091367184007e-20,
+          3.7989708819283394e-20
+        ]
+      ],
+      "v0": [
+        0.0,
+        -0.0035860809922636035,
+        0.0465661031925981,
+        -0.05923357350981349,
+        -0.004952241069022838,
+        0.005989847796154079,
+        -0.012176276279343076
+      ],
+      "v1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "a1": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "acceleration_sources": [
+        "supplied_modeled",
+        "supplied_modeled"
+      ],
+      "fixture": [
+        1.22465e-16,
+        1.1
+      ],
+      "input_jerk": 8261.861188000945,
+      "result_jerk": 429.6148439784559
+    },
+    "joins": [
+      {
+        "left": "weld:279",
+        "right": "transit:280",
+        "events": [],
+        "position_delta": [
+          -5.788869471839762e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "position_residuals": [
+          [
+            -5.788869471839762e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "velocity_delta": [
+          0.0,
+          0.0,
+          3.552713678800501e-15,
+          -3.552713678800501e-15,
+          7.105427357601002e-15,
+          1.7763568394002505e-15,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_delta": [
+          8.077935669463161e-28,
+          -4.547473508864641e-13,
+          4.547473508864641e-13,
+          -2.2737367544323206e-13,
+          1.1368683772161603e-12,
+          -1.7053025658242404e-13,
+          1.1368683772161603e-12,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "left": "transit:280",
+        "right": "fixture:281",
+        "events": [],
+        "position_delta": [
+          5.788869471837615e-15,
+          -7.493756263381567e-20,
+          4.0393248880442686e-20,
+          -5.988142509800128e-22,
+          -8.641426999249958e-20,
+          4.6070091367184007e-20,
+          -3.7989708819283394e-20,
+          0.0,
+          0.0
+        ],
+        "position_residuals": [
+          [
+            5.788869471837615e-15,
+            -7.493756263381567e-20,
+            4.0393248880442686e-20,
+            -5.988142509800128e-22,
+            -8.641426999249958e-20,
+            4.6070091367184007e-20,
+            -3.7989708819283394e-20,
+            0.0,
+            0.0
+          ]
+        ],
+        "velocity_delta": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "acceleration_delta": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "evaluations": [
+      {
+        "stage": "weld:279",
+        "collision_and_position": {
+          "sample_count": 1025,
+          "feasibility_band_native_units": 0.0001,
+          "max_raw_limit_excursion_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "penetrating_samples": 0
+        },
+        "position_extrema": [
+          {
+            "minimum": 0.0,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": 0.8000000000000002,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": 1.2166566533334295,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": 1.4986802378993074,
+            "maximum_time_s": 0.09826250138093647
+          },
+          {
+            "minimum": -0.866735341387106,
+            "minimum_time_s": 1.7461794167946,
+            "maximum": -0.7778141671975349,
+            "maximum_time_s": 0.542662227252084
+          },
+          {
+            "minimum": 0.32548311697263643,
+            "minimum_time_s": 0.4858195238340878,
+            "maximum": 0.47132631241672124,
+            "maximum_time_s": 1.7687337085104928
+          },
+          {
+            "minimum": -1.3513648361058748,
+            "minimum_time_s": 2.0001868106426812,
+            "maximum": -1.2565610638808087,
+            "maximum_time_s": 0.07315596738028311
+          },
+          {
+            "minimum": 0.06361039302595539,
+            "minimum_time_s": 0.030350796898587842,
+            "maximum": 0.29777356631689966,
+            "maximum_time_s": 2.0001868106426812
+          },
+          {
+            "minimum": -2.111489395358789,
+            "minimum_time_s": 0.1832258495280784,
+            "maximum": -1.9879394581855172,
+            "maximum_time_s": 1.838540696753711
+          }
+        ],
+        "velocity_extrema": [
+          {
+            "minimum": -0.7499299525517987,
+            "minimum_time_s": 1.0000934053213406,
+            "maximum": 0.0,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.2693638374622582,
+            "minimum_time_s": 0.9798796819482236,
+            "maximum": 0.0028815276685794067,
+            "maximum_time_s": 0.06147827340938708
+          },
+          {
+            "minimum": -0.12429148954312896,
+            "minimum_time_s": 1.2248471212898724,
+            "maximum": 0.07585884896967533,
+            "maximum_time_s": 0.10559949110568681
+          },
+          {
+            "minimum": -0.09438120342292242,
+            "minimum_time_s": 0.10532219887290728,
+            "maximum": 0.19604526496901709,
+            "maximum_time_s": 1.2280743280066162
+          },
+          {
+            "minimum": -0.09581885974597748,
+            "minimum_time_s": 0.869864153609091,
+            "maximum": 0.0007413060168932458,
+            "maximum_time_s": 0.030748111059841744
+          },
+          {
+            "minimum": -0.00016044564248941974,
+            "minimum_time_s": 0.0060577156439191975,
+            "maximum": 0.22101518991812957,
+            "maximum_time_s": 0.9705349685119433
+          },
+          {
+            "minimum": -0.01739050954487549,
+            "minimum_time_s": 0.09732372978984485,
+            "maximum": 0.12702897553728004,
+            "maximum_time_s": 1.136744776543172
+          }
+        ],
+        "raw_position_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "raw_velocity_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "generated_lead_geometry": {
+          "max_position_departure_m": 0.0004336139947355434,
+          "max_orientation_departure_rad": 2.755835283401884e-05,
+          "progress_min": -0.00032627786005756226,
+          "progress_max": 1.0,
+          "max_backward_progress": 0.00032627786005756226,
+          "max_backward_distance_m": 3.2627786005756234e-05
+        },
+        "modeled_tool_feed_range_m_s": [
+          0.002486088637125945,
+          0.08506047913378198
+        ]
+      },
+      {
+        "stage": "transit:280",
+        "collision_and_position": {
+          "sample_count": 1025,
+          "feasibility_band_native_units": 0.0001,
+          "max_raw_limit_excursion_by_axis": [
+            5.788869471839762e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "penetrating_samples": 0
+        },
+        "position_extrema": [
+          {
+            "minimum": -5.7888694718397615e-15,
+            "minimum_time_s": 0.0,
+            "maximum": 0.000247691938626007,
+            "maximum_time_s": 0.5641667985045148
+          },
+          {
+            "minimum": 7.493756263381567e-20,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 1.2178622044330192,
+            "maximum_time_s": 0.1607796471825538
+          },
+          {
+            "minimum": -0.8582659970275144,
+            "minimum_time_s": 0.0,
+            "maximum": -4.0393248880442686e-20,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -1.2468324983583301e-18,
+            "minimum_time_s": 1.128333596158924,
+            "maximum": 0.4611998542434001,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -1.3514047792067283,
+            "minimum_time_s": 0.012138083463696683,
+            "maximum": 1.734723475976807e-18,
+            "maximum_time_s": 1.1283335947000328
+          },
+          {
+            "minimum": -4.6070091367184007e-20,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 0.2978992985302373,
+            "maximum_time_s": 0.03171662441161205
+          },
+          {
+            "minimum": -1.989695241922602,
+            "minimum_time_s": 0.011134204579630054,
+            "maximum": 1.9081958235744878e-17,
+            "maximum_time_s": 1.1283335948448223
+          }
+        ],
+        "velocity_extrema": [
+          {
+            "minimum": -0.000730810263172613,
+            "minimum_time_s": 0.837158400349207,
+            "maximum": 0.0007308102631726138,
+            "maximum_time_s": 0.2911751966598246
+          },
+          {
+            "minimum": -2.5555266505115557,
+            "minimum_time_s": 0.7646656210528531,
+            "maximum": 0.015385359465195158,
+            "maximum_time_s": 0.10834476925300739
+          },
+          {
+            "minimum": 1.6001999121972304e-34,
+            "minimum_time_s": 1.1283335970090296,
+            "maximum": 1.426180936755664,
+            "maximum_time_s": 0.5172700397349864
+          },
+          {
+            "minimum": -0.7408277821389028,
+            "minimum_time_s": 0.5553524499553274,
+            "maximum": 0.0,
+            "maximum_time_s": 1.1283335970090296
+          },
+          {
+            "minimum": -0.00495224106902476,
+            "minimum_time_s": 0.0,
+            "maximum": 2.206025429460067,
+            "maximum_time_s": 0.5432496133283435
+          },
+          {
+            "minimum": -0.49744861826282766,
+            "minimum_time_s": 0.5654329192370814,
+            "maximum": 0.005989847796155548,
+            "maximum_time_s": 0.0
+          },
+          {
+            "minimum": -0.012176276279343912,
+            "minimum_time_s": 0.0,
+            "maximum": 2.5413192398711715,
+            "maximum_time_s": 0.34052578799195365
+          }
+        ],
+        "raw_position_excess": [
+          5.7888694718397615e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "raw_velocity_excess": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "physical_boundaries": "unknown; predecessor secant and zero boundary accelerations are modeled hypotheses"
+  }
+}
