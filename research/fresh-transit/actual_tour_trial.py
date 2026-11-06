@@ -20,8 +20,11 @@ from probe_group_coordination import build_probe_group
 from process_curve_representation import build_process_curve
 from process_geometry import assess_process_geometry
 from quintic_position_extrema import position_extrema
+from rotation_targets import interpolate_rotations
 from runtime_libraries import require_loaded_libraries
 from scipy.interpolate import CubicSpline
+from timed_weld_tour import generated_bead_input, preserve_scene
+from weld_piecewise_correction import correct_piecewise_weld
 from weld_tangent_leads import fit_lead
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
@@ -29,6 +32,9 @@ from tesseract_qt_py.core.retarget.pair_margins import PairMargins
 from tesseract_qt_py.core.types import Meters
 
 SAMPLES = 1025  # Existing independent spline sampling density.
+TIMED_POSE_WEIGHT = 1.0  # Shared dimensionless soft cost used in the three-block study.
+PROCESS_WEIGHT = 10.0  # Existing three-block process objective.
+INITIAL_TRUST_BOX = 0.01  # Existing mixed-axis SQP trust-box policy.
 SPEED_BOUND_ULPS = 32  # Binary64 allowance at an exactly declared speed bound.
 
 
@@ -53,6 +59,11 @@ def main():
     probe_group.add_argument("--probe-batch", type=Path)
     probe_group.add_argument("--probe-cruise-batch", type=Path)
     parser.add_argument("--weld-stage", required=True)
+    parser.add_argument(
+        "--timed-pose-bead",
+        action="store_true",
+        help="opt in to the generated bead timed Cartesian objective",
+    )
     args = parser.parse_args()
     require_loaded_libraries(
         [args.ifopt_library.resolve(strict=True), args.sqp_library.resolve(strict=True)]
@@ -80,7 +91,7 @@ def main():
     scene = initialize_scene(args.station, args.tour_index, args.output)
     setup = perf_counter() - begin
     initial = snapshot(scene)
-    env, _, _, _, names, _, _, _, _, _, _, _ = scene["inputs"]
+    env, _, _, _, names, _, _, _, _, _, info, _ = scene["inputs"]
     checker = StateChecker.build(env, tuple(names), {}, PairMargins.uniform(Meters(0)))
     limits = np.asarray(
         env.getJointGroup("complete_tour_nine", list(names)).getLimits().joint_limits
@@ -180,6 +191,64 @@ def main():
             (rawout(tout, 1), rawout(tout, 2)),
         )
         fixture = tuple(map(float, bead[0, 7:]))
+        if args.timed_pose_bead:
+            generated = generated_bead_input(rows[wi], bead_time)
+            source_poses = np.asarray([pose(bead[0]), pose(bead[-1])])
+            points = source_poses[:, :3, 3]
+            rotations = source_poses[:, :3, :3]
+
+            def target(_index, time_s, derivative=0):
+                if derivative == 0:
+                    return points[0] + (time_s / bead_time) * (points[1] - points[0])
+                if derivative == 1:
+                    return (points[1] - points[0]) / bead_time
+                raise TourTrialError("unsupported process target derivative")
+
+            def orientation(_index, time_s):
+                return interpolate_rotations(rotations[0], rotations[1], [time_s / bead_time])[0]
+
+            def save_bead(result):
+                report["timed_pose_bead"] = result
+                save()
+
+            with preserve_scene(env):
+                optimized = correct_piecewise_weld(
+                    env,
+                    info,
+                    names,
+                    speeds,
+                    limits,
+                    checker,
+                    generated,
+                    [rows[wi]],
+                    [bead_time],
+                    points,
+                    rotations,
+                    target,
+                    orientation,
+                    {"position_windows_s": [[]]},
+                    pose,
+                    save_bead,
+                    process_weight=PROCESS_WEIGHT,
+                    initial_trust_box=INITIAL_TRUST_BOX,
+                    constrain_process_knots=True,
+                    generated_lead_order=True,
+                    source_orientation_override=orientation,
+                    coalesce_generated_samples=True,
+                    timed_pose_weight=TIMED_POSE_WEIGHT,
+                )
+            report["timed_pose_bead"] = optimized
+            save()
+            if optimized["status"] != "sampled_curve_process_acceptance_unresolved":
+                raise TourTrialError("timed-pose bead failed its independent actual-curve checks")
+            record = optimized["stage_curves"][0]
+            bead_curve = CubicSpline(
+                np.asarray(record["knots_s"]),
+                np.asarray(record["nodes"]),
+                axis=0,
+                bc_type=((1, record["v0"]), (1, record["v1"])),
+            )
+            bead_stage = weld_stage(args.weld_stage, bead_time, bead_curve, 0.0, fixture)
         leads = [
             weld_stage(rows[wi - 1]["stage"], tin, curvein, 0.0, fixture),
             bead_stage,
@@ -301,8 +370,28 @@ def main():
             any(abs(value) > SQP_FEASIBILITY_BAND for value in join["position_delta"])
             for join in report["modeled_joins"]
         )
+        derivative_unresolved = any(
+            join["velocity_delta"] is None or join["acceleration_delta"] is None
+            for join in report["modeled_joins"]
+        )
+        derivative_breach = any(
+            any(abs(value) > SQP_FEASIBILITY_BAND for value in join[key])
+            for join in report["modeled_joins"]
+            for key in ("velocity_delta", "acceleration_delta")
+            if join[key] is not None
+        )
+        report["join_check_scope"] = (
+            "Existing mixed-axis SQP feasibility band applied to modeled q/qd/qdd join residuals; "
+            "not a physical tolerance or observed boundary derivative."
+        )
         if position_breach:
             report["status"] = "failed_modeled_position_join"
+        elif args.timed_pose_bead and corners:
+            report["status"] = "unresolved_joint_linear_corners"
+        elif args.timed_pose_bead and derivative_unresolved:
+            report["status"] = "unresolved_modeled_derivative_join"
+        elif args.timed_pose_bead and derivative_breach:
+            report["status"] = "failed_modeled_derivative_join"
         elif not all(x["sampled_speeds_pass"] for x in report["stages"]):
             report["status"] = "failed_sampled_sourced_speed"
         else:
