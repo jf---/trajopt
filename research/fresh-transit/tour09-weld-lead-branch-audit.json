@@ -1,0 +1,79 @@
+{
+  "scope": "All generated IK branches at each saved tangent-lead node, fixed generated rail and fixture; state collision checks only. Connections and continuous clearance are not established.",
+  "beads": [
+    {
+      "source_segment": 1202,
+      "leads": [
+        {
+          "stage": "weld:4",
+          "node_count": 18,
+          "min_clear_branches": 0,
+          "zero_clear_nodes": 10,
+          "connections_checked": false,
+          "first_zero_clear": {
+            "modeled_time_s": 0.0,
+            "branch_count": 8,
+            "chosen_worst_contact": {
+              "distance_m": -0.0505258143628967,
+              "links": [
+                "part_013",
+                "torch_link"
+              ]
+            }
+          }
+        },
+        {
+          "stage": "weld:9",
+          "node_count": 18,
+          "min_clear_branches": 8,
+          "zero_clear_nodes": 0,
+          "connections_checked": false,
+          "first_zero_clear": null
+        }
+      ]
+    },
+    {
+      "source_segment": 1210,
+      "leads": [
+        {
+          "stage": "weld:20",
+          "node_count": 17,
+          "min_clear_branches": 8,
+          "zero_clear_nodes": 0,
+          "connections_checked": false,
+          "first_zero_clear": null
+        },
+        {
+          "stage": "weld:22",
+          "node_count": 17,
+          "min_clear_branches": 4,
+          "zero_clear_nodes": 0,
+          "connections_checked": false,
+          "first_zero_clear": null
+        }
+      ]
+    },
+    {
+      "source_segment": 1218,
+      "leads": [
+        {
+          "stage": "weld:27",
+          "node_count": 17,
+          "min_clear_branches": 8,
+          "zero_clear_nodes": 0,
+          "connections_checked": false,
+          "first_zero_clear": null
+        },
+        {
+          "stage": "weld:29",
+          "node_count": 17,
+          "min_clear_branches": 8,
+          "zero_clear_nodes": 0,
+          "connections_checked": false,
+          "first_zero_clear": null
+        }
+      ]
+    }
+  ],
+  "full_local_evidence": ".superpowers/process-horizon09/weld-lead-branches-tour09/results.json"
+}

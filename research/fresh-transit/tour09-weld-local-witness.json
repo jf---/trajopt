@@ -1,0 +1,1412 @@
+{
+  "scope": "Exploratory generated tangent leads and local source-bead Cartesian blends through source waypoints; finite samples and modeled clock, no process or controller acceptance.",
+  "lead_policy": "matched-endpoints",
+  "witness_refinement": true,
+  "beads": [
+    {
+      "source_segment": 1202,
+      "status": "sampled_exploratory_weld_only",
+      "unresolved_bead_order_stages": [],
+      "initial_node_count": 102,
+      "final_node_count": 105,
+      "witness_refinement_s_contended": 0.5889896670123562,
+      "witnesses": [
+        {
+          "stage": "weld:4",
+          "modeled_time_s": 1.9454643239480287,
+          "initial_target_error_m": 0.0006566673951552127,
+          "clear_ik_branches": 8
+        },
+        {
+          "stage": "weld:9",
+          "modeled_time_s": 20.842493707422893,
+          "initial_target_error_m": 0.0006473502488348997,
+          "clear_ik_branches": 8
+        },
+        {
+          "stage": "weld:7",
+          "modeled_time_s": 19.90459909013802,
+          "initial_target_error_m": 7.462733746763006e-05,
+          "clear_ik_branches": 8
+        }
+      ],
+      "minimum_ik_branch_count": 8,
+      "minimum_clear_ik_branch_count": 8,
+      "ik_queries": 105,
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_waypoint_errors": [
+        {
+          "source_index": 0,
+          "position_m": 6.280383310932312e-16,
+          "orientation_rad": 8.025154038416285e-16
+        },
+        {
+          "source_index": 1,
+          "position_m": 4.972850431340754e-16,
+          "orientation_rad": 6.690187733356918e-16
+        },
+        {
+          "source_index": 2,
+          "position_m": 9.167763287717064e-16,
+          "orientation_rad": 4.577566798522237e-16
+        },
+        {
+          "source_index": 3,
+          "position_m": 7.535012591929473e-16,
+          "orientation_rad": 6.106226635438361e-16
+        },
+        {
+          "source_index": 4,
+          "position_m": 1.2086429840187376e-15,
+          "orientation_rad": 4.871083751574259e-16
+        }
+      ],
+      "modeled_joins": [
+        {
+          "left": "weld:4",
+          "right": "weld:5",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:5",
+          "right": "weld:6",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:6",
+          "right": "weld:7",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:7",
+          "right": "weld:8",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:8",
+          "right": "weld:9",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "stage": "weld:4",
+          "kind": "generated_lead",
+          "duration_s": 2.000156092091146,
+          "geometry": {
+            "max_position_departure_m": 6.199799692273898e-05,
+            "max_orientation_departure_rad": 9.99200074176707e-05,
+            "progress_min": -4.692806765063357e-16,
+            "progress_max": 1.0000496472118183,
+            "max_backward_progress": 4.964721181632825e-05,
+            "max_backward_distance_m": 4.964721181632837e-06
+          },
+          "target_geometry": {
+            "max_position_departure_m": 6.193417691963712e-05,
+            "max_orientation_departure_rad": 9.993427413621976e-05,
+            "progress_min": 0.0,
+            "progress_max": 1.000351702624579,
+            "max_backward_progress": 0.0003517026245789534,
+            "max_backward_distance_m": 3.517026245789542e-05
+          },
+          "blend_target_position_error_m": 8.136906801054507e-05,
+          "blend_target_orientation_error_rad": 4.726153691017266e-06,
+          "nominal_feed_m_s": 0.04999609800225696,
+          "modeled_feed_range_m_s": [
+            0.001828578690552216,
+            0.07894630388264992
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.01650105260446699,
+            0.008186743541881177,
+            0.010086132328137324,
+            0.011997244396038186,
+            0.001738166084976453,
+            0.00028270956285232136
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            21.24525892258106,
+            11.121205464259656,
+            13.415058379286144,
+            22.48685019854302,
+            2.489221301869689,
+            0.06101182114594844
+          ]
+        },
+        {
+          "stage": "weld:5",
+          "kind": "source_bead",
+          "duration_s": 0.31953999999999994,
+          "geometry": {
+            "max_position_departure_m": 2.2258159746213998e-05,
+            "max_orientation_departure_rad": 2.124475872280064e-05,
+            "progress_min": -1.0548697773361311e-16,
+            "progress_max": 1.0000000000002145,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 2.22634797699153e-05,
+            "max_orientation_departure_rad": 2.124972913219383e-05,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 8.322659607169797e-06,
+          "blend_target_orientation_error_rad": 4.831386907708408e-07,
+          "nominal_feed_m_s": 0.00499732159501318,
+          "modeled_feed_range_m_s": [
+            0.0028965272322508525,
+            0.005843541745468968
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0010318927001568758,
+            0.0010794363631888451,
+            0.00107505522569998,
+            0.0013653763543397509,
+            0.00033503306000188713,
+            0.0002922351119881036
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            17.526269690657976,
+            9.217769834175865,
+            11.167538389202045,
+            18.54617314045459,
+            2.0860502746278313,
+            0.2221669096459729
+          ]
+        },
+        {
+          "stage": "weld:6",
+          "kind": "source_bead",
+          "duration_s": 0.27796999999999983,
+          "geometry": {
+            "max_position_departure_m": 2.2258827961830325e-05,
+            "max_orientation_departure_rad": 6.877455769877295e-05,
+            "progress_min": 1.9479964474099318e-13,
+            "progress_max": 1.0000000000004774,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 2.2263612595778985e-05,
+            "max_orientation_departure_rad": 6.875667580349796e-05,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 1.0288198719911767e-07,
+          "blend_target_orientation_error_rad": 6.502774725221214e-07,
+          "nominal_feed_m_s": 0.004991449484123083,
+          "modeled_feed_range_m_s": [
+            0.0049747803634722825,
+            0.005042546792303118
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0007790014663409925,
+            0.0008889926559582314,
+            0.0009725914919899446,
+            0.0019285539786892943,
+            0.0007194049381421057,
+            0.0006156301861025302
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.3394354157578865,
+            0.4286158086966706,
+            0.23982489836063137,
+            1.772095306924522,
+            1.0441363322354587,
+            1.3853875403676548
+          ]
+        },
+        {
+          "stage": "weld:7",
+          "kind": "source_bead",
+          "duration_s": 17.84723,
+          "geometry": {
+            "max_position_departure_m": 3.176395579821696e-05,
+            "max_orientation_departure_rad": 0.00016472946456816363,
+            "progress_min": 7.484075531967103e-15,
+            "progress_max": 0.9999999999999952,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 3.87706471701241e-05,
+            "max_orientation_departure_rad": 9.779013522239888e-05,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 2.6439463174190278e-05,
+          "blend_target_orientation_error_rad": 0.00016830051533091338,
+          "nominal_feed_m_s": 0.004999927896925178,
+          "modeled_feed_range_m_s": [
+            0.004966292330357317,
+            0.005065852206207591
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0007341645535804923,
+            0.0009003555104530063,
+            0.0008166449989492075,
+            0.00278795210492288,
+            0.0011124623857125416,
+            0.0011831488548521606
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.08979299810927575,
+            0.14004033829855778,
+            0.16762603253116015,
+            0.4794203442098268,
+            0.20468080478470377,
+            0.4644437612832831
+          ]
+        },
+        {
+          "stage": "weld:8",
+          "kind": "source_bead",
+          "duration_s": 0.3390000000000022,
+          "geometry": {
+            "max_position_departure_m": 3.900090606646849e-05,
+            "max_orientation_departure_rad": 0.00011027715868720862,
+            "progress_min": -2.1899632480742908e-13,
+            "progress_max": 1.0000000000006741,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 3.899112581847845e-05,
+            "max_orientation_departure_rad": 0.00011024301250610346,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 8.41282080963638e-06,
+          "blend_target_orientation_error_rad": 1.0758547127230694e-06,
+          "nominal_feed_m_s": 0.005005414647511193,
+          "modeled_feed_range_m_s": [
+            0.004049980656297934,
+            0.005565601155140819
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0005220054501583148,
+            0.00042041667799512777,
+            0.0006859605481185728,
+            0.0016349189699534502,
+            0.0004994297486584803,
+            0.0005210971531098086
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            11.919216761492823,
+            7.61670164518445,
+            2.9579803947245584,
+            13.488114683589753,
+            0.7221668526594331,
+            10.241378826522268
+          ]
+        },
+        {
+          "stage": "weld:9",
+          "kind": "generated_lead",
+          "duration_s": 2.0001319366569352,
+          "geometry": {
+            "max_position_departure_m": 0.00014030223345256677,
+            "max_orientation_departure_rad": 0.0001070285700888869,
+            "progress_min": -3.598126571852114e-07,
+            "progress_max": 1.0000000000000013,
+            "max_backward_progress": 3.598126518680801e-07,
+            "max_backward_distance_m": 3.598126518680777e-08
+          },
+          "target_geometry": {
+            "max_position_departure_m": 0.0001404931179270596,
+            "max_orientation_departure_rad": 0.0001071741849631053,
+            "progress_min": -0.0001716414317512783,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0001716414317512783,
+            "max_backward_distance_m": 1.7164143175127716e-05
+          },
+          "blend_target_position_error_m": 8.166204242956715e-05,
+          "blend_target_orientation_error_rad": 4.860311404823443e-06,
+          "nominal_feed_m_s": 0.04999670180115295,
+          "modeled_feed_range_m_s": [
+            0.00397705603399636,
+            0.07793525470003486
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.013494684267700315,
+            0.008602486487101048,
+            0.002832058130456561,
+            0.011526314721969572,
+            0.0006242372012701588,
+            0.0057605111882556015
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            15.90879215377958,
+            10.140282724132803,
+            4.0526666088886465,
+            18.017434144274013,
+            0.7981731154441085,
+            13.759932674414856
+          ]
+        }
+      ],
+      "before_worst_target_departure_m": 0.0006566673951552127,
+      "after_worst_target_departure_m": 8.166204242956715e-05
+    },
+    {
+      "source_segment": 1210,
+      "status": "sampled_exploratory_weld_only",
+      "unresolved_bead_order_stages": [],
+      "initial_node_count": 49,
+      "final_node_count": 52,
+      "witness_refinement_s_contended": 0.3045640420168638,
+      "witnesses": [
+        {
+          "stage": "weld:21",
+          "modeled_time_s": 10.774951177997334,
+          "initial_target_error_m": 3.583767738156571e-05,
+          "clear_ik_branches": 4
+        },
+        {
+          "stage": "weld:22",
+          "modeled_time_s": 11.042192473072372,
+          "initial_target_error_m": 1.3949313928606866e-05,
+          "clear_ik_branches": 4
+        },
+        {
+          "stage": "weld:20",
+          "modeled_time_s": 1.9433498918895007,
+          "initial_target_error_m": 1.2773556778207934e-05,
+          "clear_ik_branches": 8
+        }
+      ],
+      "minimum_ik_branch_count": 12,
+      "minimum_clear_ik_branch_count": 4,
+      "ik_queries": 52,
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_waypoint_errors": [
+        {
+          "source_index": 0,
+          "position_m": 6.280369834735101e-16,
+          "orientation_rad": 8.1773032027145e-16
+        },
+        {
+          "source_index": 1,
+          "position_m": 6.280369834735101e-16,
+          "orientation_rad": 5.578801654593729e-16
+        }
+      ],
+      "modeled_joins": [
+        {
+          "left": "weld:20",
+          "right": "weld:21",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:21",
+          "right": "weld:22",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "stage": "weld:20",
+          "kind": "generated_lead",
+          "duration_s": 1.9999902404973353,
+          "geometry": {
+            "max_position_departure_m": 0.0009705238607929539,
+            "max_orientation_departure_rad": 3.3496616525515417e-07,
+            "progress_min": 0.0,
+            "progress_max": 1.0000000000000049,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 0.0009706828650846744,
+            "max_orientation_departure_rad": 3.3209294395591515e-07,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 8.73667531526918e-06,
+          "blend_target_orientation_error_rad": 2.2794997952184318e-08,
+          "nominal_feed_m_s": 0.05000024398875717,
+          "modeled_feed_range_m_s": [
+            0.005003983348754705,
+            0.07517685135561435
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0020514237322576145,
+            0.01200327375013135,
+            0.003726548213314506,
+            0.00359235132947378,
+            0.002912041979425553,
+            0.004689881588846172
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.1520573023451177,
+            0.7053776567305318,
+            0.14480179666032877,
+            0.34495248838231535,
+            0.26596140142844055,
+            0.6533742183990576
+          ]
+        },
+        {
+          "stage": "weld:21",
+          "kind": "source_bead",
+          "duration_s": 8.98556,
+          "geometry": {
+            "max_position_departure_m": 3.9902351215019926e-06,
+            "max_orientation_departure_rad": 8.855166955356042e-10,
+            "progress_min": 9.884647472340991e-15,
+            "progress_max": 1.00000000000001,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 4.440892098500626e-16,
+            "max_orientation_departure_rad": 7.949198794554405e-16,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 4.005510131165991e-06,
+          "blend_target_orientation_error_rad": 9.204524621645761e-10,
+          "nominal_feed_m_s": 0.005000030606660644,
+          "modeled_feed_range_m_s": [
+            0.004971376637519355,
+            0.005011982973141465
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.00028549988376102377,
+            0.0013049649868043965,
+            0.0018469587199017815,
+            0.0002454648711921295,
+            0.00012334323276720982,
+            0.00036207369728846034
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.4650430227165244,
+            0.9734144304341308,
+            0.9134151600997106,
+            0.013159515588019984,
+            0.3599692602972044,
+            0.30834158889412416
+          ]
+        },
+        {
+          "stage": "weld:22",
+          "kind": "generated_lead",
+          "duration_s": 2.000056764028861,
+          "geometry": {
+            "max_position_departure_m": 0.0006758278035654175,
+            "max_orientation_departure_rad": 3.3222248914002706e-07,
+            "progress_min": -0.0015613881002295616,
+            "progress_max": 0.9999999999999922,
+            "max_backward_progress": 0.0015613881002243348,
+            "max_backward_distance_m": 0.00015613881002243295
+          },
+          "target_geometry": {
+            "max_position_departure_m": 0.0006759826471601707,
+            "max_orientation_departure_rad": 3.3210398956044563e-07,
+            "progress_min": -0.0015601580660591422,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0015601580660591422,
+            "max_backward_distance_m": 0.0001560158066059137
+          },
+          "blend_target_position_error_m": 9.528352651689783e-06,
+          "blend_target_orientation_error_rad": 5.415618012030921e-09,
+          "nominal_feed_m_s": 0.0499985809395541,
+          "modeled_feed_range_m_s": [
+            0.0031844598388814744,
+            0.07749126082760674
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.006927362251036551,
+            0.013632189736088575,
+            0.011990416684261831,
+            0.00032922985440202065,
+            0.0042169501287775395,
+            0.0019458980621284965
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.4650430227165244,
+            0.9734144304341308,
+            0.9134151600997106,
+            0.013159515588019984,
+            0.3599692602972044,
+            0.30834158889412416
+          ]
+        }
+      ],
+      "before_worst_target_departure_m": 3.583767738156571e-05,
+      "after_worst_target_departure_m": 9.528352651689783e-06
+    },
+    {
+      "source_segment": 1218,
+      "status": "sampled_exploratory_weld_only",
+      "unresolved_bead_order_stages": [],
+      "initial_node_count": 49,
+      "final_node_count": 52,
+      "witness_refinement_s_contended": 0.2902253749780357,
+      "witnesses": [
+        {
+          "stage": "weld:28",
+          "modeled_time_s": 10.77499952787024,
+          "initial_target_error_m": 3.3893471644055424e-05,
+          "clear_ik_branches": 8
+        },
+        {
+          "stage": "weld:29",
+          "modeled_time_s": 11.042237248091888,
+          "initial_target_error_m": 1.3184903663093395e-05,
+          "clear_ik_branches": 8
+        },
+        {
+          "stage": "weld:27",
+          "modeled_time_s": 1.9433304490627552,
+          "initial_target_error_m": 1.26182782165206e-05,
+          "clear_ik_branches": 8
+        }
+      ],
+      "minimum_ik_branch_count": 8,
+      "minimum_clear_ik_branch_count": 8,
+      "ik_queries": 52,
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source_waypoint_errors": [
+        {
+          "source_index": 0,
+          "position_m": 1.1957467920563633e-15,
+          "orientation_rad": 4.809409384954738e-16
+        },
+        {
+          "source_index": 1,
+          "position_m": 7.021666937153402e-16,
+          "orientation_rad": 8.491573300505516e-16
+        }
+      ],
+      "modeled_joins": [
+        {
+          "left": "weld:27",
+          "right": "weld:28",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "left": "weld:28",
+          "right": "weld:29",
+          "events": [],
+          "position_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position_residuals": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "velocity_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "acceleration_delta": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "stage": "weld:27",
+          "kind": "generated_lead",
+          "duration_s": 1.9999702309952374,
+          "geometry": {
+            "max_position_departure_m": 0.0009385573368889659,
+            "max_orientation_departure_rad": 3.1060617591970075e-05,
+            "progress_min": -1.5239560485026112e-15,
+            "progress_max": 0.9999999999999927,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 0.0009387257496763768,
+            "max_orientation_departure_rad": 3.106329076766186e-05,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 8.680368457477631e-06,
+          "blend_target_orientation_error_rad": 3.916465208299235e-08,
+          "nominal_feed_m_s": 0.050000744236196625,
+          "modeled_feed_range_m_s": [
+            0.005009492746002259,
+            0.07485066625718512
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0015814319898574433,
+            0.01183718457992136,
+            0.02089673389771134,
+            0.0009146710200419027,
+            0.0038093141557655626,
+            0.003829692502247195
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.05299430729994428,
+            0.7444526572995345,
+            1.3235814143401454,
+            0.09813447174969517,
+            0.3743244324793288,
+            0.4652487910494982
+          ]
+        },
+        {
+          "stage": "weld:28",
+          "kind": "source_bead",
+          "duration_s": 8.98563,
+          "geometry": {
+            "max_position_departure_m": 3.857150143728959e-06,
+            "max_orientation_departure_rad": 3.980349704766758e-08,
+            "progress_min": -9.90206607425417e-15,
+            "progress_max": 0.999999999999995,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "target_geometry": {
+            "max_position_departure_m": 4.440892098500626e-16,
+            "max_orientation_departure_rad": 6.964174812892879e-16,
+            "progress_min": 0.0,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.0,
+            "max_backward_distance_m": 0.0
+          },
+          "blend_target_position_error_m": 3.951868957858381e-06,
+          "blend_target_orientation_error_rad": 1.2754889435988854e-08,
+          "nominal_feed_m_s": 0.005000028904347038,
+          "modeled_feed_range_m_s": [
+            0.004992457460609611,
+            0.0050089656581780604
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.000814044138833892,
+            0.000229281784636803,
+            0.00026612606937294396,
+            0.00017413865843677982,
+            0.0003720685764836076,
+            0.00026545258573863664
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.14203643637026309,
+            0.15416787646307278,
+            0.7360071256034177,
+            0.12692641835226764,
+            0.5344941730532368,
+            0.7458498341283348
+          ]
+        },
+        {
+          "stage": "weld:29",
+          "kind": "generated_lead",
+          "duration_s": 1.9998726036886028,
+          "geometry": {
+            "max_position_departure_m": 0.0009799111398305963,
+            "max_orientation_departure_rad": 3.1052651619451404e-05,
+            "progress_min": -0.0001017044477600428,
+            "progress_max": 1.0000000000000089,
+            "max_backward_progress": 0.00010170444776665143,
+            "max_backward_distance_m": 1.0170444776665196e-05
+          },
+          "target_geometry": {
+            "max_position_departure_m": 0.000980086537167274,
+            "max_orientation_departure_rad": 3.106177443262083e-05,
+            "progress_min": -0.00010839272664470117,
+            "progress_max": 1.0,
+            "max_backward_progress": 0.00010839272664470117,
+            "max_backward_distance_m": 1.0839272664470174e-05
+          },
+          "blend_target_position_error_m": 8.988459579702254e-06,
+          "blend_target_orientation_error_rad": 3.527454975410086e-08,
+          "nominal_feed_m_s": 0.05000318511067087,
+          "modeled_feed_range_m_s": [
+            0.004878584888012612,
+            0.075969733764261
+          ],
+          "sampled_speed_ratio": [
+            0.0,
+            0.0013599331452242107,
+            0.002298456533333716,
+            0.011475498805409481,
+            0.0015096974944160822,
+            0.006272359018781939,
+            0.005423937094088051
+          ],
+          "sampled_speeds_pass": true,
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.14203643637026309,
+            0.15416787646307278,
+            0.7360071256034177,
+            0.12692641835226764,
+            0.5344941730532368,
+            0.7458498341283348
+          ]
+        }
+      ],
+      "before_worst_target_departure_m": 3.3893471644055424e-05,
+      "after_worst_target_departure_m": 8.988459579702254e-06
+    }
+  ],
+  "full_local_evidence": ".superpowers/process-horizon09/weld-local-witness-tour09/results.json"
+}

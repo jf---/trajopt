@@ -1,0 +1,358 @@
+{
+  "tour": 9,
+  "scene_setup_s_contended": 2.9436092079849914,
+  "beads": [
+    {
+      "source_segment": 1202,
+      "source_pose_count": 5,
+      "stages": [
+        "weld:4",
+        "weld:5",
+        "weld:6",
+        "weld:7",
+        "weld:8",
+        "weld:9"
+      ],
+      "joins": [
+        {
+          "kind": "generated_lead_in_to_source_bead",
+          "left": "weld:4",
+          "right": "weld:5",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              -0.07118114391341192,
+              0.021134522798461175,
+              -0.06698191320990698
+            ],
+            [
+              5.178631729326811e-16,
+              -5.277202826240959e-16,
+              2.543847343565636e-17
+            ]
+          ],
+          "outgoing": [
+            [
+              0.0014168104913901336,
+              -0.0005184614219775341,
+              0.0005232179285443728
+            ],
+            [
+              5.091058203788048e-05,
+              -0.0007219702895513976,
+              -0.0007072273054710333
+            ]
+          ],
+          "right_rate_per_left_rate": null,
+          "dimensionless_alignment_residual": 0.9998921915372285,
+          "machine_band": 5.685066568243224e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_internal",
+          "left": "weld:5",
+          "right": "weld:6",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              0.0014168104913901336,
+              -0.0005184614219775341,
+              0.0005232179285443728
+            ],
+            [
+              5.091058203788048e-05,
+              -0.0007219702895513976,
+              -0.0007072273054710333
+            ]
+          ],
+          "outgoing": [
+            [
+              0.0013712332718491234,
+              -0.00015346378920344517,
+              0.00014577412888439056
+            ],
+            [
+              4.646845258686582e-05,
+              -0.0009149801578429735,
+              -0.0009008990086312045
+            ]
+          ],
+          "right_rate_per_left_rate": 0.9176784352622525,
+          "dimensionless_alignment_residual": 0.37727092249171834,
+          "machine_band": 7.530327211788502e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_internal",
+          "left": "weld:6",
+          "right": "weld:7",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              0.0013712332718491234,
+              -0.00015346378920344517,
+              0.00014577412888439056
+            ],
+            [
+              4.646845258686582e-05,
+              -0.0009149801578429735,
+              -0.0009008990086312045
+            ]
+          ],
+          "outgoing": [
+            [
+              0.08923401366615241,
+              0.0002774994116890861,
+              -0.0002731341443253932
+            ],
+            [
+              0.002698465658353147,
+              -0.1212591050164181,
+              -0.12102935887089859
+            ]
+          ],
+          "right_rate_per_left_rate": 0.011426614797550421,
+          "dimensionless_alignment_residual": 0.006070912884647738,
+          "machine_band": 8.038873388460929e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_internal",
+          "left": "weld:7",
+          "right": "weld:8",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              0.08923401366615241,
+              0.0002774994116890861,
+              -0.0002731341443253932
+            ],
+            [
+              0.002698465658353147,
+              -0.1212591050164181,
+              -0.12102935887089859
+            ]
+          ],
+          "outgoing": [
+            [
+              0.0015093613246985188,
+              0.0005457917917055521,
+              -0.0005506275038338337
+            ],
+            [
+              5.532902006661449e-05,
+              -0.000762904581807569,
+              -0.0007697119549369694
+            ]
+          ],
+          "right_rate_per_left_rate": 57.95791690965125,
+          "dimensionless_alignment_residual": 0.806637790938695,
+          "machine_band": 8.038873388460929e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_to_generated_lead_out",
+          "left": "weld:8",
+          "right": "weld:9",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              0.0015093613246985188,
+              0.0005457917917055521,
+              -0.0005506275038338337
+            ],
+            [
+              5.532902006661449e-05,
+              -0.000762904581807569,
+              -0.0007697119549369694
+            ]
+          ],
+          "outgoing": [
+            [
+              -0.0125837870732297,
+              -0.04603289703307989,
+              0.0878784427128596
+            ],
+            [
+              -1.2421545073905975e-16,
+              -7.29851965537954e-17,
+              5.762942509423052e-17
+            ]
+          ],
+          "right_rate_per_left_rate": null,
+          "dimensionless_alignment_residual": 1.0001011704934497,
+          "machine_band": 5.685160159519583e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        }
+      ]
+    },
+    {
+      "source_segment": 1210,
+      "source_pose_count": 2,
+      "stages": [
+        "weld:20",
+        "weld:21",
+        "weld:22"
+      ],
+      "joins": [
+        {
+          "kind": "generated_lead_in_to_source_bead",
+          "left": "weld:20",
+          "right": "weld:21",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              -0.09279079260609109,
+              -0.018466846697799966,
+              0.03238586698813739
+            ],
+            [
+              -3.6937169167622467e-16,
+              -5.445100821504489e-16,
+              -5.0667498759538684e-17
+            ]
+          ],
+          "outgoing": [
+            [
+              -9.106586044693721e-07,
+              -0.044928072180824064,
+              -1.5940737338127065e-05
+            ],
+            [
+              1.3038976001297112e-05,
+              6.836615675889177e-06,
+              3.385614106277847e-06
+            ]
+          ],
+          "right_rate_per_left_rate": 0.06899745096414305,
+          "dimensionless_alignment_residual": 0.9971350960200994,
+          "machine_band": 6.231690869422177e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_to_generated_lead_out",
+          "left": "weld:21",
+          "right": "weld:22",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              -9.106586044693721e-07,
+              -0.044928072180824064,
+              -1.5940737338127065e-05
+            ],
+            [
+              1.3038976001297112e-05,
+              6.836615675889177e-06,
+              3.385614106277847e-06
+            ]
+          ],
+          "outgoing": [
+            [
+              0.05176436491299723,
+              0.0728926614306975,
+              0.04480078609470706
+            ],
+            [
+              -4.420970394310737e-16,
+              -2.011532355191014e-16,
+              -1.4103037365711299e-16
+            ]
+          ],
+          "right_rate_per_left_rate": null,
+          "dimensionless_alignment_residual": 1.0462083302846152,
+          "machine_band": 6.23169086942218e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        }
+      ]
+    },
+    {
+      "source_segment": 1218,
+      "source_pose_count": 2,
+      "stages": [
+        "weld:27",
+        "weld:28",
+        "weld:29"
+      ],
+      "joins": [
+        {
+          "kind": "generated_lead_in_to_source_bead",
+          "left": "weld:27",
+          "right": "weld:28",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              -0.05311335794236484,
+              0.03103904195857765,
+              -0.07883875368357796
+            ],
+            [
+              3.7593637357263874e-16,
+              -4.1270508737269003e-16,
+              -4.523986845484617e-16
+            ]
+          ],
+          "outgoing": [
+            [
+              -3.217143497194486e-05,
+              0.044928398149803206,
+              -2.2356859936678575e-06
+            ],
+            [
+              4.6719812687502564e-05,
+              -0.0008779570151278931,
+              0.001106266648844825
+            ]
+          ],
+          "right_rate_per_left_rate": 0.11618856123600582,
+          "dimensionless_alignment_residual": 0.9918544266121756,
+          "machine_band": 6.231698666589472e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        },
+        {
+          "kind": "source_bead_to_generated_lead_out",
+          "left": "weld:28",
+          "right": "weld:29",
+          "status": "zero_tcp_velocity_for_exact_corner",
+          "incoming": [
+            [
+              -3.217143497194486e-05,
+              0.044928398149803206,
+              -2.2356859936678575e-06
+            ],
+            [
+              4.6719812687502564e-05,
+              -0.0008779570151278931,
+              0.001106266648844825
+            ]
+          ],
+          "outgoing": [
+            [
+              0.09512992391861237,
+              -0.012236760690358728,
+              0.028294155987518277
+            ],
+            [
+              -5.97091579274103e-16,
+              3.203029423436962e-17,
+              3.915666802394317e-16
+            ]
+          ],
+          "right_rate_per_left_rate": null,
+          "dimensionless_alignment_residual": 1.0948968884120514,
+          "machine_band": 6.231698666589466e-14,
+          "translation_below_roundoff": false,
+          "rotation_below_roundoff": false
+        }
+      ]
+    }
+  ],
+  "scope": "Source bead workpiece poses and already generated lead endpoints. Exact source-line and orientation tangents; machine-scale comparison is not a physical blend tolerance. No original robot joints used as planning seeds."
+}
