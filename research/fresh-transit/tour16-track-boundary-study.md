@@ -33,6 +33,14 @@ position and sourced-speed extrema; their modeled q/qd/qdd join and the
 transit/fixture join matched. Generated lead TCP speed ranges **2.49–85.06
 mm/s** on this modeled clock. The lead's feed variation, path tolerance,
 controller interpretation, physical boundary states and fixture dynamics are
-not approved or observed. The next step is to assemble this checked candidate
-without recomputing the other 71 transits and explicitly report the remaining
-unverified process stages.
+not approved or observed. The [follow-up assembly](tour16-fixture-transit-assembled.json) incorporates
+the checked lead and transit without recomputing the other 71 transits. All 72
+fixture-adjacent transits have finite collision, position and sourced-speed
+checks and modeled fixture-join diagnostics. The 69 fixture stages were checked
+separately under the same clock; the replacement lead was rechecked during
+assembly. The other 1,406 stages—241 transits, 892 probe stages and 273
+weld/lead stages—remain the previously sampled generated joint-linear path and
+were not rechecked at 1,025 samples here. The assembled path reports 1,369
+unresolved modeled velocity joins and 71 acceleration joins under a numerical
+parity test. These counts do not establish physical significance; complete
+process continuity and physical/manufacturing acceptance remain open.
