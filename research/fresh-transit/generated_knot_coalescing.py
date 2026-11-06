@@ -1,6 +1,9 @@
 """Select redundant-looking generated samples near protected process transitions."""
 
+from typing import Any
+
 import numpy as np
+import numpy.typing as npt
 
 SHORT_INTERVAL_FRACTION = 0.001  # Exploratory fraction of the median modeled sample spacing.
 EVENT_TIME_ULPS = 256  # Binary64 arithmetic in modeled seconds, not a physical tolerance.
@@ -10,7 +13,9 @@ class GeneratedKnotCoalescingError(RuntimeError):
     """Generated samples, speeds or protected event times are invalid."""
 
 
-def coalesce_generated_knots(times_s, positions, speed_limits, protected_times_s):
+def coalesce_generated_knots(
+    times_s: Any, positions: Any, speed_limits: Any, protected_times_s: Any
+) -> tuple[npt.NDArray[np.float64], list[float]]:
     """Keep transitions and endpoints; remove only a nearby ordinary generated sample.
 
     A candidate interval must be shorter than the named fraction of the median

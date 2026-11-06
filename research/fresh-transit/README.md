@@ -353,3 +353,35 @@ pixi run --as-is --manifest-path "$MANIFEST" env \
   --ifopt-library "$IFOPT_LIBRARY" --sqp-library "$SQP_LIBRARY" \
   --probe 0 --output "$OUTPUT_DIRECTORY"
 ```
+
+### Tour 16 generated weld blocks
+
+The [coalesced-block study](tour16-coalesced-bead-blocks.md) is an explicit
+research experiment, not an installed planner. Its `probe_clock_grid_trial.py`
+uses this checkout's native cubic and local-path constraints, the separate
+native dynamic-collision binding (`_spline_dynamic`), the PIQP-enabled SQP
+runtime, the research binding overlay, and the app's weld/oracle modules.
+Put those installed or built module directories on `PYTHONPATH` and the
+corresponding native library directories on `DYLD_LIBRARY_PATH`; missing
+dependencies are errors. The station, source tour index, checked generated
+recovery and generated weld batch must be supplied explicitly. Large scene and
+candidate inputs are local research artifacts and are not included here.
+
+With those paths set, the same bounded three-block experiment is:
+
+```bash
+pixi run --as-is --manifest-path "$MANIFEST" env \
+  PYTHONPATH="$PY_PATH" DYLD_LIBRARY_PATH="$LIB_PATH" \
+  python research/fresh-transit/probe_clock_grid_trial.py \
+  --station "$STATION" --tour-index "$TOUR_INDEX" --recovery "$RECOVERY" \
+  --weld-batch "$GENERATED_WELDS" --weld-only --piecewise-weld \
+  --piecewise-process-knots --piecewise-generated-lead-order \
+  --piecewise-representative-segments 1777 1835 1735 \
+  --piecewise-coalesce-generated --ifopt-library "$IFOPT_LIBRARY" \
+  --sqp-library "$SQP_LIBRARY" --output "$OUTPUT_DIRECTORY"
+```
+
+The supplied source segment IDs select the documented representative blocks;
+they are not per-block solver profiles. `--piecewise-coalesce-preview`
+examines the reconstructed source before solving. All clocks are modeled and
+the retained generated candidates and failed solver outputs remain distinct.

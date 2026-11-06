@@ -1,3 +1,6 @@
+#include "spline_timed_progress.h"
+#include "../include/trajopt_ifopt/spline/affine_spline_constraint.h"
+#include "../include/trajopt_ifopt/spline/cubic_spline_stage.h"
 #include "../include/trajopt_ifopt/spline/spline_fixed_join_progress_velocity.h"
 #include "../include/trajopt_ifopt/spline/quintic_spline_derivative_limits.h"
 #include "../include/trajopt_ifopt/spline/monotone_fixture_axis.h"
@@ -13,8 +16,10 @@
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
 #include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
 #include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
+#include <trajopt_ifopt/spline/spline_cartesian_path_progress_constraint.h>
 #include <trajopt_ifopt/spline/quintic_spline_position_limits.h>
 #include <trajopt_ifopt/variable_sets/var.h>
+#include <trajopt_sqp/qp_problem.h>
 
 namespace nb = nanobind;
 using namespace nb::literals;
@@ -22,6 +27,12 @@ namespace ti = trajopt_ifopt;
 
 namespace
 {
+class PiecewiseQpDiagnosticError : public std::runtime_error
+{
+public:
+  using std::runtime_error::runtime_error;
+};
+
 std::vector<ti::Seconds> seconds(const std::vector<double>& values)
 {
   std::vector<ti::Seconds> result;
@@ -35,6 +46,34 @@ std::vector<ti::Seconds> seconds(const std::vector<double>& values)
 NB_MODULE(_quintic_spline, m)
 {
   nb::module_::import_("tesseract_robotics.trajopt_ifopt");
+  nb::module_::import_("tesseract_robotics.trajopt_sqp");
+  nb::exception<PiecewiseQpDiagnosticError>(m, "PiecewiseQpDiagnosticError");
+  m.def("qp_diagnostic", [](const trajopt_sqp::QPProblem& problem, const Eigen::VectorXd& candidate) {
+    const auto& matrix = problem.getConstraintMatrix();
+    const auto& hessian = problem.getHessian();
+    const auto& gradient = problem.getGradient();
+    const auto& lower = problem.getBoundsLower();
+    const auto& upper = problem.getBoundsUpper();
+    if (candidate.size() != matrix.cols() || lower.size() != matrix.rows() || upper.size() != matrix.rows())
+      throw PiecewiseQpDiagnosticError("QP diagnostic dimensions do not match");
+    const Eigen::VectorXd projected = matrix * candidate;
+    const double residual = projected.size() == 0 ? 0.0 :
+        ((lower - projected).cwiseMax(projected - upper)).cwiseMax(0.0).maxCoeff();
+    const auto sparse_max = [](const auto& value) {
+      double result = 0.0;
+      for (Eigen::Index i = 0; i < value.nonZeros(); ++i)
+        result = std::max(result, std::abs(value.valuePtr()[i]));
+      return result;
+    };
+    nb::dict result;
+    result["qp_rows"] = matrix.rows();
+    result["qp_columns"] = matrix.cols();
+    result["primal_max_violation"] = residual;
+    result["hessian_max_abs"] = sparse_max(hessian);
+    result["constraint_max_abs"] = sparse_max(matrix);
+    result["gradient_max_abs"] = gradient.size() == 0 ? 0.0 : gradient.cwiseAbs().maxCoeff();
+    return result;
+  });
   nb::exception<ti::MonotoneFixtureAxisError>(m, "MonotoneFixtureAxisError");
   nb::class_<ti::MonotoneFixtureAxis>(m, "MonotoneFixtureAxis")
       .def_static(
@@ -61,12 +100,44 @@ NB_MODULE(_quintic_spline, m)
           },
           "times_s"_a);
   nb::exception<ti::QuinticSplineError>(m, "QuinticSplineError");
+  nb::exception<ti::CubicSplineStageError>(m, "CubicSplineStageError");
+  nb::exception<ti::AffineSplineConstraintError>(m, "AffineSplineConstraintError");
   nb::class_<ti::SplineAffineMap>(m, "SplineAffineMap")
       .def_ro("basis", &ti::SplineAffineMap::basis)
       .def_ro("offset", &ti::SplineAffineMap::offset);
   nb::class_<ti::JerkQuadrature>(m, "JerkQuadrature")
       .def_ro("map", &ti::JerkQuadrature::map)
       .def_ro("weights", &ti::JerkQuadrature::weights);
+  nb::class_<ti::CubicSplineStage>(m, "CubicSplineStage")
+      .def_static(
+          "build",
+          [](const std::vector<double>& times, Eigen::Index axes) {
+            return ti::CubicSplineStage::build(seconds(times), axes);
+          },
+          "times_s"_a,
+          "axis_count"_a,
+          nb::call_guard<nb::gil_scoped_release>())
+      .def(
+          "map",
+          [](const ti::CubicSplineStage& self, const std::vector<double>& samples, unsigned order) {
+            return self.map(seconds(samples), order);
+          },
+          "times_s"_a,
+          "order"_a,
+          nb::call_guard<nb::gil_scoped_release>());
+  nb::class_<ti::AffineSplineConstraint, ti::ConstraintSet>(m, "AffineSplineConstraint")
+      .def(nb::init<std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    std::vector<ti::Bounds>,
+                    Eigen::VectorXd,
+                    std::string>(),
+           "variables"_a,
+           "basis"_a,
+           "offset"_a,
+           "bounds"_a,
+           "coefficients"_a,
+           "name"_a = "AffineSpline");
   nb::class_<ti::QuinticSplineModel>(m, "QuinticSplineModel")
       .def_static(
           "build",
@@ -260,4 +331,34 @@ NB_MODULE(_quintic_spline, m)
            "include_start"_a,
            "include_end"_a,
            "name"_a = "SplineCartesianProgress");
+  nb::class_<ti::SplineCartesianPathProgressConstraint, ti::ConstraintSet>(m, "SplineCartesianPathProgressConstraint")
+      .def(nb::init<ti::CartLineInfo,
+                    std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    Eigen::VectorXd,
+                    bool,
+                    bool,
+                    std::string>(),
+           "info"_a, "knots"_a, "basis"_a, "offset"_a,
+           "path_points"_a, "path_tangents"_a, "arc_lengths"_a,
+           "include_start"_a, "include_end"_a, "name"_a = "SplineCartesianPathProgress");
+  nb::exception<ti::SplineTimedProgressError>(m, "SplineTimedProgressError", PyExc_ValueError);
+  nb::class_<ti::SplineTimedProgress, ti::ConstraintSet>(m, "SplineTimedProgress")
+      .def(nb::init<ti::CartLineInfo,
+                    std::vector<std::shared_ptr<const ti::Var>>,
+                    Eigen::MatrixXd,
+                    Eigen::MatrixXd,
+                    Eigen::VectorXd,
+                    Eigen::VectorXd,
+                    std::string>(),
+           "info"_a,
+           "knots"_a,
+           "basis"_a,
+           "offset"_a,
+           "targets"_a,
+           "coefficients"_a,
+           "name"_a = "SplineTimedProgress");
 }
