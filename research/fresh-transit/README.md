@@ -313,3 +313,43 @@ pixi run --as-is --manifest-path "$MANIFEST" env \
 The saved candidate and local research dependencies are not packaged product
 inputs. The output is a correctness-only observation made with potential
 concurrent work, so its elapsed times are not a performance benchmark.
+
+### Coordinated probe neighborhood diagnostic
+
+`probe_group_trial.py` uses the same generated process paths in the ordered
+approach, SearchL, retract and withdrawal stages. The fixed-path feasibility
+ablation explicitly sets zero velocity and acceleration at each of the three
+internal joins, retains nonzero outer rates, and gives each stage 15/8 of its
+original modeled duration. The factor is the peak derivative of the quintic
+stop-to-stop progress law; it is a shared diagnostic setting, not a sourced
+controller time or a hard feed guarantee. Both adjacent generated transits are
+refined against the resulting actual process q, qd and qdd. The existing
+modeled outer transit derivatives are retained; they are not controller feedback.
+
+The [Tour20 probe evidence](tour20-probe-group-evidence.json) records five
+matching modeled q/qd/qdd joins. All six actual curves passed 1,025 sampled
+collision checks, numerical position extrema and sampled sourced joint-speed
+checks. Maximum sampled departure from the four process lines was 5.7e−12 m
+and sampled progress remained ordered. This is finite-sample evidence for one
+probe neighborhood, not continuous-clearance or whole-tour acceptance. It
+assumes the previously verified hypothetical SearchL hit at the commanded
+limit; an actual hit and controller correction are not supplied.
+
+The process clock changed from 4.841 s to 9.077 s and the modeled search feed
+varied from zero to approximately 10 mm/s, rather than the original modeled
+uniform 10 mm/s. These stops and the altered feed are **not** a proposed
+production probe policy. The search reversal is explicit; the other two stops
+come from this fixed joint-path ablation and have not been established as
+physically necessary. Process timing and acceptable feed remain unresolved.
+
+To repeat the same local diagnostic, use the prior runtime and inputs with a
+fresh output directory:
+
+```bash
+pixi run --as-is --manifest-path "$MANIFEST" env \
+  PYTHONPATH="$PY_PATH" DYLD_LIBRARY_PATH="$LIB_PATH" \
+  python research/fresh-transit/probe_group_trial.py \
+  --station "$STATION" --tour-index "$TOUR_INDEX" --input "$CANDIDATE" \
+  --ifopt-library "$IFOPT_LIBRARY" --sqp-library "$SQP_LIBRARY" \
+  --probe 0 --output "$OUTPUT_DIRECTORY"
+```
