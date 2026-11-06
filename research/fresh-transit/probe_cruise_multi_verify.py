@@ -3,6 +3,7 @@
 import argparse
 import json
 import traceback
+from itertools import product
 from pathlib import Path
 from time import perf_counter
 
@@ -71,19 +72,29 @@ def main():
     parser.add_argument("--coalescing-fraction", type=float, default=SHORT_INTERVAL_FRACTION)
     parser.add_argument("--coalescing-preview", action="store_true")
     parser.add_argument("--timed-pose-weights", type=float, nargs="+", default=[TIMED_POSE_WEIGHT])
+    parser.add_argument("--timed-velocity-weights", type=float, nargs="+", default=[0.0])
     parser.add_argument("--timed-pose-modes", choices=["full", "bead"], nargs="+", default=["full"])
     args = parser.parse_args()
     if any(not np.isfinite(weight) or weight <= 0 for weight in args.timed_pose_weights):
         raise MultiProbeVerificationError("timed pose weights must be positive and finite")
-    if len(set(args.timed_pose_weights)) != len(args.timed_pose_weights) or len(
-        set(args.timed_pose_modes)
-    ) != len(args.timed_pose_modes):
+    if any(not np.isfinite(weight) or weight < 0 for weight in args.timed_velocity_weights):
+        raise MultiProbeVerificationError("timed velocity weights must be nonnegative and finite")
+    if (
+        len(set(args.timed_pose_weights)) != len(args.timed_pose_weights)
+        or len(set(args.timed_velocity_weights)) != len(args.timed_velocity_weights)
+        or len(set(args.timed_pose_modes)) != len(args.timed_pose_modes)
+    ):
         raise MultiProbeVerificationError("timed pose grid settings must be distinct")
     if (
-        args.timed_pose_weights != [TIMED_POSE_WEIGHT] or args.timed_pose_modes != ["full"]
+        args.timed_pose_weights != [TIMED_POSE_WEIGHT]
+        or args.timed_pose_modes != ["full"]
+        or args.timed_velocity_weights != [0.0]
     ) and not args.timed_pose_weld_batch:
         raise MultiProbeVerificationError("timed pose grid requires an explicit weld batch")
-    grid_mode = len(args.timed_pose_weights) * len(args.timed_pose_modes) > 1
+    grid_mode = (
+        len(args.timed_pose_weights) * len(args.timed_pose_modes) * len(args.timed_velocity_weights)
+        > 1
+    )
     if args.coalescing_preview and not args.timed_pose_weld_batch:
         raise MultiProbeVerificationError("coalescing preview requires timed pose welds")
     if args.timed_pose_weld_batch and not args.exploratory_welds:
@@ -253,8 +264,15 @@ def main():
                                 **blend,
                                 "position_windows_s": blend["position_windows_s"][first:last],
                             }
-                            for weight in args.timed_pose_weights:
-                                trial = {"mode": mode, "weight": weight, "status": "in_progress"}
+                            for weight, velocity_weight in product(
+                                args.timed_pose_weights, args.timed_velocity_weights
+                            ):
+                                trial = {
+                                    "mode": mode,
+                                    "weight": weight,
+                                    "velocity_weight": velocity_weight,
+                                    "status": "in_progress",
+                                }
                                 entry["trials"].append(trial)
                                 save()
 
@@ -294,6 +312,7 @@ def main():
                                             t: target_orientation(j + first, t),
                                             coalesce_generated_samples=True,
                                             timed_pose_weight=weight,
+                                            timed_velocity_weight=velocity_weight,
                                             coalescing_fraction=args.coalescing_fraction,
                                             preview_only=args.coalescing_preview,
                                             clock_offset_s=float(edges[first]),

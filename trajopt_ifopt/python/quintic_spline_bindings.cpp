@@ -16,6 +16,7 @@
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
 #include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
 #include <trajopt_ifopt/spline/spline_timed_cartesian_pose.h>
+#include <trajopt_ifopt/spline/spline_timed_cartesian_velocity.h>
 #include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
 #include <trajopt_ifopt/spline/spline_cartesian_path_progress_constraint.h>
 #include <trajopt_ifopt/spline/quintic_spline_position_limits.h>
@@ -293,6 +294,28 @@ NB_MODULE(_quintic_spline, m)
           "times_s"_a,
           "sample_axis_limits"_a,
           "name"_a = "SplineInterpolatedVelocityLimits");
+  nb::class_<ti::SplineTimedCartesianVelocity, ti::ConstraintSet>(m, "SplineTimedCartesianVelocity")
+      .def("__init__", [](ti::SplineTimedCartesianVelocity* self,
+                          ti::CartLineInfo info,
+                          const Eigen::Matrix4d& start_matrix,
+                          const Eigen::Matrix4d& end_matrix,
+                          std::vector<std::shared_ptr<const ti::Var>> knots,
+                          Eigen::VectorXd start_basis, Eigen::VectorXd start_offset,
+                          Eigen::VectorXd end_basis, Eigen::VectorXd end_offset,
+                          double interval_s, double speed_scale_m_s,
+                          double reference_time_s, double weight, std::string name) {
+        Eigen::Isometry3d start_target = Eigen::Isometry3d::Identity();
+        Eigen::Isometry3d end_target = Eigen::Isometry3d::Identity();
+        start_target.matrix() = start_matrix;
+        end_target.matrix() = end_matrix;
+        new (self) ti::SplineTimedCartesianVelocity(std::move(info), start_target, end_target, std::move(knots),
+            std::move(start_basis), std::move(start_offset), std::move(end_basis), std::move(end_offset),
+            ti::Seconds(interval_s), ti::WorkpieceSpeedScale{speed_scale_m_s}, ti::Seconds(reference_time_s),
+            weight, std::move(name));
+      }, "info"_a, "start_workpiece_pose"_a, "end_workpiece_pose"_a, "knots"_a,
+         "start_basis"_a, "start_offset"_a, "end_basis"_a, "end_offset"_a,
+         "interval_s"_a, "speed_scale_m_s"_a, "reference_time_s"_a, "weight"_a,
+         "name"_a = "SplineTimedCartesianVelocity");
   nb::class_<ti::SplineTimedCartesianPose, ti::ConstraintSet>(m, "SplineTimedCartesianPose")
       .def("__init__", [](ti::SplineTimedCartesianPose* self,
                           const ti::CartLineInfo& info,

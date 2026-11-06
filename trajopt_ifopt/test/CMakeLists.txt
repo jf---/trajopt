@@ -63,3 +63,5 @@ add_gtest(${PROJECT_NAME}_cubic_spline_stage_unit cubic_spline_stage_unit.cpp)
 add_gtest(${PROJECT_NAME}_affine_spline_constraint_unit affine_spline_constraint_unit.cpp)
 
 add_gtest(${PROJECT_NAME}_spline_timed_cartesian_pose_unit spline_timed_cartesian_pose_unit.cpp)
+
+add_gtest(${PROJECT_NAME}_spline_timed_cartesian_velocity_unit spline_timed_cartesian_velocity_unit.cpp)

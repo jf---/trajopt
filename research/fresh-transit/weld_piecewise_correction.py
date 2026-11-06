@@ -74,6 +74,7 @@ def correct_piecewise_weld(
     coalesce_generated_samples=False,
     preview_only=False,
     timed_pose_weight=0.0,
+    timed_velocity_weight=0.0,
     coalescing_fraction=SHORT_INTERVAL_FRACTION,
     extra_callback=None,
 ):
@@ -98,6 +99,8 @@ def correct_piecewise_weld(
         raise PiecewiseWeldError("process objective weight must be positive and finite")
     if not np.isfinite(timed_pose_weight) or timed_pose_weight < 0:
         raise PiecewiseWeldError("timed pose weight must be nonnegative and finite")
+    if not np.isfinite(timed_velocity_weight) or timed_velocity_weight < 0:
+        raise PiecewiseWeldError("timed velocity weight must be nonnegative and finite")
     if not np.isfinite(initial_trust_box) or initial_trust_box <= 0:
         raise PiecewiseWeldError("initial trust box must be positive and finite")
     if extra_witness_times is not None:
@@ -299,15 +302,40 @@ def correct_piecewise_weld(
                 ),
                 sqp.CostPenaltyType.SQUARED,
             )
-        for k, local_time in enumerate(local):
-            if timed_pose_weight > 0:
+        target_poses = []
+        if timed_pose_weight > 0 or timed_velocity_weight > 0:
+            for local_time in local:
                 target_pose = np.eye(4)
                 target_pose[:3, 3] = target(j, float(local_time))
                 target_pose[:3, :3] = source_orientation(j, float(local_time))
+                target_poses.append(target_pose)
+        if timed_velocity_weight > 0:
+            reference_speed = float(np.sqrt(length_squared) / durations[j])
+            for k in range(len(local) - 1):
+                problem.addCostSet(
+                    native.SplineTimedCartesianVelocity(
+                        line,
+                        target_poses[k],
+                        target_poses[k + 1],
+                        stage_vars,
+                        process_mapping.basis[k],
+                        process_mapping.offset[k],
+                        process_mapping.basis[k + 1],
+                        process_mapping.offset[k + 1],
+                        float(local[k + 1] - local[k]),
+                        reference_speed,
+                        float(durations[j]),
+                        timed_velocity_weight,
+                        f"piecewise-timed-velocity-{j}-{k}",
+                    ),
+                    sqp.CostPenaltyType.SQUARED,
+                )
+        for k, local_time in enumerate(local):
+            if timed_pose_weight > 0:
                 problem.addCostSet(
                     native.SplineTimedCartesianPose(
                         line,
-                        target_pose,
+                        target_poses[k],
                         stage_vars,
                         process_mapping.basis[k],
                         process_mapping.offset[k],
@@ -445,6 +473,8 @@ def correct_piecewise_weld(
         "initial": initial,
         "clock_cost_enabled": clock_cost,
         "timed_pose_weight": timed_pose_weight,
+        "timed_velocity_weight": timed_velocity_weight,
+        "timed_velocity_scales": "stage chord divided by modeled stage duration in m/s; time normalized by stage duration",
         "coalescing_fraction": coalescing_fraction,
         "timed_pose_position_scale": "stage chord length in metres; objective normalization only",
         "timed_pose_orientation_scale_rad": ORIENTATION_NORMALIZATION_RAD,
