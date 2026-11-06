@@ -14,7 +14,12 @@ class GeneratedKnotCoalescingError(RuntimeError):
 
 
 def coalesce_generated_knots(
-    times_s: Any, positions: Any, speed_limits: Any, protected_times_s: Any
+    times_s: Any,
+    positions: Any,
+    speed_limits: Any,
+    protected_times_s: Any,
+    *,
+    short_interval_fraction: float = SHORT_INTERVAL_FRACTION,
 ) -> tuple[npt.NDArray[np.float64], list[float]]:
     """Keep transitions and endpoints; remove only a nearby ordinary generated sample.
 
@@ -29,7 +34,9 @@ def coalesce_generated_knots(
     speeds = np.asarray(speed_limits, dtype=float)
     protected = np.asarray(protected_times_s, dtype=float)
     if (
-        times.ndim != 1
+        not np.isfinite(short_interval_fraction)
+        or not 0.0 < short_interval_fraction < 1.0
+        or times.ndim != 1
         or len(times) < 2
         or not np.isfinite(times).all()
         or np.any(np.diff(times) <= 0)
@@ -55,7 +62,7 @@ def coalesce_generated_knots(
                 "each protected event must match exactly one existing sample"
             )
         is_protected[found[0]] = True
-    threshold = SHORT_INTERVAL_FRACTION * float(np.median(np.diff(times)))
+    threshold = short_interval_fraction * float(np.median(np.diff(times)))
     removed = set()
     for index in range(1, len(times) - 1):
         if is_protected[index]:

@@ -1,0 +1,40 @@
+{
+  "status": "matched_qp_replay_completed",
+  "source_segment": 1202,
+  "scene_setup_s_contended": 2.957080500025768,
+  "scope": "One live generated QP replayed twice; unchanged constraints, tolerances, weights and trust box. Not a whole-tour result.",
+  "replays": [
+    {
+      "scale_cost": false,
+      "status": "solved",
+      "iterations": 18,
+      "piqp_primal_residual": 1.1615793438224387e-08,
+      "piqp_dual_residual": 2.4378380706045184,
+      "piqp_objective": -242696107.98335245,
+      "objective": -242696107.77071968,
+      "objective_abs_term_sum": 2559312266408170.0,
+      "objective_term_roundoff_scale": 0.5682814810743886,
+      "max_constraint_violation": 1.1615793216179782e-08,
+      "max_trust_box_violation": 0.0
+    },
+    {
+      "scale_cost": true,
+      "status": "solved",
+      "iterations": 21,
+      "piqp_primal_residual": 4.6257728308883236e-11,
+      "piqp_dual_residual": 4.160824345681324,
+      "piqp_objective": -242696107.85329816,
+      "objective": -242696107.80725598,
+      "objective_abs_term_sum": 2559140173724660.5,
+      "objective_term_roundoff_scale": 0.5682432688224682,
+      "max_constraint_violation": 4.3655745685100555e-11,
+      "max_trust_box_violation": 0.0,
+      "objective_delta_from_default": -0.010334346661905096,
+      "objective_delta_abs_term_sum": 175274981002.75424,
+      "objective_delta_term_roundoff_scale": 3.8918863909998934e-05
+    }
+  ],
+  "callback_iteration": 1,
+  "source_solver_status": "SQPStatus.CALLBACK_STOPPED",
+  "callback_calls": 1
+}

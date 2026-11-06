@@ -17,6 +17,7 @@ from fixture_easing_policy import ease_fixture_chains
 from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import CurveLimitError, inspect_sampled_curve
+from generated_knot_coalescing import SHORT_INTERVAL_FRACTION
 from probe_cruise_clock import search_cruise_clock
 from probe_cruise_trial import one_sided_progress
 from process_geometry import assess_process_geometry
@@ -24,13 +25,19 @@ from quintic_position_extrema import position_extrema
 from rotation_targets import interpolate_rotations, rotation_errors
 from runtime_libraries import require_loaded_libraries
 from scipy.interpolate import CubicSpline
+from stage_local_weld_adapter import optimization_window, stage_local_curves
+from timed_weld_tour import preserve_scene
 from weld_local_blend import build_local_weld_blend
+from weld_piecewise_correction import correct_piecewise_weld
 from weld_tangent_leads import fit_lead
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
 from tesseract_qt_py.core.types import Meters
 
+TIMED_POSE_WEIGHT = 1.0  # Same dimensionless objective as the Tour20 trial.
+PROCESS_WEIGHT = 10.0  # Shared three-block process objective.
+INITIAL_TRUST_BOX = 0.01  # Shared mixed-axis SQP trust-box policy.
 SAMPLES = 1025  # Existing independent actual-curve collision sampling density.
 MACHINE_ROUNDOFF_ULPS = 256  # Numerical comparison only, not a process tolerance.
 
@@ -56,7 +63,31 @@ def main():
         action="store_true",
         help="verify explicit exploratory weld curves in the batch",
     )
+    parser.add_argument(
+        "--timed-pose-weld-batch",
+        type=Path,
+        help="opt in to stage-local refinement using the original generated blend evidence",
+    )
+    parser.add_argument("--coalescing-fraction", type=float, default=SHORT_INTERVAL_FRACTION)
+    parser.add_argument("--coalescing-preview", action="store_true")
+    parser.add_argument("--timed-pose-weights", type=float, nargs="+", default=[TIMED_POSE_WEIGHT])
+    parser.add_argument("--timed-pose-modes", choices=["full", "bead"], nargs="+", default=["full"])
     args = parser.parse_args()
+    if any(not np.isfinite(weight) or weight <= 0 for weight in args.timed_pose_weights):
+        raise MultiProbeVerificationError("timed pose weights must be positive and finite")
+    if len(set(args.timed_pose_weights)) != len(args.timed_pose_weights) or len(
+        set(args.timed_pose_modes)
+    ) != len(args.timed_pose_modes):
+        raise MultiProbeVerificationError("timed pose grid settings must be distinct")
+    if (
+        args.timed_pose_weights != [TIMED_POSE_WEIGHT] or args.timed_pose_modes != ["full"]
+    ) and not args.timed_pose_weld_batch:
+        raise MultiProbeVerificationError("timed pose grid requires an explicit weld batch")
+    grid_mode = len(args.timed_pose_weights) * len(args.timed_pose_modes) > 1
+    if args.coalescing_preview and not args.timed_pose_weld_batch:
+        raise MultiProbeVerificationError("coalescing preview requires timed pose welds")
+    if args.timed_pose_weld_batch and not args.exploratory_welds:
+        raise MultiProbeVerificationError("timed pose welds require explicit exploratory welds")
     require_loaded_libraries(
         [args.ifopt_library.resolve(strict=True), args.sqp_library.resolve(strict=True)]
     )
@@ -78,7 +109,7 @@ def main():
     scene = initialize_scene(args.station, args.tour_index, args.output)
     setup = perf_counter() - began
     original = snapshot(scene)
-    env, _, _, _, names, _, _, _, _, _, _, _ = scene["inputs"]
+    env, _, _, _, names, _, _, _, _, _, info, _ = scene["inputs"]
     limits = np.asarray(
         env.getJointGroup("multi_probe_verify_nine", list(names)).getLimits().joint_limits
     )
@@ -153,6 +184,19 @@ def main():
                 raise MultiProbeVerificationError("explicit exploratory weld data required")
             source_by_label = {row["stage"]: row for row in rows}
             timing_by_label = {row["stage"]: row for row in clock["stages"]}
+            source_beads = {}
+            if args.timed_pose_weld_batch:
+                original_welds = json.loads(args.timed_pose_weld_batch.read_text())
+                source_beads = {item["source_segment"]: item for item in original_welds["beads"]}
+                expected_segments = {item["source_segment"] for item in batch["welds"]}
+                if (
+                    len(source_beads) != len(original_welds["beads"])
+                    or set(source_beads) != expected_segments
+                ):
+                    raise MultiProbeVerificationError(
+                        "original generated weld clusters do not match"
+                    )
+                report["timed_pose_welds"] = []
             for bead in batch["welds"]:
                 labels = bead["stages"]
                 durations = np.asarray(
@@ -172,21 +216,175 @@ def main():
                 )
                 points = np.asarray([item[:3, 3] for item in original_poses])
                 rotations = np.asarray([item[:3, :3] for item in original_poses])
-                target_position, target_orientation, _ = build_local_weld_blend(
+                target_position, target_orientation, blend = build_local_weld_blend(
                     points, rotations, durations
                 )
+                actual_curves = [spline] * len(labels)
+                if args.timed_pose_weld_batch:
+                    source_bead = source_beads[bead["source_segment"]]
+                    entry = {
+                        "source_segment": bead["source_segment"],
+                        "status": "in_progress",
+                        "trials": [],
+                    }
+                    report["timed_pose_welds"].append(entry)
+                    save()
+                    try:
+                        if (
+                            source_bead["status"] != "sampled_exploratory_weld_only"
+                            or [stage["stage"] for stage in source_bead["stages"]] != labels
+                            or not np.array_equal(source_bead["fixture"], fixture)
+                        ):
+                            raise MultiProbeVerificationError(
+                                "generated blend, fixture or stage order differs"
+                            )
+                        for mode in args.timed_pose_modes:
+                            first, last = optimization_window(
+                                [stage["kind"] for stage in source_bead["stages"]], mode
+                            )
+                            generated = {
+                                **source_bead,
+                                "times_s": bead["times_s"],
+                                "joint_states_7": bead["joint_states_7"],
+                                "fixture": bead["fixture"],
+                                "stages": source_bead["stages"][first:last],
+                            }
+                            selected_blend = {
+                                **blend,
+                                "position_windows_s": blend["position_windows_s"][first:last],
+                            }
+                            for weight in args.timed_pose_weights:
+                                trial = {"mode": mode, "weight": weight, "status": "in_progress"}
+                                entry["trials"].append(trial)
+                                save()
+
+                                def save_weld(result):
+                                    trial["result"] = result
+                                    save()
+
+                                try:
+                                    with preserve_scene(env):
+                                        result = correct_piecewise_weld(
+                                            env,
+                                            info,
+                                            names,
+                                            speeds,
+                                            limits,
+                                            checker,
+                                            generated,
+                                            [
+                                                source_by_label[label]
+                                                for label in labels[first:last]
+                                            ],
+                                            durations[first:last],
+                                            points[first : last + 1],
+                                            rotations[first : last + 1],
+                                            lambda j, t, derivative=0: target_position(
+                                                j + first, t, derivative
+                                            ),
+                                            lambda j, t: target_orientation(j + first, t),
+                                            selected_blend,
+                                            pose,
+                                            save_weld,
+                                            process_weight=PROCESS_WEIGHT,
+                                            initial_trust_box=INITIAL_TRUST_BOX,
+                                            constrain_process_knots=True,
+                                            generated_lead_order=True,
+                                            source_orientation_override=lambda j,
+                                            t: target_orientation(j + first, t),
+                                            coalesce_generated_samples=True,
+                                            timed_pose_weight=weight,
+                                            coalescing_fraction=args.coalescing_fraction,
+                                            preview_only=args.coalescing_preview,
+                                            clock_offset_s=float(edges[first]),
+                                        )
+                                    trial["result"] = result
+                                    trial["status"] = result["status"]
+                                    required_status = (
+                                        "coalesced_preview_only"
+                                        if args.coalescing_preview
+                                        else "sampled_curve_process_acceptance_unresolved"
+                                    )
+                                    if result["status"] != required_status:
+                                        raise MultiProbeVerificationError(
+                                            "stage-local optimizer or actual checks failed"
+                                        )
+                                    selected_curves = stage_local_curves(
+                                        result["stage_curves"],
+                                        durations[first:last].tolist(),
+                                        clock_start_s=float(edges[first]),
+                                    )
+                                    if not grid_mode:
+                                        actual_curves[first:last] = selected_curves
+                                        entry["result"] = result
+                                except Exception as exc:
+                                    trial.update(
+                                        status="failed",
+                                        error_type=type(exc).__name__,
+                                        error=str(exc),
+                                        traceback=traceback.format_exc(),
+                                    )
+                                save()
+                        if grid_mode:
+                            entry["status"] = "local_grid_complete"
+                        elif entry["trials"][0]["status"] == (
+                            "coalesced_preview_only"
+                            if args.coalescing_preview
+                            else "sampled_curve_process_acceptance_unresolved"
+                        ):
+                            entry["status"] = entry["trials"][0]["status"]
+                        else:
+                            entry.update(status="failed", error=entry["trials"][0].get("error"))
+                    except Exception as exc:
+                        entry.update(
+                            status="failed",
+                            error_type=type(exc).__name__,
+                            error=str(exc),
+                            traceback=traceback.format_exc(),
+                        )
+                    save()
+                    if entry["status"] == "failed":
+                        continue
                 for i, label in enumerate(labels):
                     if label in weld_labels:
                         raise MultiProbeVerificationError("duplicate exploratory weld stage")
                     replacements[label] = weld_stage(
-                        label, float(durations[i]), spline, float(edges[i]), fixture
+                        label, float(durations[i]), actual_curves[i], float(edges[i]), fixture
                     )
-                    curves[label] = spline
+                    curves[label] = actual_curves[i]
                     curve_offsets[label] = float(edges[i])
                     weld_targets[label] = (target_position, target_orientation, i)
                     weld_labels.add(label)
                     if 0 < i < len(labels) - 1:
                         source_bead_labels.add(label)
+            if args.timed_pose_weld_batch:
+                if grid_mode:
+                    report["status"] = (
+                        "local_grid_with_failures_not_a_whole_tour"
+                        if any(
+                            trial["status"] == "failed"
+                            for entry in report["timed_pose_welds"]
+                            for trial in entry["trials"]
+                        )
+                        else "local_grid_complete_not_a_whole_tour"
+                    )
+                    save()
+                    if snapshot(scene) != original:
+                        raise MultiProbeVerificationError("scene state changed")
+                    return
+                expected = (
+                    "coalesced_preview_only"
+                    if args.coalescing_preview
+                    else "sampled_curve_process_acceptance_unresolved"
+                )
+                if any(entry["status"] != expected for entry in report["timed_pose_welds"]):
+                    raise MultiProbeVerificationError("one or more timed-pose weld clusters failed")
+                if args.coalescing_preview:
+                    report["status"] = "coalesced_preview_only"
+                    save()
+                    if snapshot(scene) != original:
+                        raise MultiProbeVerificationError("scene state changed")
+                    return
         transit_rows = {row["stage"]: row for row in batch["transits"]}
         expected_transits = {row["stage"] for row in rows if row["stage"].startswith("transit:")}
         if len(transit_rows) != len(batch["transits"]) or set(transit_rows) != expected_transits:

@@ -22,3 +22,27 @@ def test_protected_or_fast_distinct_samples_are_retained():
     keep, removed = coalesce_generated_knots(times, values, np.array([2.0, 3.0]), [1.00001])
     np.testing.assert_array_equal(keep, times)
     assert removed == []
+
+
+def test_explicit_broader_fraction_preserves_protected_and_speed_guards():
+    times = np.array([0.0, 1.0, 1.04, 2.0, 3.0])
+    values = np.column_stack((times, 2 * times))
+    default, removed = coalesce_generated_knots(times, values, [2.0, 3.0], [1.04])
+    np.testing.assert_array_equal(default, times)
+    assert removed == []
+    broader, removed = coalesce_generated_knots(
+        times, values, [2.0, 3.0], [1.04], short_interval_fraction=0.05
+    )
+    np.testing.assert_array_equal(broader, [0.0, 1.04, 2.0, 3.0])
+    assert removed == [1.0]
+    protected, removed = coalesce_generated_knots(
+        times, values, [2.0, 3.0], [1.0, 1.04], short_interval_fraction=0.05
+    )
+    np.testing.assert_array_equal(protected, times)
+    assert removed == []
+    values[1, 1] += 0.3
+    fast, removed = coalesce_generated_knots(
+        times, values, [2.0, 3.0], [1.04], short_interval_fraction=0.05
+    )
+    np.testing.assert_array_equal(fast, times)
+    assert removed == []

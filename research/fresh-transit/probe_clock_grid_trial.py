@@ -16,6 +16,7 @@ from fresh_prepare import prepare_fresh
 from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import inspect_sampled_curve
+from generated_knot_coalescing import SHORT_INTERVAL_FRACTION
 from probe_clock_variants import search_cruise_clock_with_ramp
 from probe_cruise_generate import generate_cruise_group
 from probe_cruise_trial import one_sided_progress
@@ -126,6 +127,9 @@ def main():
     parser.add_argument("--piecewise-qp-verbose", action="store_true")
     parser.add_argument("--piecewise-coalesce-generated", action="store_true")
     parser.add_argument("--piecewise-coalesce-preview", action="store_true")
+    parser.add_argument(
+        "--piecewise-coalescing-fraction", type=float, default=SHORT_INTERVAL_FRACTION
+    )
     parser.add_argument("--piecewise-timed-pose-weights", nargs="+", type=float, default=[0.0])
     parser.add_argument(
         "--piecewise-adaptive-from",
@@ -616,6 +620,7 @@ def main():
                             coalesce_generated_samples=args.piecewise_coalesce_generated,
                             preview_only=args.piecewise_coalesce_preview,
                             timed_pose_weight=timed_pose_weight,
+                            coalescing_fraction=args.piecewise_coalescing_fraction,
                         )
                         block["attempts"].append(result)
                         block["active_attempt"] = None

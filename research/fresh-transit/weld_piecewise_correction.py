@@ -13,7 +13,7 @@ from fixture_group_order import fixture_joint_group
 from free_space_transit import _ifopt_profile
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import CurveCollisionError, CurveLimitError, inspect_sampled_curve
-from generated_knot_coalescing import coalesce_generated_knots
+from generated_knot_coalescing import SHORT_INTERVAL_FRACTION, coalesce_generated_knots
 from lead_path_progress import sampled_path_progress
 from piecewise_join_map import combine_join_maps
 from piecewise_sqp_diagnostic import PiecewiseSqpTrace
@@ -74,6 +74,8 @@ def correct_piecewise_weld(
     coalesce_generated_samples=False,
     preview_only=False,
     timed_pose_weight=0.0,
+    coalescing_fraction=SHORT_INTERVAL_FRACTION,
+    extra_callback=None,
 ):
     """Refine exact generated cubic stages with shared q/qd/qdd constraints.
 
@@ -136,7 +138,11 @@ def correct_piecewise_weld(
                 if left <= float(item["modeled_time_s"]) <= right
             )
             knots, removed = coalesce_generated_knots(
-                knots, baseline(knots), np.asarray(speed), protected
+                knots,
+                baseline(knots),
+                np.asarray(speed),
+                protected,
+                short_interval_fraction=coalescing_fraction,
             )
         model = native.CubicSplineStage.build(knots.tolist(), 7)
         initial = np.vstack((baseline(knots), baseline(left, 1), baseline(right, 1)))
@@ -401,6 +407,8 @@ def correct_piecewise_weld(
     solver.params = params
     observer = PiecewiseSqpTrace(dynamics)
     solver.registerCallback(observer)
+    if extra_callback is not None:
+        solver.registerCallback(extra_callback)
     started = perf_counter()
     if not preview_only:
         solver.solve(problem)
@@ -437,6 +445,7 @@ def correct_piecewise_weld(
         "initial": initial,
         "clock_cost_enabled": clock_cost,
         "timed_pose_weight": timed_pose_weight,
+        "coalescing_fraction": coalescing_fraction,
         "timed_pose_position_scale": "stage chord length in metres; objective normalization only",
         "timed_pose_orientation_scale_rad": ORIENTATION_NORMALIZATION_RAD,
         "process_weight": process_weight,
