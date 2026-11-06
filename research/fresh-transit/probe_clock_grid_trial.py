@@ -126,12 +126,19 @@ def main():
     parser.add_argument("--piecewise-qp-verbose", action="store_true")
     parser.add_argument("--piecewise-coalesce-generated", action="store_true")
     parser.add_argument("--piecewise-coalesce-preview", action="store_true")
+    parser.add_argument("--piecewise-timed-pose-weights", nargs="+", type=float, default=[0.0])
     parser.add_argument(
         "--piecewise-adaptive-from",
         type=Path,
         help="select witnesses from a saved actual-curve diagnostic",
     )
     args = parser.parse_args()
+    if args.piecewise_timed_pose_weights != [0.0] and not args.piecewise_representative_segments:
+        raise ProbeGridError("timed pose grid requires representative process blocks")
+    if any(not np.isfinite(weight) or weight < 0 for weight in args.piecewise_timed_pose_weights):
+        raise ProbeGridError("timed pose grid weights must be finite and nonnegative")
+    if len(set(args.piecewise_timed_pose_weights)) != len(args.piecewise_timed_pose_weights):
+        raise ProbeGridError("timed pose grid weights must be distinct")
     if args.piecewise_weld and args.weld_iterate:
         raise ProbeGridError(
             "global-quintic iterates cannot initialize the stage-local cubic solve"
@@ -390,7 +397,9 @@ def main():
     task = extract_tour(source, tours, tour, "workpiece_link", home=home)
     process = extract_process_tour(program, task, probe_metadata_frame="workpiece_link")
     beads = {item.segment: item for item in process.operations if isinstance(item, WeldBead)}
-    for saved in unresolved:
+    for saved, timed_pose_weight in (
+        (item, weight) for item in unresolved for weight in args.piecewise_timed_pose_weights
+    ):
         bead = beads[saved["source_segment"]]
         source_poses = np.asarray([pose_matrix(item) for item in bead.poses])
         run = [rows[labels.index(s["stage"])] for s in saved["stages"]]
@@ -450,6 +459,7 @@ def main():
             if args.piecewise_representative_segments:
                 block = {
                     "source_segment": saved["source_segment"],
+                    "timed_pose_weight": timed_pose_weight,
                     "status": "in_progress",
                     "attempts": [],
                 }
@@ -605,6 +615,7 @@ def main():
                             qp_verbose=args.piecewise_qp_verbose,
                             coalesce_generated_samples=args.piecewise_coalesce_generated,
                             preview_only=args.piecewise_coalesce_preview,
+                            timed_pose_weight=timed_pose_weight,
                         )
                         block["attempts"].append(result)
                         block["active_attempt"] = None

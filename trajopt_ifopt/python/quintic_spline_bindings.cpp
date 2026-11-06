@@ -15,6 +15,7 @@
 #include "../include/trajopt_ifopt/spline/quintic_spline_jerk_peak_constraint.h"
 #include <trajopt_ifopt/spline/quintic_spline_model.h>
 #include <trajopt_ifopt/spline/spline_cartesian_line_constraint.h>
+#include <trajopt_ifopt/spline/spline_timed_cartesian_pose.h>
 #include <trajopt_ifopt/spline/spline_cartesian_progress_constraint.h>
 #include <trajopt_ifopt/spline/spline_cartesian_path_progress_constraint.h>
 #include <trajopt_ifopt/spline/quintic_spline_position_limits.h>
@@ -292,6 +293,23 @@ NB_MODULE(_quintic_spline, m)
           "times_s"_a,
           "sample_axis_limits"_a,
           "name"_a = "SplineInterpolatedVelocityLimits");
+  nb::class_<ti::SplineTimedCartesianPose, ti::ConstraintSet>(m, "SplineTimedCartesianPose")
+      .def("__init__", [](ti::SplineTimedCartesianPose* self,
+                          const ti::CartLineInfo& info,
+                          const Eigen::Matrix4d& target_matrix,
+                          std::vector<std::shared_ptr<const ti::Var>> knots,
+                          Eigen::VectorXd basis, Eigen::VectorXd offset,
+                          double position_scale_m, double orientation_scale_rad,
+                          double weight, std::string name) {
+        if (!info.source_frame_offset.isApprox(Eigen::Isometry3d::Identity(), 0.0))
+          throw ti::TimedCartesianPoseError("timed pose currently requires identity source offset");
+        Eigen::Isometry3d target_pose = Eigen::Isometry3d::Identity();
+        target_pose.matrix() = target_matrix;
+        new (self) ti::SplineTimedCartesianPose(info.manip, info.source_frame, info.target_frame,
+            target_pose, std::move(knots), std::move(basis), std::move(offset),
+            ti::WorkpiecePositionScale{position_scale_m}, ti::OrientationScale{orientation_scale_rad}, weight, std::move(name));
+      }, "info"_a, "target_workpiece_pose"_a, "knots"_a, "basis"_a, "offset"_a,
+         "position_scale_m"_a, "orientation_scale_rad"_a, "weight"_a, "name"_a = "SplineTimedCartesianPose");
   nb::class_<ti::SplineCartesianLineConstraint, ti::ConstraintSet>(m, "SplineCartesianLineConstraint")
       .def(nb::init<ti::CartLineInfo,
                     std::vector<std::shared_ptr<const ti::Var>>,

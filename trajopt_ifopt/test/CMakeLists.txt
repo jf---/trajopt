@@ -61,3 +61,5 @@ add_gtest(${PROJECT_NAME}_quintic_spline_free_boundary_collision_unit quintic_sp
 add_gtest(${PROJECT_NAME}_quintic_spline_free_boundary_consumers_unit quintic_spline_free_boundary_consumers_unit.cpp)
 add_gtest(${PROJECT_NAME}_cubic_spline_stage_unit cubic_spline_stage_unit.cpp)
 add_gtest(${PROJECT_NAME}_affine_spline_constraint_unit affine_spline_constraint_unit.cpp)
+
+add_gtest(${PROJECT_NAME}_spline_timed_cartesian_pose_unit spline_timed_cartesian_pose_unit.cpp)

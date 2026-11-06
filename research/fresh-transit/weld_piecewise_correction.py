@@ -33,6 +33,7 @@ CLOCK_ULPS = 256  # Binary64 modeled clock boundary arithmetic.
 JERK_WEIGHT = 1.0
 TIMED_PROGRESS_WEIGHT = 1.0
 BLEND_LINE_WEIGHT = 1.0
+ORIENTATION_NORMALIZATION_RAD = 1.0  # Objective scale in radians, not a process tolerance.
 SOLVE_TIME_S = 20.0
 MAX_SQP_ITERATIONS = 200
 MERIT_COEFFICIENT = 100.0
@@ -72,6 +73,7 @@ def correct_piecewise_weld(
     qp_verbose=False,
     coalesce_generated_samples=False,
     preview_only=False,
+    timed_pose_weight=0.0,
 ):
     """Refine exact generated cubic stages with shared q/qd/qdd constraints.
 
@@ -92,6 +94,8 @@ def correct_piecewise_weld(
     witness_groups = [group + clock_offset_s for group in witness_groups]
     if not np.isfinite(process_weight) or process_weight <= 0:
         raise PiecewiseWeldError("process objective weight must be positive and finite")
+    if not np.isfinite(timed_pose_weight) or timed_pose_weight < 0:
+        raise PiecewiseWeldError("timed pose weight must be nonnegative and finite")
     if not np.isfinite(initial_trust_box) or initial_trust_box <= 0:
         raise PiecewiseWeldError("initial trust box must be positive and finite")
     if extra_witness_times is not None:
@@ -290,6 +294,24 @@ def correct_piecewise_weld(
                 sqp.CostPenaltyType.SQUARED,
             )
         for k, local_time in enumerate(local):
+            if timed_pose_weight > 0:
+                target_pose = np.eye(4)
+                target_pose[:3, 3] = target(j, float(local_time))
+                target_pose[:3, :3] = source_orientation(j, float(local_time))
+                problem.addCostSet(
+                    native.SplineTimedCartesianPose(
+                        line,
+                        target_pose,
+                        stage_vars,
+                        process_mapping.basis[k],
+                        process_mapping.offset[k],
+                        float(np.sqrt(length_squared)),
+                        ORIENTATION_NORMALIZATION_RAD,
+                        timed_pose_weight,
+                        f"piecewise-timed-pose-{j}-{k}",
+                    ),
+                    sqp.CostPenaltyType.SQUARED,
+                )
             term = native.SplineCartesianLineConstraint(
                 line,
                 stage_vars,
@@ -414,6 +436,9 @@ def correct_piecewise_weld(
         "solver_s_contended": elapsed,
         "initial": initial,
         "clock_cost_enabled": clock_cost,
+        "timed_pose_weight": timed_pose_weight,
+        "timed_pose_position_scale": "stage chord length in metres; objective normalization only",
+        "timed_pose_orientation_scale_rad": ORIENTATION_NORMALIZATION_RAD,
         "process_weight": process_weight,
         "generated_lead_order": generated_lead_order,
         "modeled_clock_offset_s": clock_offset_s,

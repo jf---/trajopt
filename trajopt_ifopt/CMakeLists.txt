@@ -40,6 +40,7 @@ set(TRAJOPT_IFOPT_SOURCE_FILES
     src/spline/spline_cartesian_progress_constraint.cpp
     src/spline/spline_cartesian_path_progress_constraint.cpp
     src/spline/spline_cartesian_line_constraint.cpp
+    src/spline/spline_timed_cartesian_pose.cpp
     src/spline/quintic_spline_model.cpp
     src/spline/cubic_spline_stage.cpp
     src/spline/affine_spline_constraint.cpp
