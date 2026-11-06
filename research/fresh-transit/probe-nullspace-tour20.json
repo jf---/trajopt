@@ -1,0 +1,67 @@
+{
+  "scope": "One generated SearchL reversal; generated reference, fixed fixture, zero TCP twist, straight joint-space local model only. Not a full process path or controller command.",
+  "status": "modeled_candidate",
+  "scene_setup_s_contended": 4.610833083977923,
+  "probe": 0,
+  "generated_reference_velocity_7": [
+    0.0,
+    -0.000318433163626821,
+    0.007838963110905033,
+    0.005725846300133062,
+    -0.0004063335059915792,
+    -0.010836376196133427,
+    -0.00817280655474156
+  ],
+  "modeled_velocity_7": [
+    -0.0009706899909983133,
+    -0.0005317281015681759,
+    0.0006080764267746043,
+    -0.00047891101833456157,
+    -0.0002430383640265469,
+    -0.0003907034047067916,
+    0.00028847837664773036
+  ],
+  "jacobian_normalized_max_error": 3.671818404882288e-11,
+  "jacobian_machine_scaled_band": 2.346785832000663e-09,
+  "jacobian_linear_raw_max_error": 4.9780513045050157e-11,
+  "jacobian_angular_raw_max_error": 1.2297385332260546e-11,
+  "task_residual": [
+    -6.391247296766365e-18,
+    -5.557473644520441e-18,
+    8.921500287372091e-19,
+    -1.064033934428513e-18,
+    -7.393607928605898e-18,
+    6.732514723919558e-18
+  ],
+  "sourced_speed_ratio": [
+    0.0005392722172212852,
+    0.00016925431149088918,
+    0.0001957315330088802,
+    0.00015415494445439757,
+    5.570029007394108e-05,
+    8.954262452436361e-05,
+    4.591275961861188e-05
+  ],
+  "modeled_local_half_span_s": 0.01187500000000001,
+  "sampled_collision_and_position": {
+    "sample_count": 1025,
+    "feasibility_band_native_units": 0.0001,
+    "max_raw_limit_excursion_by_axis": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "penetrating_samples": 0
+  },
+  "sampled_max_tcp_drift_m": 5.651274439683444e-11,
+  "sampled_max_orientation_drift_rad": 9.694203150981205e-12,
+  "full_neighborhood_continuity": "not_evaluated",
+  "intended_search_feed": "not_evaluated",
+  "actual_hit_and_physical_boundary": "unknown"
+}

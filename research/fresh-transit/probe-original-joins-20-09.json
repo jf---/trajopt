@@ -1,0 +1,1264 @@
+{
+  "tours": [
+    {
+      "tour": 20,
+      "probes": [
+        {
+          "source_segment": 2509,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.04172390677602629,
+                  0.043981738994090636,
+                  -0.02059602190197296
+                ],
+                [
+                  -8.335260448857389e-06,
+                  3.4300825531671993e-06,
+                  -4.4035607045272793e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -0.019001041895296042,
+                  4.329481455456197e-06,
+                  -6.5287257791091236e-06
+                ],
+                [
+                  1.1011253455746227e-05,
+                  -3.129148046989796e-06,
+                  7.909485787126509e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.1406082283544423,
+              "machine_band": 7.231656521244669e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.019001041895296042,
+                  4.329481455456197e-06,
+                  -6.5287257791091236e-06
+                ],
+                [
+                  1.1011253455746227e-05,
+                  -3.129148046989796e-06,
+                  7.909485787126509e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.019001041895296042,
+                  -4.329481455456197e-06,
+                  6.5287257791091236e-06
+                ],
+                [
+                  -1.1011253455746227e-05,
+                  3.129148046989796e-06,
+                  -7.909485787126509e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  0.019001041895296042,
+                  -4.329481455456197e-06,
+                  6.5287257791091236e-06
+                ],
+                [
+                  -1.1011253455746227e-05,
+                  3.129148046989796e-06,
+                  -7.909485787126509e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.04172390677602629,
+                  -0.043981738994090636,
+                  0.02059602190197296
+                ],
+                [
+                  8.335260448857389e-06,
+                  -3.4300825531671993e-06,
+                  4.4035607045272793e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.9352059677933726,
+              "machine_band": 7.231656521244669e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 2511,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.06993825766664563,
+                  -0.0009503188900478188,
+                  -3.1146543868487697e-06
+                ],
+                [
+                  4.991745118260975e-06,
+                  -9.876383712919276e-07,
+                  1.4902658316805554e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  5.913084195618978e-07,
+                  0.018995590664759532,
+                  6.281870776447818e-06
+                ],
+                [
+                  -1.0340435524858915e-05,
+                  2.1755696792714217e-06,
+                  -7.378568166038393e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.0121765470711743,
+              "machine_band": 6.356721553054337e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  5.913084195618978e-07,
+                  0.018995590664759532,
+                  6.281870776447818e-06
+                ],
+                [
+                  -1.0340435524858915e-05,
+                  2.1755696792714217e-06,
+                  -7.378568166038393e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -5.913084195618978e-07,
+                  -0.018995590664759532,
+                  -6.281870776447818e-06
+                ],
+                [
+                  1.0340435524858915e-05,
+                  -2.1755696792714217e-06,
+                  7.378568166038393e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -5.913084195618978e-07,
+                  -0.018995590664759532,
+                  -6.281870776447818e-06
+                ],
+                [
+                  1.0340435524858915e-05,
+                  -2.1755696792714217e-06,
+                  7.378568166038393e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.06993825766664563,
+                  0.0009503188900478188,
+                  3.1146543868487697e-06
+                ],
+                [
+                  -4.991745118260975e-06,
+                  9.876383712919276e-07,
+                  -1.4902658316805554e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.937898892541342,
+              "machine_band": 6.356721553054337e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 2513,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.06814883350321407,
+                  -0.0030327338510403035,
+                  0.008255535595528052
+                ],
+                [
+                  -3.863521951272855e-06,
+                  -1.7687962040561163e-06,
+                  2.462108985196566e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  4.629111254039753e-07,
+                  -1.961181860798966e-06,
+                  0.019003218014183254
+                ],
+                [
+                  -4.536885821859247e-06,
+                  1.2249758213369556e-06,
+                  -2.3601882440620512e-07
+                ]
+              ],
+              "right_rate_per_left_rate": 0.6729777001818646,
+              "dimensionless_alignment_residual": 1.1535714052784936,
+              "machine_band": 7.664940264058546e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  4.629111254039753e-07,
+                  -1.961181860798966e-06,
+                  0.019003218014183254
+                ],
+                [
+                  -4.536885821859247e-06,
+                  1.2249758213369556e-06,
+                  -2.3601882440620512e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -4.629111254039753e-07,
+                  1.961181860798966e-06,
+                  -0.019003218014183254
+                ],
+                [
+                  4.536885821859247e-06,
+                  -1.2249758213369556e-06,
+                  2.3601882440620512e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -4.629111254039753e-07,
+                  1.961181860798966e-06,
+                  -0.019003218014183254
+                ],
+                [
+                  4.536885821859247e-06,
+                  -1.2249758213369556e-06,
+                  2.3601882440620512e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.06814883350321407,
+                  0.0030327338510403035,
+                  -0.008255535595528052
+                ],
+                [
+                  3.863521951272855e-06,
+                  1.7687962040561163e-06,
+                  -2.462108985196566e-07
+                ]
+              ],
+              "right_rate_per_left_rate": 0.3984286858705079,
+              "dimensionless_alignment_residual": 0.8876043968373609,
+              "machine_band": 7.664940264058546e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tour": 9,
+      "probes": [
+        {
+          "source_segment": 1196,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.04888265770946756,
+                  0.05882563115289674,
+                  -0.05037323851405606
+                ],
+                [
+                  0.08854130082103022,
+                  -0.10793009389196553,
+                  -0.10474609954237925
+                ]
+              ],
+              "outgoing": [
+                [
+                  -7.156947451208984e-07,
+                  -1.4378839581219438e-06,
+                  -0.019007023301366832
+                ],
+                [
+                  2.1054943425997847e-07,
+                  -7.600305450546037e-06,
+                  1.787573915645534e-06
+                ]
+              ],
+              "right_rate_per_left_rate": 2.6506027154696996,
+              "dimensionless_alignment_residual": 1.3028378131799598,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -7.156947451208984e-07,
+                  -1.4378839581219438e-06,
+                  -0.019007023301366832
+                ],
+                [
+                  2.1054943425997847e-07,
+                  -7.600305450546037e-06,
+                  1.787573915645534e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  7.156947451208984e-07,
+                  1.4378839581219438e-06,
+                  0.019007023301366832
+                ],
+                [
+                  -2.1054943425997847e-07,
+                  7.600305450546037e-06,
+                  -1.787573915645534e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  7.156947451208984e-07,
+                  1.4378839581219438e-06,
+                  0.019007023301366832
+                ],
+                [
+                  -2.1054943425997847e-07,
+                  7.600305450546037e-06,
+                  -1.787573915645534e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.04888265770946756,
+                  -0.05882563115289674,
+                  0.05037323851405606
+                ],
+                [
+                  -0.08854130082103022,
+                  0.10793009389196553,
+                  0.10474609954237925
+                ]
+              ],
+              "right_rate_per_left_rate": 0.05708392864428856,
+              "dimensionless_alignment_residual": 0.1911943097935763,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1198,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.07998389553177726,
+                  0.08166795644343972,
+                  -0.04395217240011773
+                ],
+                [
+                  1.1916765233616562e-06,
+                  7.642581570673735e-06,
+                  9.7877850240402e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -8.652064591163633e-07,
+                  0.018999697624380918,
+                  -5.9406970622788435e-06
+                ],
+                [
+                  4.6493284958838e-06,
+                  -3.458965112817963e-06,
+                  4.782477222159272e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.404288124173732,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -8.652064591163633e-07,
+                  0.018999697624380918,
+                  -5.9406970622788435e-06
+                ],
+                [
+                  4.6493284958838e-06,
+                  -3.458965112817963e-06,
+                  4.782477222159272e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  8.652064591163633e-07,
+                  -0.018999697624380918,
+                  5.9406970622788435e-06
+                ],
+                [
+                  -4.6493284958838e-06,
+                  3.458965112817963e-06,
+                  -4.782477222159272e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  8.652064591163633e-07,
+                  -0.018999697624380918,
+                  5.9406970622788435e-06
+                ],
+                [
+                  -4.6493284958838e-06,
+                  3.458965112817963e-06,
+                  -4.782477222159272e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.07998389553177726,
+                  -0.08166795644343972,
+                  0.04395217240011773
+                ],
+                [
+                  -1.1916765233616562e-06,
+                  -7.642581570673735e-06,
+                  -9.7877850240402e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.9692455579016495,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1200,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.03070729823377033,
+                  0.077891193392995,
+                  -0.027970204445512792
+                ],
+                [
+                  6.399976129917342e-07,
+                  -1.3344301822999902e-06,
+                  -6.52786045854223e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -0.01900062751829075,
+                  -1.2068564567702111e-06,
+                  -1.0034445081075205e-05
+                ],
+                [
+                  3.274210962971997e-06,
+                  -7.854063908922696e-06,
+                  2.1936653327565447e-06
+                ]
+              ],
+              "right_rate_per_left_rate": 0.20951261564668575,
+              "dimensionless_alignment_residual": 0.9939587616033204,
+              "machine_band": 5.81453109192882e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.01900062751829075,
+                  -1.2068564567702111e-06,
+                  -1.0034445081075205e-05
+                ],
+                [
+                  3.274210962971997e-06,
+                  -7.854063908922696e-06,
+                  2.1936653327565447e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.01900062751829075,
+                  1.2068564567702111e-06,
+                  1.0034445081075205e-05
+                ],
+                [
+                  -3.274210962971997e-06,
+                  7.854063908922696e-06,
+                  -2.1936653327565447e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  0.01900062751829075,
+                  1.2068564567702111e-06,
+                  1.0034445081075205e-05
+                ],
+                [
+                  -3.274210962971997e-06,
+                  7.854063908922696e-06,
+                  -2.1936653327565447e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.03070729823377033,
+                  -0.077891193392995,
+                  0.027970204445512792
+                ],
+                [
+                  -6.399976129917342e-07,
+                  1.3344301822999902e-06,
+                  6.52786045854223e-07
+                ]
+              ],
+              "right_rate_per_left_rate": 0.2120350627769721,
+              "dimensionless_alignment_residual": 0.9999242903697418,
+              "machine_band": 5.81453109192882e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1204,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.03998578880800041,
+                  -7.446609817662875e-07,
+                  0.0007935810670107735
+                ],
+                [
+                  -1.4165247818371016e-05,
+                  7.049687878233904e-07,
+                  6.919153200237888e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -0.01899957091506449,
+                  8.31596048911365e-07,
+                  2.777566745493232e-07
+                ],
+                [
+                  7.785713603847936e-06,
+                  7.21683497401387e-06,
+                  2.1775419839840205e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.4135377477316482,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.01899957091506449,
+                  8.31596048911365e-07,
+                  2.777566745493232e-07
+                ],
+                [
+                  7.785713603847936e-06,
+                  7.21683497401387e-06,
+                  2.1775419839840205e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.01899957091506449,
+                  -8.31596048911365e-07,
+                  -2.777566745493232e-07
+                ],
+                [
+                  -7.785713603847936e-06,
+                  -7.21683497401387e-06,
+                  -2.1775419839840205e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  0.01899957091506449,
+                  -8.31596048911365e-07,
+                  -2.777566745493232e-07
+                ],
+                [
+                  -7.785713603847936e-06,
+                  -7.21683497401387e-06,
+                  -2.1775419839840205e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.03998578880800041,
+                  7.446609817662875e-07,
+                  -0.0007935810670107735
+                ],
+                [
+                  1.4165247818371016e-05,
+                  -7.049687878233904e-07,
+                  -6.919153200237888e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.8985409227981087,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1206,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.05532883471946541,
+                  0.03535428177838429,
+                  0.0013502822906339418
+                ],
+                [
+                  8.835795444378808e-07,
+                  2.1301788158594025e-06,
+                  5.532144820964711e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  1.1753735262992615e-06,
+                  0.01900163440014202,
+                  4.408869287431116e-06
+                ],
+                [
+                  3.834018815567638e-07,
+                  -6.990629395795579e-07,
+                  -2.424536911598164e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.347582863693847,
+              "machine_band": 7.759547601891873e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  1.1753735262992615e-06,
+                  0.01900163440014202,
+                  4.408869287431116e-06
+                ],
+                [
+                  3.834018815567638e-07,
+                  -6.990629395795579e-07,
+                  -2.424536911598164e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  -1.1753735262992615e-06,
+                  -0.01900163440014202,
+                  -4.408869287431116e-06
+                ],
+                [
+                  -3.834018815567638e-07,
+                  6.990629395795579e-07,
+                  2.424536911598164e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460928e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -1.1753735262992615e-06,
+                  -0.01900163440014202,
+                  -4.408869287431116e-06
+                ],
+                [
+                  -3.834018815567638e-07,
+                  6.990629395795579e-07,
+                  2.424536911598164e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.05532883471946541,
+                  -0.03535428177838429,
+                  -0.0013502822906339418
+                ],
+                [
+                  -8.835795444378808e-07,
+                  -2.1301788158594025e-06,
+                  -5.532144820964711e-07
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.0276770773566124,
+              "machine_band": 7.759547601891873e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1208,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.07902270155537304,
+                  2.477978667148051e-06,
+                  -0.061268150089619056
+                ],
+                [
+                  -8.957621639786766e-07,
+                  -5.956566475426837e-06,
+                  -2.650249479121161e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  3.9213731352349956e-07,
+                  5.71574334973235e-07,
+                  -0.01900868240450393
+                ],
+                [
+                  5.7809304740036755e-06,
+                  1.3329620653194228e-06,
+                  2.1694517778859037e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.3760789009495988,
+              "machine_band": 8.038873388460928e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  3.9213731352349956e-07,
+                  5.71574334973235e-07,
+                  -0.01900868240450393
+                ],
+                [
+                  5.7809304740036755e-06,
+                  1.3329620653194228e-06,
+                  2.1694517778859037e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  -3.9213731352349956e-07,
+                  -5.71574334973235e-07,
+                  0.01900868240450393
+                ],
+                [
+                  -5.7809304740036755e-06,
+                  -1.3329620653194228e-06,
+                  -2.1694517778859037e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -3.9213731352349956e-07,
+                  -5.71574334973235e-07,
+                  0.01900868240450393
+                ],
+                [
+                  -5.7809304740036755e-06,
+                  -1.3329620653194228e-06,
+                  -2.1694517778859037e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.07902270155537304,
+                  -2.477978667148051e-06,
+                  0.061268150089619056
+                ],
+                [
+                  8.957621639786766e-07,
+                  5.956566475426837e-06,
+                  2.650249479121161e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.952146740200656,
+              "machine_band": 8.038873388460928e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1212,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.09809647286981174,
+                  -0.039601469168311754,
+                  -0.04135037909095285
+                ],
+                [
+                  3.0198781750491955e-06,
+                  4.322889606395185e-06,
+                  1.7690339623490158e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  -0.01899415028454564,
+                  -9.93871149823633e-07,
+                  3.4184239598999966e-06
+                ],
+                [
+                  -1.1079951062438066e-06,
+                  -1.3915203845726703e-06,
+                  -1.2541026892203473e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.3069536901843952,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.01899415028454564,
+                  -9.93871149823633e-07,
+                  3.4184239598999966e-06
+                ],
+                [
+                  -1.1079951062438066e-06,
+                  -1.3915203845726703e-06,
+                  -1.2541026892203473e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.01899415028454564,
+                  9.93871149823633e-07,
+                  -3.4184239598999966e-06
+                ],
+                [
+                  1.1079951062438066e-06,
+                  1.3915203845726703e-06,
+                  1.2541026892203473e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  0.01899415028454564,
+                  9.93871149823633e-07,
+                  -3.4184239598999966e-06
+                ],
+                [
+                  1.1079951062438066e-06,
+                  1.3915203845726703e-06,
+                  1.2541026892203473e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.09809647286981174,
+                  0.039601469168311754,
+                  0.04135037909095285
+                ],
+                [
+                  -3.0198781750491955e-06,
+                  -4.322889606395185e-06,
+                  -1.7690339623490158e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.3932574582662957,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1214,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.06378257312432976,
+                  -0.014389058851366432,
+                  -0.0017626008692697148
+                ],
+                [
+                  4.022862196233741e-07,
+                  -5.190176987923096e-07,
+                  6.917112885187774e-07
+                ]
+              ],
+              "outgoing": [
+                [
+                  -5.858210421982868e-06,
+                  -0.018999493980186744,
+                  -3.2285202649084965e-06
+                ],
+                [
+                  6.713991802715207e-07,
+                  -3.884055639638741e-06,
+                  -2.0680041987419968e-06
+                ]
+              ],
+              "right_rate_per_left_rate": 0.09882883967907666,
+              "dimensionless_alignment_residual": 1.0175073735433429,
+              "machine_band": 5.919290222393013e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -5.858210421982868e-06,
+                  -0.018999493980186744,
+                  -3.2285202649084965e-06
+                ],
+                [
+                  6.713991802715207e-07,
+                  -3.884055639638741e-06,
+                  -2.0680041987419968e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  5.858210421982868e-06,
+                  0.018999493980186744,
+                  3.2285202649084965e-06
+                ],
+                [
+                  -6.713991802715207e-07,
+                  3.884055639638741e-06,
+                  2.0680041987419968e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460928e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  5.858210421982868e-06,
+                  0.018999493980186744,
+                  3.2285202649084965e-06
+                ],
+                [
+                  -6.713991802715207e-07,
+                  3.884055639638741e-06,
+                  2.0680041987419968e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.06378257312432976,
+                  0.014389058851366432,
+                  0.0017626008692697148
+                ],
+                [
+                  -4.022862196233741e-07,
+                  5.190176987923096e-07,
+                  -6.917112885187774e-07
+                ]
+              ],
+              "right_rate_per_left_rate": 0.10246303994724026,
+              "dimensionless_alignment_residual": 1.0360467082423181,
+              "machine_band": 5.919290222393013e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        },
+        {
+          "source_segment": 1216,
+          "joins": [
+            {
+              "label": "approach \u2192 search",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -0.07905506877241018,
+                  4.47701334630457e-05,
+                  -0.061247083879987674
+                ],
+                [
+                  -1.7652086972751175e-06,
+                  -4.406794523466607e-06,
+                  -1.9373146538921787e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  -1.3084900988002968e-06,
+                  6.048723869556127e-07,
+                  -0.019000018120213014
+                ],
+                [
+                  1.8736451442256418e-06,
+                  2.069312905411858e-06,
+                  2.263925171867491e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 1.2170216813274084,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "search \u2192 retract",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  -1.3084900988002968e-06,
+                  6.048723869556127e-07,
+                  -0.019000018120213014
+                ],
+                [
+                  1.8736451442256418e-06,
+                  2.069312905411858e-06,
+                  2.263925171867491e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  1.3084900988002968e-06,
+                  -6.048723869556127e-07,
+                  0.019000018120213014
+                ],
+                [
+                  -1.8736451442256418e-06,
+                  -2.069312905411858e-06,
+                  -2.263925171867491e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.0,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            },
+            {
+              "label": "retract \u2192 withdrawal",
+              "status": "zero_tcp_velocity_for_exact_corner",
+              "incoming": [
+                [
+                  1.3084900988002968e-06,
+                  -6.048723869556127e-07,
+                  0.019000018120213014
+                ],
+                [
+                  -1.8736451442256418e-06,
+                  -2.069312905411858e-06,
+                  -2.263925171867491e-06
+                ]
+              ],
+              "outgoing": [
+                [
+                  0.07905506877241018,
+                  -4.47701334630457e-05,
+                  0.061247083879987674
+                ],
+                [
+                  1.7652086972751175e-06,
+                  4.406794523466607e-06,
+                  1.9373146538921787e-06
+                ]
+              ],
+              "right_rate_per_left_rate": null,
+              "dimensionless_alignment_residual": 0.6250088787561625,
+              "machine_band": 8.038873388460929e-14,
+              "translation_below_roundoff": false,
+              "rotation_below_roundoff": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scene_setup_s_contended": 4.040251332975458,
+  "scope": "Original five workpiece-frame FK poses only; no original intermediate robot joints used to seed planning. Exact pose interpolation tangent evidence with machine-scale band; no physical blend tolerance, measured hit or controller timing."
+}
