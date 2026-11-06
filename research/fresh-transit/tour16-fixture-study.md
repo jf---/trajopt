@@ -35,3 +35,17 @@ chord timing reach 0.179 m track and 0.146 rad positioner. Sampled contacts,
 numerical velocity extrema and target preservation do not establish controller,
 fixture-dynamics or manufacturing acceptance. Neighboring transit continuity
 and whole-tour verification remain outstanding.
+
+
+The follow-up [all-fixture check](tour16-fixture-monotone-all.json) applied
+that same 1.5× policy to all 36 chains in one scene. It checked 69 stages and
+70,725 finite collision samples with no detected penetration; numerical
+position extrema, sourced robot-speed extrema, target parity and sampled
+fixture winding passed. Maximum sourced robot-speed ratio was 0.701. Total
+modeled fixture time became 56.662 s, compared with 37.775 s for the unscaled
+model. The largest deviation at the same normalized stage time from generated
+chord interpolation was 0.178 m track and 0.808 rad positioner, the latter on
+`fixture:187`'s 5.508 rad commanded movement. On a single-axis move this is a
+timing difference; coupled-axis paths can also change their joint-space shape.
+These results do not check neighboring transit joins, unsourced fixture dynamic
+limits, actual controller timing or full-tour execution.

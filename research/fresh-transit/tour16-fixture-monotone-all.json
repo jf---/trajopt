@@ -1,0 +1,6857 @@
+{
+  "tour": 16,
+  "scene_setup_s_contended": 2.6891292500076815,
+  "chains": [
+    {
+      "first_stage": "fixture:17",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:17",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            1.4097586987203786e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            5.551115123125783e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.03878514818772645,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            2.9103830456733704e-11,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1036.9503446535712,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.8870458980908192,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:18",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            2.5930660950764076e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            5.551115123125783e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.036967912472560704,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            2.220446049250313e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            2.0463630789890885e-12,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1036.9503446535712,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            1.889994640943197,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:19",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            2.371478203255622e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            4.440892098500626e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3421658241762344e-06,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            2.220446049250313e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.5916157281026244e-12,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            327.75631817077766,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            1.8900341771096711,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:20",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            2.3714780914037795e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            3.3306690738754696e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.00690794616931778,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            1.1102230246251565e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            5.4569682106375694e-12,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2718.0132188265197,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            1.6344339622641462,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:21",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            1.154969426949471e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            4.440892098500626e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.038785148187726604,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.1641532182693481e-10,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4077.0198282397996,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.9648110281855414,
+      "node_count": 11,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:40",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:40",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.6709353108184554,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0013434347764784693,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.07603112754829966,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            2.220446049250313e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.3834586608735329,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            53.45055293608226,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.5232917082917021,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:41",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.700649233676074,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.009795142693336256,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.011152017046487828,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            7.171289571298772,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.803417782992232,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.4386905991717649,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:42",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.5721716253475049,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.04666109248661332,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1096986607896806,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            5.836983213409624,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.85471189306197,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 2.600593041766768,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        1.1988011988011953,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.6319482836723014,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:58",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:58",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.682637779854791,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.004901668572677043,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0026074049201834093,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            4.440892098500626e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            4.74369341794668,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.5989982067860729,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.019780219780219904,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:59",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.6140291009569024,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.17846261913098038,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.028183096084856807,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            4.440892098500626e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            4.007284643257208,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.0044007824460626,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.03719280719280851,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:60",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.6826377798547919,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0049016685726763765,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004902711372646973,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            4.743693417946474,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.0066011736688694,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 3.394666666666672,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        -1.1988011988011922,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        -1.1988011988011953,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:87",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:87",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.19392574093863102,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            454.41711050517443,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            1.1919264510954632,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:88",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.06369199256533875,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            660.2518763694338,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.08727301615533,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:104",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:104",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.03841891864930069,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            148.2298771999074,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.4732185,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:118",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:118",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.4610255563004464,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            197.20503283331163,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.9850559999999999,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:129",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:129",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.17612380097999103,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            763.8956051752933,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -1.894594671808658,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:130",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.220446049250313e-16,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2952.335981115948,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -1.8945946718086577,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:131",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.08698972906002755,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3656.6625114363687,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.816902148185164,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:149",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:149",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            3.805154913755193e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            6.661338147750939e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1137587409686355,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.0913936421275139e-11,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            53.67043184619289,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.9533999999999999,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:167",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:167",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            3.2351067383152964e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            1.1102230246251565e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.46102643679514466,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            2.220446049250313e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.0913936421275139e-11,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            217.59265998809698,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.9532769999999999,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:187",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:187",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            3.2353680719481637e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            6.661338147750939e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.8082941326216528,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            7.275957614183426e-12,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            381.5865697430712,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.9532000000000003,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:210",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:210",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2538617555104472,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            982.6464926788373,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            2.064080944350773,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:211",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.03507379649208975,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1466.2998417295858,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.9752490319292617,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:212",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.06648882546467405,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            294.72763633445504,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.1308451138143687,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:227",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:227",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.6915390681962514,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            14.245228160862709,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 2.7075367212949395,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:237",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:237",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.689723562362228e-07,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005006161572142714,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            4.866010510118177e-06,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:238",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.991728873981042e-09,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.006667422231198551,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            4.572393634296859e-06,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:239",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.1587149440753906e-07,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.010001133346797766,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.895883611033251,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:252",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:252",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.886671879901136e-07,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0001452035226597173,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.247008263634529,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:269",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:269",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.7971630528596724e-17,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.5068429217298554e-11,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.07871033333333333,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:281",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:281",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.434065074844702e-19,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0757440707215411e-12,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -8.800588180014053e-17,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:282",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.1321245165328995e-17,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4.792774339335787e-15,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.0636774333333334,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:291",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:291",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.3102792101950539,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            231.1413029163183,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            2.5115226776101895,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:292",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.31028044632792184,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            231.14375541159086,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.250866666666667,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:328",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:328",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.07694125391295303,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4046.4697391148297,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            2.517613545320206,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:329",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.23276817302233255,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            413.70579428469296,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.6205653744522801,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:340",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:340",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.46075113545295165,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            34.863157454463035,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.7547899999999998,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:352",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:352",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            1.166196203153712e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            4.440892098500626e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.00048133710148889897,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            1.8189894035458565e-12,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.07898166727345042,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.3557083333333333,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:364",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:364",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.17421170639418393,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            15.493691685406382,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.6902464144034177,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:365",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.3306690738754696e-16,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            21.53207598650473,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.6902464144034179,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:366",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.12313796688804124,
+            1.1102230246251565e-15
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            31.88929656242852,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 4.5265699999999995,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:378",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:378",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.13459844057779513,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            151.80981817329652,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.7371095479432599,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:379",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.15504077908216835,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            23.40323135576529,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.6845437383057567,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:387",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:387",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            8.639991758243695e-09,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.17023173093274774,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -2.0836840015879056e-06,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:388",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            8.138201114930464e-12,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.2211163406925033e-09,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -2.083722615822118e-06,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:389",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            7.968995725980125e-12,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004253099327934975,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -2.083690690275279e-06,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:390",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4.463106853718324e-08,
+            8.881784197001252e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.006379648991902461,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 2.25213,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:399",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:399",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2303652952883342,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            757.9239617961703,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.49902509999999994,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:431",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:431",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.46073059057666854,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            20.78919789751358,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 2.0847869999999995,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:463",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:463",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.153320947113756,
+            1.1102230246251565e-15
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            513.9922649243653,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -1.9892117015033812,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:464",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1550403078450868,
+            8.881784197001252e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            459.9656199103408,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.7773250475892806,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:473",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:473",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            6.886671879901136e-07,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.00020068404826132977,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.1195,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:482",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:482",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2297137292119289,
+            1.1102230246251565e-15
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            66.92279003904913,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.1195999999999997,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:494",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:494",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.45942892591502116,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3005.3052963071427,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.39685802313529156,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:506",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:506",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            5.0583335148325095e-15,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            5.551115123125783e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.2313103595973547,
+            0.0
+          ],
+          "target_error_by_axis": [
+            1.1102230246251565e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            4.3655745685100555e-11,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            875.5655615505478,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 0.4762416666666668,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:536",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:536",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.23211014228122995,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            16.734818187812365,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.783266666666667,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:563",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:563",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.02157889444341876,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            447.38146265440906,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.4713801157670645,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:564",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.552713678800501e-15,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            638.1665849744053,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.4713801157670629,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:565",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.21290677053173557,
+            8.881784197001252e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            638.1665849744053,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -3.212410197723949,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:566",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.33388535733618374,
+            1.1102230246251565e-15
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            417.7124184844479,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.3374803680065213,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:592",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:592",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.4584207594859886,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.7607763921442694,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 4.73927535,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:605",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:605",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.07723054361312598,
+            0.0
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            794.7606741460352,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            1.4999645130908328,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:606",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.466093464152333,
+            1.1102230246251565e-15
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            120.07137057443741,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.2808371147960413,
+      "node_count": 9,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:620",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:620",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0052148098403663745,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4807.851731681077,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.022897783945534617,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:621",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.004691582630541147,
+            2.220446049250313e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            4807.851731681077,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.38511525257479107,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:622",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0004533696686510602,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5113246843845068,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.3808940912145557,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:623",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0005815722596260731,
+            6.661338147750939e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3996749806265036,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            -0.37971285073155703,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "stage": "fixture:624",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.14616618155858097,
+            8.881784197001252e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            3.5995124709397546,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 6.196945833333334,
+      "node_count": 11,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    },
+    {
+      "first_stage": "fixture:647",
+      "duration_factor": 1.5,
+      "status": "sampled_candidate_physical_and_process_acceptance_unresolved",
+      "stages": [
+        {
+          "stage": "fixture:647",
+          "collision_and_position": {
+            "sample_count": 1025,
+            "feasibility_band_native_units": 0.0001,
+            "max_raw_limit_excursion_by_axis": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "penetrating_samples": 0
+          },
+          "actual_robot_speed_ratio_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_departure_from_generated_chord_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.11375859421951928,
+            4.440892098500626e-16
+          ],
+          "target_error_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "sampled_peak_jerk_by_axis": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            34.983995207684245,
+            0.0
+          ],
+          "fixture_axis_velocity_at_stage_end": [
+            0.0,
+            0.0
+          ],
+          "sampled_fixture_winding_violation_native_units_s": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "modeled_duration_s": 1.0995885,
+      "node_count": 7,
+      "modeled_boundary_velocity_start": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "modeled_boundary_velocity_end": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_acceleration": "zero modeled hypothesis, not observed",
+      "fixture_speed_limits": "not supplied",
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position_bounds_pass": true,
+      "robot_speed_excess_native_units_s": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "robot_speed_pass": true,
+      "robot_speed_check_band_native_units_s": 0.0001,
+      "target_parity_pass": true,
+      "sampled_fixture_winding_pass": true
+    }
+  ],
+  "scope": "Native monotone fixture-axis interpolation and generated arm/track spline; no free rail optimization, physical timing or fixture dynamics claim.",
+  "status": "evaluated_unapproved_chains"
+}

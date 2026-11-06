@@ -34,9 +34,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("station", "tour-index", "recovery", "output", "ifopt-library", "sqp-library"):
         parser.add_argument(f"--{name}", type=Path, required=True)
-    parser.add_argument("--chain", action="append", required=True)
+    parser.add_argument("--chain", action="append", default=[])
+    parser.add_argument("--all-chains", action="store_true")
     parser.add_argument("--duration-factor", action="append", type=float, required=True)
     args = parser.parse_args()
+    if bool(args.chain) == args.all_chains:
+        raise FixtureMonotoneTrialError("select explicit fixture chains or all chains")
     if any(not np.isfinite(x) or x <= 0 for x in args.duration_factor):
         raise FixtureMonotoneTrialError("positive modeled duration factors required")
     require_loaded_libraries(
@@ -76,6 +79,14 @@ def main():
     )
     checker = StateChecker.build(env, tuple(names), {}, PairMargins.uniform(Meters(0)))
     labels = [r["stage"] for r in rows]
+    selected = args.chain or [
+        label
+        for index, label in enumerate(labels)
+        if label.startswith("fixture:")
+        and (index == 0 or not labels[index - 1].startswith("fixture:"))
+    ]
+    if not selected:
+        raise FixtureMonotoneTrialError("the generated tour has no fixture chains")
     report = {
         "tour": tour,
         "scene_setup_s_contended": setup,
@@ -88,9 +99,7 @@ def main():
             json.dumps(report, indent=2, allow_nan=False) + "\n"
         )
 
-    for factor, label in [
-        (factor, label) for factor in args.duration_factor for label in args.chain
-    ]:
+    for factor, label in [(factor, label) for factor in args.duration_factor for label in selected]:
         result = {
             "first_stage": label,
             "duration_factor": factor,
