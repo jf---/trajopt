@@ -44,6 +44,8 @@ set(TRAJOPT_IFOPT_SOURCE_FILES
     src/spline/quintic_spline_jerk_fourth_cost.cpp
     src/spline/quintic_spline_jerk_peak_constraint.cpp
     src/spline/quintic_spline_position_limits.cpp
+    src/spline/quintic_spline_derivative_limits.cpp
+    src/spline/monotone_fixture_axis.cpp
     src/constraints/joint_position_constraint.cpp
     src/constraints/joint_velocity_constraint.cpp
     src/constraints/cartesian_line_constraint.cpp

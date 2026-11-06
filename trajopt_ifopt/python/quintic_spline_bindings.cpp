@@ -1,4 +1,6 @@
 #include "../include/trajopt_ifopt/spline/spline_fixed_join_progress_velocity.h"
+#include "../include/trajopt_ifopt/spline/quintic_spline_derivative_limits.h"
+#include "../include/trajopt_ifopt/spline/monotone_fixture_axis.h"
 #include <nanobind/nanobind.h>
 #include <nanobind/eigen/dense.h>
 #include <nanobind/stl/optional.h>
@@ -33,6 +35,23 @@ std::vector<ti::Seconds> seconds(const std::vector<double>& values)
 NB_MODULE(_quintic_spline, m)
 {
   nb::module_::import_("tesseract_robotics.trajopt_ifopt");
+  nb::exception<ti::MonotoneFixtureAxisError>(m, "MonotoneFixtureAxisError");
+  nb::class_<ti::MonotoneFixtureAxis>(m, "MonotoneFixtureAxis")
+      .def_static("build", [](const std::vector<double>& times, const std::vector<double>& targets) {
+        return ti::MonotoneFixtureAxis::build(seconds(times), targets);
+      }, "times_s"_a, "targets"_a)
+      .def("evaluate_many", [](const ti::MonotoneFixtureAxis& self, const std::vector<double>& times) {
+        Eigen::MatrixXd result(static_cast<Eigen::Index>(times.size()), 4);
+        {
+          nb::gil_scoped_release release;
+          for (std::size_t i = 0; i < times.size(); ++i)
+          {
+            const auto sample = self.evaluate(ti::Seconds(times[i]));
+            result.row(static_cast<Eigen::Index>(i)) << sample.position, sample.velocity, sample.acceleration, sample.jerk;
+          }
+        }
+        return result;
+      }, "times_s"_a);
   nb::exception<ti::QuinticSplineError>(m, "QuinticSplineError");
   nb::class_<ti::SplineAffineMap>(m, "SplineAffineMap")
       .def_ro("basis", &ti::SplineAffineMap::basis)
@@ -159,6 +178,23 @@ NB_MODULE(_quintic_spline, m)
           "times_s"_a,
           "limits"_a,
           "name"_a = "SplineInterpolatedJointLimits");
+  nb::class_<ti::QuinticSplineDerivativeLimits, ti::ConstraintSet>(m, "QuinticSplineDerivativeLimits")
+      .def(
+          "__init__",
+          [](ti::QuinticSplineDerivativeLimits* self,
+             const ti::QuinticSplineModel& model,
+             std::vector<std::shared_ptr<const ti::Var>> knots,
+             const std::vector<double>& times,
+             std::vector<ti::Bounds> limits,
+             std::string name) {
+            new (self) ti::QuinticSplineDerivativeLimits(
+                model, std::move(knots), seconds(times), std::move(limits), std::move(name));
+          },
+          "model"_a,
+          "knots"_a,
+          "times_s"_a,
+          "sample_axis_limits"_a,
+          "name"_a = "SplineInterpolatedVelocityLimits");
   nb::class_<ti::SplineCartesianLineConstraint, ti::ConstraintSet>(m, "SplineCartesianLineConstraint")
       .def(nb::init<ti::CartLineInfo,
                     std::vector<std::shared_ptr<const ti::Var>>,
