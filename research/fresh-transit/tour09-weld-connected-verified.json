@@ -1,0 +1,4662 @@
+{
+  "status": "sampled_tour_physical_and_process_acceptance_unresolved",
+  "scope": "Independent finite samples of the generated actual tour; fixture clocks modeled, actual hit and controller timing unknown.",
+  "scene_setup_s_contended": 2.666141624969896,
+  "modeled_duration_s": 153.2667370737528,
+  "outer_physical_derivatives": "unknown",
+  "fixture_speed_and_acceleration_limits": "not supplied",
+  "search_hit_assumption": "hypothetical hit at commanded limit; no observed controller event",
+  "unresolved_modeled_joins": [],
+  "unresolved_source_bead_order": [],
+  "unresolved_joint_linear_corners": [],
+  "ordered_stationary_events": [],
+  "maximum_join_delta_by_quantity": {
+    "position_delta": 6.631756696608209e-15,
+    "velocity_delta": 8.965289448326086e-14,
+    "acceleration_delta": 5.391938996526599e-12
+  },
+  "stages": [
+    {
+      "stage": "transit:0",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.17379111245970075,
+        0.538784896176651,
+        0.3663204984992843,
+        0.3904192404100168,
+        0.6197706702054127,
+        0.009815636741755814,
+        0.5342626580058913
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        5.395527339022135,
+        31.295655570005128,
+        17.01501497886882,
+        15.652050797219417,
+        121.98546160964632,
+        2.0682912136742884,
+        170.8468577473053
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        5.206133263898232,
+        161.46408461780018,
+        56.68129212498347,
+        63.028415728249946,
+        1417.9790011731213,
+        0.5073564158962931,
+        3015.853003280526
+      ]
+    },
+    {
+      "stage": "approach:0",
+      "duration_s": 3.4343625,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.00024979611310996296,
+        0.005692883193761667,
+        0.001819935296017487,
+        0.0064968479390250106,
+        0.008654144083286935,
+        0.014163901876997953,
+        0.0030058704853163525
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0013723278512497157,
+        0.03897128786581909,
+        0.013392448397265088,
+        0.043425485222696646,
+        0.07887701886680894,
+        0.12217129987281324,
+        0.0462389853153352
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        9.582246081459272e-07,
+        0.0007434355511716898,
+        8.194134986773296e-05,
+        0.0009128651882643645,
+        0.0030490943168537833,
+        0.007738779463121163,
+        0.000980059675617607
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.575066873191088e-10,
+        "max_orientation_departure_rad": 8.889997034025787e-10,
+        "progress_min": 3.990372234220161e-16,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.844660937182394e-10,
+        "max_clock_orientation_error_rad": 9.063731093378337e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.5237995154295908e-07,
+        0.04031987809106987
+      ]
+    },
+    {
+      "stage": "search:0",
+      "duration_s": 2.85,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0023606779286108803,
+        0.0026312437749003723,
+        0.0004149591871779546,
+        0.0011540491368067793,
+        0.0019754481368136094,
+        6.921839118958111e-05,
+        0.00040680578040238057
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.020158045413833883,
+        0.052165453083283624,
+        0.007862873079282628,
+        0.02198444529399155,
+        0.05435260931229613,
+        0.0018444682557342514,
+        0.01575423495586852
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.00017912017928348886,
+        0.0023354563354984754,
+        5.603053990221293e-05,
+        0.0004342227376051721,
+        0.0025383155704898986,
+        3.0251008285696615e-06,
+        0.0002211412712152621
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.134608635915589e-09,
+        "max_orientation_departure_rad": 1.3343023559045148e-09,
+        "progress_min": -2.336580516554035e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.940410148152345e-07,
+        "max_clock_orientation_error_rad": 1.3180235478651646e-09
+      },
+      "modeled_feed_range_m_s": [
+        1.249397985674083e-09,
+        0.010009939893795797
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009996012514619141,
+        0.010009899913007865
+      ]
+    },
+    {
+      "stage": "retract:0",
+      "duration_s": 0.5699999999999992,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.002360677928579581,
+        0.010421244918352852,
+        0.0016413149997870351,
+        0.004557222812647796,
+        0.007820099348625553,
+        0.0002766687922635424,
+        0.0016040360457086633
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.7488215870624684,
+        5.401184167470435,
+        0.8497294430620448,
+        2.35545342957888,
+        5.6278891048682445,
+        0.2037703511634113,
+        1.6740571684992545
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.062414369168589966,
+        5.209913047503597,
+        0.1259980993826212,
+        0.9752130262240929,
+        5.662478451270279,
+        0.006852487653197437,
+        0.4961164279020681
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.346949130113562e-09,
+        "max_orientation_departure_rad": 1.072893592658606e-09,
+        "progress_min": -2.336845246305273e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.940081270184632e-07,
+        "max_clock_orientation_error_rad": 1.1038232065720432e-09
+      },
+      "modeled_feed_range_m_s": [
+        6.2627490743563735e-09,
+        0.050049698508790784
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04998006501672461,
+        0.050049498768984874
+      ]
+    },
+    {
+      "stage": "withdraw:0",
+      "duration_s": 3.4343625000000007,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0020906440797115087,
+        0.00523632687267812,
+        0.0018914182994762055,
+        0.00670277786711666,
+        0.008998546628063554,
+        0.014155283275951915,
+        0.0030732370432299226
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.011488174540521595,
+        0.030367904863755454,
+        0.014763644916560374,
+        0.04722788940443157,
+        0.08785636985869139,
+        0.12184200749212346,
+        0.04894068903990262
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        6.714354403089109e-05,
+        0.000448170350957199,
+        0.0001003978825207043,
+        0.0010836906320447189,
+        0.0037957971738531255,
+        0.007697986414801545,
+        0.0011004247484971345
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.544506947099092e-10,
+        "max_orientation_departure_rad": 8.956493622165846e-10,
+        "progress_min": 4.292336632045929e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.1498310075147243e-10,
+        "max_clock_orientation_error_rad": 9.134041467469468e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.523793063158322e-07,
+        0.04031987814546055
+      ]
+    },
+    {
+      "stage": "transit:1",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        3.1355967205431373e-10,
+        0.010856969765386425,
+        0.09583890280307178,
+        0.04588437710962767,
+        0.063084237878769,
+        0.1250083332829047,
+        0.004622035771430088
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        6.008680202285177e-08,
+        1.2347625380238667,
+        10.002943805471638,
+        4.785523388808908,
+        9.49477364345723,
+        18.357495317369768,
+        0.674364923843101
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        5.598033302980742e-16,
+        0.24522976468327437,
+        19.393807472366994,
+        4.268065567310586,
+        17.82345604538817,
+        65.57413771364574,
+        0.08964492373274047
+      ]
+    },
+    {
+      "stage": "approach:1",
+      "duration_s": 4.59279375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0006152572131020679,
+        0.005893426957507637,
+        0.010945667990301866,
+        0.00827702962520128,
+        0.0048377863797682006,
+        0.00011651170502475656,
+        0.0014973899355149578
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0018902227551817086,
+        0.019212349021444027,
+        0.03748585316828846,
+        0.030114435677581347,
+        0.021534132687642094,
+        0.0004996060009446523,
+        0.008321249969752005
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        2.4310030481830533e-06,
+        0.0002598943827602175,
+        0.0009763650449269117,
+        0.0006063608859584105,
+        0.000331895946529246,
+        1.2361283077527616e-07,
+        5.817231449167349e-05
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.4453583467119395e-10,
+        "max_orientation_departure_rad": 3.8153703682741044e-10,
+        "progress_min": 2.5851560213152693e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 4.666301340677823e-10,
+        "max_clock_orientation_error_rad": 3.8153688577135346e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.5238774206847803e-07,
+        0.04031838879791621
+      ]
+    },
+    {
+      "stage": "search:1",
+      "duration_s": 2.8500000000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0006152572131012061,
+        0.00023935701384603062,
+        0.0033786911000931647,
+        0.0017274594149857669,
+        0.0003309184250148768,
+        0.0004012573121082683,
+        0.0008292306766131593
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.007803666542157743,
+        0.0052986983104774425,
+        0.06759391058005601,
+        0.03402321108327232,
+        0.009691697984577311,
+        0.011281560650031348,
+        0.0342779954182976
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        3.388839493693362e-05,
+        1.5656572193362967e-05,
+        0.004361119311853958,
+        0.0011044783753662122,
+        6.937163334404512e-05,
+        0.00012031001084950497,
+        0.0010582872743569208
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.676119071338974e-09,
+        "max_orientation_departure_rad": 5.101133232180677e-10,
+        "progress_min": 4.089575996229595e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9487184569760856e-07,
+        "max_clock_orientation_error_rad": 5.248893254338922e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.250835995228182e-09,
+        0.010006091248760769
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009992144860893828,
+        0.010006050392934066
+      ]
+    },
+    {
+      "stage": "retract:1",
+      "duration_s": 0.5699999999999998,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0005444002539591568,
+        0.00021179387201716426,
+        0.016731178606815077,
+        0.008240813036458221,
+        0.00192755858789293,
+        0.001971164395353645,
+        0.0042330695300146805
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.1003094410899466,
+        0.06810374025972055,
+        8.425620640878705,
+        4.154920914610673,
+        1.3339989074388876,
+        1.3986547839689656,
+        4.321280717183052
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0008095255163546306,
+        0.00036529563337700483,
+        13.450280303417161,
+        3.2194490257077533,
+        0.3321657515701158,
+        0.36687889606465895,
+        3.468048860350121
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.6656697547336045e-09,
+        "max_orientation_departure_rad": 5.64670844519591e-10,
+        "progress_min": 2.2989170540625086e-17,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9484756448647984e-07,
+        "max_clock_orientation_error_rad": 5.828024402367237e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.25537794691645e-09,
+        0.05003045520168665
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04996072623488228,
+        0.05003025103333055
+      ]
+    },
+    {
+      "stage": "withdraw:1",
+      "duration_s": 4.59279375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        6.218252244821362e-05,
+        0.006003650069107096,
+        0.010925221610857497,
+        0.008226950447048704,
+        0.004923716513038547,
+        0.00012132798971461629,
+        0.001514264554940702
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.00019102623198576362,
+        0.02036612206138721,
+        0.03728380616330731,
+        0.029605330818758286,
+        0.022785941944731342,
+        0.0005779751246501687,
+        0.008686101210018213
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        2.482912101491324e-08,
+        0.00029144057378968267,
+        0.0009659085956371605,
+        0.0005858787096113052,
+        0.00037049437936231323,
+        1.6907258735480906e-07,
+        6.2767048191418e-05
+      ],
+      "geometry": {
+        "max_position_departure_m": 4.543044732222896e-10,
+        "max_orientation_departure_rad": 3.8474571153556285e-10,
+        "progress_min": 2.485432085545142e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 4.747567618961481e-10,
+        "max_clock_orientation_error_rad": 3.8474542894972035e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.523875366339711e-07,
+        0.04031838881984151
+      ]
+    },
+    {
+      "stage": "transit:2",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        1.8529929442697342e-09,
+        0.05956843273065356,
+        0.10557792600103574,
+        0.013436844369376172,
+        0.2707796893844608,
+        0.16554890609406478,
+        0.06186907718416694
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        3.6098039117860027e-07,
+        6.165499127562867,
+        10.707830402398905,
+        1.4975513394476636,
+        38.04187607467132,
+        23.022081885772522,
+        12.541793202583534
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.96577477157895e-14,
+        7.264750635217051,
+        21.661119636201395,
+        0.3483677210218291,
+        287.14209845203146,
+        105.58724447079926,
+        31.035880738907945
+      ]
+    },
+    {
+      "stage": "approach:2",
+      "duration_s": 3.3102375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0012577661219031172,
+        0.004607297949487377,
+        0.013250295437901134,
+        0.008879244800950297,
+        0.0031486288904827445,
+        0.002529134335693003,
+        0.0012880404126702398
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.007439876806206553,
+        0.02675851119259586,
+        0.08722773356132159,
+        0.06180567126520419,
+        0.02525339084263306,
+        0.021066516272996348,
+        0.014362924563986317
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        2.7141649519585424e-05,
+        0.0003569688107933201,
+        0.0038077934352047527,
+        0.001854507231955019,
+        0.00031753020296380777,
+        0.00023595607198000846,
+        0.00011915646000132954
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.53020355164394e-10,
+        "max_orientation_departure_rad": 1.0544233139711796e-10,
+        "progress_min": 3.4228369779281116e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.72875015365289e-10,
+        "max_clock_orientation_error_rad": 1.0544241393728362e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.523951451302803e-07,
+        0.04032039013970387
+      ]
+    },
+    {
+      "stage": "search:2",
+      "duration_s": 2.8499999999999996,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0012577661219009444,
+        0.001222639527027386,
+        0.00024395692146382284,
+        0.0018791722947005068,
+        0.0009453394804157584,
+        0.0009210701601900819,
+        0.0004969349928662159
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.00662895069687672,
+        0.02100257593396525,
+        0.004926830016617233,
+        0.036803997234277644,
+        0.023006435708630858,
+        0.025156028387270296,
+        0.019973980904536514
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.56576677461413e-05,
+        0.00034028468071845686,
+        2.0265785781035488e-05,
+        0.0012742985224062152,
+        0.00041222953842359,
+        0.0006006846888394533,
+        0.0003769366382791558
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.288139015002761e-09,
+        "max_orientation_departure_rad": 1.5590779931405034e-09,
+        "progress_min": -1.168616888504986e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9320585569858747e-07,
+        "max_clock_orientation_error_rad": 1.5023280605851186e-09
+      },
+      "modeled_feed_range_m_s": [
+        1.2518349788366766e-09,
+        0.01000656672916351
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.00999266127307477,
+        0.01000652740556206
+      ]
+    },
+    {
+      "stage": "retract:2",
+      "duration_s": 0.5700000000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.001941412895242009,
+        0.00496021377102079,
+        0.001187965563169409,
+        0.009150469450832872,
+        0.00391556367251636,
+        0.00446827180920414,
+        0.0024550270621775325
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.47226473674086333,
+        2.5325584408449306,
+        0.6132357324412144,
+        4.5704160510052425,
+        2.7837693259829117,
+        3.1176960468217083,
+        2.501975777903473
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.021337624358910377,
+        1.0794482318171377,
+        0.06340821046310287,
+        3.9662555789415697,
+        1.3074732188407907,
+        1.8642875198797808,
+        1.1762196730110852
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.1390680415074084e-09,
+        "max_orientation_departure_rad": 1.465941099832202e-09,
+        "progress_min": 2.337233777009972e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.932167573800688e-07,
+        "max_clock_orientation_error_rad": 1.5043960249059443e-09
+      },
+      "modeled_feed_range_m_s": [
+        6.259561716345878e-09,
+        0.050032834228242555
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.049963305402216746,
+        0.050032637558095894
+      ]
+    },
+    {
+      "stage": "withdraw:2",
+      "duration_s": 3.3102562499999992,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0019414128952362593,
+        0.004438627251273927,
+        0.01325576135340287,
+        0.008922667230527419,
+        0.0030285257651823548,
+        0.0025047989153272514,
+        0.0012793394335246938
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.011485189393518867,
+        0.02335352308750393,
+        0.08732532449101886,
+        0.06265200947292925,
+        0.021885360538759162,
+        0.020370041818999287,
+        0.014041081054018273
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        6.467759848389022e-05,
+        0.0002727620716589771,
+        0.0038164989567877517,
+        0.0019062973232431423,
+        0.00023924141944215352,
+        0.00022130990801219282,
+        0.00011405893878685451
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.4822198451387407e-10,
+        "max_orientation_departure_rad": 1.0273505571859438e-10,
+        "progress_min": -1.5940418652634293e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.6876072605694175e-10,
+        "max_clock_orientation_error_rad": 1.0273504609705639e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.5239455042719174e-07,
+        0.040320161748080945
+      ]
+    },
+    {
+      "stage": "transit:3",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        1.8532052435836652e-10,
+        0.04358721905837702,
+        0.0131274498562127,
+        0.0693488349069678,
+        0.22074026116903245,
+        0.112323357988878,
+        0.044425044859522686
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        3.542858166838414e-08,
+        5.018122521472261,
+        1.2175409725602877,
+        7.100819059890213,
+        31.48245011382781,
+        15.502428960416673,
+        8.862362167794062
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.9538798388876749e-16,
+        4.5253405654711605,
+        0.2063507263068663,
+        9.516649314573803,
+        194.8680386365439,
+        47.92807276465199,
+        15.573597778591733
+      ]
+    },
+    {
+      "stage": "weld:4",
+      "duration_s": 2.000156092091146,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.01650105260446699,
+        0.008186743541881177,
+        0.010086132328137324,
+        0.011997244396038186,
+        0.001738166084976453,
+        0.00028270956285232136
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        21.24525892258106,
+        11.121205464259656,
+        13.415058379286144,
+        22.48685019854302,
+        2.489221301869689,
+        0.06101182114594844
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        47.79636480102649,
+        13.085362109632706,
+        19.024970321277927,
+        53.54846340913076,
+        0.6542309318506986,
+        0.00011508417311826924
+      ],
+      "geometry": {
+        "max_position_departure_m": 6.199799692270176e-05,
+        "max_orientation_departure_rad": 9.992000741717956e-05,
+        "progress_min": 0.0,
+        "progress_max": 1.0000496472118168,
+        "max_backward_progress": 4.964721181610621e-05,
+        "max_backward_distance_m": 4.9647211816106385e-06
+      },
+      "modeled_feed_range_m_s": [
+        0.001828578690552216,
+        0.07894630388264992
+      ],
+      "source_endpoint_position_error_m": [
+        0.0,
+        5.980345966177925e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        0.0,
+        1.1831170202396056e-15
+      ],
+      "blend_target_position_error_m": 8.136906801070667e-05,
+      "blend_target_orientation_error_rad": 4.726153691368278e-06
+    },
+    {
+      "stage": "weld:5",
+      "duration_s": 0.31953999999999994,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0010318927001568758,
+        0.0010794363631888451,
+        0.00107505522569998,
+        0.0013653763543397509,
+        0.00033503306000188713,
+        0.0002922351119881036
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        17.526269690657976,
+        9.217769834175865,
+        11.167538389202045,
+        18.54617314045459,
+        2.0860502746278313,
+        0.2221669096459729
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        6.564398491538221,
+        1.8206754046416496,
+        2.66389374766667,
+        7.355465010455587,
+        0.09666417725827009,
+        0.0008616886531083992
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.2258159746225582e-05,
+        "max_orientation_departure_rad": 2.1244758722442816e-05,
+        "progress_min": 1.0021387169616599e-13,
+        "progress_max": 1.0000000000000686,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.0028965272322508525,
+        0.005843541745468968
+      ],
+      "source_endpoint_position_error_m": [
+        5.980345966177925e-16,
+        4.577566798522237e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        1.1831170202396056e-15,
+        2.498001805406602e-16
+      ],
+      "blend_target_position_error_m": 8.322659607039665e-06,
+      "blend_target_orientation_error_rad": 4.831386902466343e-07
+    },
+    {
+      "stage": "weld:6",
+      "duration_s": 0.27796999999999983,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0007790014663409925,
+        0.0008889926559582314,
+        0.0009725914919899446,
+        0.0019285539786892943,
+        0.0007194049381421057,
+        0.0006156301861025302
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.3394354157578865,
+        0.4286158086966706,
+        0.23982489836063137,
+        1.772095306924522,
+        1.0441363322354587,
+        1.3853875403676548
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.0050469406494979795,
+        0.009128717075512561,
+        0.004833440019279275,
+        0.23654434334143953,
+        0.08410906336580469,
+        0.14292787290256806
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.225882796176438e-05,
+        "max_orientation_departure_rad": 6.877455769804915e-05,
+        "progress_min": 2.477755053838201e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.0049747803634722825,
+        0.005042546792303118
+      ],
+      "source_endpoint_position_error_m": [
+        4.577566798522237e-16,
+        0.0
+      ],
+      "source_endpoint_orientation_error_rad": [
+        2.498001805406602e-16,
+        0.0
+      ],
+      "blend_target_position_error_m": 1.0288198721544139e-07,
+      "blend_target_orientation_error_rad": 6.502774726422512e-07
+    },
+    {
+      "stage": "weld:7",
+      "duration_s": 17.84723,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0007341645535804923,
+        0.0009003555104530063,
+        0.0008166449989492075,
+        0.00278795210492288,
+        0.0011124623857125416,
+        0.0011831488548521606
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.08979299810927575,
+        0.14004033829855778,
+        0.16762603253116015,
+        0.4794203442098268,
+        0.20468080478470377,
+        0.4644437612832831
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.001300390072306195,
+        0.0032907549293648224,
+        0.00066915445362798,
+        0.05360885370771678,
+        0.010194860532175491,
+        0.03663841130816954
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.1763955798214704e-05,
+        "max_orientation_departure_rad": 0.00016472946456946004,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.004966292330357317,
+        0.005065852206207591
+      ],
+      "source_endpoint_position_error_m": [
+        0.0,
+        0.0
+      ],
+      "source_endpoint_orientation_error_rad": [
+        0.0,
+        0.0
+      ],
+      "blend_target_position_error_m": 2.643946317417152e-05,
+      "blend_target_orientation_error_rad": 0.0001683005153308943
+    },
+    {
+      "stage": "weld:8",
+      "duration_s": 0.3390000000000022,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0005220054501583148,
+        0.00042041667799512777,
+        0.0006859605481185728,
+        0.0016349189699534502,
+        0.0004994297486584803,
+        0.0005210971531098086
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        11.919216761492823,
+        7.61670164518445,
+        2.9579803947245584,
+        13.488114683589753,
+        0.7221668526594331,
+        10.241378826522268
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        3.2708821554317606,
+        1.3659322761152703,
+        0.20129970079578988,
+        4.59206807034717,
+        0.058160232308072754,
+        2.6738930655562605
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.900090606650399e-05,
+        "max_orientation_departure_rad": 0.00011027715868717127,
+        "progress_min": 0.0,
+        "progress_max": 1.0000000000001479,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.004049980656297934,
+        0.005565601155140819
+      ],
+      "source_endpoint_position_error_m": [
+        0.0,
+        6.280369834735101e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        0.0,
+        2.719479911021037e-16
+      ],
+      "blend_target_position_error_m": 8.412820808740216e-06,
+      "blend_target_orientation_error_rad": 1.075854713038154e-06
+    },
+    {
+      "stage": "weld:9",
+      "duration_s": 2.0001319366569352,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.013494684267700315,
+        0.008602486487101048,
+        0.002832058130456561,
+        0.011526314721969572,
+        0.0006242372012701588,
+        0.0057605111882556015
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        15.90879215377958,
+        10.140282724132803,
+        4.0526666088886465,
+        18.017434144274013,
+        0.7981731154441085,
+        13.759932674414856
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        23.217678287832477,
+        9.427123538465931,
+        1.5167459826703504,
+        29.786924817427057,
+        0.05726791041826474,
+        17.398301049114778
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.00014030223345213314,
+        "max_orientation_departure_rad": 0.00010702857008913376,
+        "progress_min": -3.598126485247158e-07,
+        "progress_max": 1.0,
+        "max_backward_progress": 3.598126518684702e-07,
+        "max_backward_distance_m": 3.598126518684709e-08
+      },
+      "modeled_feed_range_m_s": [
+        0.00397705603399636,
+        0.07793525470003486
+      ],
+      "source_endpoint_position_error_m": [
+        6.280369834735101e-16,
+        0.0
+      ],
+      "source_endpoint_orientation_error_rad": [
+        2.719479911021037e-16,
+        0.0
+      ],
+      "blend_target_position_error_m": 8.166204243048474e-05,
+      "blend_target_orientation_error_rad": 4.860311404546471e-06
+    },
+    {
+      "stage": "transit:10",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.030022342585938794,
+        0.6316967597662698,
+        0.41953954217079004,
+        0.4669233474054163,
+        0.750859706819866,
+        0.11586449392826993,
+        0.6858022366721855
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        10.743425000254852,
+        146.88448420004596,
+        46.77898140779358,
+        57.03327589500176,
+        113.98184880212405,
+        16.409876142352154,
+        138.03691007652998
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        5.94491793136106,
+        1178.30919964254,
+        347.4310603739802,
+        489.06326212153226,
+        2200.9933421821015,
+        52.0009182635225,
+        3776.5672310268537
+      ]
+    },
+    {
+      "stage": "fixture:11",
+      "duration_s": 0.11302883383063791,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speeds_pass": true
+    },
+    {
+      "stage": "fixture:12",
+      "duration_s": 0.08480061300464001,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speeds_pass": true
+    },
+    {
+      "stage": "fixture:13",
+      "duration_s": 0.03953671364944053,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speeds_pass": true
+    },
+    {
+      "stage": "fixture:14",
+      "duration_s": 0.15453555884277856,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speeds_pass": true
+    },
+    {
+      "stage": "fixture:15",
+      "duration_s": 0.21990590313385833,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speeds_pass": true
+    },
+    {
+      "stage": "transit:16",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        1.600425347803025e-09,
+        0.831178687034245,
+        0.2601950973407066,
+        0.005263838136522835,
+        0.3492130584146711,
+        0.3846404850410464,
+        0.38663232982651907
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        3.02103342164628e-07,
+        83.56852717159069,
+        25.790680066522086,
+        0.45958699834958644,
+        48.63669184080178,
+        53.61510389632095,
+        77.5808981807139
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.4516358897566052e-14,
+        1396.570688298615,
+        132.56509554628275,
+        0.03645794426746338,
+        471.6885902084785,
+        573.7504854299744,
+        1200.7797671475782
+      ]
+    },
+    {
+      "stage": "approach:3",
+      "duration_s": 1.4997225,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0001814070746954019,
+        8.423250612500957e-05,
+        0.0038367625227732965,
+        0.0026754970517518773,
+        0.004345276398088017,
+        0.003106878019179356,
+        0.003861824801516805
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0052264708469558505,
+        0.0013471436223683043,
+        0.12903032713919985,
+        0.08446490196636568,
+        0.20410367769210147,
+        0.14261606745024574,
+        0.25908399441074687
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        6.069145839571135e-06,
+        4.0324669102017116e-07,
+        0.0036289937499212844,
+        0.001648506525566214,
+        0.009130228263361939,
+        0.0045674293000689415,
+        0.014764682382274883
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.3181987558163888e-11,
+        "max_orientation_departure_rad": 1.8621380065061362e-11,
+        "progress_min": -6.609984009945971e-16,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.3208053922997974e-11,
+        "max_clock_orientation_error_rad": 1.8621650903017677e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239326302679087e-07,
+        0.04032098128843545
+      ]
+    },
+    {
+      "stage": "search:3",
+      "duration_s": 2.849997,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.00018140707470120835,
+        4.371934463535971e-05,
+        0.000981586105346904,
+        0.0006301513862642646,
+        0.0011066677045877048,
+        0.0007744190834915281,
+        0.0009725200638280982
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0008507965804282313,
+        0.0003578675348497019,
+        0.01998349399115423,
+        0.01290232225838324,
+        0.031479877370288054,
+        0.021743323526031987,
+        0.03963295035712208
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        2.655940467589653e-07,
+        4.698147438256893e-08,
+        0.00037054683046215746,
+        0.00015233804579523782,
+        0.0009256662273703098,
+        0.0004478882708828141,
+        0.0014757560826567746
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.030254414357168e-09,
+        "max_orientation_departure_rad": 1.6483994037158583e-09,
+        "progress_min": -4.6747288229780255e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.929251229799547e-07,
+        "max_clock_orientation_error_rad": 1.6891545392910556e-09
+      },
+      "modeled_feed_range_m_s": [
+        1.2523918547781141e-09,
+        0.01000601714283001
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009992118663300442,
+        0.010005978050398965
+      ]
+    },
+    {
+      "stage": "retract:3",
+      "duration_s": 0.5699999999999998,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0002865296231288263,
+        6.905401766193495e-05,
+        0.004933763167054534,
+        0.0031782462644452765,
+        0.005545650985094182,
+        0.0038520904021425596,
+        0.004853265744142426
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.07205798631625768,
+        0.030309484382319896,
+        2.5007345991306082,
+        1.6168903141712916,
+        3.937185893978462,
+        2.724686915491631,
+        4.961241916122661
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.000506911903502763,
+        8.966920192492007e-05,
+        1.1574450092361304,
+        0.4764857015400099,
+        2.8927472269977725,
+        1.4009455181694068,
+        4.609595896728944
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.028058971178914e-09,
+        "max_orientation_departure_rad": 1.6428209388287147e-09,
+        "progress_min": 1.1687163759144037e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.929247887099658e-07,
+        "max_clock_orientation_error_rad": 1.683984874798704e-09
+      },
+      "modeled_feed_range_m_s": [
+        6.260358501468454e-09,
+        0.050030033033947
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04996054075490172,
+        0.05002983757320506
+      ]
+    },
+    {
+      "stage": "withdraw:3",
+      "duration_s": 1.4997187500000004,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.00028652962312984286,
+        7.12608852774716e-05,
+        0.003832235827289223,
+        0.002681341577695926,
+        0.004343085180819153,
+        0.003113697230287379,
+        0.0038562454273557635
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.008255182192809607,
+        7.321344015865702e-05,
+        0.12859045825210755,
+        0.08503467432765817,
+        0.20381038292982834,
+        0.14354777295102739,
+        0.2579924774899638
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.5141274075913282e-05,
+        1.1911375034204352e-09,
+        0.003604075343162574,
+        0.0016703392268881017,
+        0.009103834112662705,
+        0.004626958636227401,
+        0.014639892339417144
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.322209694794182e-11,
+        "max_orientation_departure_rad": 1.869697420299069e-11,
+        "progress_min": 2.067504457113051e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.3247917280763763e-11,
+        "max_clock_orientation_error_rad": 1.8697182451335814e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239363806349173e-07,
+        0.04032108210994731
+      ]
+    },
+    {
+      "stage": "transit:17",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8333333333301018,
+        0.1903698858079866,
+        0.20123783333832845,
+        0.29607699421650935,
+        0.1892749106759666,
+        0.28398444575780957,
+        0.27842359836509195
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.00000001023525,
+        19.127789306026635,
+        20.319869870718435,
+        29.994363052003624,
+        26.338497916165853,
+        39.92071524930655,
+        55.953903817226085
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.80439452866466,
+        73.1605593461591,
+        82.41334103430833,
+        177.48360481170585,
+        137.8818718504094,
+        316.29555680280265,
+        623.2565089732575
+      ]
+    },
+    {
+      "stage": "approach:4",
+      "duration_s": 2.46279375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0013359803334982696,
+        0.00040819458456899034,
+        0.004730877367699177,
+        0.012965163523159864,
+        0.0005881592731102396,
+        0.005562056909725819,
+        0.0013544176709779983
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.014272172033100418,
+        0.008557412979710098,
+        0.052110754475811726,
+        0.15031767850819272,
+        0.010898137141361475,
+        0.09430141975184939,
+        0.029729937676321972
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        7.432292717117272e-05,
+        2.661810359912948e-05,
+        0.0010568219390227334,
+        0.008492406071390528,
+        4.158446499051038e-05,
+        0.003286007347156922,
+        0.00032437060247681604
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.138898124928159e-10,
+        "max_orientation_departure_rad": 2.2712775648982823e-11,
+        "progress_min": 7.753582496349709e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.6179318242351064e-10,
+        "max_clock_orientation_error_rad": 2.2716731900514607e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239014556511926e-07,
+        0.04031938801910386
+      ]
+    },
+    {
+      "stage": "search:4",
+      "duration_s": 2.85,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0013359803334885387,
+        0.0003442237020542496,
+        0.003157768276726264,
+        0.004532901662672231,
+        0.00011615288761908148,
+        0.0009412527897887412,
+        0.00025770078736365705
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.003774281353756289,
+        0.004519956735017962,
+        0.06295413690552612,
+        0.09050277589803311,
+        0.0031509406945080805,
+        0.026583975560290903,
+        0.007974768177029993
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.1667897986566263e-05,
+        1.3039285021077796e-05,
+        0.0036809022248990653,
+        0.007562890344512156,
+        9.272063976413238e-06,
+        0.0006562598146421176,
+        5.0289755137309724e-05
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.316147056000932e-09,
+        "max_orientation_departure_rad": 3.17949285122463e-10,
+        "progress_min": -1.0122571427027106e-17,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9698188119916836e-07,
+        "max_clock_orientation_error_rad": 3.355619377869003e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.2506376400397836e-09,
+        0.010007129812880424
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009993130511359215,
+        0.010007087073606345
+      ]
+    },
+    {
+      "stage": "retract:4",
+      "duration_s": 0.5699999999999998,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.002678696585706875,
+        0.0012209317827273553,
+        0.01548657461117332,
+        0.022231398787800987,
+        0.0005672275461472483,
+        0.0047068047879168734,
+        0.000869143304280469
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.7063837596346623,
+        0.5897520415001277,
+        7.830505956974785,
+        11.25754553858066,
+        0.39256020120788626,
+        3.3447564872791333,
+        0.89366673141431
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.050115673688743256,
+        0.060117643710566736,
+        11.389125317613402,
+        23.403616664544614,
+        0.02989560123845669,
+        2.078909150120301,
+        0.12337025358617358
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.3284143432941587e-09,
+        "max_orientation_departure_rad": 3.236615859216334e-10,
+        "progress_min": 2.3371104552964123e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9690267847586564e-07,
+        "max_clock_orientation_error_rad": 3.3287642796809474e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.250792196835011e-09,
+        0.050035645399164864
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.049965658949187516,
+        0.05003543205196723
+      ]
+    },
+    {
+      "stage": "withdraw:4",
+      "duration_s": 2.4628125000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0026786965857033725,
+        0.0005654388687102336,
+        0.0046753230534222244,
+        0.012884731437982758,
+        0.0005937343022663453,
+        0.005582059938510706,
+        0.0012835149019333376
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.02861395277105837,
+        0.013841013536914727,
+        0.05011951536398492,
+        0.14745353918991747,
+        0.011186889854936702,
+        0.09532931939046696,
+        0.02456071780190535
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.00029875570973684037,
+        6.97221895653687e-05,
+        0.0009795521217451576,
+        0.008173701309031953,
+        4.3841083957286973e-05,
+        0.0033569940698192323,
+        0.00022162105710668456
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.1391330129277773e-10,
+        "max_orientation_departure_rad": 2.283678954007391e-11,
+        "progress_min": 2.1009034162445065e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.6131321620240637e-10,
+        "max_clock_orientation_error_rad": 2.2840549135112026e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.523887380148999e-07,
+        0.04031908106743657
+      ]
+    },
+    {
+      "stage": "transit:18",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8333333333219485,
+        0.2351263662784687,
+        0.15031521186538224,
+        0.2826222805792921,
+        0.46725147459407185,
+        0.12436427258691611,
+        0.30763852302868344
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.000000028963896,
+        23.77768615697641,
+        15.21841336839702,
+        28.638432630647085,
+        65.1810583050604,
+        17.653029980301877,
+        61.86365608735843
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.80439452876755,
+        112.66921893909004,
+        46.054533173775724,
+        161.57466833972205,
+        848.0349994135873,
+        61.33985657173035,
+        762.7235102144629
+      ]
+    },
+    {
+      "stage": "approach:5",
+      "duration_s": 3.75,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0012088413698121084,
+        0.00306774098557526,
+        0.0021909680881819224,
+        0.003268285584636421,
+        0.0033055878599825145,
+        0.0022557171469538,
+        0.0029740795896209924
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.005569909599016278,
+        0.014901905731412245,
+        0.013444911523909133,
+        0.01463165475376653,
+        0.024370569179585203,
+        0.014736762507135303,
+        0.03177047863548698
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.723631976824908e-05,
+        0.00012276997802519182,
+        9.420466834631398e-05,
+        0.0001306145688685647,
+        0.000321877094300134,
+        0.00012481167065879243,
+        0.000556875584935909
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.2487655278387612e-10,
+        "max_orientation_departure_rad": 8.544489395166251e-11,
+        "progress_min": -9.130238247998623e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.2493779115758557e-10,
+        "max_clock_orientation_error_rad": 8.544493608051977e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.523770138851366e-07,
+        0.04031663063397775
+      ]
+    },
+    {
+      "stage": "search:5",
+      "duration_s": 2.8499999999999996,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.001208841369816139,
+        0.0014548656343759707,
+        0.0006295380981533162,
+        0.000853100261168248,
+        0.0006029903549025125,
+        0.0009033036850539686,
+        7.77178914427133e-05
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.00353974941488866,
+        0.0272636040541392,
+        0.01174781327786002,
+        0.01592438119313743,
+        0.015697136686488564,
+        0.023478947330672875,
+        0.0029254545366482914
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        9.423757430554432e-06,
+        0.0006754985125549843,
+        0.000120901467884217,
+        0.00022185197352802538,
+        0.00022385346007124988,
+        0.0005017479376104594,
+        7.601469739124096e-06
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.2050953027076607e-09,
+        "max_orientation_departure_rad": 4.758401967553733e-10,
+        "progress_min": -2.409763183628496e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.933365955511755e-07,
+        "max_clock_orientation_error_rad": 4.6235780391090814e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.2523934943017322e-09,
+        0.010010807122917936
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009996896476879048,
+        0.01001076780589918
+      ]
+    },
+    {
+      "stage": "retract:5",
+      "duration_s": 0.5700000000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0023702307342061855,
+        0.006453704998891938,
+        0.0027981141352201675,
+        0.003792028865052677,
+        0.002674632995233038,
+        0.0040070618629171224,
+        0.0003453448687595634
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.6253580100266397,
+        3.2975269167616874,
+        1.4260225058736655,
+        1.9331263778702366,
+        1.8979448267706163,
+        2.8447173937772434,
+        0.35494576923025944
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.03929015196278258,
+        1.98435072741411,
+        0.3572562262158653,
+        0.6556868673763259,
+        0.6575435101398271,
+        1.4742622800661795,
+        0.022421483058278718
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.961311579137024e-09,
+        "max_orientation_departure_rad": 4.231748763503325e-10,
+        "progress_min": -7.024880018427026e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9336413164178413e-07,
+        "max_clock_orientation_error_rad": 4.682794353445486e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.264344259855482e-09,
+        0.050054036907320645
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04998448020524369,
+        0.05005384020611019
+      ]
+    },
+    {
+      "stage": "withdraw:5",
+      "duration_s": 3.75,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0023702307342132497,
+        0.002928064770810596,
+        0.002252308953948669,
+        0.0031834632826526843,
+        0.003248484850539185,
+        0.0021685629216429254,
+        0.0029668525091013902
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.010920364565350319,
+        0.012702713253339815,
+        0.014396847115194173,
+        0.013341158617300194,
+        0.02310430006695764,
+        0.012838179543292949,
+        0.031534515823811254
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        6.62580555408763e-05,
+        8.915571485012107e-05,
+        0.00010840131392923818,
+        0.00010935329041235799,
+        0.0002888764924965776,
+        9.522206732047584e-05,
+        0.0005485470495425951
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.1309839310924517e-10,
+        "max_orientation_departure_rad": 7.558351326899613e-11,
+        "progress_min": 6.231288857609109e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.1318062657839541e-10,
+        "max_clock_orientation_error_rad": 7.558341919879938e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5237696593433716e-07,
+        0.040316630631092115
+      ]
+    },
+    {
+      "stage": "transit:19",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.833322470961104,
+        0.12948434323880012,
+        0.044905227454493206,
+        0.12595936156597612,
+        0.2724704839084238,
+        0.053961548139402134,
+        0.02519822434771577
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.01341428049637,
+        12.846280787200357,
+        4.284966603703285,
+        12.28301332787067,
+        38.16772799219116,
+        7.600130363592633,
+        5.126520674888322
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.80440374203937,
+        32.98163586156536,
+        3.395373252056878,
+        30.18350841201935,
+        289.6867651890782,
+        11.247723613131269,
+        4.8903965954107464
+      ]
+    },
+    {
+      "stage": "weld:20",
+      "duration_s": 1.9999902404973353,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0020514237322576145,
+        0.01200327375013135,
+        0.003726548213314506,
+        0.00359235132947378,
+        0.002912041979425553,
+        0.004689881588846172
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.1520573023451177,
+        0.7053776567305318,
+        0.14480179666032877,
+        0.34495248838231535,
+        0.26596140142844055,
+        0.6533742183990576
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.004597647907979602,
+        0.09757849773366818,
+        0.0038788389603854273,
+        0.023687335113209907,
+        0.014284411984234687,
+        0.08509711170398404
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.0009705238607934121,
+        "max_orientation_departure_rad": 3.349661661155281e-07,
+        "progress_min": 0.0,
+        "progress_max": 1.0000000000000082,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.005003983348754705,
+        0.07517685135561435
+      ],
+      "source_endpoint_position_error_m": [
+        0.0,
+        8.881784197001252e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        0.0,
+        7.178989156685113e-16
+      ],
+      "blend_target_position_error_m": 8.736675315453258e-06,
+      "blend_target_orientation_error_rad": 2.2794998176125032e-08
+    },
+    {
+      "stage": "weld:21",
+      "duration_s": 8.98556,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.00028549988376102377,
+        0.0013049649868043965,
+        0.0018469587199017815,
+        0.0002454648711921295,
+        0.00012334323276720982,
+        0.00036207369728846034
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.4650430227165244,
+        0.9734144304341308,
+        0.9134151600997106,
+        0.013159515588019984,
+        0.3599692602972044,
+        0.30834158889412416
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.0009490745266065476,
+        0.004158275775182908,
+        0.0036614233410345097,
+        7.700371396096351e-07,
+        0.0005686545628255489,
+        0.0004172678170246741
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.990235121934256e-06,
+        "max_orientation_departure_rad": 8.855169634841079e-10,
+        "progress_min": 4.0070078152513023e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.004971376637519355,
+        0.005011982973141465
+      ],
+      "source_endpoint_position_error_m": [
+        8.881784197001252e-16,
+        9.930136612989092e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        7.178989156685113e-16,
+        7.835728851042836e-16
+      ],
+      "blend_target_position_error_m": 4.0055101315578165e-06,
+      "blend_target_orientation_error_rad": 9.204523099622538e-10
+    },
+    {
+      "stage": "weld:22",
+      "duration_s": 2.000056764028861,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.006927362251036551,
+        0.013632189736088575,
+        0.011990416684261831,
+        0.0003292298544004557,
+        0.0042169501287775395,
+        0.0019458980621284965
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.4650430227165244,
+        0.9734144304341308,
+        0.9134151600997106,
+        0.013159515588019984,
+        0.3599692602972044,
+        0.30834158889412416
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.0431888042061674,
+        0.18655756724211853,
+        0.16292800754456713,
+        3.8761912954122705e-05,
+        0.026263846525496928,
+        0.018551052429009375
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.000675827803564609,
+        "max_orientation_departure_rad": 3.3222248930554265e-07,
+        "progress_min": -0.0015613881002309409,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0015613881002243537,
+        "max_backward_distance_m": 0.00015613881002243463
+      },
+      "modeled_feed_range_m_s": [
+        0.0031844598388814744,
+        0.07749126082760674
+      ],
+      "source_endpoint_position_error_m": [
+        9.930136612989092e-16,
+        0.0
+      ],
+      "source_endpoint_orientation_error_rad": [
+        7.835728851042836e-16,
+        3.6848074723016415e-16
+      ],
+      "blend_target_position_error_m": 9.528352651750347e-06,
+      "blend_target_orientation_error_rad": 5.415618011180063e-09
+    },
+    {
+      "stage": "transit:23",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8333333332397125,
+        0.5501719694349055,
+        0.29717191788538555,
+        0.35077600052230357,
+        0.024278907875453073,
+        0.2099090369363878,
+        0.1514163461240639
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.00000037979932,
+        55.2808555279197,
+        29.294381309158393,
+        34.377574920164584,
+        3.4469926834038658,
+        29.458747534267502,
+        30.242033424776135
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.8043945287574,
+        608.5749616611621,
+        169.86137796378358,
+        235.81426662349975,
+        2.3371578738070933,
+        171.70844675293262,
+        182.8966021019554
+      ]
+    },
+    {
+      "stage": "approach:6",
+      "duration_s": 4.259175,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.001151546032602832,
+        0.002587465320254611,
+        0.0008822154805783682,
+        0.005785746339228165,
+        0.0012970444583393127,
+        0.004480533963431989,
+        0.001546094173894128
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.004113225467194469,
+        0.010614986573253056,
+        0.007120676369525753,
+        0.019844113964103974,
+        0.00805620577443531,
+        0.02539956549181613,
+        0.013155578636885391
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.0675840852973055e-05,
+        7.017374427909108e-05,
+        2.87827609370119e-05,
+        0.0002621441090674051,
+        3.834683387841217e-05,
+        0.0004066634449601119,
+        0.00010649168573504231
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.1555994578466791e-10,
+        "max_orientation_departure_rad": 1.0006463691128142e-10,
+        "progress_min": 1.4233926493222255e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.1556503993642855e-10,
+        "max_clock_orientation_error_rad": 1.000645806874339e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.5239558538427303e-07,
+        0.04032160694786999
+      ]
+    },
+    {
+      "stage": "search:6",
+      "duration_s": 2.8500000000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0011515460326032895,
+        5.728157459169645e-05,
+        0.0015213291400226682,
+        0.0007148404353151428,
+        0.00019515144707959428,
+        0.0009090930403187504,
+        0.0006629857178180862
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.010669412238417619,
+        0.0009262846216115447,
+        0.029231811748253494,
+        0.012182607967934014,
+        0.005617981483193102,
+        0.025699359291284078,
+        0.026989546934517227
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        5.2816940049452415e-05,
+        3.978698223791118e-07,
+        0.0007564084443918135,
+        0.00010160529846674738,
+        2.794442269311777e-05,
+        0.0006097945891696452,
+        0.0006917566810995348
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.4200278278752357e-09,
+        "max_orientation_departure_rad": 7.523976963625737e-10,
+        "progress_min": 6.116888364661244e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.927014898353389e-07,
+        "max_clock_orientation_error_rad": 7.736173091112305e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.2503967361515899e-09,
+        0.010003151020647954
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009989259372488516,
+        0.010003112039992948
+      ]
+    },
+    {
+      "stage": "retract:6",
+      "duration_s": 0.5699999999999998,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0009043922480747719,
+        4.498735660713428e-05,
+        0.006268029796430053,
+        0.003286361152091362,
+        0.0009938742465846263,
+        0.004570975727132454,
+        0.003318554352156227
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.14332221250187144,
+        0.012441745105150732,
+        3.0968444819596783,
+        1.624383902830395,
+        0.7132378601463577,
+        3.2239945756116417,
+        3.3768219198159732
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0015267742300401426,
+        1.1272084812569367e-05,
+        1.7915201071151146,
+        0.4528468127883864,
+        0.09289887006039328,
+        1.9689967548218235,
+        2.1638373034312353
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.4210965895533102e-09,
+        "max_orientation_departure_rad": 7.563245197279212e-10,
+        "progress_min": -3.058444182330622e-19,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.928180251472736e-07,
+        "max_clock_orientation_error_rad": 7.775438483568103e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.25836338638462e-09,
+        0.05001576027549144
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04994628749531017,
+        0.05001556485061355
+      ]
+    },
+    {
+      "stage": "withdraw:6",
+      "duration_s": 4.25919375,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0009043922480757826,
+        0.0025935789606702842,
+        0.000827509802928302,
+        0.005850950087530146,
+        0.0012992815012197118,
+        0.004486054502143216,
+        0.0015462137408279305
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0032304209555327995,
+        0.010691469235074311,
+        0.006401181034489167,
+        0.02063142895733491,
+        0.008095404932734213,
+        0.02549414502174706,
+        0.013157990603857125
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        6.584984526520623e-06,
+        7.119426856330108e-05,
+        2.3175773336779597e-05,
+        0.00028276387407524665,
+        3.8738412852098585e-05,
+        0.00040972305342541803,
+        0.00010654717252265879
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.1775556537308017e-10,
+        "max_orientation_departure_rad": 1.007423095082674e-10,
+        "progress_min": 1.688373861098114e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 2.1775674307875022e-10,
+        "max_clock_orientation_error_rad": 1.007422990584266e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.523948721218545e-07,
+        0.04032142944664241
+      ]
+    },
+    {
+      "stage": "transit:24",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          2.2393389075683923e-16,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        2.2393389075683923e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8333333301525416,
+        0.05746597789856125,
+        0.5199553628149809,
+        0.5649556610480156,
+        0.2730773287619939,
+        0.19986226726093298,
+        0.07707082077494264
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.000004873715305,
+        5.768678851276108,
+        51.617955888604044,
+        56.09268364000855,
+        38.226806064870175,
+        27.853194065224912,
+        15.524328834927566
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.80439452954835,
+        6.5542685280466175,
+        531.8942164426709,
+        627.1134267323994,
+        292.1976893698513,
+        154.063171590762,
+        47.57714049639239
+      ]
+    },
+    {
+      "stage": "approach:7",
+      "duration_s": 2.4527062500000003,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        1.961609150046544e-35,
+        0.0009970606804618539,
+        0.00405551909931208,
+        0.0010232363807823972,
+        0.0008270963799685124,
+        0.0012188250047054437,
+        0.002510697265210298
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        7.792661823333196e-34,
+        0.01240161567741292,
+        0.05193198993282069,
+        0.010353422547691584,
+        0.013468686482958509,
+        0.020973579577135117,
+        0.06110949713181644
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.6549227450644614e-67,
+        5.5871800232233174e-05,
+        0.0009522301031536325,
+        4.22896545156236e-05,
+        6.916157428242759e-05,
+        0.00016032932946919839,
+        0.0013799743549005837
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.0702083394157996e-11,
+        "max_orientation_departure_rad": 1.0423708937058551e-11,
+        "progress_min": 6.620550121256784e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 5.07431220297345e-11,
+        "max_clock_orientation_error_rad": 1.0423539276882149e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239781504948375e-07,
+        0.04032221392698244
+      ]
+    },
+    {
+      "stage": "search:7",
+      "duration_s": 2.8499999999999996,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        6.023345402697246e-20,
+        0.0011172746276341546,
+        0.00021165233544499543,
+        0.0003311501182911176,
+        0.0003923445237993896,
+        0.0007112425767484263,
+        0.00014625414867812627
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        4.805328188301663e-19,
+        0.022719465524911716,
+        0.00438495095158078,
+        0.006861346687103362,
+        0.011079757717820148,
+        0.02009285165214142,
+        0.006002072543215882
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        9.749697240454775e-38,
+        0.0004909982123445713,
+        1.631268480972687e-05,
+        3.992612222015377e-05,
+        0.00011680789254489844,
+        0.00038364641716130286,
+        3.31077076009786e-05
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.504712536257732e-09,
+        "max_orientation_departure_rad": 3.155838193798827e-10,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9291970249789103e-07,
+        "max_clock_orientation_error_rad": 3.649427108225022e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.2522310231006908e-09,
+        0.010005966686657285
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009992068319940862,
+        0.010005927596066446
+      ]
+    },
+    {
+      "stage": "retract:7",
+      "duration_s": 0.5699999999999998,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          1.2207301704825052e-20,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        1.2207313349466419e-20,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        6.023345402697248e-20,
+        0.005586373138166494,
+        0.0010582616772255968,
+        0.0016557505914538198,
+        0.001961722618994909,
+        0.0035562128837422374,
+        0.0007312707433931686
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        1.2013320470753522e-17,
+        2.8399331906766467,
+        0.5481188689215079,
+        0.8576683358806514,
+        1.384969714755484,
+        2.511606456591349,
+        0.7502590678371697
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.2187121550568534e-35,
+        1.5343694135833348,
+        0.05097714002964164,
+        0.12476913193758163,
+        0.36502466420734975,
+        1.1988950536309482,
+        0.10346158624774326
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.504712536257732e-09,
+        "max_orientation_departure_rad": 3.15583807269336e-10,
+        "progress_min": 3.603471322490366e-18,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.929197031656707e-07,
+        "max_clock_orientation_error_rad": 3.6494231518801077e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.261154746997207e-09,
+        0.050029833433314644
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04996034159953389,
+        0.05002963797987761
+      ]
+    },
+    {
+      "stage": "withdraw:7",
+      "duration_s": 2.4526875,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        9.571039260669222e-36,
+        0.0009970683026672594,
+        0.00405555010243949,
+        0.0010232442030927826,
+        0.0008271027028515685,
+        0.0012188343222269919,
+        0.002510716458676838
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        3.8022361691079577e-34,
+        0.012401900097841749,
+        0.051933180938492834,
+        0.010353659998781904,
+        0.013468995392145024,
+        0.020974060594461566,
+        0.06111089860561634
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        3.939861209998027e-68,
+        5.587393587338021e-05,
+        0.0009522665011088839,
+        4.229127099728021e-05,
+        6.916421792382513e-05,
+        0.00016033545789616782,
+        0.001380027102916939
+      ],
+      "geometry": {
+        "max_position_departure_m": 5.0701661080851e-11,
+        "max_orientation_departure_rad": 1.0423370319868649e-11,
+        "progress_min": 6.620550121256784e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 5.0742708355307907e-11,
+        "max_clock_orientation_error_rad": 1.0423272494365525e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239925127661168e-07,
+        0.04032252217719061
+      ]
+    },
+    {
+      "stage": "transit:25",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          6.631756696608209e-15,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        6.63175669660821e-15,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8333332003481652,
+        0.0575330563051511,
+        0.3973587161678486,
+        0.4811406261086014,
+        0.2305697298723894,
+        0.02781584100868457,
+        0.1868891088179058
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        48.00020274812255,
+        5.818386770653128,
+        39.30634765393159,
+        47.69936508235761,
+        32.22929677203356,
+        3.86188062342357,
+        37.69964750882678
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        460.80439456436716,
+        6.726873660579672,
+        308.7732196015354,
+        452.51625856963204,
+        207.3851098171161,
+        2.8638594081189273,
+        282.3418276897776
+      ]
+    },
+    {
+      "stage": "approach:8",
+      "duration_s": 3.75,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0034161664531615456,
+        0.00047127545338952796,
+        0.0016856190542199965,
+        0.008114576484057303,
+        0.0006395670206496346,
+        0.0032490429399559964,
+        0.0024545993566845534
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.01573550453301545,
+        0.0018421706981739052,
+        0.0017391720101100825,
+        0.031447067858655024,
+        0.004298424676457101,
+        0.022533591344820362,
+        0.02498059551152863
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.00013758725632243682,
+        1.831338169776994e-06,
+        2.0722989618171043e-06,
+        0.0005680646952305057,
+        1.1530216548514405e-05,
+        0.00028023771274430056,
+        0.0003473019268081618
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.316176912898574e-10,
+        "max_orientation_departure_rad": 4.146632811399841e-11,
+        "progress_min": 1.4910091308133305e-18,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.3614146641682155e-10,
+        "max_clock_orientation_error_rad": 4.1465869846698585e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239739543971112e-07,
+        0.04032174632324203
+      ]
+    },
+    {
+      "stage": "search:8",
+      "duration_s": 2.8499999999999996,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0037215397090127255,
+        0.0003130055058419294,
+        0.003414696107471403,
+        0.004161074691581473,
+        6.348960000580687e-05,
+        0.00048524062336050564,
+        0.00020375557172870996
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.011526884079756545,
+        0.005313363828387031,
+        0.05657590455889031,
+        0.06850881440048263,
+        0.001619440110813221,
+        0.011048311867557784,
+        0.006565593163028526
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        8.802005652960294e-05,
+        2.1841089422215245e-05,
+        0.0025120046032538557,
+        0.0037092279678617173,
+        1.8702638107772168e-06,
+        9.815191461980798e-05,
+        3.489870270748077e-05
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.773016719904593e-09,
+        "max_orientation_departure_rad": 1.4390495660520205e-10,
+        "progress_min": 2.3373093882542922e-14,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.9416181708739093e-07,
+        "max_clock_orientation_error_rad": 1.382165786344765e-10
+      },
+      "modeled_feed_range_m_s": [
+        1.2543179304733909e-09,
+        0.010006253241645635
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.009992324075823442,
+        0.010006213053266556
+      ]
+    },
+    {
+      "stage": "retract:8",
+      "duration_s": 0.5700000000000005,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.007155156428760159,
+        0.0010986119523037868,
+        0.012017383767519957,
+        0.01466272753502105,
+        0.00021890082805833296,
+        0.0017149704403504314,
+        0.0007253016838519609
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        1.9220619100345997,
+        0.5610370563393015,
+        6.077513645047206,
+        7.423236465641919,
+        0.16680940150842585,
+        1.2225466987410079,
+        0.7486273428622586
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.3750647808568293,
+        0.05324416672315383,
+        6.172943562202812,
+        9.149710140261854,
+        0.004334583918423051,
+        0.24434076191221815,
+        0.08867181672183952
+      ],
+      "geometry": {
+        "max_position_departure_m": 2.659442447376026e-09,
+        "max_orientation_departure_rad": 1.0266649685523814e-10,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 3.937796962457943e-07,
+        "max_clock_orientation_error_rad": 1.3600798205277732e-10
+      },
+      "modeled_feed_range_m_s": [
+        6.259558475212141e-09,
+        0.050031248994756194
+      ],
+      "sampled_cruise_feed_range_m_s": [
+        0.04996165049324318,
+        0.05003104970584654
+      ]
+    },
+    {
+      "stage": "withdraw:8",
+      "duration_s": 3.75,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.007155156428761752,
+        0.000394647847051147,
+        0.0032055891433956894,
+        0.007063703201034956,
+        0.0006515329607821574,
+        0.003124316197630116,
+        0.0024000438922487516
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.03294380363307391,
+        0.0006172771958076523,
+        0.015044130940381987,
+        0.01518193294445812,
+        0.0046283977040542075,
+        0.01984883810602691,
+        0.02333299054658279
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0006031953052568901,
+        2.0327371382542555e-07,
+        0.00011750433914143324,
+        0.00013595916664782976,
+        1.3023236276649815e-05,
+        0.00021616856102170076,
+        0.0003010493558447547
+      ],
+      "geometry": {
+        "max_position_departure_m": 1.0536004567583841e-10,
+        "max_orientation_departure_rad": 3.573309567200856e-11,
+        "progress_min": 3.5109274398420776e-15,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0,
+        "max_clock_position_error_m": 1.1354617600327711e-10,
+        "max_clock_orientation_error_rad": 3.573213905280883e-11
+      },
+      "modeled_feed_range_m_s": [
+        1.5239767332517888e-07,
+        0.040321746354227986
+      ]
+    },
+    {
+      "stage": "transit:26",
+      "duration_s": 1.0,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        1.494794411706203e-10,
+        0.024607369092569695,
+        0.08312795598344147,
+        0.05975183047925659,
+        0.03632403081111441,
+        0.21919513287538053,
+        0.12425774351642434
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        2.9351001273880685e-08,
+        2.5687896050107355,
+        8.119809947619757,
+        5.866538065905285,
+        5.145195942154096,
+        30.706107682411307,
+        25.046274065165452
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        1.2827099151615371e-16,
+        1.3032712307698733,
+        12.603456603256891,
+        6.060037168427357,
+        5.29093031557251,
+        187.05660743636173,
+        123.84580996986985
+      ]
+    },
+    {
+      "stage": "weld:27",
+      "duration_s": 1.9999702309952374,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0015814319898574433,
+        0.01183718457992136,
+        0.02089673389771134,
+        0.0009146710200419027,
+        0.0038093141557655626,
+        0.003829692502247195
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.05299430729994428,
+        0.7444526572995345,
+        1.3235814143401454,
+        0.09813447174969517,
+        0.3743244324793288,
+        0.4652487910494982
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.0005403475230552884,
+        0.11045847353753063,
+        0.3490888424592983,
+        0.0019070045013466997,
+        0.028013946265018887,
+        0.042959083610552395
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.0009385573368884699,
+        "max_orientation_departure_rad": 3.10606175923276e-05,
+        "progress_min": 0.0,
+        "progress_max": 0.9999999999999922,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.005009492746002259,
+        0.07485066625718512
+      ],
+      "source_endpoint_position_error_m": [
+        0.0,
+        9.992007221626409e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        0.0,
+        5.802176783577772e-16
+      ],
+      "blend_target_position_error_m": 8.680368457233304e-06,
+      "blend_target_orientation_error_rad": 3.916465232893142e-08
+    },
+    {
+      "stage": "weld:28",
+      "duration_s": 8.98563,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.000814044138833892,
+        0.000229281784636803,
+        0.00026612606937294396,
+        0.00017413865843677982,
+        0.0003720685764836076,
+        0.00026545258573863664
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.14203643637026309,
+        0.15416787646307278,
+        0.7360071256034177,
+        0.12692641835226764,
+        0.5344941730532368,
+        0.7458498341283348
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        8.853538417025722e-05,
+        0.00010435277920367547,
+        0.0023774265939821575,
+        7.070148898880461e-05,
+        0.0012537374194686642,
+        0.0024413096672162237
+      ],
+      "geometry": {
+        "max_position_departure_m": 3.857150143492444e-06,
+        "max_orientation_departure_rad": 3.980349721102244e-08,
+        "progress_min": 2.4564454247585734e-15,
+        "progress_max": 0.9999999999999974,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "modeled_feed_range_m_s": [
+        0.004992457460609611,
+        0.0050089656581780604
+      ],
+      "source_endpoint_position_error_m": [
+        9.992007221626409e-16,
+        5.087681048627601e-16
+      ],
+      "source_endpoint_orientation_error_rad": [
+        5.802176783577772e-16,
+        8.491573300505516e-16
+      ],
+      "blend_target_position_error_m": 3.951868957748134e-06,
+      "blend_target_orientation_error_rad": 1.2754889765688135e-08
+    },
+    {
+      "stage": "weld:29",
+      "duration_s": 1.9998726036886028,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.0,
+        0.0013599331452242107,
+        0.002298456533333716,
+        0.011475498805409481,
+        0.0015096974944160822,
+        0.006272359018781939,
+        0.005423937094088051
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        0.0,
+        0.14203643637026309,
+        0.15416787646307278,
+        0.7360071256034177,
+        0.12692641835226764,
+        0.5344941730532368,
+        0.7458498341283348
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        0.0,
+        0.003994866986934842,
+        0.004416120626454857,
+        0.10930528796261416,
+        0.0030989726524656975,
+        0.0566616709550633,
+        0.10989989974636588
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.0009799111398306063,
+        "max_orientation_departure_rad": 3.105265161921891e-05,
+        "progress_min": -0.00010170444776737182,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.00010170444776665188,
+        "max_backward_distance_m": 1.0170444776665166e-05
+      },
+      "modeled_feed_range_m_s": [
+        0.004878584888012612,
+        0.075969733764261
+      ],
+      "source_endpoint_position_error_m": [
+        5.087681048627601e-16,
+        0.0
+      ],
+      "source_endpoint_orientation_error_rad": [
+        8.491573300505516e-16,
+        0.0
+      ],
+      "blend_target_position_error_m": 8.988459580011477e-06,
+      "blend_target_orientation_error_rad": 3.527454975410086e-08
+    },
+    {
+      "stage": "transit:30",
+      "duration_s": 1.0962083333333372,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "raw_position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "sampled_speed_ratio": [
+        0.8308979960676361,
+        0.07251136179136791,
+        0.05784548854791464,
+        0.15712768382780723,
+        0.2548797818629286,
+        0.07218346266122594,
+        0.4144345093541042
+      ],
+      "sampled_speeds_pass": true,
+      "sampled_peak_jerk_by_axis": [
+        21.532944822208837,
+        3.3071284860690673,
+        2.5551666504584456,
+        6.659745406994082,
+        15.957370903501012,
+        4.267679717852563,
+        102.6934634807088
+      ],
+      "sampled_integrated_squared_jerk_by_axis": [
+        90.31780041276713,
+        2.1305274617356336,
+        1.267121087873625,
+        8.649618035741602,
+        49.59211731714244,
+        3.547368248543043,
+        1150.4532759554304
+      ]
+    }
+  ],
+  "generation": {
+    "status": "optimization_completed_awaiting_actual_curve_verification",
+    "scene_setup_s_contended": 3.211557208036538,
+    "solve_s_contended": 0.8846505830297247,
+    "refined_transits": [
+      "transit:3",
+      "transit:10",
+      "transit:19",
+      "transit:23",
+      "transit:26",
+      "transit:30"
+    ],
+    "transits": [
+      {
+        "stage": "transit:3",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.009374833025503904,
+        "duration_s": 1.0,
+        "input_jerk": 634.4902614837484,
+        "result_jerk": 14.613107608414452
+      },
+      {
+        "stage": "transit:10",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.27061350003350526,
+        "duration_s": 1.0,
+        "input_jerk": 16367.347682952033,
+        "result_jerk": 421.88521604746387
+      },
+      {
+        "stage": "transit:19",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.04572291701333597,
+        "duration_s": 1.0,
+        "input_jerk": 7112.191644111266,
+        "result_jerk": 164.97331267246918
+      },
+      {
+        "stage": "transit:23",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.029573625011835247,
+        "duration_s": 1.0,
+        "input_jerk": 11194.947323714243,
+        "result_jerk": 259.68959138155003
+      },
+      {
+        "stage": "transit:26",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.005463959008920938,
+        "duration_s": 1.0,
+        "input_jerk": 664.0172457277546,
+        "result_jerk": 15.305730137058067
+      },
+      {
+        "stage": "transit:30",
+        "status": "SQPStatus.NLP_CONVERGED",
+        "solver_s": 0.01009308296488598,
+        "duration_s": 1.0962083333333372,
+        "input_jerk": 5101.203805051735,
+        "result_jerk": 61.05105468143728
+      }
+    ]
+  }
+}

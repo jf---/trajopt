@@ -39,8 +39,9 @@ new target itself turns; this is not treated as reversal along the new curve.
 
 These are exploratory, finite-sampled weld neighborhoods. Feed, geometric
 departure, collision clearance between samples, lead admissibility and
-manufacturing acceptance are unresolved; the neighboring transits have not yet
-been connected. `weld_local_batch_trial.py` requires explicit station, fresh
+manufacturing acceptance are unresolved. The follow-up [complete Tour 09
+assembly](tour09-weld-connected.md) connects the neighboring transits and
+checks all actual curves. `weld_local_batch_trial.py` requires explicit station, fresh
 candidate, native libraries, output and `--lead-policy matched-endpoints`; add
 `--witness-refinement` for this bounded pass. The research Pixi runtime and
 native binding paths are described in [README.md](README.md).

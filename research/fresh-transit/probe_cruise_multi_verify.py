@@ -12,6 +12,7 @@ from actual_stage_adapters import CURVE_PARITY_ULPS, transit_stage, weld_stage
 from actual_stage_contract import ActualStage, Seconds, StationaryEvent, diagnostic_joins
 from actual_tour_assembly import assemble_actual_tour
 from continuous_spline_jerk import build_jerk_model
+from cubic_position_extrema import cubic_position_extrema
 from fixture_easing_policy import ease_fixture_chains
 from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
@@ -22,6 +23,8 @@ from process_geometry import assess_process_geometry
 from quintic_position_extrema import position_extrema
 from rotation_targets import interpolate_rotations, rotation_errors
 from runtime_libraries import require_loaded_libraries
+from scipy.interpolate import CubicSpline
+from weld_local_blend import build_local_weld_blend
 from weld_tangent_leads import fit_lead
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
@@ -48,6 +51,11 @@ def main():
         "sqp-library",
     ):
         parser.add_argument(f"--{name}", type=Path, required=True)
+    parser.add_argument(
+        "--exploratory-welds",
+        action="store_true",
+        help="verify explicit exploratory weld curves in the batch",
+    )
     args = parser.parse_args()
     require_loaded_libraries(
         [args.ifopt_library.resolve(strict=True), args.sqp_library.resolve(strict=True)]
@@ -98,7 +106,7 @@ def main():
         "status": "in_progress",
         "scene_setup_s_contended": setup,
         "stages": [],
-        "scope": "Independent finite samples of the generated actual tour; original weld interpolation retained, fixture clocks modeled, actual hit and controller timing unknown.",
+        "scope": "Independent finite samples of the generated actual tour; fixture clocks modeled, actual hit and controller timing unknown.",
     }
 
     def save():
@@ -110,6 +118,10 @@ def main():
         clock, fixture_stages = ease_fixture_chains(rows, batch["clock"])
         replacements = dict(fixture_stages)
         curves = {}
+        curve_offsets = {}
+        weld_labels = set()
+        source_bead_labels = set()
+        weld_targets = {}
         phase_info = {}
         expected = [
             row["stage"].split(":")[1] for row in rows if row["stage"].startswith("approach:")
@@ -136,6 +148,45 @@ def main():
                 )
                 curves[entry["stage"]] = curve
                 phase_info[entry["stage"]] = entry
+        if args.exploratory_welds:
+            if not batch.get("welds"):
+                raise MultiProbeVerificationError("explicit exploratory weld data required")
+            source_by_label = {row["stage"]: row for row in rows}
+            timing_by_label = {row["stage"]: row for row in clock["stages"]}
+            for bead in batch["welds"]:
+                labels = bead["stages"]
+                durations = np.asarray(
+                    [float(timing_by_label[label]["duration_s"]) for label in labels]
+                )
+                edges = np.r_[0.0, np.cumsum(durations)]
+                spline = CubicSpline(
+                    np.asarray(bead["times_s"]), np.asarray(bead["joint_states_7"]), axis=0
+                )
+                fixture = tuple(bead["fixture"])
+                original_poses = [
+                    pose(np.asarray(source_by_label[labels[0]]["states"][0], dtype=float))
+                ]
+                original_poses.extend(
+                    pose(np.asarray(source_by_label[label]["states"][-1], dtype=float))
+                    for label in labels
+                )
+                points = np.asarray([item[:3, 3] for item in original_poses])
+                rotations = np.asarray([item[:3, :3] for item in original_poses])
+                target_position, target_orientation, _ = build_local_weld_blend(
+                    points, rotations, durations
+                )
+                for i, label in enumerate(labels):
+                    if label in weld_labels:
+                        raise MultiProbeVerificationError("duplicate exploratory weld stage")
+                    replacements[label] = weld_stage(
+                        label, float(durations[i]), spline, float(edges[i]), fixture
+                    )
+                    curves[label] = spline
+                    curve_offsets[label] = float(edges[i])
+                    weld_targets[label] = (target_position, target_orientation, i)
+                    weld_labels.add(label)
+                    if 0 < i < len(labels) - 1:
+                        source_bead_labels.add(label)
         transit_rows = {row["stage"]: row for row in batch["transits"]}
         expected_transits = {row["stage"] for row in rows if row["stage"].startswith("transit:")}
         if len(transit_rows) != len(batch["transits"]) or set(transit_rows) != expected_transits:
@@ -190,7 +241,11 @@ def main():
             ratios = np.max(np.abs(vel), axis=0) / speeds
             checked = inspect_sampled_curve(checker, q, limits, SQP_FEASIBILITY_BAND)
             if stage.label in curves:
-                extrema = position_extrema(curves[stage.label])
+                extrema = (
+                    cubic_position_extrema(curves[stage.label])
+                    if stage.label in weld_labels
+                    else position_extrema(curves[stage.label])
+                )
                 excess = [
                     max(limits[i, 0] - item["minimum"], item["maximum"] - limits[i, 1], 0.0)
                     for i, item in enumerate(extrema)
@@ -217,7 +272,7 @@ def main():
                 ),
             }
             if stage.label in curves:
-                jerk = np.asarray(curves[stage.label](ts, 3))
+                jerk = np.asarray(curves[stage.label](ts + curve_offsets.get(stage.label, 0.0), 3))
                 entry["sampled_peak_jerk_by_axis"] = np.max(np.abs(jerk), axis=0).tolist()
                 entry["sampled_integrated_squared_jerk_by_axis"] = np.trapezoid(
                     jerk**2, ts, axis=0
@@ -260,12 +315,45 @@ def main():
                     entry["source_nominal_feed_m_s"] = float(
                         np.linalg.norm(last[:3, 3] - first[:3, 3]) / source_duration
                     )
-                endpoint = np.max(np.abs(q[[0, -1]] - source[[0, -1]]), axis=0)
-                entry["original_endpoint_raw_residual_by_axis"] = endpoint.tolist()
-                if np.any(endpoint > SQP_FEASIBILITY_BAND):
-                    raise MultiProbeVerificationError(
-                        f"{stage.label}: generated source endpoint differs"
+                if stage.label in weld_labels:
+                    endpoint_pos = np.linalg.norm(
+                        poses[[0, -1], :3, 3] - np.stack((first[:3, 3], last[:3, 3])), axis=1
                     )
+                    endpoint_rot = rotation_errors(
+                        np.stack((first[:3, :3], last[:3, :3])), poses[[0, -1], :3, :3]
+                    )
+                    entry["source_endpoint_position_error_m"] = endpoint_pos.tolist()
+                    entry["source_endpoint_orientation_error_rad"] = endpoint_rot.tolist()
+                    pos_band = (
+                        CURVE_PARITY_ULPS
+                        * np.finfo(float).eps
+                        * max(
+                            1.0,
+                            float(np.linalg.norm(first[:3, 3])),
+                            float(np.linalg.norm(last[:3, 3])),
+                        )
+                    )
+                    rot_band = CURVE_PARITY_ULPS * np.finfo(float).eps
+                    if np.any(endpoint_pos > pos_band) or np.any(endpoint_rot > rot_band):
+                        raise MultiProbeVerificationError(
+                            f"{stage.label}: source Cartesian anchor differs"
+                        )
+                    position_target, orientation_target, index = weld_targets[stage.label]
+                    expected_pos = np.asarray([position_target(index, float(t)) for t in ts])
+                    expected_rot = np.asarray([orientation_target(index, float(t)) for t in ts])
+                    entry["blend_target_position_error_m"] = float(
+                        np.linalg.norm(poses[:, :3, 3] - expected_pos, axis=1).max()
+                    )
+                    entry["blend_target_orientation_error_rad"] = float(
+                        rotation_errors(expected_rot, poses[:, :3, :3]).max()
+                    )
+                else:
+                    endpoint = np.max(np.abs(q[[0, -1]] - source[[0, -1]]), axis=0)
+                    entry["original_endpoint_raw_residual_by_axis"] = endpoint.tolist()
+                    if np.any(endpoint > SQP_FEASIBILITY_BAND):
+                        raise MultiProbeVerificationError(
+                            f"{stage.label}: generated source endpoint differs"
+                        )
             report["stages"].append(entry)
             save()
         # Existing same-curve binary64 parity band; not a physical tolerance.
@@ -284,8 +372,18 @@ def main():
                         }
                     )
         report["unresolved_modeled_joins"] = bad
+        bead_order_unresolved = [
+            item["stage"]
+            for item in report["stages"]
+            if item["stage"] in source_bead_labels
+            and item["geometry"]["max_backward_distance_m"]
+            > CURVE_PARITY_ULPS * np.finfo(float).eps
+        ]
+        report["unresolved_source_bead_order"] = bead_order_unresolved
         if not all(item.get("sampled_speeds_pass", True) for item in report["stages"]):
             report["status"] = "failed_sampled_sourced_speed"
+        elif bead_order_unresolved:
+            report["status"] = "failed_source_bead_order"
         elif bad or corners:
             report["status"] = "failed_unresolved_modeled_joins_or_corners"
         else:
