@@ -84,6 +84,7 @@ def refine_transits(
     peak_reference_time_s=None,
     peak_witness_times_s=None,
     position_witness_times_s=None,
+    collision_witness_times_s=None,
     seed_positions=None,
     seed_accelerations=None,
     absolute_merit_improvement=None,
@@ -296,14 +297,19 @@ def refine_transits(
                     [ti.Bounds(float(a), float(b)) for a, b in limits],
                 )
             )
-            mapping = model.map(samples, 0)
+            collision_samples = merge_position_witness_times(
+                samples,
+                [] if collision_witness_times_s is None else collision_witness_times_s,
+                duration,
+            )
+            mapping = model.map(collision_samples, 0)
             evaluator = ti.SingleTimestepCollisionEvaluator(
                 env.getJointGroup(info.manipulator),
                 env,
                 _ifopt_profile(True).collision_constraint_config,
                 False,
             )
-            for j in range(len(samples)):
+            for j in range(len(collision_samples)):
                 problem.addConstraintSet(
                     DynamicSplineCollisionConstraint(
                         evaluator,

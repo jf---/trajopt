@@ -13,7 +13,7 @@ from time import perf_counter, process_time
 import _quintic_spline as native
 import numpy as np
 from actual_stage_adapters import transit_stage, weld_stage
-from actual_stage_contract import Seconds, diagnostic_joins
+from actual_stage_contract import Seconds, StationaryEvent, diagnostic_joins
 from actual_tour_assembly import assemble_actual_tour
 from continuous_spline_jerk import build_jerk_model
 from event_aware_spline_boundaries import require_fixed_fixture_boundary_velocities
@@ -31,6 +31,11 @@ from runtime_libraries import require_loaded_libraries
 from spline_velocity_extrema import velocity_extrema
 from transit_neighbor_map import transit_neighbor_map
 from verified_linear_stages import actual_linear_stage
+from weld_batch_adapter import (
+    adapt_weld_batch,
+    canonicalize_weld_transit_endpoints,
+    weld_neighbor_indices,
+)
 from weld_tangent_leads import fit_lead
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
@@ -61,6 +66,11 @@ def main():
         help="retry selected failed transits from the checkpoint",
     )
     parser.add_argument(
+        "--collision-witness-file",
+        type=Path,
+        help="explicit actual-curve collision witness times for failed transit retries",
+    )
+    parser.add_argument(
         "--adaptive-position-witness",
         action="store_true",
         help="refine prior actual position extrema",
@@ -72,6 +82,21 @@ def main():
     )
     parser.add_argument(
         "--probe-batch", type=Path, help="include independently checked generated probe groups"
+    )
+    parser.add_argument("--weld-batch", type=Path, help="include checked generated weld groups")
+    parser.add_argument(
+        "--weld-transit-results", type=Path, help="reuse checked weld-adjacent transits"
+    )
+    parser.add_argument("--weld-partitions", type=int, help="number of weld transit workers")
+    parser.add_argument("--weld-partition", type=int, help="zero-based weld worker partition")
+    parser.add_argument(
+        "--reuse-modeled-outer", type=Path, help="reuse checked modeled outer transits"
+    )
+    parser.add_argument(
+        "--verify-partitions", type=int, help="number of independent tour-check workers"
+    )
+    parser.add_argument(
+        "--verify-partition", type=int, help="zero-based tour-check worker partition"
     )
     parser.add_argument(
         "--probe-partitions", type=int, help="number of independent transit workers"
@@ -97,12 +122,39 @@ def main():
     args = parser.parse_args()
     if args.adaptive_position_witness and not args.retry_stage:
         raise FixtureTransitTourError("adaptive position witnesses require a failed-stage retry")
+    collision_witnesses = (
+        {}
+        if args.collision_witness_file is None
+        else json.loads(args.collision_witness_file.read_text())
+    )
+    if collision_witnesses and set(collision_witnesses) != set(args.retry_stage):
+        raise FixtureTransitTourError(
+            "collision witnesses must cover the explicit failed-stage retries"
+        )
     if args.checked_neighborhood and not args.resume_from:
         raise FixtureTransitTourError("checked neighborhood requires a transit checkpoint")
     if args.probe_batch and not args.resume_from:
         raise FixtureTransitTourError("checked probe groups require a transit checkpoint")
     if (args.probe_partitions is None) != (args.probe_partition is None):
         raise FixtureTransitTourError("both worker partition arguments are required")
+    if (args.weld_partitions is None) != (args.weld_partition is None):
+        raise FixtureTransitTourError("both weld worker partition arguments are required")
+    if (args.verify_partitions is None) != (args.verify_partition is None):
+        raise FixtureTransitTourError(
+            "both full-tour verification partition arguments are required"
+        )
+    if args.reuse_modeled_outer and not args.free_outer_boundary:
+        raise FixtureTransitTourError("reusing modeled outer transits requires explicit opt-in")
+    if args.verify_partitions is not None and (
+        args.probe_partitions is not None or args.weld_partitions is not None
+    ):
+        raise FixtureTransitTourError(
+            "verification and optimization worker partitions cannot be combined"
+        )
+    if args.probe_partitions is not None and args.weld_partitions is not None:
+        raise FixtureTransitTourError("one worker partition policy at a time required")
+    if (args.weld_partitions is not None or args.weld_transit_results) and not args.weld_batch:
+        raise FixtureTransitTourError("weld workers require checked weld batch")
     if (args.probe_partitions is not None or args.probe_transit_results) and not args.probe_batch:
         raise FixtureTransitTourError("probe transit partitions require a checked probe batch")
     if not np.isfinite(args.fixture_duration_factor) or args.fixture_duration_factor <= 0:
@@ -154,7 +206,7 @@ def main():
         "fixture_modeled_s_after": sum(
             float(clock["stages"][i]["duration_s"]) for i in fixture_indices
         ),
-        "scope": "Fresh generated tour: ordered modeled fixture axes, checked supplied probe groups and lead, and adjacent optimized transits; remaining process and transit stages use generated joint-linear interpolation. Physical boundary derivatives and fixture dynamics unknown.",
+        "scope": "Fresh generated tour: ordered modeled fixture axes, supplied checked probe and weld groups, and adjacent optimized transits; remaining process and transit stages use generated joint-linear interpolation. Physical boundary derivatives and fixture dynamics unknown.",
         "transits": [],
         "fixture_chains": [],
     }
@@ -372,6 +424,26 @@ def main():
             "group_count": len(batch["groups"]),
             "scope": "actual group curves were independently sampled in the explicit input batch; process acceptance unresolved",
         }
+    checked_weld_labels = set()
+    weld_indices_to_refine = set()
+    if args.weld_batch:
+        checked_weld, unresolved = adapt_weld_batch(
+            rows, clock, json.loads(args.weld_batch.read_text()), tour
+        )
+        weld_indices_to_refine = weld_neighbor_indices(rows, checked_weld)
+        canonical_weld_boundaries = canonicalize_weld_transit_endpoints(rows, checked_weld)
+        for index, (stage, states) in checked_weld.items():
+            actual[index] = stage
+            replacements[stage.label] = stage
+            checked_weld_labels.add(stage.label)
+            rows[index] = {"stage": stage.label, "states": states.tolist()}
+        indices_to_refine.update(weld_indices_to_refine)
+        report["checked_weld_batch"] = {
+            "stages": len(checked_weld),
+            "unresolved_groups": unresolved,
+            "canonical_transit_boundaries": canonical_weld_boundaries,
+            "scope": "Actual input curves independently sampled; process acceptance unresolved.",
+        }
     neighbors = transit_neighbor_map(rows, clock["stages"], actual)
     if args.free_outer_boundary:
         outer = [i for i, (left, right, _) in neighbors.items() if left is None or right is None]
@@ -386,6 +458,14 @@ def main():
         worker_indices = sorted(probe_indices_to_refine)[start : start + count]
         report["worker_partition"] = args.probe_partition
         report["worker_partitions"] = args.probe_partitions
+    if args.weld_partitions is not None:
+        ranges = split_ranges(0, len(weld_indices_to_refine), args.weld_partitions)
+        if args.weld_partition < 0 or args.weld_partition >= len(ranges):
+            raise FixtureTransitTourError("weld worker partition is outside the configured range")
+        start, count = ranges[args.weld_partition]
+        worker_indices = sorted(weld_indices_to_refine)[start : start + count]
+        report["worker_partition"] = args.weld_partition
+        report["worker_partitions"] = args.weld_partitions
     fixture_join_diagnostics = []
     prior = {}
     if args.resume_from:
@@ -423,6 +503,40 @@ def main():
                     "probe transit results do not cover each selected transit once"
                 )
             prior.update(new_results)
+        if args.weld_transit_results:
+            checked = json.loads(args.weld_transit_results.read_text())
+            new_results = {item["stage"]: item for item in checked["transits"]}
+            if (
+                checked["tour"] != tour
+                or len(new_results) != len(checked["transits"])
+                or set(new_results) != {labels[index] for index in weld_indices_to_refine}
+            ):
+                raise FixtureTransitTourError(
+                    "weld transit results do not cover each selected transit once"
+                )
+            prior.update(new_results)
+        if args.reuse_modeled_outer:
+            outer_saved = json.loads(args.reuse_modeled_outer.read_text())
+            outer_labels = {
+                labels[i]
+                for i, (left, right, _) in neighbors.items()
+                if left is None or right is None
+            }
+            outer_results = {
+                item["stage"]: item
+                for item in outer_saved["transits"]
+                if item["stage"] in outer_labels
+            }
+            if (
+                outer_saved["tour"] != tour
+                or set(outer_results) != outer_labels
+                or any(
+                    item["status"] != "sampled_transit_fixture_join_checked"
+                    for item in outer_results.values()
+                )
+            ):
+                raise FixtureTransitTourError("checked modeled outer transit results required")
+            prior.update(outer_results)
         if any(
             stage not in prior or prior[stage]["status"] != "failed" for stage in args.retry_stage
         ):
@@ -443,6 +557,7 @@ def main():
                 label in prior
                 and label not in args.retry_stage
                 and (index not in probe_indices_to_refine or args.probe_transit_results)
+                and (index not in weld_indices_to_refine or args.weld_transit_results)
             ):
                 result = prior[label]
                 if result["status"] == "sampled_transit_fixture_join_checked":
@@ -476,6 +591,10 @@ def main():
                     if left is not None and left.label in checked_probe_labels:
                         resume_checks.extend(j._asdict() for j in diagnostic_joins([left, stage]))
                     if right is not None and right.label in checked_probe_labels:
+                        resume_checks.extend(j._asdict() for j in diagnostic_joins([stage, right]))
+                    if left is not None and left.label in checked_weld_labels:
+                        resume_checks.extend(j._asdict() for j in diagnostic_joins([left, stage]))
+                    if right is not None and right.label in checked_weld_labels:
                         resume_checks.extend(j._asdict() for j in diagnostic_joins([stage, right]))
                     if neighborhood_transit is not None and label == neighborhood_transit["stage"]:
                         if left is None:
@@ -513,17 +632,19 @@ def main():
             right_fixture = right is not None and right.label.startswith("fixture:")
             left_probe = left is not None and left.label in checked_probe_labels
             right_probe = right is not None and right.label in checked_probe_labels
+            left_weld = left is not None and left.label in checked_weld_labels
+            right_weld = right is not None and right.label in checked_weld_labels
             a0 = (
                 np.asarray(begin.acceleration)
                 if begin is not None
-                and (outer or left_fixture or left_probe)
+                and (outer or left_fixture or left_probe or left_weld)
                 and begin.acceleration is not None
                 else None
             )
             a1 = (
                 np.asarray(finish.acceleration)
                 if finish is not None
-                and (outer or right_fixture or right_probe)
+                and (outer or right_fixture or right_probe or right_weld)
                 and finish.acceleration is not None
                 else None
             )
@@ -533,8 +654,8 @@ def main():
                 raise FixtureTransitTourError(
                     "outer transit neighboring modeled acceleration unavailable"
                 )
-            if ((left_fixture or left_probe) and a0 is None) or (
-                (right_fixture or right_probe) and a1 is None
+            if ((left_fixture or left_probe or left_weld) and a0 is None) or (
+                (right_fixture or right_probe or right_weld) and a1 is None
             ):
                 raise FixtureTransitTourError("actual checked boundary acceleration unavailable")
 
@@ -567,6 +688,18 @@ def main():
                     previous["optimized_curve"]["a0"],
                     previous["optimized_curve"]["a1"],
                 ]
+            if label in collision_witnesses:
+                if outer:
+                    raise FixtureTransitTourError("outer-boundary collision witnesses unsupported")
+                previous = prior[label]
+                if "optimized_curve" not in previous:
+                    raise FixtureTransitTourError("saved failed transit curve required")
+                seed = previous["optimized_curve"]["nodes"]
+                seed_accelerations = [
+                    previous["optimized_curve"]["a0"],
+                    previous["optimized_curve"]["a1"],
+                ]
+                result["collision_witness_times_s"] = collision_witnesses[label]
             result["position_witness_attempts"] = []
             for attempt in range(
                 MAX_POSITION_WITNESS_ROUNDS if args.adaptive_position_witness else 1
@@ -580,6 +713,8 @@ def main():
                     if outer
                     else {}
                 )
+                if label in collision_witnesses:
+                    options["collision_witness_times_s"] = collision_witnesses[label]
                 solved = solver(
                     env,
                     info,
@@ -691,9 +826,19 @@ def main():
                 checks += [j._asdict() for j in diagnostic_joins([left, stage])]
             if right_probe:
                 checks += [j._asdict() for j in diagnostic_joins([stage, right])]
-            if outer and left is not None and not left_fixture and not left_probe:
+            if left_weld:
                 checks += [j._asdict() for j in diagnostic_joins([left, stage])]
-            if outer and right is not None and not right_fixture and not right_probe:
+            if right_weld:
+                checks += [j._asdict() for j in diagnostic_joins([stage, right])]
+            if outer and left is not None and not left_fixture and not left_probe and not left_weld:
+                checks += [j._asdict() for j in diagnostic_joins([left, stage])]
+            if (
+                outer
+                and right is not None
+                and not right_fixture
+                and not right_probe
+                and not right_weld
+            ):
                 checks += [j._asdict() for j in diagnostic_joins([stage, right])]
             band = PARITY_ULPS * np.finfo(float).eps
             if any(
@@ -750,7 +895,7 @@ def main():
             json.dumps(
                 {
                     "status": report["status"],
-                    "partition": args.probe_partition,
+                    "partition": report["worker_partition"],
                     "transits": len(report["transits"]),
                     "failed": sum(t["status"] == "failed" for t in report["transits"]),
                 }
@@ -811,8 +956,66 @@ def main():
     report["status"] = (
         "partial_tour_with_failed_transits_and_unresolved_process"
         if any(t["status"] == "failed" for t in report["transits"])
+        or (args.weld_batch and report["checked_weld_batch"]["unresolved_groups"])
         else "fixture_transits_checked_process_continuity_unresolved"
     )
+    if args.verify_partitions is not None:
+        ranges = split_ranges(0, len(path), args.verify_partitions)
+        if args.verify_partition < 0 or args.verify_partition >= len(ranges):
+            raise FixtureTransitTourError("tour verification partition outside range")
+        start, count = ranges[args.verify_partition]
+        report["verification_partition"] = args.verify_partition
+        report["verification_worker_pid"] = getpid()
+        report["verification_start"] = start
+        report["verification_count"] = count
+        report["verification_scope"] = (
+            "Independent finite actual-curve samples; process acceptance and physical timing unresolved."
+        )
+        report["verification_stages"] = []
+        progress = args.output / "verification-progress.jsonl"
+        for stage in path[start : start + count]:
+            entry = {"stage": stage.label, "status": "in_progress"}
+            try:
+                if isinstance(stage, StationaryEvent):
+                    q = np.asarray([stage.position])
+                    entry["stationary_event"] = True
+                    entry["undefined_velocity_samples"] = 0
+                else:
+                    ts = np.linspace(0.0, float(stage.duration), SAMPLES)
+                    states = [stage.evaluate(Seconds(float(t))) for t in ts]
+                    q = np.asarray([item.position for item in states])
+                    velocities = [item.velocity[:7] for item in states if item.velocity is not None]
+                    entry["undefined_velocity_samples"] = len(states) - len(velocities)
+                    if velocities:
+                        entry["sampled_speed_excess_native_units_s"] = np.maximum(
+                            np.max(np.abs(np.asarray(velocities)), axis=0) - np.asarray(speeds), 0.0
+                        ).tolist()
+                entry["collision_and_position"] = inspect_sampled_curve(
+                    checker, q, limits, SQP_FEASIBILITY_BAND
+                )
+                entry["status"] = (
+                    "sampled_speed_excess"
+                    if any(
+                        value > SQP_FEASIBILITY_BAND
+                        for value in entry.get("sampled_speed_excess_native_units_s", [])
+                    )
+                    else "sampled_checked"
+                )
+            except Exception as exc:
+                entry.update(
+                    {"status": "failed", "error_type": type(exc).__name__, "error": str(exc)}
+                )
+            report["verification_stages"].append(entry)
+            with progress.open("a") as stream:
+                stream.write(json.dumps(entry, allow_nan=False) + "\n")
+        report["verification_status"] = (
+            "completed_with_failures"
+            if any(s["status"] != "sampled_checked" for s in report["verification_stages"])
+            else "sampled_partition_checked"
+        )
+        report["verification_scene_restored"] = snapshot(scene) == original
+        if not report["verification_scene_restored"]:
+            raise FixtureTransitTourError("verification scene state changed")
     save()
     if snapshot(scene) != original:
         raise FixtureTransitTourError("scene state changed")
