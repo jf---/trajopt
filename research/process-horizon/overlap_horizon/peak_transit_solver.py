@@ -2,7 +2,12 @@
 
 import numpy as np
 from native_accel_transits import TransitContractError, refine_transits
-from peak_witnesses import DEFAULT_MAX_WITNESS_ROUNDS, PeakWitnessError, refine_peak_witnesses
+from peak_witnesses import (
+    DEFAULT_MAX_WITNESS_ROUNDS,
+    PeakWitnessError,
+    refine_peak_witnesses,
+    refine_peak_witnesses_bounded,
+)
 from scipy.interpolate import make_interp_spline
 
 # Existing SQP constraint feasibility setting, in normalized jerk units.
@@ -18,7 +23,28 @@ def make_peak_transit_solver(
     absolute_merit_improvement=None,
     max_witness_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
 ):
-    """Construct an opt-in solver with an explicit shared SQP and witness policy."""
+    """Construct a strict solver requiring every peak witness to satisfy its band."""
+    return _make_peak_transit_solver(
+        weight, reference_time_s, absolute_merit_improvement, max_witness_rounds, False
+    )
+
+
+def make_bounded_peak_transit_solver(
+    weight,
+    reference_time_s,
+    *,
+    absolute_merit_improvement=None,
+    max_witness_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
+):
+    """Retain a budgeted result while explicitly reporting incomplete objective refinement."""
+    return _make_peak_transit_solver(
+        weight, reference_time_s, absolute_merit_improvement, max_witness_rounds, True
+    )
+
+
+def _make_peak_transit_solver(
+    weight, reference_time_s, absolute_merit_improvement, max_witness_rounds, bounded
+):
     if (
         isinstance(max_witness_rounds, bool)
         or not isinstance(max_witness_rounds, int)
@@ -80,16 +106,27 @@ def make_peak_transit_solver(
             }
 
         try:
-            result, rounds = refine_peak_witnesses(
-                np.linspace(0, duration, INITIAL_WITNESS_COUNT),
-                round_solve,
-                normalization,
-                SQP_FEASIBILITY_BAND,
-                max_rounds=max_witness_rounds,
-            )
+            if bounded:
+                result, rounds, witness_status = refine_peak_witnesses_bounded(
+                    np.linspace(0, duration, INITIAL_WITNESS_COUNT),
+                    round_solve,
+                    normalization,
+                    SQP_FEASIBILITY_BAND,
+                    max_rounds=max_witness_rounds,
+                )
+            else:
+                result, rounds = refine_peak_witnesses(
+                    np.linspace(0, duration, INITIAL_WITNESS_COUNT),
+                    round_solve,
+                    normalization,
+                    SQP_FEASIBILITY_BAND,
+                    max_rounds=max_witness_rounds,
+                )
+                witness_status = "satisfied"
         except PeakWitnessError as exc:
             raise TransitContractError(f"peak witness verification failed: {exc}") from exc
         result["solution"]["peak_witness_rounds"] = rounds
+        result["solution"]["peak_witness_status"] = witness_status
         return [result["solution"]]
 
     return solve

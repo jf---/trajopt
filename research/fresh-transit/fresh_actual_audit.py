@@ -1,6 +1,6 @@
 """Build an opt-in actual-curve audit for a freshly verified staged tour."""
 
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from typing import Any
 
 import numpy as np
@@ -16,6 +16,9 @@ from actual_stage_contract import (
 )
 from verified_linear_stages import actual_linear_stage
 
+# Binary64 arithmetic allowance for the same fixture event state.
+FIXTURE_EVENT_ROUNDOFF_ULPS = 64
+
 
 def audit_stages(
     segments: Sequence[dict[str, Any]],
@@ -25,6 +28,7 @@ def audit_stages(
     *,
     initial_state: KinematicState | None = None,
     final_state: KinematicState | None = None,
+    stage_overrides: Mapping[str, ActualStage] | None = None,
 ) -> dict[str, Any]:
     """Diagnose modeled joins without inventing physical boundary derivatives.
 
@@ -40,6 +44,9 @@ def audit_stages(
         label != entry.get("stage") for label, entry in zip(labels, timing, strict=True)
     ):
         raise JoinContractError("stage labels or modeled clocks disagree")
+    overrides = {} if stage_overrides is None else stage_overrides
+    if set(overrides) - {label for label in labels if label.startswith("fixture:")}:
+        raise JoinContractError("fixture override labels must match source fixture stages")
     expected = {label for label in labels if label.startswith("transit:")}
     rows = {row["stage"]: row for row in transits}
     if len(rows) != len(transits) or set(rows) != expected:
@@ -50,7 +57,24 @@ def audit_stages(
         label = source["stage"]
         duration = float(entry["duration_s"])
         stage: ActualStage | StationaryEvent
-        if label in rows:
+        if label in overrides:
+            stage = overrides[label]
+            if stage.label != label or stage.duration != duration:
+                raise JoinContractError(f"{label}: fixture clock mismatch")
+            source_states = np.asarray(source["states"], dtype=float)
+            for point, actual in (
+                (source_states[0], stage.evaluate(Seconds(0.0)).position),
+                (source_states[-1], stage.evaluate(stage.duration).position),
+            ):
+                actual_value = np.asarray(actual, dtype=float)
+                band = (
+                    FIXTURE_EVENT_ROUNDOFF_ULPS
+                    * np.finfo(float).eps
+                    * np.maximum(1.0, np.maximum(np.abs(point), np.abs(actual_value)))
+                )
+                if np.any(np.abs(point - actual_value) > band):
+                    raise JoinContractError(f"{label}: fixture target changed")
+        elif label in rows:
             row = rows[label]
             if float(row["duration_s"]) != duration:
                 raise JoinContractError(f"{label}: transit clock mismatch")

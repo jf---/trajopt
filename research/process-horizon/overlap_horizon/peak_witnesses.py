@@ -58,20 +58,13 @@ def select_peak_witnesses(curve, peaks, normalization, existing_times_s, feasibi
 DEFAULT_MAX_WITNESS_ROUNDS = 5
 
 
-def refine_peak_witnesses(
-    initial_times_s,
-    solve,
-    normalization,
-    feasibility_band,
-    *,
-    max_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
-):
-    """Warm-start repeated solves, retaining every added actual-curve witness."""
+def _refine_peak_witnesses(initial_times_s, solve, normalization, feasibility_band, max_rounds):
     witnesses = sorted(map(float, initial_times_s))
     if (
         not witnesses
         or len(set(witnesses)) != len(witnesses)
         or not isinstance(max_rounds, int)
+        or isinstance(max_rounds, bool)
         or max_rounds <= 0
     ):
         raise PeakWitnessError("unique initial witnesses and positive finite budget required")
@@ -84,7 +77,42 @@ def refine_peak_witnesses(
         )
         rounds.append({"witnesses_s": witnesses.copy(), "added_s": added, "extrema": evidence})
         if not added:
-            return result, rounds
+            return result, rounds, "satisfied"
         witnesses = sorted([*witnesses, *added])
         previous = result
-    raise PeakWitnessError(f"peak witness budget exhausted: {rounds}")
+    return result, rounds, "budget_exhausted"
+
+
+def refine_peak_witnesses(
+    initial_times_s,
+    solve,
+    normalization,
+    feasibility_band,
+    *,
+    max_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
+):
+    """Require the bounded witness refinement to satisfy its configured band."""
+    result, rounds, status = _refine_peak_witnesses(
+        initial_times_s, solve, normalization, feasibility_band, max_rounds
+    )
+    if status != "satisfied":
+        raise PeakWitnessError(f"peak witness budget exhausted: {rounds}")
+    return result, rounds
+
+
+def refine_peak_witnesses_bounded(
+    initial_times_s,
+    solve,
+    normalization,
+    feasibility_band,
+    *,
+    max_rounds=DEFAULT_MAX_WITNESS_ROUNDS,
+):
+    """Return the final curve and explicitly report any unfinished soft objective.
+
+    This function does not accept a trajectory: callers must independently
+    verify actual collision, geometry, position bounds and source events.
+    """
+    return _refine_peak_witnesses(
+        initial_times_s, solve, normalization, feasibility_band, max_rounds
+    )

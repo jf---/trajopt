@@ -21,6 +21,7 @@ def refine_all_peak_transits(
     solver: Callable[..., list[dict[str, Any]]],
     start_velocity: Any,
     end_velocity: Any,
+    boundary_resolver: Callable[..., Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Apply the same solver to each transit with its original neighbors."""
     timing = clock.get("stages", ())
@@ -55,17 +56,24 @@ def refine_all_peak_transits(
             after = any(float(entry["duration_s"]) > 0 for entry in timing[selected_index + 1 :])
             return np.zeros(9) if before else None, np.zeros(9) if after else None
 
-        result = solver(
-            env,
-            info,
-            names,
-            selected,
-            {**clock, "stages": selected_clock},
-            speeds,
-            start_velocity=start_velocity,
-            end_velocity=end_velocity,
-            acceleration_resolver=accelerations,
+        boundary_options = (
+            {} if boundary_resolver is None else {"boundary_resolver": boundary_resolver}
         )
+        try:
+            result = solver(
+                env,
+                info,
+                names,
+                selected,
+                {**clock, "stages": selected_clock},
+                speeds,
+                start_velocity=start_velocity,
+                end_velocity=end_velocity,
+                acceleration_resolver=accelerations,
+                **boundary_options,
+            )
+        except Exception as exc:
+            raise FreshPeakRefinementError(f"{stage['stage']}: {exc}") from exc
         if len(result) != 1 or result[0].get("stage") != stage["stage"]:
             raise FreshPeakRefinementError(f"{stage['stage']}: expected one matching curve")
         results.extend(result)

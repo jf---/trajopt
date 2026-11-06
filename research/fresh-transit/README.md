@@ -241,3 +241,31 @@ pixi run --as-is --manifest-path "$MANIFEST" env \
 
 The inputs are development artifacts, not a packaged product; the driver rejects
 an already existing output directory and verifies the loaded libraries.
+
+## Bounded peak objective and fixture easing
+
+The optional `--ease-fixture` policy applies the existing quintic progress law
+only to contiguous fixture stages whose **nine-axis** stored points share a
+monotone straight chord. It preserves the chord and every ordered target,
+keeps the chain's total modeled duration and exposes actual fixture derivatives
+to neighboring transits. It rejects unsupported geometry; it does not require
+other reindexes to park the arm. New fixture curves receive independent sampled
+collision and position checks. No fixture dynamic limit is assumed.
+
+`--bounded-peak` is a separate explicit policy. If the soft peak-jerk witness
+budget expires, it retains the final SQP result, marks the objective refinement
+`budget_exhausted`, and reports the numerical extrema and remaining witness
+excess. The strict mode still fails at the same configured witness band. Neither
+mode bypasses independent collision, position, speed or process checks.
+
+In the [fresh Tour09 fixture experiment](tour09-fresh-bounded-fixture-easing.json),
+all 14 transit quintics and all five eased fixture stages passed their individual
+1,025-state sampled collision and position checks; the pre-existing independent
+verifier checked the unchanged probe and weld inputs. The fixture interfaces and
+internal fixture joins matched modeled position, velocity and acceleration.
+Transit 2 exhausted the 12-round **soft-objective** witness budget; its true
+peak and residual are reported rather than described as converged. The positioner
+clock and its dynamic limits remain unsourced, the physical outer derivatives are
+unknown, and unchanged joint-linear process corners leave whole-tour smoothness
+unresolved. The modeled 115.46 s cycle and the recorded planning time are not
+controller timing or a clean performance benchmark.

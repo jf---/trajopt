@@ -48,7 +48,16 @@ def modeled_tour_end_secants(segments, clock):
 
 
 def refine_checked_tour(
-    scene, tour, record, checked, raw, metadata, *, boundary_policy, transit_solver=None
+    scene,
+    tour,
+    record,
+    checked,
+    raw,
+    metadata,
+    *,
+    boundary_policy,
+    transit_solver=None,
+    clock_policy=None,
 ):
     """Return checked native transit curves with unchanged process and explicit joins.
 
@@ -61,6 +70,8 @@ def refine_checked_tour(
     segments, clock, speeds = prepare_fresh(
         env, program, source, tours, home, names, raw, metadata, tour, record, checked
     )
+    if clock_policy is not None:
+        clock = clock_policy(segments, clock)
     start_velocity, end_velocity = boundary_policy(segments, clock)
     preparation_s = perf_counter() - start
     start = perf_counter()

@@ -64,3 +64,57 @@ def test_unknown_outer_acceleration_remains_free_and_interior_is_modeled():
     np.testing.assert_array_equal(boundaries[0][1], np.zeros(9))
     np.testing.assert_array_equal(boundaries[1][0], np.zeros(9))
     assert boundaries[1][1] is None
+
+
+def test_explicit_fixture_boundary_model_reaches_each_solver():
+    stages = [{"stage": "transit:0", "states": [[0] * 9, [0] * 9]}]
+    clock = {"stages": [{"stage": "transit:0", "duration_s": 1.0}]}
+
+    def marker(*args, **kwargs):
+        return None
+
+    calls = []
+
+    def solver(*args, **kwargs):
+        calls.append(kwargs["boundary_resolver"])
+        return [{"stage": "transit:0"}]
+
+    refine_all_peak_transits(
+        None,
+        None,
+        (),
+        stages,
+        clock,
+        (),
+        solver=solver,
+        start_velocity=[0] * 9,
+        end_velocity=[0] * 9,
+        boundary_resolver=marker,
+    )
+    assert calls == [marker]
+
+
+def test_failed_transit_reports_stage_and_preserves_original_cause():
+    import pytest
+    from fresh_peak_refiner import FreshPeakRefinementError
+
+    stages = [{"stage": "transit:42", "states": [[0] * 9, [0] * 9]}]
+    clock = {"stages": [{"stage": "transit:42", "duration_s": 1.0}]}
+
+    def failed(*args, **kwargs):
+        raise RuntimeError("witness budget")
+
+    with pytest.raises(FreshPeakRefinementError, match="transit:42") as exc:
+        refine_all_peak_transits(
+            None,
+            None,
+            (),
+            stages,
+            clock,
+            (),
+            solver=failed,
+            start_velocity=[0] * 9,
+            end_velocity=[0] * 9,
+        )
+    assert isinstance(exc.value.__cause__, RuntimeError)
+    assert str(exc.value.__cause__) == "witness budget"

@@ -65,3 +65,46 @@ def test_verified_tour_calls_explicit_refiner(monkeypatch):
     )
     assert calls == [segments]
     assert result["transits"][0]["actual_curve_check"]["sample_count"] == 1025
+
+
+def test_explicit_fixture_clock_policy_receives_verified_stages(monkeypatch):
+    import pytest
+
+    segments = [{"stage": "fixture:0", "states": [[0] * 9, [0] * 9]}]
+    clock = {"stages": [{"stage": "fixture:0", "duration_s": 1.0}]}
+    monkeypatch.setattr(pipeline, "prepare_fresh", lambda *args: (segments, clock, np.ones(7)))
+
+    class SeenClock(Exception):
+        pass
+
+    def policy(given_stages, given_clock):
+        assert given_stages is segments and given_clock is clock
+        raise SeenClock
+
+    scene = {
+        "inputs": (
+            None,
+            None,
+            None,
+            None,
+            tuple(f"j{i}" for i in range(9)),
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+        )
+    }
+    with pytest.raises(SeenClock):
+        pipeline.refine_checked_tour(
+            scene,
+            9,
+            {},
+            {"status": "independently_sampled_tour"},
+            {},
+            {},
+            boundary_policy=lambda *_: None,
+            clock_policy=policy,
+        )
