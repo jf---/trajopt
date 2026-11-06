@@ -13,9 +13,11 @@ from actual_stage_adapters import weld_stage
 from actual_stage_contract import diagnostic_joins
 from check_joint_motion_graph import LEAD_LENGTH_M
 from cubic_position_extrema import cubic_position_extrema
+from fresh_prepare import prepare_fresh
 from fresh_product_scene import initialize_scene, snapshot
 from fresh_tour_pipeline import SQP_FEASIBILITY_BAND
 from fresh_validation import CurveCollisionError, CurveLimitError, inspect_sampled_curve
+from generated_rail_reference import generated_rail_at
 from master_analytic_ik import arm_ik
 from probe_process_inputs import extract_process_tour
 from probe_source_join_trial import pose_matrix
@@ -23,8 +25,10 @@ from process_geometry import assess_process_geometry
 from rotation_targets import rotation_errors
 from runtime_libraries import require_loaded_libraries
 from scipy.interpolate import CubicSpline
+from weld_error_witness import select_error_witnesses
 from weld_local_blend import build_local_weld_blend
 from weld_only_inputs import WeldBead, extract_tour
+from weld_source_orientation import build_source_bead_orientation
 
 from tesseract_qt_py.core.retarget.certify import StateChecker
 from tesseract_qt_py.core.retarget.pair_margins import PairMargins
@@ -51,17 +55,48 @@ def main():
     parser.add_argument(
         "--witness-refinement", action="store_true", help="add a bounded actual-FK witness pass"
     )
+    parser.add_argument(
+        "--generated-rail-reference",
+        action="store_true",
+        help="evaluate the generated rail reference at each process target",
+    )
+    parser.add_argument(
+        "--source-bead-orientation",
+        action="store_true",
+        help="target original per-segment orientation during active bead stages",
+    )
+    parser.add_argument(
+        "--orientation-witness-refinement",
+        action="store_true",
+        help="include actual orientation error in the bounded witness policy",
+    )
+    parser.add_argument(
+        "--diagnostic-first-stage", help="evaluate one cluster identified by its first stage"
+    )
+    parser.add_argument(
+        "--verified-recovery",
+        action="store_true",
+        help="reconstruct the modeled clock from an independently verified fresh recovery",
+    )
     args = parser.parse_args()
+    if args.orientation_witness_refinement and not args.witness_refinement:
+        raise WeldLocalTrialError("orientation witnesses require the bounded witness pass")
     require_loaded_libraries(
         [args.ifopt_library.resolve(strict=True), args.sqp_library.resolve(strict=True)]
     )
-    saved = json.loads(args.input.read_text())["result"]
-    candidate = saved["jerk"]
-    if (
-        saved["product"]["status"] != "independently_sampled_tour"
-        or candidate["process_verification"]["status"] != "independently_sampled_tour"
-    ):
-        raise WeldLocalTrialError("independently verified fresh generated input required")
+    saved = json.loads(args.input.read_text())
+    if args.verified_recovery:
+        if saved["verified"]["status"] != "independently_sampled_tour":
+            raise WeldLocalTrialError("independently verified fresh recovery required")
+        candidate = None
+    else:
+        saved = saved["result"]
+        candidate = saved["jerk"]
+        if (
+            saved["product"]["status"] != "independently_sampled_tour"
+            or candidate["process_verification"]["status"] != "independently_sampled_tour"
+        ):
+            raise WeldLocalTrialError("independently verified fresh generated input required")
     if args.output.exists():
         raise WeldLocalTrialError("output already exists")
     args.output.mkdir(parents=True)
@@ -73,6 +108,23 @@ def main():
     metadata = json.loads((args.station / "joint_speeds.json").read_text())["joint_speeds"][
         "joints"
     ]
+    if args.verified_recovery:
+        tour = int(saved["verified"]["tour"])
+        raw = json.loads((args.station / "programs/weld_trajectory.json").read_text())
+        segments, clock, _ = prepare_fresh(
+            env,
+            program,
+            source,
+            tours,
+            home,
+            names,
+            raw,
+            metadata,
+            tour,
+            saved["record"],
+            saved["verified"],
+        )
+        candidate = {"tour": tour, "generated_stages": segments, "clock": clock}
     speeds = []
     for name in names[:7]:
         item = metadata[name]
@@ -100,12 +152,23 @@ def main():
     runs = [run for run in runs if run is not None]
     if len(runs) != len(beads):
         raise WeldLocalTrialError("generated weld clusters do not match source beads")
+    if args.diagnostic_first_stage and not any(
+        run[0]["stage"] == args.diagnostic_first_stage for run in runs
+    ):
+        raise WeldLocalTrialError("diagnostic stage is not a weld-cluster start")
     report = {
         "tour": candidate["tour"],
         "scene_setup_s_contended": setup,
         "beads": [],
         "lead_policy": args.lead_policy,
         "witness_refinement": args.witness_refinement,
+        "orientation_policy": "source bead targets"
+        if args.source_bead_orientation
+        else "local blends",
+        "orientation_witness_refinement": args.orientation_witness_refinement,
+        "rail_policy": "generated reference, not optimized"
+        if args.generated_rail_reference
+        else "fixed",
         "scope": "Exploratory generated tangent leads and local source-bead Cartesian blends through source waypoints; finite samples and modeled clock, no process or controller acceptance.",
     }
 
@@ -122,6 +185,8 @@ def main():
         )
 
     for bead, run in zip(beads, runs, strict=True):
+        if args.diagnostic_first_stage and run[0]["stage"] != args.diagnostic_first_stage:
+            continue
         result = {"source_segment": bead.segment, "status": "in_progress", "stages": []}
         try:
             source_poses = np.asarray([pose_matrix(item) for item in bead.poses])
@@ -132,7 +197,9 @@ def main():
             if any(not np.all(q[:, 7:] == fixture) for q in all_source):
                 raise WeldLocalTrialError("moving fixture during weld is unsupported")
             track = float(all_source[0][0, 0])
-            if any(not np.all(q[:, 0] == track) for q in all_source):
+            if not args.generated_rail_reference and any(
+                not np.all(q[:, 0] == track) for q in all_source
+            ):
                 raise WeldLocalTrialError(
                     "generated moving-track bead requires a different IK hypothesis"
                 )
@@ -156,6 +223,8 @@ def main():
             )
             durations = np.asarray([float(clocks[row["stage"]]["duration_s"]) for row in run])
             position, orientation, blend = build_local_weld_blend(points, rotations, durations)
+            if args.source_bead_orientation:
+                orientation = build_source_bead_orientation(rotations, durations, orientation)
             edges = np.r_[0.0, np.cumsum(durations)]
             fixture_map = dict(zip(names[7:], map(float, fixture), strict=True))
             carrier = {**fixture_map, names[0]: track}
@@ -187,6 +256,9 @@ def main():
                     target = np.eye(4)
                     target[:3, 3] = position(j, float(t))
                     target[:3, :3] = orientation(j, float(t))
+                    if args.generated_rail_reference:
+                        track = float(generated_rail_at(all_source[j], durations[j], float(t)))
+                        carrier[names[0]] = track
                     solution = arm_ik(
                         env,
                         opw,
@@ -230,6 +302,8 @@ def main():
             if args.witness_refinement:
                 began = perf_counter()
                 witness_candidates = []
+                error_stages = []
+                local_times = []
                 for j, row in enumerate(run):
                     local = np.linspace(0.0, durations[j], SAMPLES)
                     times = edges[j] + local
@@ -237,6 +311,21 @@ def main():
                     actual = np.asarray([pose(np.r_[q, fixture]) for q in samples])
                     target = np.asarray([position(j, float(t)) for t in local])
                     error = np.linalg.norm(actual[:, :3, 3] - target, axis=1)
+                    if args.orientation_witness_refinement:
+                        desired = np.asarray([orientation(j, float(t)) for t in local])
+                        angle = rotation_errors(desired, actual[:, :3, :3])
+                        eligible = np.asarray(
+                            [
+                                not np.any(
+                                    np.abs(time_nodes - t)
+                                    <= NODE_TIME_ULPS * np.finfo(float).eps * max(1.0, abs(t))
+                                )
+                                for t in times
+                            ]
+                        )
+                        error_stages.append((error, angle, eligible))
+                        local_times.append(local)
+                        continue
                     order = np.argsort(error)[::-1]
                     for index in order:
                         t = float(times[index])
@@ -246,11 +335,19 @@ def main():
                                 (float(error[index]), j, float(local[index]), t)
                             )
                             break
+                if args.orientation_witness_refinement:
+                    for j, index in select_error_witnesses(error_stages, WITNESS_BUDGET_PER_BEAD):
+                        local_t = float(local_times[j][index])
+                        error = float(error_stages[j][0][index])
+                        witness_candidates.append((error, j, local_t, float(edges[j] + local_t)))
                 witness_candidates.sort(reverse=True)
                 for error, j, local_t, global_t in witness_candidates[:WITNESS_BUDGET_PER_BEAD]:
                     target = np.eye(4)
                     target[:3, 3] = position(j, local_t)
                     target[:3, :3] = orientation(j, local_t)
+                    if args.generated_rail_reference:
+                        track = float(generated_rail_at(all_source[j], durations[j], local_t))
+                        carrier[names[0]] = track
                     solution = arm_ik(
                         env,
                         opw,
@@ -290,6 +387,11 @@ def main():
                             "stage": run[j]["stage"],
                             "modeled_time_s": global_t,
                             "initial_target_error_m": error,
+                            "initial_target_orientation_error_rad": (
+                                float(error_stages[j][1][np.searchsorted(local_times[j], local_t)])
+                                if args.orientation_witness_refinement
+                                else None
+                            ),
                             "clear_ik_branches": len(choices),
                         }
                     )
