@@ -1,0 +1,551 @@
+{
+  "scope": "Generated-only three-stage modeled curve; finite contact and process samples; not physical timing or process acceptance.",
+  "axes": [
+    "track_joint",
+    "mh50_20ii_joint_s",
+    "mh50_20ii_joint_l",
+    "mh50_20ii_joint_u",
+    "mh50_20ii_joint_r",
+    "mh50_20ii_joint_b",
+    "mh50_20ii_joint_t"
+  ],
+  "speed_scales": [
+    1.8,
+    3.141592653589793,
+    3.1066860685499065,
+    3.1066860685499065,
+    4.363323129985823,
+    4.363323129985823,
+    6.283185307179586
+  ],
+  "stages": [
+    "weld:277",
+    "weld:278",
+    "weld:279"
+  ],
+  "generated_dynamics": {
+    "duration_s": 52.45837681064268,
+    "peak_velocity": [
+      0.4034177619631645,
+      0.15013381212814886,
+      0.08623905275181118,
+      0.14014800967037655,
+      0.06097115079831941,
+      0.12449683368182043,
+      0.08339424319375967
+    ],
+    "peak_acceleration": [
+      0.6143701751371416,
+      0.2291420365771601,
+      0.1553131233874776,
+      0.2067633826485507,
+      0.09421452116736967,
+      0.1901164622671672,
+      0.08286139393844638
+    ],
+    "peak_jerk": [
+      15.203373055905892,
+      5.956114924177818,
+      1.296286575503067,
+      1.5625396562727243,
+      2.662747399406448,
+      4.933303734976952,
+      2.0649908516941142
+    ],
+    "integrated_jerk_squared": [
+      11.90686321181599,
+      1.8109602943304206,
+      0.47499531852030463,
+      0.7583130336557151,
+      0.363888062122736,
+      1.2707225558831428,
+      0.2626818244395472
+    ],
+    "integrated_speed_normalized_jerk_squared": [
+      3.674957781424688,
+      0.1834886405508346,
+      0.049214671375593586,
+      0.0785694622579741,
+      0.019113184656479775,
+      0.06674457720890135,
+      0.006653808343385923
+    ]
+  },
+  "retry_dynamics": {
+    "duration_s": 52.45837681064268,
+    "peak_velocity": [
+      0.40675388492977027,
+      0.1433404738811226,
+      0.08623905275180692,
+      0.14014800967038082,
+      0.051801114815853415,
+      0.11852524382089456,
+      0.08339424319374941
+    ],
+    "peak_acceleration": [
+      0.2402516614373768,
+      0.08696213083281752,
+      0.0984259932379496,
+      0.13753122263195897,
+      0.04652892518998507,
+      0.10597273197913573,
+      0.033381720008971626
+    ],
+    "peak_jerk": [
+      0.27878879022294595,
+      0.15307082616395526,
+      0.41839898706802015,
+      0.40917498356291904,
+      0.33374887741878667,
+      0.8127295609447949,
+      0.04686502900546698
+    ],
+    "integrated_jerk_squared": [
+      0.09118483998182472,
+      0.014135059512376081,
+      0.06703997649154893,
+      0.07553229082804057,
+      0.018590353899844567,
+      0.1357725373333105,
+      0.004380697854385199
+    ],
+    "integrated_speed_normalized_jerk_squared": [
+      0.028143469130192812,
+      0.0014321809606488304,
+      0.00694606932619287,
+      0.007825965280937552,
+      0.0009764565093020055,
+      0.007131439163439973,
+      0.00011096437294643945
+    ]
+  },
+  "generated_process": [
+    {
+      "stage": "weld:277",
+      "kind": "source_bead",
+      "duration_s": 15.183589999999999,
+      "geometry": {
+        "max_position_departure_m": 0.00015182706835789353,
+        "max_orientation_departure_rad": 0.0005555166286803607,
+        "progress_min": -3.3318545997657918e-15,
+        "progress_max": 0.9999999999999967,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "target_geometry": {
+        "max_position_departure_m": 0.00015187384390653692,
+        "max_orientation_departure_rad": 1.507643084756115e-05,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "blend_target_position_error_m": 6.448642263541487e-05,
+      "blend_target_orientation_error_rad": 0.0005608747867982909,
+      "nominal_feed_m_s": 0.005000603518350844,
+      "modeled_feed_range_m_s": [
+        0.004772092727888469,
+        0.005091069765963573
+      ],
+      "sampled_speed_ratio": [
+        3.4174609563573265e-12,
+        0.00032617898927960094,
+        0.004430155977338058,
+        0.00573344317948267,
+        0.003591387267912922,
+        0.005535040757228956,
+        0.0046815321195761055
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_peak_jerk_by_axis": [
+        2.6315500149560785e-10,
+        0.0002505733808990246,
+        0.08464950760834092,
+        0.10393880797713748,
+        0.045300194848264454,
+        0.20657193421411468,
+        0.2165080337244596
+      ]
+    },
+    {
+      "stage": "weld:278",
+      "kind": "source_bead",
+      "duration_s": 35.2746,
+      "geometry": {
+        "max_position_departure_m": 0.0007991801104776236,
+        "max_orientation_departure_rad": 0.0030306336814595303,
+        "progress_min": -1.2289207176938248e-15,
+        "progress_max": 1.0000000000000013,
+        "max_backward_progress": 0.00028290396204200263,
+        "max_backward_distance_m": 4.989573473615034e-05
+      },
+      "target_geometry": {
+        "max_position_departure_m": 0.00015186841409954607,
+        "max_orientation_departure_rad": 2.5484431231476533e-07,
+        "progress_min": 0.0,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "blend_target_position_error_m": 0.0045168339862523225,
+      "blend_target_orientation_error_rad": 0.0030309538379780995,
+      "nominal_feed_m_s": 0.004999911240373099,
+      "modeled_feed_range_m_s": [
+        0.0006592421866835553,
+        0.013312854250885646
+      ],
+      "sampled_speed_ratio": [
+        0.2172246526622803,
+        0.046386047804863134,
+        0.009922941835356133,
+        0.01475525634144054,
+        0.013591562861067174,
+        0.027693007731499228,
+        0.008690293404065312
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_peak_jerk_by_axis": [
+        15.203373055905892,
+        5.956114924177678,
+        1.296286575503067,
+        1.5625396562727243,
+        2.6627473994064133,
+        4.933303734976952,
+        2.064990851694079
+      ]
+    },
+    {
+      "stage": "weld:279",
+      "kind": "generated_lead",
+      "duration_s": 2.0001868106426812,
+      "geometry": {
+        "max_position_departure_m": 0.0005329223131796121,
+        "max_orientation_departure_rad": 0.00016348932402631918,
+        "progress_min": -0.0018974713176113827,
+        "progress_max": 0.9999999999999958,
+        "max_backward_progress": 0.0018974713176066662,
+        "max_backward_distance_m": 0.00018974713176066578
+      },
+      "target_geometry": {
+        "max_position_departure_m": 0.0005334661858561988,
+        "max_orientation_departure_rad": 0.00016363876240316666,
+        "progress_min": -0.0019315713687638692,
+        "progress_max": 1.0,
+        "max_backward_progress": 0.0019315713687638692,
+        "max_backward_distance_m": 0.00019315713687638607
+      },
+      "blend_target_position_error_m": 9.743402364133944e-06,
+      "blend_target_orientation_error_rad": 1.499253503268172e-06,
+      "nominal_feed_m_s": 0.04999533017011971,
+      "modeled_feed_range_m_s": [
+        0.0024515105769667253,
+        0.07776659960925604
+      ],
+      "sampled_speed_ratio": [
+        0.22411941086514553,
+        0.047788741708420054,
+        0.027759178381375555,
+        0.04511173854646755,
+        0.013973543289151756,
+        0.028532414454104895,
+        0.013272606029694498
+      ],
+      "sampled_speeds_pass": true,
+      "collision_and_position": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "sampled_peak_jerk_by_axis": [
+        15.203373055905892,
+        5.956114924177678,
+        1.296286575503067,
+        1.5625396562727243,
+        2.6627473994064133,
+        4.933303734976952,
+        2.064990851694079
+      ]
+    }
+  ],
+  "retry_process": [
+    {
+      "stage": "weld:277",
+      "collision": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "speed_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.00033091173562176297,
+        "max_orientation_departure_rad": 0.0025792586414321132,
+        "progress_min": 8.669691214198124e-12,
+        "progress_max": 0.9999993956905965,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "target_progress_3d": {
+        "nearest_target_max_backward_step_m": 0.0,
+        "nearest_target_total_backward_m": 0.0,
+        "nearest_target_backward_steps": 0,
+        "actual_step_along_local_target_tangent_min_m": 6.983201467279602e-05,
+        "actual_local_tangent_backward_total_m": 0.0,
+        "max_distance_to_sampled_3d_target_m": 0.00040611694507506935,
+        "sampling": 1025
+      },
+      "source_start_position_error_m": 4.773278979114684e-12,
+      "source_end_position_error_m": 4.615521099560073e-08,
+      "max_target_position_error_m": 0.00041523533746406685,
+      "max_source_orientation_error_rad": 0.0031704416546386397,
+      "feed_range_m_s": [
+        0.004767472402009439,
+        0.005134475021728658
+      ],
+      "source_nominal_feed_m_s": 0.005000603518350844,
+      "peak_sampled_jerk_by_axis": [
+        0.0010068462860780148,
+        0.002395896893100505,
+        0.012749747863736326,
+        0.015559924339425822,
+        0.003120261448884801,
+        0.0279374140252715,
+        0.03920090335817439
+      ],
+      "integrated_normalized_jerk": 0.00010761138748367942
+    },
+    {
+      "stage": "weld:278",
+      "collision": {
+        "status": "failed",
+        "error_type": "CurveCollisionError",
+        "error": "actual spline sample 997: -1.0292341401376443e-06 m"
+      },
+      "position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "speed_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.0025849677361170914,
+        "max_orientation_departure_rad": 0.008334113912459709,
+        "progress_min": -2.6025446387270245e-07,
+        "progress_max": 1.0001950007058236,
+        "max_backward_progress": 0.0001954310838008233,
+        "max_backward_distance_m": 3.446815465623099e-05
+      },
+      "target_progress_3d": {
+        "nearest_target_max_backward_step_m": 0.0,
+        "nearest_target_total_backward_m": 0.0,
+        "nearest_target_backward_steps": 0,
+        "actual_step_along_local_target_tangent_min_m": -3.446815465629686e-05,
+        "actual_local_tangent_backward_total_m": 3.446815465629686e-05,
+        "max_distance_to_sampled_3d_target_m": 0.002585274956652223,
+        "sampling": 1025
+      },
+      "source_start_position_error_m": 4.61552110732578e-08,
+      "source_end_position_error_m": 7.642110507090201e-08,
+      "max_target_position_error_m": 0.0027166812210110804,
+      "max_source_orientation_error_rad": 0.008391742157617711,
+      "feed_range_m_s": [
+        0.002219248196301234,
+        0.008271173407954715
+      ],
+      "source_nominal_feed_m_s": 0.004999911240373099,
+      "peak_sampled_jerk_by_axis": [
+        0.08598531102176091,
+        0.03272480240829872,
+        0.012262927844181731,
+        0.011474924725931285,
+        0.01665416186949095,
+        0.040956450473254996,
+        0.041279234387220774
+      ],
+      "integrated_normalized_jerk": 0.012895010362864919
+    },
+    {
+      "stage": "weld:279",
+      "collision": {
+        "sample_count": 1025,
+        "feasibility_band_native_units": 0.0001,
+        "max_raw_limit_excursion_by_axis": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "penetrating_samples": 0
+      },
+      "position_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "speed_extrema_excess": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "geometry": {
+        "max_position_departure_m": 0.002571872241230059,
+        "max_orientation_departure_rad": 0.005493915028166378,
+        "progress_min": 6.267509208771487e-07,
+        "progress_max": 1.0000000000000004,
+        "max_backward_progress": 0.0,
+        "max_backward_distance_m": 0.0
+      },
+      "target_progress_3d": {
+        "nearest_target_max_backward_step_m": 0.0,
+        "nearest_target_total_backward_m": 0.0,
+        "nearest_target_backward_steps": 0,
+        "actual_step_along_local_target_tangent_min_m": -5.2365027441683524e-06,
+        "actual_local_tangent_backward_total_m": 5.7336219988232215e-05,
+        "max_distance_to_sampled_3d_target_m": 0.002438159340821142,
+        "sampling": 1025
+      },
+      "source_start_position_error_m": 7.642109285428288e-08,
+      "source_end_position_error_m": 3.1791949213824896e-15,
+      "max_target_position_error_m": 0.0026722391196428333,
+      "max_source_orientation_error_rad": 0.0054106867172564466,
+      "feed_range_m_s": [
+        0.00767937980177312,
+        0.07203260502686117
+      ],
+      "source_nominal_feed_m_s": 0.04999533017011971,
+      "peak_sampled_jerk_by_axis": [
+        0.27878879022294595,
+        0.15307082616395526,
+        0.41839898706802015,
+        0.40917498356291904,
+        0.33374887741878667,
+        0.8127295609447949,
+        0.04686502900546698
+      ],
+      "integrated_normalized_jerk": 0.039526565844047394
+    }
+  ],
+  "retry_solver_status": "SQPStatus.NLP_CONVERGED",
+  "retry_solver_s_contended": 18.08835516695399,
+  "retry_collision_witnesses": {
+    "stage": "weld:278",
+    "witnesses_s": [
+      50.597943660526,
+      51.5969313558385,
+      52.320336238650995
+    ]
+  },
+  "retry_contact_summary": {
+    "penetrating_samples": 3,
+    "worst_contact": {
+      "sample": 998,
+      "time_s": 51.562483504275995,
+      "distance_m": -2.09430793507477e-06,
+      "links": [
+        "nozzle_link",
+        "part_028"
+      ]
+    }
+  },
+  "input_paths": {
+    "generated": ".superpowers/process-horizon16/weld-uniform-generated-orientation-all/results.json",
+    "retry": ".superpowers/process-horizon16/weld-bead-contact-witness-retry/results.json",
+    "audit": ".superpowers/process-horizon16/weld-bead-contact-witness-retry-audit-v2/results.json",
+    "joint_speeds": "/Users/jelle/Code/CADCAM/tesseract_qt_robodk/.worktrees/r62-smooth-windows/.superpowers/r62-master/tmp/.claude/logs/p2/cache/verbotics/31b3c0640a7963e90688e6b979eeb4c5370bbe303aab387b4f46844edf51e4e8/joint_speeds.json"
+  }
+}
