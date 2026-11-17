@@ -14,6 +14,7 @@
 #include <trajopt_sco/sco_common.hpp>
 
 #include <trajopt/cache.hxx>
+#include <trajopt/contact_manager_pool.hpp>
 #include <trajopt/typedefs.hpp>
 
 namespace trajopt
@@ -206,6 +207,12 @@ struct CollisionEvaluator
    */
   const trajopt_common::CollisionCoeffData& getCollisionCoeffData() const;
 
+  /**
+   * @brief Get the number of contact managers held by this evaluator's pool
+   * @return The pool's prototype plus one manager per OpenMP thread that has evaluated it
+   */
+  virtual std::size_t numContactManagers() const = 0;
+
   /** @brief The collision results cached results */
 
   Cache<std::size_t, std::pair<ContactResultMapConstPtr, ContactResultVectorConstPtr>> m_cache{ 2 };
@@ -319,6 +326,7 @@ public:
   SingleTimestepCollisionEvaluator(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                                    std::shared_ptr<const tesseract::environment::Environment> env,
                                    const trajopt_common::TrajOptCollisionConfig& collision_config,
+                                   DiscreteContactManagerPool::Ptr pool,
                                    sco::VarVector vars,
                                    CollisionExpressionEvaluatorType type,
                                    bool dynamic_environment = false);
@@ -343,9 +351,11 @@ public:
                       tesseract::collision::ContactResultMap& dist_results);
   void Plot(const std::shared_ptr<tesseract::visualization::Visualization>& plotter, const DblVec& x) override;
   sco::VarVector GetVars() override { return vars0_; }
+  std::size_t numContactManagers() const override { return pool_->numManagers(); }
+  const DiscreteContactManagerPool::Ptr& getContactManagerPool() const { return pool_; }
 
 private:
-  std::shared_ptr<tesseract::collision::DiscreteContactManager> contact_manager_;
+  DiscreteContactManagerPool::Ptr pool_;
   std::function<void(const DblVec&, sco::AffExprVector&, std::vector<double>&, std::vector<double>&)> fn_;
 };
 
@@ -363,6 +373,7 @@ public:
   CastCollisionEvaluator(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                          std::shared_ptr<const tesseract::environment::Environment> env,
                          const trajopt_common::TrajOptCollisionConfig& collision_config,
+                         ContinuousContactManagerPool::Ptr pool,
                          sco::VarVector vars0,
                          sco::VarVector vars1,
                          CollisionExpressionEvaluatorType type);
@@ -382,9 +393,11 @@ public:
                       tesseract::collision::ContactResultMap& dist_results);
   void Plot(const std::shared_ptr<tesseract::visualization::Visualization>& plotter, const DblVec& x) override;
   sco::VarVector GetVars() override;
+  std::size_t numContactManagers() const override { return pool_->numManagers(); }
+  const ContinuousContactManagerPool::Ptr& getContactManagerPool() const { return pool_; }
 
 private:
-  std::shared_ptr<tesseract::collision::ContinuousContactManager> contact_manager_;
+  ContinuousContactManagerPool::Ptr pool_;
   std::function<void(const DblVec&, sco::AffExprVector&, std::vector<double>&, std::vector<double>&)> fn_;
 };
 
@@ -401,6 +414,7 @@ public:
   DiscreteCollisionEvaluator(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                              std::shared_ptr<const tesseract::environment::Environment> env,
                              const trajopt_common::TrajOptCollisionConfig& collision_config,
+                             DiscreteContactManagerPool::Ptr pool,
                              sco::VarVector vars0,
                              sco::VarVector vars1,
                              CollisionExpressionEvaluatorType type);
@@ -420,9 +434,11 @@ public:
                       tesseract::collision::ContactResultMap& dist_results);
   void Plot(const std::shared_ptr<tesseract::visualization::Visualization>& plotter, const DblVec& x) override;
   sco::VarVector GetVars() override;
+  std::size_t numContactManagers() const override { return pool_->numManagers(); }
+  const DiscreteContactManagerPool::Ptr& getContactManagerPool() const { return pool_; }
 
 private:
-  std::shared_ptr<tesseract::collision::DiscreteContactManager> contact_manager_;
+  DiscreteContactManagerPool::Ptr pool_;
   std::function<void(const DblVec&, sco::AffExprVector&, std::vector<double>&, std::vector<double>&)> fn_;
 };
 
@@ -433,20 +449,30 @@ public:
   CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                 std::shared_ptr<const tesseract::environment::Environment> env,
                 const trajopt_common::TrajOptCollisionConfig& collision_config,
+                DiscreteContactManagerPool::Ptr pool,
                 sco::VarVector vars,
                 CollisionExpressionEvaluatorType type);
-  /* constructor for discrete continuous and cast continuous cost */
+  /* constructor for discrete continuous cost */
   CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                 std::shared_ptr<const tesseract::environment::Environment> env,
                 const trajopt_common::TrajOptCollisionConfig& collision_config,
+                DiscreteContactManagerPool::Ptr pool,
                 sco::VarVector vars0,
                 sco::VarVector vars1,
-                CollisionExpressionEvaluatorType type,
-                bool discrete);
+                CollisionExpressionEvaluatorType type);
+  /* constructor for cast continuous cost */
+  CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
+                std::shared_ptr<const tesseract::environment::Environment> env,
+                const trajopt_common::TrajOptCollisionConfig& collision_config,
+                ContinuousContactManagerPool::Ptr pool,
+                sco::VarVector vars0,
+                sco::VarVector vars1,
+                CollisionExpressionEvaluatorType type);
   sco::ConvexObjective::Ptr convex(const DblVec& x, sco::Model* model) override;
   double value(const DblVec&) override;
   void Plot(const std::shared_ptr<tesseract::visualization::Visualization>& plotter, const DblVec& x) override;
   sco::VarVector getVars() override { return m_calc->GetVars(); }
+  const CollisionEvaluator::Ptr& getEvaluator() const { return m_calc; }
 
 private:
   CollisionEvaluator::Ptr m_calc;
@@ -459,20 +485,30 @@ public:
   CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                       std::shared_ptr<const tesseract::environment::Environment> env,
                       const trajopt_common::TrajOptCollisionConfig& collision_config,
+                      DiscreteContactManagerPool::Ptr pool,
                       sco::VarVector vars,
                       CollisionExpressionEvaluatorType type);
-  /* constructor for discrete continuous and cast continuous cost */
+  /* constructor for discrete continuous cost */
   CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                       std::shared_ptr<const tesseract::environment::Environment> env,
                       const trajopt_common::TrajOptCollisionConfig& collision_config,
+                      DiscreteContactManagerPool::Ptr pool,
                       sco::VarVector vars0,
                       sco::VarVector vars1,
-                      CollisionExpressionEvaluatorType type,
-                      bool discrete);
+                      CollisionExpressionEvaluatorType type);
+  /* constructor for cast continuous cost */
+  CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
+                      std::shared_ptr<const tesseract::environment::Environment> env,
+                      const trajopt_common::TrajOptCollisionConfig& collision_config,
+                      ContinuousContactManagerPool::Ptr pool,
+                      sco::VarVector vars0,
+                      sco::VarVector vars1,
+                      CollisionExpressionEvaluatorType type);
   sco::ConvexConstraints::Ptr convex(const DblVec& x, sco::Model* model) override;
   DblVec value(const DblVec&) override;
   void Plot(const DblVec& x);
   sco::VarVector getVars() override { return m_calc->GetVars(); }
+  const CollisionEvaluator::Ptr& getEvaluator() const { return m_calc; }
 
 private:
   CollisionEvaluator::Ptr m_calc;

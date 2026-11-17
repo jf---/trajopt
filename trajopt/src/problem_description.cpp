@@ -1736,6 +1736,14 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
     {
       bool discrete_continuous =
           (config.collision_check_config.type == tesseract::collision::CollisionEvaluatorType::LVS_DISCRETE);
+      // One pool per term: its evaluators share one contact manager per OpenMP thread
+      DiscreteContactManagerPool::Ptr discrete_pool;
+      ContinuousContactManagerPool::Ptr continuous_pool;
+      if (discrete_continuous)
+        discrete_pool = DiscreteContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
+      else
+        continuous_pool =
+            ContinuousContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
       for (int i = first_step; i < last_step; ++i)
       {
         const bool current_fixed = std::find(fixed_steps.begin(), fixed_steps.end(), i) != fixed_steps.end();
@@ -1759,13 +1767,20 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
           PRINT_AND_THROW("Currently two adjacent fixed steps are not supported in collision term.");
         }
 
-        auto c = std::make_shared<CollisionCost>(prob.GetKin(),
-                                                 prob.GetEnv(),
-                                                 config,
-                                                 prob.GetVarRow(i, 0, n_dof),
-                                                 prob.GetVarRow(i + 1, 0, n_dof),
-                                                 expression_evaluator_type,
-                                                 discrete_continuous);
+        auto c = discrete_continuous ? std::make_shared<CollisionCost>(prob.GetKin(),
+                                                                 prob.GetEnv(),
+                                                                 config,
+                                                                 discrete_pool,
+                                                                 prob.GetVarRow(i, 0, n_dof),
+                                                                 prob.GetVarRow(i + 1, 0, n_dof),
+                                                                 expression_evaluator_type) :
+                                       std::make_shared<CollisionCost>(prob.GetKin(),
+                                                                 prob.GetEnv(),
+                                                                 config,
+                                                                 continuous_pool,
+                                                                 prob.GetVarRow(i, 0, n_dof),
+                                                                 prob.GetVarRow(i + 1, 0, n_dof),
+                                                                 expression_evaluator_type);
 
         prob.addCost(c);
         prob.getCosts().back()->setName((boost::format("%s_%i") % name.c_str() % i).str());
@@ -1774,12 +1789,14 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
     else
     {
       CollisionExpressionEvaluatorType expression_evaluator_type = CollisionExpressionEvaluatorType::SINGLE_TIME_STEP;
+      // One pool per term: its evaluators share one contact manager per OpenMP thread
+      auto pool = DiscreteContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
       for (int i = first_step; i <= last_step; ++i)
       {
         if (std::find(fixed_steps.begin(), fixed_steps.end(), i) == fixed_steps.end())
         {
           auto c = std::make_shared<CollisionCost>(
-              prob.GetKin(), prob.GetEnv(), config, prob.GetVarRow(i, 0, n_dof), expression_evaluator_type);
+              prob.GetKin(), prob.GetEnv(), config, pool, prob.GetVarRow(i, 0, n_dof), expression_evaluator_type);
 
           prob.addCost(c);
           prob.getCosts().back()->setName((boost::format("%s_%i") % name.c_str() % i).str());
@@ -1793,6 +1810,14 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
     {
       bool discrete_continuous =
           (config.collision_check_config.type == tesseract::collision::CollisionEvaluatorType::LVS_DISCRETE);
+      // One pool per term: its evaluators share one contact manager per OpenMP thread
+      DiscreteContactManagerPool::Ptr discrete_pool;
+      ContinuousContactManagerPool::Ptr continuous_pool;
+      if (discrete_continuous)
+        discrete_pool = DiscreteContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
+      else
+        continuous_pool =
+            ContinuousContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
       for (int i = first_step; i < last_step; ++i)
       {
         const bool current_fixed = std::find(fixed_steps.begin(), fixed_steps.end(), i) != fixed_steps.end();
@@ -1816,13 +1841,20 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
           PRINT_AND_THROW("Currently two adjacent fixed steps are not supported in collision term.");
         }
 
-        auto c = std::make_shared<CollisionConstraint>(prob.GetKin(),
-                                                       prob.GetEnv(),
-                                                       config,
-                                                       prob.GetVarRow(i, 0, n_dof),
-                                                       prob.GetVarRow(i + 1, 0, n_dof),
-                                                       expression_evaluator_type,
-                                                       discrete_continuous);
+        auto c = discrete_continuous ? std::make_shared<CollisionConstraint>(prob.GetKin(),
+                                                                 prob.GetEnv(),
+                                                                 config,
+                                                                 discrete_pool,
+                                                                 prob.GetVarRow(i, 0, n_dof),
+                                                                 prob.GetVarRow(i + 1, 0, n_dof),
+                                                                 expression_evaluator_type) :
+                                       std::make_shared<CollisionConstraint>(prob.GetKin(),
+                                                                 prob.GetEnv(),
+                                                                 config,
+                                                                 continuous_pool,
+                                                                 prob.GetVarRow(i, 0, n_dof),
+                                                                 prob.GetVarRow(i + 1, 0, n_dof),
+                                                                 expression_evaluator_type);
 
         prob.addIneqConstraint(c);
         prob.getIneqConstraints().back()->setName((boost::format("%s_%i") % name.c_str() % i).str());
@@ -1831,12 +1863,14 @@ void CollisionTermInfo::hatch(TrajOptProb& prob)
     else
     {
       CollisionExpressionEvaluatorType expression_evaluator_type = CollisionExpressionEvaluatorType::SINGLE_TIME_STEP;
+      // One pool per term: its evaluators share one contact manager per OpenMP thread
+      auto pool = DiscreteContactManagerPool::create(*prob.GetEnv(), prob.GetKin()->getActiveLinkIds(), config);
       for (int i = first_step; i <= last_step; ++i)
       {
         if (std::find(fixed_steps.begin(), fixed_steps.end(), i) == fixed_steps.end())
         {
           auto c = std::make_shared<CollisionConstraint>(
-              prob.GetKin(), prob.GetEnv(), config, prob.GetVarRow(i, 0, n_dof), expression_evaluator_type);
+              prob.GetKin(), prob.GetEnv(), config, pool, prob.GetVarRow(i, 0, n_dof), expression_evaluator_type);
 
           prob.addIneqConstraint(c);
           prob.getIneqConstraints().back()->setName((boost::format("%s_%i") % name.c_str() % i).str());

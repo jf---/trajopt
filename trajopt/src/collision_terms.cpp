@@ -604,11 +604,14 @@ SingleTimestepCollisionEvaluator::SingleTimestepCollisionEvaluator(
     const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
     std::shared_ptr<const tesseract::environment::Environment> env,
     const trajopt_common::TrajOptCollisionConfig& collision_config,
+    DiscreteContactManagerPool::Ptr pool,
     sco::VarVector vars,
     CollisionExpressionEvaluatorType type,
     bool dynamic_environment)
-  : CollisionEvaluator(manip, std::move(env), dynamic_environment)
+  : CollisionEvaluator(manip, std::move(env), dynamic_environment), pool_(std::move(pool))
 {
+  if (pool_ == nullptr)
+    throw std::invalid_argument("SingleTimestepCollisionEvaluator, contact manager pool is null");
   collision_check_config_ = collision_config.collision_check_config;
   if (collision_check_config_.type != tesseract::collision::CollisionEvaluatorType::DISCRETE)
     throw std::runtime_error("SingleTimestepCollisionEvaluator, should be configured with DISCRETE");
@@ -616,16 +619,10 @@ SingleTimestepCollisionEvaluator::SingleTimestepCollisionEvaluator(
   vars0_ = std::move(vars);
   evaluator_type_ = type;
 
-  contact_manager_ = env_->getDiscreteContactManager();
-  contact_manager_->setActiveCollisionObjects(manip_->getActiveLinkIds());
-  contact_manager_->applyContactManagerConfig(collision_config.contact_manager_config);
-  // Must make a copy after applying the config but before we increment the margin data
-  margin_data_ = contact_manager_->getCollisionMarginData();
+  // The pool's managers are configured and have the margin buffer added; this is the margin before the buffer
+  margin_data_ = pool_->getCollisionMarginData();
   coeff_data_ = collision_config.collision_coeff_data;
   margin_buffer_ = collision_config.collision_margin_buffer;
-
-  // Increase the default by the buffer
-  contact_manager_->incrementCollisionMargin(margin_buffer_);
 
   switch (evaluator_type_)
   {
@@ -656,11 +653,12 @@ void SingleTimestepCollisionEvaluator::CalcCollisions(const DblVec& x,
 void SingleTimestepCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::VectorXd>& dof_vals,
                                                       tesseract::collision::ContactResultMap& dist_results)
 {
+  tesseract::collision::DiscreteContactManager& contact_manager = pool_->get();
   get_state_fn_(transforms_cache0_, dof_vals);
 
-  contact_manager_->setCollisionObjectsTransform(all_active_link_ids_, transforms_cache0_);
+  contact_manager.setCollisionObjectsTransform(all_active_link_ids_, transforms_cache0_);
 
-  contact_manager_->contactTest(dist_results, collision_check_config_.contact_request);
+  contact_manager.contactTest(dist_results, collision_check_config_.contact_request);
 
   auto filter = [this](tesseract::collision::ContactResultMap::PairType& pair) {
     // Remove pairs with zero coeffs
@@ -734,11 +732,14 @@ DiscreteCollisionEvaluator::DiscreteCollisionEvaluator(
     const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
     std::shared_ptr<const tesseract::environment::Environment> env,
     const trajopt_common::TrajOptCollisionConfig& collision_config,
+    DiscreteContactManagerPool::Ptr pool,
     sco::VarVector vars0,
     sco::VarVector vars1,
     CollisionExpressionEvaluatorType type)
-  : CollisionEvaluator(manip, std::move(env))
+  : CollisionEvaluator(manip, std::move(env)), pool_(std::move(pool))
 {
+  if (pool_ == nullptr)
+    throw std::invalid_argument("DiscreteCollisionEvaluator, contact manager pool is null");
   collision_check_config_ = collision_config.collision_check_config;
   if (collision_check_config_.type != tesseract::collision::CollisionEvaluatorType::LVS_DISCRETE)
     throw std::runtime_error("DiscreteCollisionEvaluator, should be configured with LVS_DISCRETE");
@@ -747,16 +748,10 @@ DiscreteCollisionEvaluator::DiscreteCollisionEvaluator(
   vars1_ = std::move(vars1);
   evaluator_type_ = type;
 
-  contact_manager_ = env_->getDiscreteContactManager();
-  contact_manager_->setActiveCollisionObjects(manip_->getActiveLinkIds());
-  contact_manager_->applyContactManagerConfig(collision_config.contact_manager_config);
-  // Must make a copy after applying the config but before we increment the margin data
-  margin_data_ = contact_manager_->getCollisionMarginData();
+  // The pool's managers are configured and have the margin buffer added; this is the margin before the buffer
+  margin_data_ = pool_->getCollisionMarginData();
   coeff_data_ = collision_config.collision_coeff_data;
   margin_buffer_ = collision_config.collision_margin_buffer;
-
-  // Increase the default by the buffer
-  contact_manager_->incrementCollisionMargin(margin_buffer_);
 
   switch (evaluator_type_)
   {
@@ -814,6 +809,7 @@ void DiscreteCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Ve
                                                 const Eigen::Ref<const Eigen::VectorXd>& dof_vals1,
                                                 tesseract::collision::ContactResultMap& dist_results)
 {
+  tesseract::collision::DiscreteContactManager& contact_manager = pool_->get();
   assert(dist_results.empty());
   // The first step is to see if the distance between two states is larger than the longest valid segment. If larger
   // the collision checking is broken up into multiple casted collision checks such that each check is less then
@@ -825,7 +821,7 @@ void DiscreteCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Ve
   {
     get_state_fn_(transforms_cache0_, dof_vals0);
 
-    contact_manager_->setCollisionObjectsTransform(diff_active_link_ids_, transforms_cache0_);
+    contact_manager.setCollisionObjectsTransform(diff_active_link_ids_, transforms_cache0_);
   }
 
   long cnt = 2;
@@ -874,9 +870,9 @@ void DiscreteCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Ve
   {
     get_state_fn_(transforms_cache0_, subtraj.row(i));
 
-    contact_manager_->setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_);
+    contact_manager.setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_);
 
-    contact_manager_->contactTest(contacts, collision_check_config_.contact_request);
+    contact_manager.contactTest(contacts, collision_check_config_.contact_request);
 
     if (!contacts.empty())
     {
@@ -968,11 +964,14 @@ sco::VarVector DiscreteCollisionEvaluator::GetVars() { return trajopt_common::co
 CastCollisionEvaluator::CastCollisionEvaluator(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                                                std::shared_ptr<const tesseract::environment::Environment> env,
                                                const trajopt_common::TrajOptCollisionConfig& collision_config,
+                                               ContinuousContactManagerPool::Ptr pool,
                                                sco::VarVector vars0,
                                                sco::VarVector vars1,
                                                CollisionExpressionEvaluatorType type)
-  : CollisionEvaluator(manip, std::move(env))
+  : CollisionEvaluator(manip, std::move(env)), pool_(std::move(pool))
 {
+  if (pool_ == nullptr)
+    throw std::invalid_argument("CastCollisionEvaluator, contact manager pool is null");
   collision_check_config_ = collision_config.collision_check_config;
   if (collision_check_config_.type != tesseract::collision::CollisionEvaluatorType::CONTINUOUS &&
       collision_check_config_.type != tesseract::collision::CollisionEvaluatorType::LVS_CONTINUOUS)
@@ -984,16 +983,10 @@ CastCollisionEvaluator::CastCollisionEvaluator(const std::shared_ptr<const tesse
   vars1_ = std::move(vars1);
   evaluator_type_ = type;
 
-  contact_manager_ = env_->getContinuousContactManager();
-  contact_manager_->setActiveCollisionObjects(manip_->getActiveLinkIds());
-  contact_manager_->applyContactManagerConfig(collision_config.contact_manager_config);
-  // Must make a copy after applying the config but before we increment the margin data
-  margin_data_ = contact_manager_->getCollisionMarginData();
+  // The pool's managers are configured and have the margin buffer added; this is the margin before the buffer
+  margin_data_ = pool_->getCollisionMarginData();
   coeff_data_ = collision_config.collision_coeff_data;
   margin_buffer_ = collision_config.collision_margin_buffer;
-
-  // Increase the default by the buffer
-  contact_manager_->incrementCollisionMargin(margin_buffer_);
 
   switch (evaluator_type_)
   {
@@ -1051,6 +1044,7 @@ void CastCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Vector
                                             const Eigen::Ref<const Eigen::VectorXd>& dof_vals1,
                                             tesseract::collision::ContactResultMap& dist_results)
 {
+  tesseract::collision::ContinuousContactManager& contact_manager = pool_->get();
   assert(dist_results.empty());
   // Under LVS_CONTINUOUS a segment longer than the longest valid segment length is split into casts of at most that
   // length. CONTINUOUS casts the segment once.
@@ -1061,7 +1055,7 @@ void CastCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Vector
   {
     get_state_fn_(transforms_cache0_, dof_vals0);
 
-    contact_manager_->setCollisionObjectsTransform(diff_active_link_ids_, transforms_cache0_);
+    contact_manager.setCollisionObjectsTransform(diff_active_link_ids_, transforms_cache0_);
   }
 
   // Define Filter
@@ -1113,9 +1107,9 @@ void CastCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Vector
       manip_->calcFwdKin(transforms_cache0_, subtraj.row(i));
       manip_->calcFwdKin(transforms_cache1_, subtraj.row(i + 1));
 
-      contact_manager_->setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_, transforms_cache1_);
+      contact_manager.setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_, transforms_cache1_);
 
-      contact_manager_->contactTest(contacts, collision_check_config_.contact_request);
+      contact_manager.contactTest(contacts, collision_check_config_.contact_request);
 
       if (!contacts.empty())
       {
@@ -1130,9 +1124,9 @@ void CastCollisionEvaluator::CalcCollisions(const Eigen::Ref<const Eigen::Vector
     manip_->calcFwdKin(transforms_cache0_, dof_vals0);
     manip_->calcFwdKin(transforms_cache1_, dof_vals1);
 
-    contact_manager_->setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_, transforms_cache1_);
+    contact_manager.setCollisionObjectsTransform(manip_active_link_ids_, transforms_cache0_, transforms_cache1_);
 
-    contact_manager_->contactTest(dist_results, collision_check_config_.contact_request);
+    contact_manager.contactTest(dist_results, collision_check_config_.contact_request);
 
     dist_results.filter(filter);
   }
@@ -1212,34 +1206,39 @@ sco::VarVector CastCollisionEvaluator::GetVars() { return trajopt_common::concat
 CollisionCost::CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                              std::shared_ptr<const tesseract::environment::Environment> env,
                              const trajopt_common::TrajOptCollisionConfig& collision_config,
+                             DiscreteContactManagerPool::Ptr pool,
                              sco::VarVector vars,
                              CollisionExpressionEvaluatorType type)
   : Cost("collision")
 {
   m_calc = std::make_shared<SingleTimestepCollisionEvaluator>(
-      manip, std::move(env), collision_config, std::move(vars), type);
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars), type);
 }
 
 CollisionCost::CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                              std::shared_ptr<const tesseract::environment::Environment> env,
                              const trajopt_common::TrajOptCollisionConfig& collision_config,
+                             DiscreteContactManagerPool::Ptr pool,
                              sco::VarVector vars0,
                              sco::VarVector vars1,
-                             CollisionExpressionEvaluatorType type,
-                             bool discrete)
+                             CollisionExpressionEvaluatorType type)
 {
-  if (discrete)
-  {
-    name_ = "discrete_continuous_collision";
-    m_calc = std::make_shared<DiscreteCollisionEvaluator>(
-        manip, std::move(env), collision_config, std::move(vars0), std::move(vars1), type);
-  }
-  else
-  {
-    name_ = "cast_continuous_collision";
-    m_calc = std::make_shared<CastCollisionEvaluator>(
-        manip, std::move(env), collision_config, std::move(vars0), std::move(vars1), type);
-  }
+  name_ = "discrete_continuous_collision";
+  m_calc = std::make_shared<DiscreteCollisionEvaluator>(
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars0), std::move(vars1), type);
+}
+
+CollisionCost::CollisionCost(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
+                             std::shared_ptr<const tesseract::environment::Environment> env,
+                             const trajopt_common::TrajOptCollisionConfig& collision_config,
+                             ContinuousContactManagerPool::Ptr pool,
+                             sco::VarVector vars0,
+                             sco::VarVector vars1,
+                             CollisionExpressionEvaluatorType type)
+{
+  name_ = "cast_continuous_collision";
+  m_calc = std::make_shared<CastCollisionEvaluator>(
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars0), std::move(vars1), type);
 }
 
 sco::ConvexObjective::Ptr CollisionCost::convex(const sco::DblVec& x, sco::Model* model)
@@ -1292,34 +1291,39 @@ void CollisionCost::Plot(const std::shared_ptr<tesseract::visualization::Visuali
 CollisionConstraint::CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                                          std::shared_ptr<const tesseract::environment::Environment> env,
                                          const trajopt_common::TrajOptCollisionConfig& collision_config,
+                                         DiscreteContactManagerPool::Ptr pool,
                                          sco::VarVector vars,
                                          CollisionExpressionEvaluatorType type)
 {
   name_ = "collision";
   m_calc = std::make_shared<SingleTimestepCollisionEvaluator>(
-      manip, std::move(env), collision_config, std::move(vars), type);
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars), type);
 }
 
 CollisionConstraint::CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
                                          std::shared_ptr<const tesseract::environment::Environment> env,
                                          const trajopt_common::TrajOptCollisionConfig& collision_config,
+                                         DiscreteContactManagerPool::Ptr pool,
                                          sco::VarVector vars0,
                                          sco::VarVector vars1,
-                                         CollisionExpressionEvaluatorType type,
-                                         bool discrete)
+                                         CollisionExpressionEvaluatorType type)
 {
-  if (discrete)
-  {
-    name_ = "discrete_continuous_collision";
-    m_calc = std::make_shared<DiscreteCollisionEvaluator>(
-        manip, std::move(env), collision_config, std::move(vars0), std::move(vars1), type);
-  }
-  else
-  {
-    name_ = "cast_continuous_collision";
-    m_calc = std::make_shared<CastCollisionEvaluator>(
-        manip, std::move(env), collision_config, std::move(vars0), std::move(vars1), type);
-  }
+  name_ = "discrete_continuous_collision";
+  m_calc = std::make_shared<DiscreteCollisionEvaluator>(
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars0), std::move(vars1), type);
+}
+
+CollisionConstraint::CollisionConstraint(const std::shared_ptr<const tesseract::kinematics::JointGroup>& manip,
+                                         std::shared_ptr<const tesseract::environment::Environment> env,
+                                         const trajopt_common::TrajOptCollisionConfig& collision_config,
+                                         ContinuousContactManagerPool::Ptr pool,
+                                         sco::VarVector vars0,
+                                         sco::VarVector vars1,
+                                         CollisionExpressionEvaluatorType type)
+{
+  name_ = "cast_continuous_collision";
+  m_calc = std::make_shared<CastCollisionEvaluator>(
+      manip, std::move(env), collision_config, std::move(pool), std::move(vars0), std::move(vars1), type);
 }
 
 sco::ConvexConstraints::Ptr CollisionConstraint::convex(const sco::DblVec& x, sco::Model* model)

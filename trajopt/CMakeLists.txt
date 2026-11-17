@@ -14,6 +14,7 @@ find_package(Boost REQUIRED)
 find_package(trajopt_sco REQUIRED)
 find_package(trajopt_common REQUIRED)
 find_package(tesseract REQUIRED COMPONENTS common environment visualization)
+find_package(OpenMP REQUIRED)
 if(NOT TARGET JsonCpp::JsonCpp)
   find_package(jsoncpp REQUIRED)
 elseif(NOT TARGET jsoncpp_lib)
@@ -30,6 +31,7 @@ set(TRAJOPT_SOURCE_FILES
     src/trajectory_costs.cpp
     src/kinematic_terms.cpp
     src/collision_terms.cpp
+    src/contact_manager_pool.cpp
     src/json_marshal.cpp
     src/problem_description.cpp
     src/typedefs.cpp
@@ -47,7 +49,8 @@ target_link_libraries(
          tesseract::visualization
          Boost::boost
          Eigen3::Eigen
-         jsoncpp_lib)
+         jsoncpp_lib
+  PRIVATE OpenMP::OpenMP_CXX)
 target_compile_definitions(${PROJECT_NAME} PRIVATE ${TRAJOPT_COMPILE_DEFINITIONS_PRIVATE})
 target_compile_definitions(${PROJECT_NAME} PUBLIC ${TRAJOPT_COMPILE_DEFINITIONS_PUBLIC})
 target_cxx_version(${PROJECT_NAME} PUBLIC VERSION ${TRAJOPT_CXX_VERSION})
