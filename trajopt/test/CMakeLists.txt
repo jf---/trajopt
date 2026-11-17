@@ -32,6 +32,10 @@ add_gtest(${PROJECT_NAME}_cast_cost_octomap_unit cast_cost_octomap_unit.cpp)
 add_gtest(${PROJECT_NAME}_cast_constraint_octomap_unit cast_constraint_octomap_unit.cpp)
 add_gtest(${PROJECT_NAME}_simple_collision_unit simple_collision_unit.cpp)
 add_gtest(${PROJECT_NAME}_cart_position_optimization_unit cart_position_optimization_unit.cpp)
+add_gtest(${PROJECT_NAME}_contact_manager_pool_unit contact_manager_pool_unit.cpp)
+target_link_libraries(${PROJECT_NAME}_contact_manager_pool_unit OpenMP::OpenMP_CXX)
+add_gtest(${PROJECT_NAME}_collision_evaluator_pool_unit collision_evaluator_pool_unit.cpp)
+target_link_libraries(${PROJECT_NAME}_collision_evaluator_pool_unit OpenMP::OpenMP_CXX)
 
 # This is for comparison and should be moved to trajopt
 # add_executable(${PROJECT_NAME}_cart_position_optimization_trajopt_sco_unit
