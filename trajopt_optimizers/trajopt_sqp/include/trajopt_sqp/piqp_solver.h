@@ -50,9 +50,10 @@ namespace trajopt_sqp
  * With active_set_prediction set, a solve first assumes that the rows held at a bound by the last solution still are,
  * and solves the equality-constrained KKT system of those rows with a single sparse LDL' factorization. The candidate
  * is accepted only if it is a KKT point of the full QP to PIQP's tolerances: every other row within its bounds and
- * every held row's multiplier of the right sign. Otherwise PIQP solves the QP, and its solution defines the next
- * prediction. Between SQP iterations near convergence, and between neighbouring problems, the binding rows rarely
- * change, so most solves then cost one factorization instead of one per interior point iteration.
+ * every held row's multiplier of the right sign. A rejected candidate corrects the active set (releasing the rows of
+ * the wrong sign, holding the violated ones) and solves again, up to three times. Otherwise PIQP solves the QP, and its
+ * solution defines the next prediction. Between SQP iterations near convergence, and between neighbouring problems, the
+ * binding rows rarely change, so most solves then cost one factorization instead of one per interior point iteration.
  */
 class PIQPSolver : public QPSolver
 {
@@ -179,8 +180,12 @@ private:
   std::vector<int> kkt_outer_;
   std::vector<int> kkt_inner_;
 
-  /** @brief Solve the KKT system of the predicted active set; true when its solution is a KKT point of the QP */
-  bool solveActiveSet();
+  /**
+   * @brief Solve the KKT system of the predicted active set; true when its solution is a KKT point of the QP
+   * @param corrections How often a rejected candidate may correct the active set and solve again: release the held
+   * rows whose multipliers have the wrong sign, hold the violated rows at the bound they cross
+   */
+  bool solveActiveSet(int corrections);
 
   /**
    * @brief Predict the next active set from PIQP's solution

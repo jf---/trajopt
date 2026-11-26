@@ -195,6 +195,7 @@ TEST(PIQPActiveSetSQP, SameSolutionWithAndWithoutPrediction)  // NOLINT
   // The binding disc rows change over the first iterations, which PIQP solves; once they settle the prediction holds
   EXPECT_EQ(predicted.solves, plain.solves);
   EXPECT_GE(predicted.active_set_solves, 2);
+  EXPECT_LT(predicted.active_set_solves, predicted.solves);  // the first QP, with nothing to predict from, is PIQP's
   EXPECT_TRUE(predicted.last_used_active_set);
   RecordProperty("qp_solves", predicted.solves);
   RecordProperty("active_set_solves", predicted.active_set_solves);

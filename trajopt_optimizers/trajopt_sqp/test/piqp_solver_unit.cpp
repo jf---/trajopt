@@ -562,21 +562,22 @@ TEST(PIQPSolverUnit, ActiveSetFollowsMovedBounds)  // NOLINT
   EXPECT_TRUE(solver.getSolution().isApprox(referenceSolution(kGradientB, activeSetMatrix(), l, u), kActiveSetTol));
 }
 
-TEST(PIQPSolverUnit, ActiveSetChangeFallsBackToPIQP)  // NOLINT
+TEST(PIQPSolverUnit, ActiveSetChangeIsCorrected)  // NOLINT
 {
   PIQPSolver solver;
   solver.active_set_prediction = true;
   setUpActiveSetQP(solver, kGradientA);
   ASSERT_TRUE(solver.solve());
 
-  // kGradientB releases row 2 and holds row 4: the prediction fails its check and PIQP solves
+  // kGradientB releases row 2 and holds row 4: the prediction fails its check, and correcting it (release row 2,
+  // hold row 4) finds the new active set without PIQP
   solver.updateGradient(kGradientB);
   ASSERT_TRUE(solver.solve());
-  EXPECT_FALSE(solver.usedActiveSet());
+  EXPECT_TRUE(solver.usedActiveSet());
   EXPECT_TRUE(solver.getSolution().isApprox(
       referenceSolution(kGradientB, activeSetMatrix(), activeSetLower(), activeSetUpper()), kActiveSetTol));
 
-  // PIQP's solution predicts the new binding rows
+  // The corrected active set predicts the next solve
   solver.updateGradient(kGradientB * 1.01);
   ASSERT_TRUE(solver.solve());
   EXPECT_TRUE(solver.usedActiveSet());
@@ -584,9 +585,10 @@ TEST(PIQPSolverUnit, ActiveSetChangeFallsBackToPIQP)  // NOLINT
       referenceSolution(kGradientB * 1.01, activeSetMatrix(), activeSetLower(), activeSetUpper()), kActiveSetTol));
 }
 
-TEST(PIQPSolverUnit, ActiveSetReleasedRowFallsBackToPIQP)  // NOLINT
+TEST(PIQPSolverUnit, ActiveSetReleasedRowIsCorrected)  // NOLINT
 {
-  // Raising the held upper bound of row 2 far enough releases it: its multiplier turns negative
+  // Raising the held upper bound of row 2 far enough releases it: its multiplier turns negative, and the active set
+  // without row 2 solves the QP
   PIQPSolver solver;
   solver.active_set_prediction = true;
   setUpActiveSetQP(solver, kGradientA);
@@ -596,7 +598,7 @@ TEST(PIQPSolverUnit, ActiveSetReleasedRowFallsBackToPIQP)  // NOLINT
   u[2] = 5.0;
   solver.updateBounds(activeSetLower(), u);
   ASSERT_TRUE(solver.solve());
-  EXPECT_FALSE(solver.usedActiveSet());
+  EXPECT_TRUE(solver.usedActiveSet());
   EXPECT_TRUE(solver.getSolution().isApprox(referenceSolution(kGradientA, activeSetMatrix(), activeSetLower(), u),
                                             kActiveSetTol));
 }

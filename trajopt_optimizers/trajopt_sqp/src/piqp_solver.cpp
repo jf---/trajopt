@@ -56,6 +56,8 @@ SparseMatrix selectRows(const trajopt_ifopt::Jacobian& matrix, const std::vector
 /** @brief Primal and dual regularization of the active-set KKT system, removed again by iterative refinement */
 constexpr double kKKTRegularization = 1e-10;
 constexpr int kRefinementSteps = 3;
+/** @brief Corrected active sets tried after a rejected prediction, before PIQP */
+constexpr int kCorrections = 3;
 }  // namespace
 
 PIQPSolver::PIQPSolver() { setDefaultPIQPSettings(settings); }
@@ -104,7 +106,7 @@ bool PIQPSolver::solve()
 {
   used_active_set_ = false;
   const bool predict = active_set_prediction && !settings.enable_derivatives;
-  if (predict && has_prediction_ && solveActiveSet())
+  if (predict && has_prediction_ && solveActiveSet(kCorrections))
   {
     used_active_set_ = true;
     reused_setup_ = false;
@@ -285,7 +287,7 @@ void PIQPSolver::predictActiveSet(const std::vector<Eigen::Index>& lower_row,
   has_prediction_ = true;
 }
 
-bool PIQPSolver::solveActiveSet()
+bool PIQPSolver::solveActiveSet(int corrections)
 {
   if (constraint_matrix_.rows() != num_cnts_ || hessian_.rows() != num_vars_ ||
       (!active_rows_.empty() && active_rows_.back() >= num_cnts_))
@@ -361,24 +363,26 @@ bool PIQPSolver::solveActiveSet()
   const double primal_tol = std::max(settings.eps_abs, 1e-9);
   const double dual_tol = primal_tol * (1.0 + (k > 0 ? lambda.lpNorm<Eigen::Infinity>() : 0.0));
   const Eigen::VectorXd values = constraint_matrix_ * x;
+  // Check every row, collecting the corrections: held rows pulling the wrong way are released, violated rows held at
+  // the bound they cross
+  std::vector<RowState> state(static_cast<std::size_t>(num_cnts_), RowState::kFree);
   std::vector<bool> held(static_cast<std::size_t>(num_cnts_), false);
+  Eigen::Index wrong_sign = 0;
+  Eigen::Index violated = 0;
   for (Eigen::Index j = 0; j < k; ++j)
   {
     const Eigen::Index r = active_rows_[static_cast<std::size_t>(j)];
+    const RowState held_state = active_states_[static_cast<std::size_t>(j)];
+    state[static_cast<std::size_t>(r)] = held_state;
     held[static_cast<std::size_t>(r)] = true;
     if (bounds_lower_[r] == bounds_upper_[r])
       continue;
     // Held at its upper bound the row pushes with lambda >= 0, at its lower bound with lambda <= 0
-    const bool upper = active_states_[static_cast<std::size_t>(j)] == RowState::kUpper;
+    const bool upper = held_state == RowState::kUpper;
     if ((upper && lambda[j] < -dual_tol) || (!upper && lambda[j] > dual_tol))
     {
-      TESSERACT_LOG_DEBUG("PIQPSolver active set rejected: held row {} ({} entries) has multiplier {} at its {} "
-                          "bound",
-                          r,
-                          constraint_matrix_.row(r).nonZeros(),
-                          lambda[j],
-                          upper ? "upper" : "lower");
-      return false;
+      state[static_cast<std::size_t>(r)] = RowState::kFree;
+      ++wrong_sign;
     }
   }
   for (Eigen::Index r = 0; r < num_cnts_; ++r)
@@ -386,16 +390,39 @@ bool PIQPSolver::solveActiveSet()
     if (held[static_cast<std::size_t>(r)])
       continue;
     const double tol = primal_tol * (1.0 + std::abs(values[r]));
-    if (values[r] < bounds_lower_[r] - tol || values[r] > bounds_upper_[r] + tol)
+    if (values[r] < bounds_lower_[r] - tol)
     {
-      TESSERACT_LOG_DEBUG("PIQPSolver active set rejected: free row {} ({} entries) at {} outside [{}, {}]",
-                          r,
-                          constraint_matrix_.row(r).nonZeros(),
-                          values[r],
-                          bounds_lower_[r],
-                          bounds_upper_[r]);
-      return false;
+      state[static_cast<std::size_t>(r)] = RowState::kLower;
+      ++violated;
     }
+    else if (values[r] > bounds_upper_[r] + tol)
+    {
+      state[static_cast<std::size_t>(r)] = RowState::kUpper;
+      ++violated;
+    }
+  }
+
+  if (wrong_sign > 0 || violated > 0)
+  {
+    TESSERACT_LOG_DEBUG("PIQPSolver active set rejected: {} held rows of the wrong sign, {} free rows violated, {} "
+                        "corrections left",
+                        wrong_sign,
+                        violated,
+                        corrections);
+    if (corrections <= 0)
+      return false;
+
+    // Solve again with the corrected active set: one more factorization instead of a PIQP solve
+    active_rows_.clear();
+    active_states_.clear();
+    for (Eigen::Index r = 0; r < num_cnts_; ++r)
+    {
+      if (state[static_cast<std::size_t>(r)] == RowState::kFree)
+        continue;
+      active_rows_.push_back(r);
+      active_states_.push_back(state[static_cast<std::size_t>(r)]);
+    }
+    return solveActiveSet(corrections - 1);
   }
 
   TESSERACT_LOG_DEBUG("PIQPSolver active set accepted: {} held rows", k);
