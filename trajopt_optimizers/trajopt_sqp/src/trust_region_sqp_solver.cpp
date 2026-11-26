@@ -36,6 +36,29 @@
 #include <chrono>
 #include <cassert>
 
+#include <chrono>
+#include <cstdio>
+namespace
+{
+struct PhaseTimes
+{
+  double convexify{ 0 }, qp_update{ 0 }, qp_solve{ 0 }, merit{ 0 };
+  long qps{ 0 }, convexifies{ 0 };
+  ~PhaseTimes()
+  {
+    std::fprintf(stderr, "PHASES convexify %.4f qp_update %.4f qp_solve %.4f merit %.4f s; %ld qps %ld convexifies\n",
+                 convexify, qp_update, qp_solve, merit, qps, convexifies);
+  }
+};
+PhaseTimes phase_times;
+double tick(std::chrono::steady_clock::time_point& t)
+{
+  const auto now = std::chrono::steady_clock::now();
+  const double d = std::chrono::duration<double>(now - t).count();
+  t = now;
+  return d;
+}
+}  // namespace
 namespace trajopt_sqp
 {
 namespace
@@ -221,7 +244,10 @@ bool TrustRegionSQPSolver::stepSQPSolver()
   const auto prev_nv = qp_problem->getNumQPVars();
   const auto prev_nc = qp_problem->getNumQPConstraints();
 
+  auto phase_t = std::chrono::steady_clock::now();
   qp_problem->convexify();
+  phase_times.convexify += tick(phase_t);
+  phase_times.convexifies++;
 
   const auto nv = qp_problem->getNumQPVars();
   const auto nc = qp_problem->getNumQPConstraints();
@@ -259,6 +285,7 @@ bool TrustRegionSQPSolver::stepSQPSolver()
   }
 
   // Trust region loop
+  phase_times.qp_update += tick(phase_t);
   runTrustRegionLoop();
 
   // A converged inner loop, a spent QP failure budget and a callback stop each end this convexification
@@ -393,7 +420,10 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
 SQPStatus TrustRegionSQPSolver::solveQPProblem()
 {
   // Solve the QP
+  auto phase_t = std::chrono::steady_clock::now();
   bool succeed = qp_solver->solve();
+  phase_times.qp_solve += tick(phase_t);
+  phase_times.qps++;
 
   if (succeed)
   {
@@ -433,6 +463,7 @@ SQPStatus TrustRegionSQPSolver::solveQPProblem()
     // The variable are changed to the new values to calculated data but must be set
     // to best var vals because the new values may not improve the merit which is determined later.
     qp_problem->setVariables(results_.best_var_vals.data());
+    phase_times.merit += tick(phase_t);
 
     // Print debugging info
     if (verbose)
