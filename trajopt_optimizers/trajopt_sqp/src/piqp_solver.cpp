@@ -21,6 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <cstdio>
 #include <trajopt_sqp/piqp_solver.h>
 
 #include <algorithm>
@@ -29,6 +30,15 @@
 #include <utility>
 #include <vector>
 
+namespace
+{
+struct SolveCounts
+{
+  long fast{ 0 }, piqp{ 0 }, piqp_iters{ 0 };
+  ~SolveCounts() { std::fprintf(stderr, "QPCOUNTS fast %ld piqp %ld piqp_iters %ld\n", fast, piqp, piqp_iters); }
+};
+SolveCounts solve_counts;
+}  // namespace
 namespace trajopt_sqp
 {
 namespace
@@ -106,9 +116,29 @@ bool PIQPSolver::solve()
 {
   used_active_set_ = false;
   const bool predict = active_set_prediction && !settings.enable_derivatives;
+  // Without a last solve, start from the nominal set of an l1 penalty QP: equalities held and every penalised slack
+  // at zero, everything else free
+  if (predict && !has_prediction_ && constraint_matrix_.rows() == num_cnts_ && gradient_.size() == num_vars_)
+  {
+    active_rows_.clear();
+    active_states_.clear();
+    for (Eigen::Index r = 0; r < num_cnts_; ++r)
+    {
+      const trajopt_ifopt::Jacobian::InnerIterator it(constraint_matrix_, r);
+      const bool equality = bounds_lower_[r] == bounds_upper_[r];
+      const bool slack = constraint_matrix_.row(r).nonZeros() == 1 && bounds_lower_[r] == 0.0 &&
+                         bounds_upper_[r] >= PIQP_INF && it.value() > 0.0 && gradient_[it.col()] > 0.0;
+      if (!equality && !slack)
+        continue;
+      active_rows_.push_back(r);
+      active_states_.push_back(RowState::kLower);
+    }
+    has_prediction_ = true;
+  }
   if (predict && has_prediction_ && solveActiveSet(kCorrections))
   {
     used_active_set_ = true;
+    solve_counts.fast++;
     reused_setup_ = false;
     solver_status_ = QPSolverStatus::kInitialized;
     return true;
@@ -202,6 +232,8 @@ bool PIQPSolver::solve()
   }
 
   const piqp::Status status = solver_.solve();
+  solve_counts.piqp++;
+  solve_counts.piqp_iters += static_cast<long>(solver_.result().info.iter);
 
   // PIQP did not run on these two; any other failure leaves its setup usable
   const bool not_run = status == piqp::Status::PIQP_UNSOLVED || status == piqp::Status::PIQP_INVALID_SETTINGS;
@@ -409,7 +441,7 @@ bool PIQPSolver::solveActiveSet(int corrections)
                         wrong_sign,
                         violated,
                         corrections);
-    if (corrections <= 0)
+    if (corrections <= 0 || wrong_sign + violated > std::max<Eigen::Index>(20, num_cnts_ / 50))
       return false;
 
     // Solve again with the corrected active set: one more factorization instead of a PIQP solve

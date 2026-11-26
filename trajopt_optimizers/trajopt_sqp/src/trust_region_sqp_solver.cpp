@@ -34,6 +34,7 @@
 
 #include <tesseract/common/logging.h>
 #include <chrono>
+#include <cstdlib>
 #include <cassert>
 
 #include <chrono>
@@ -194,6 +195,10 @@ void TrustRegionSQPSolver::solve(const QPProblem::Ptr& qp_problem)
     results_.print();
 
   qp_problem->setVariables(results_.best_var_vals.data());
+  std::fprintf(stderr, "SQPEND status %d merit %.6f cost %.6f max_violation %.3e qps %d convexifies %d\n",
+               static_cast<int>(status_), results_.best_exact_merit, results_.best_costs.sum(),
+               results_.best_constraint_violations.raw.size() > 0 ? results_.best_constraint_violations.raw.maxCoeff() : 0.0,
+               results_.overall_iteration, results_.convexify_iteration);
 }
 
 bool TrustRegionSQPSolver::verifySQPSolverConvergence()
@@ -329,6 +334,11 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
       {
         qp_problem->scaleBoxSize(params.trust_shrink_ratio);
         qp_solver->updateBounds(qp_problem->getBoundsLower(), qp_problem->getBoundsUpper());
+        if (std::getenv("TRAJOPT_PROX_RHO") != nullptr)
+        {
+          qp_solver->updateHessianMatrix(qp_problem->getHessian());
+          qp_solver->updateGradient(qp_problem->getGradient());
+        }
         results_.box_size = qp_problem->getBoxSize();
 
         TESSERACT_LOG_DEBUG("Shrunk trust region. New box size: {:.4f}", results_.box_size[0]);
@@ -340,6 +350,11 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
         // Convex solver failed and this is the last attempt so setting the trust region to the minimum
         qp_problem->setBoxSize(Eigen::VectorXd::Constant(qp_problem->getNumNLPVars(), params.min_trust_box_size));
         qp_solver->updateBounds(qp_problem->getBoundsLower(), qp_problem->getBoundsUpper());
+        if (std::getenv("TRAJOPT_PROX_RHO") != nullptr)
+        {
+          qp_solver->updateHessianMatrix(qp_problem->getHessian());
+          qp_solver->updateGradient(qp_problem->getGradient());
+        }
         results_.box_size = qp_problem->getBoxSize();
 
         TESSERACT_LOG_DEBUG("Shrunk trust region to minimum. New box size: {:.4f}", results_.box_size[0]);
@@ -384,6 +399,11 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
     {
       qp_problem->scaleBoxSize(params.trust_shrink_ratio);
       qp_solver->updateBounds(qp_problem->getBoundsLower(), qp_problem->getBoundsUpper());
+      if (std::getenv("TRAJOPT_PROX_RHO") != nullptr)
+      {
+        qp_solver->updateHessianMatrix(qp_problem->getHessian());
+        qp_solver->updateGradient(qp_problem->getGradient());
+      }
       results_.box_size = qp_problem->getBoxSize();
 
       TESSERACT_LOG_DEBUG("Shrunk trust region. new box size: {:.4f}", results_.box_size[0]);
@@ -407,6 +427,11 @@ void TrustRegionSQPSolver::runTrustRegionLoop()
 
       qp_problem->scaleBoxSize(params.trust_expand_ratio);
       qp_solver->updateBounds(qp_problem->getBoundsLower(), qp_problem->getBoundsUpper());
+      if (std::getenv("TRAJOPT_PROX_RHO") != nullptr)
+      {
+        qp_solver->updateHessianMatrix(qp_problem->getHessian());
+        qp_solver->updateGradient(qp_problem->getGradient());
+      }
       results_.box_size = qp_problem->getBoxSize();
       TESSERACT_LOG_DEBUG("Expanded trust region. new box size: {:.4f}", results_.box_size[0]);
       return;

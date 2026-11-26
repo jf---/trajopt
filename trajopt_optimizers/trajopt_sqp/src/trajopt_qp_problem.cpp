@@ -1,4 +1,5 @@
 
+#include <cstdlib>
 #include <trajopt_ifopt/core/constraint_set.h>
 #include <trajopt_ifopt/utils/ifopt_utils.h>
 
@@ -483,6 +484,13 @@ struct TrajOptQPProblem::Implementation
    * @details Called by convexify()
    */
   void updateNLPVariableBounds(const Eigen::Ref<const Eigen::VectorXd>& nlp_values);
+
+  /** @brief Experiment: step control by a proximal term rho/2 |x - x0|^2 instead of the trust box rows */
+  double proximal_rho{ -1.0 };
+  bool convexified{ false };
+  trajopt_ifopt::Jacobian hessian_base;
+  Eigen::VectorXd gradient_base;
+  void applyProximalTerm(const Eigen::Ref<const Eigen::VectorXd>& nlp_values);
 };
 
 void TrajOptQPProblem::Implementation::addConstraintSet(std::shared_ptr<trajopt_ifopt::ConstraintSet> constraint_set)
@@ -1110,6 +1118,9 @@ void TrajOptQPProblem::Implementation::convexify()
   cvp.constraint_matrix.makeCompressed();
 
   // Update NLP Bounds
+  hessian_base = cvp.hessian;
+  gradient_base = cvp.gradient;
+  convexified = true;
   updateNLPVariableBounds(x_initial);
 }
 
@@ -1245,6 +1256,17 @@ void TrajOptQPProblem::Implementation::updateNLPVariableBounds(const Eigen::Ref<
   // clamped into [lb, ub] so the box stays non-empty when x has drifted outside
   // its bounds (failed step, bad warm-start); for x inside [lb, ub] this is a
   // no-op and the box is the standard strict-shrink trust region.
+  if (const char* rho = std::getenv("TRAJOPT_PROX_RHO"))
+    proximal_rho = std::atof(rho);
+  if (proximal_rho > 0)
+  {
+    lower = var_bounds_lower;
+    upper = var_bounds_upper;
+    if (convexified)
+      applyProximalTerm(nlp_values);
+    return;
+  }
+
   for (Eigen::Index i = 0; i < cvp.n_nlp_vars; ++i)
   {
     const double bi = box_size[i];
@@ -1255,6 +1277,26 @@ void TrajOptQPProblem::Implementation::updateNLPVariableBounds(const Eigen::Ref<
     lower[i] = std::max(xi - bi, lb);
     upper[i] = std::min(xi + bi, ub);
   }
+}
+
+void TrajOptQPProblem::Implementation::applyProximalTerm(const Eigen::Ref<const Eigen::VectorXd>& nlp_values)
+{
+  // The QP objective is x' H x + g' x, so rho/2 |x - x0|^2 adds rho/2 to the diagonal of H and -rho x0 to g
+  trajopt_ifopt::Jacobian prox(cvp.num_qp_vars, cvp.num_qp_vars);
+  prox.reserve(Eigen::VectorXi::Constant(cvp.num_qp_vars, 1));
+  cvp.gradient = gradient_base;
+  for (Eigen::Index i = 0; i < cvp.n_nlp_vars; ++i)
+  {
+    const double ratio = 0.1 / box_size[i];
+    const double rho = proximal_rho * ratio * ratio;
+    prox.insert(i, i) = 0.5 * rho;
+    cvp.gradient[i] -= rho * nlp_values[i];
+  }
+  prox.makeCompressed();
+  if (hessian_base.rows() == cvp.num_qp_vars)
+    cvp.hessian = hessian_base + prox;
+  else
+    cvp.hessian = prox;
 }
 
 TrajOptQPProblem::TrajOptQPProblem(std::shared_ptr<trajopt_ifopt::Variables> variables)
