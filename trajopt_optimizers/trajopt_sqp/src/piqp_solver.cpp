@@ -21,6 +21,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <unsupported/Eigen/SparseExtra>
+#include <fstream>
+#include <cstdlib>
+#include <string>
 #include <trajopt_sqp/piqp_solver.h>
 
 #include <algorithm>
@@ -104,6 +108,22 @@ bool PIQPSolver::clear()
 
 bool PIQPSolver::solve()
 {
+  if (const char* dir = std::getenv("TRAJOPT_QP_DUMP_DIR"))
+  {
+    static int count = 0;
+    const std::string base = std::string(dir) + "/qp" + std::to_string(count++);
+    Eigen::saveMarket(hessian_, base + "_P.mtx");
+    Eigen::saveMarket(constraint_matrix_, base + "_A.mtx");
+    auto dump = [&](const Eigen::VectorXd& v, const std::string& name) {
+      std::ofstream f(base + name);
+      f.precision(17);
+      for (Eigen::Index i = 0; i < v.size(); ++i)
+        f << v[i] << "\n";
+    };
+    dump(gradient_, "_q.txt");
+    dump(bounds_lower_, "_l.txt");
+    dump(bounds_upper_, "_u.txt");
+  }
   used_active_set_ = false;
   const bool predict = active_set_prediction && !settings.enable_derivatives;
   if (predict && has_prediction_ && solveActiveSet(kCorrections))
