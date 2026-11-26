@@ -372,8 +372,12 @@ bool PIQPSolver::solveActiveSet()
     const bool upper = active_states_[static_cast<std::size_t>(j)] == RowState::kUpper;
     if ((upper && lambda[j] < -dual_tol) || (!upper && lambda[j] > dual_tol))
     {
-      if (verbosity > 0)
-        TESSERACT_LOG_DEBUG("Active-set prediction rejected: row {} has a multiplier of the wrong sign", r);
+      TESSERACT_LOG_DEBUG("PIQPSolver active set rejected: held row {} ({} entries) has multiplier {} at its {} "
+                          "bound",
+                          r,
+                          constraint_matrix_.row(r).nonZeros(),
+                          lambda[j],
+                          upper ? "upper" : "lower");
       return false;
     }
   }
@@ -384,12 +388,17 @@ bool PIQPSolver::solveActiveSet()
     const double tol = primal_tol * (1.0 + std::abs(values[r]));
     if (values[r] < bounds_lower_[r] - tol || values[r] > bounds_upper_[r] + tol)
     {
-      if (verbosity > 0)
-        TESSERACT_LOG_DEBUG("Active-set prediction rejected: row {} is violated", r);
+      TESSERACT_LOG_DEBUG("PIQPSolver active set rejected: free row {} ({} entries) at {} outside [{}, {}]",
+                          r,
+                          constraint_matrix_.row(r).nonZeros(),
+                          values[r],
+                          bounds_lower_[r],
+                          bounds_upper_[r]);
       return false;
     }
   }
 
+  TESSERACT_LOG_DEBUG("PIQPSolver active set accepted: {} held rows", k);
   active_solution_ = x;
   return true;
 }
